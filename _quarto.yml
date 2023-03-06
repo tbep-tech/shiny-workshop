@@ -1,5 +1,8 @@
 project:
   type: book
+  output-dir: _site
+  resources:
+    - "/.nojekyll"
 
 book:
   title: "shiny-workshop"
