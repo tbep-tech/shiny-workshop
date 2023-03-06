@@ -5,9 +5,11 @@ project:
     - "/.nojekyll"
 
 book:
-  title: "shiny-workshop"
-  author: "Jane Doe"
-  date: "3/6/2023"
+  title: "Dashboards: Using R to create actionable science"
+  subtitle: "Quarto & Shiny 1-Day Workshop for CERF Conference (2023-11-12)"
+  author: "Ben Best, Marcus Beck, Tylar Murray, Enrique Montes"
+  date: today
+  date-format: "YYYY-MM-DD"
   chapters:
     - index.qmd
     - intro.qmd
