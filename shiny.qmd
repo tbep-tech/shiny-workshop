@@ -1,12 +1,4 @@
----
-pagetitle: Applications
-output:
-  html_document:
-    pandoc_args: [
-      "--number-offset=6"]
-editor_options: 
-  chunk_output_type: console
----
+# Shiny Applications
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
@@ -18,8 +10,6 @@ if (!require(librarian)){
 shelf(
   htmltools, mitchelloharawild/icons)
 ```
-
-# Applications
 
 ## Learning Objectives {.unnumbered .objectives}
 
@@ -41,7 +31,7 @@ librarian::shelf(
 
 Similar to other examples, let's create a simple Shiny app starting from the provided default by going to **File** -\> **New File** -\> **Shiny Web App**... and name it ***app-faithful*** (after [faithful](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful), the Old Faithful geyser eruption frequency dataset used in this default example):
 
-![](/Users/bbest/github/noaa-iea/r3-train/figs/apps/new-shiny_app-faithful.png){width="400"}
+![](figs/shiny/new-shiny_app-faithful.png){width="400"}
 
 For now, let's go with the default **Single File** option that puts the entire application in `app.R` rather than splitting it in two (`ui.R`/`server.R`). You should see the following contents in the new `app.R` file contents:
 
@@ -99,11 +89,11 @@ shinyApp(ui = ui, server = server)
 
 Let's next **Run App**. Note that you can change the options by clicking on the down triangle next to the button, such as running the app in your default web browser (***Run External***), a pop-up window or in RStudio's Viewer Pane.
 
-![](figs/apps/shiny-run-app-options.png){width="200"}
+![](figs/shiny/shiny-run-app-options.png){width="200"}
 
 Now you can change the values in the slider on the left, then see the plot updated:
 
-![](figs/apps/faithful-app.png){width="600"}
+![](figs/shiny/faithful-app.png){width="600"}
 
 In Shiny parlance, the histogram plot is ***reactive*** to the slider. Normally when creating web apps, this type of "reactivity" is quite complicated to code, but here by simply using `input$bins` in the plotting function for the `output$distPlot`, Shiny registers that this plot needs to be updated when the user changes the `input$bins` value.
 
@@ -139,11 +129,11 @@ Next, let's go through examples together.
 
 Download [shiny-intro-master.zip](https://github.com/bbest/shiny-intro/archive/master.zip) into your `r3-exercises/`, unzip it and rename the top-level folder to `apps/` so you can see the following application folders directly under `r3-exercises/apps/`:
 
--   `01_faithful`: default app from using RStudio, File \> New File \> Shiny Web App... ![](figs/apps/screenshot-01_faithful.png)
+-   `01_faithful`: default app from using RStudio, File \> New File \> Shiny Web App... ![](figs/shiny/screenshot-01_faithful.png)
 -   `02_quakes_mag`: swap to quakes dataset, adjust histogram by magnitude
 -   `03_quakes_depth`: add depth slider, select box for variable to histogram
 -   `04_quakes_map`: add leaflet map
--   `05_quakes_dashboard`: enhance user interface (ie "ui") with `shinydashboard` ![](figs/apps/screenshot-05_quakes_dashboard.png)
+-   `05_quakes_dashboard`: enhance user interface (ie "ui") with `shinydashboard` ![](figs/shiny/screenshot-05_quakes_dashboard.png)
 
 Numbered folders in this repository correspond with iterative development and enhancement of a Shiny app.
 
@@ -331,7 +321,7 @@ plotly::ggplotly(g)
 
 -   View app directly: <https://bdbest.shinyapps.io/05_quakes_dashboard>
 
-    [![](figs/apps/screenshot-05_quakes_dashboard.png)](https://bdbest.shinyapps.io/05_quakes_dashboard)
+    [![](figs/shiny/screenshot-05_quakes_dashboard.png)](https://bdbest.shinyapps.io/05_quakes_dashboard)
 
 ## Rmarkdown using Crosstalk
 

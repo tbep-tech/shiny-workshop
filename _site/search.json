@@ -7,24 +7,52 @@
     "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "shiny.html#learning-objectives",
+    "href": "shiny.html#learning-objectives",
+    "title": "2  Shiny Applications",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\nUse the Shiny framework to develop online interactive applications accepting user input to render outputs from arbitrary R functions. Server requirements differentiating from simpler Rmarkdown renderings will be reviewed as well as use of Crosstalk to gain similar functionality with Rmarkdown with simple data."
+  },
+  {
+    "objectID": "shiny.html#install-shiny-r-package",
+    "href": "shiny.html#install-shiny-r-package",
+    "title": "2  Shiny Applications",
+    "section": "2.1 Install shiny R package",
+    "text": "2.1 Install shiny R package\nEnsure you have the shiny R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “shiny”.\nA few other packages will get used so let’s use the librarian::shelf() command to install if needed:\n\nlibrarian::shelf(\n  plotly, reactlog, shiny, shinydashboard)"
+  },
+  {
+    "objectID": "shiny.html#create-your-first-shiny-web-app",
+    "href": "shiny.html#create-your-first-shiny-web-app",
+    "title": "2  Shiny Applications",
+    "section": "2.2 Create your first Shiny web app",
+    "text": "2.2 Create your first Shiny web app\nSimilar to other examples, let’s create a simple Shiny app starting from the provided default by going to File -> New File -> Shiny Web App… and name it app-faithful (after faithful, the Old Faithful geyser eruption frequency dataset used in this default example):\n\nFor now, let’s go with the default Single File option that puts the entire application in app.R rather than splitting it in two (ui.R/server.R). You should see the following contents in the new app.R file contents:\n#\n# This is a Shiny web application. You can run the application by clicking\n# the 'Run App' button above.\n#\n# Find out more about building applications with Shiny here:\n#\n#    http://shiny.rstudio.com/\n#\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui <- fluidPage(\n\n    # Application title\n    titlePanel(\"Old Faithful Geyser Data\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            sliderInput(\"bins\",\n                        \"Number of bins:\",\n                        min = 1,\n                        max = 50,\n                        value = 30)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"distPlot\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver <- function(input, output) {\n\n    output$distPlot <- renderPlot({\n        # generate bins based on input$bins from ui.R\n        x    <- faithful[, 2]\n        bins <- seq(min(x), max(x), length.out = input$bins + 1)\n\n        # draw the histogram with the specified number of bins\n        hist(x, breaks = bins, col = 'darkgray', border = 'white')\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)\nLet’s next Run App. Note that you can change the options by clicking on the down triangle next to the button, such as running the app in your default web browser (Run External), a pop-up window or in RStudio’s Viewer Pane.\n\nNow you can change the values in the slider on the left, then see the plot updated:\n\nIn Shiny parlance, the histogram plot is reactive to the slider. Normally when creating web apps, this type of “reactivity” is quite complicated to code, but here by simply using input$bins in the plotting function for the output$distPlot, Shiny registers that this plot needs to be updated when the user changes the input$bins value.\n\n2.2.1 Run in showcase mode\nThis default example along with other are made available in the shiny package’s installed folder:\n\n# get path to \"examples\" under your installation of the Shiny R package\ndir_examples  <- system.file(\"examples\", package=\"shiny\")\n\n# get all directories listed there\ndirs_examples <- list.dirs(dir_examples, recursive = F)\n\n# show the folder name only, not the rest of the path preceding (ie dirname())\nbasename(dirs_examples)\n\n [1] \"01_hello\"      \"02_text\"       \"03_reactivity\" \"04_mpg\"       \n [5] \"05_sliders\"    \"06_tabsets\"    \"07_widgets\"    \"08_html\"      \n [9] \"09_upload\"     \"10_download\"   \"11_timer\"     \n\n\nAnother way to launch the shiny app is with the following:\n\n# set directory to 01_hello app, aka the simplest default faithful app\ndir_hello_app <- file.path(dir_examples, \"01_hello\")\n\n# run the app with display.mode = \"auto\"\n#   which under shiny R package uses \"showcase\" mode because of the DESCRIPTION  file there (see ?shiny::runApp)\nshiny::runApp(dir_hello_app)"
+  },
+  {
+    "objectID": "shiny.html#download-run-examples",
+    "href": "shiny.html#download-run-examples",
+    "title": "2  Shiny Applications",
+    "section": "2.3 Download & run examples",
+    "text": "2.3 Download & run examples\nNext, let’s go through examples together.\nDownload shiny-intro-master.zip into your r3-exercises/, unzip it and rename the top-level folder to apps/ so you can see the following application folders directly under r3-exercises/apps/:\n\n01_faithful: default app from using RStudio, File > New File > Shiny Web App… \n02_quakes_mag: swap to quakes dataset, adjust histogram by magnitude\n03_quakes_depth: add depth slider, select box for variable to histogram\n04_quakes_map: add leaflet map\n05_quakes_dashboard: enhance user interface (ie “ui”) with shinydashboard \n\nNumbered folders in this repository correspond with iterative development and enhancement of a Shiny app.\nThe following sections in this Rmarkdown document demonstrate how you can develop output visualizations for use in a Shiny app, especially by defining input variables as a list (input$*).\nKnitting Rmarkdown documents and pushing to Github then allows the HTML to be viewable (using the Github Pages feature). In contrast, Github and most web hosting services can not host a Shiny app. Although the leaflet and plotly visualizations in this document are interactive in the web browser, they do not require the Shiny library or a Shiny server to be displayed. Rather, the HTML output can be easily hosted on the most basic web server or passed as an email attachment. The Shiny context allows for ultimate flexibility with user interactions, but may be overkill for basic visualization. Check out all the amazing htmlwidgets.org and framework that works in the three contexts of: 1) RStudio, 2) Rmarkdown, and 3) Shiny.\n\n2.3.1 01_faithful\n\nCode: 01_faithful\nRun from GitHub:\nshiny::runGitHub(\"bbest/shiny-intro\", subdir=\"01_faithful\")\nRun locally:\nshiny::runApp(\"01_faithful\")\n\nIn order to quickly experiment with visualization, we could pull the code from within the rendering function of the Shiny app and set the input list values that would otherwise be set from the user interface…\n\ninput = list(bins = 30)\n\nx <- faithful[, 2] \nbins <- seq(min(x), max(x), length.out = input$bins + 1)\n    \nhist(x, breaks = bins, col = 'darkgray', border = 'white')\n\n\n\n\n\n\n2.3.2 02_quakes_mag\n\nlibrary(tidyverse)\n\ninput <- list(slider_mag = c(4, 6))\n\nd <- quakes %>%\n  filter(\n    mag >= input$slider_mag[1],\n    mag <= input$slider_mag[2])\n\nhist(d$mag, col = 'darkgray', border = 'white')\n\n\n\n\n\nCode: 02_quakes_mag\nRun from GitHub:\nshiny::runGitHub(\"bbest/shiny-intro\", subdir=\"02_quakes_mag\")\nRun locally:\nshiny::runApp(\"02_quakes_mag\")\n\n\n\n2.3.3 03_quakes_depth\n\nlibrary(tidyverse)\n\ninput <- list(\n  select_var = \"depth\", \n  slider_mag = c(4, 5), \n  slider_depth = c(0, 100))\n\nd <- quakes %>%\n  filter(\n    mag   >= input$slider_mag[1],\n    mag   <= input$slider_mag[2],\n    depth >= input$slider_depth[1],\n    depth <= input$slider_depth[2])\n\nhist(d[,input$select_var], col = 'darkgray', border = 'white')\n\n\n\n\n\nCode: 03_quakes_depth\nRun from GitHub:\nshiny::runGitHub(\"bbest/shiny-intro\", subdir=\"03_quakes_depth\")\nRun locally:\nshiny::runApp(\"03_quakes_depth\")\nshiny-intro/04_quakes_map at master · bbest/shiny-intro\nshiny-intro/05_quakes_dashboard at master · bbest/shiny-intro\nFiji earthquakes\n\n\n\n2.3.4 04_quakes_map\n\nLeaflet for R - Markers\n\n\nlibrary(leaflet)\nlibrary(glue)\n\nleaflet(data = quakes[1:20,]) %>% \n  addTiles() %>%\n  addCircleMarkers(\n    radius = ~mag, color = \"red\", stroke = FALSE, fillOpacity = 0.5,\n    popup = ~glue(\"<b>mag</b>: {mag}<br>depth: {depth} m\"), label = ~as.character(mag))\n\n\n\n\n\n\nCode: 04_quakes_map\nRun from GitHub:\nshiny::runGitHub(\"bbest/shiny-intro\", subdir=\"04_quakes_map\")\nRun locally:\nshiny::runApp(\"04_quakes_map\")\n\n\n\n2.3.5 05_quakes_dashboard\nUse:\n\nshinydashboard\nggplot2\nplot.ly\n\n\nlibrary(tidyverse)\nlibrary(glue)\n\ninput <- list(\n  select_var   = \"depth\", \n  slider_mag   = c(4, 5), \n  slider_depth = c(0, 100))\n\nget_df <- function(){\n  df <- quakes %>%\n    filter(\n      mag   >= input$slider_mag[1],\n      mag   <= input$slider_mag[2],\n      depth >= input$slider_depth[1],\n      depth <= input$slider_depth[2])\n  df$var <- df[[input$select_var]]\n  df\n}\n\ndf        <- get_df()\nbin_width <- min(c(7, length(unique(df$var))))\n    \ng <- ggplot(df, aes(var)) + \n  geom_histogram(binwidth=bin_width)\n\nplotly::ggplotly(g)\n\n\n\n\n\n\nCode: 05_quakes_dashboard\nRun from GitHub:\nshiny::runGitHub(\"bbest/shiny-intro\", subdir=\"05_quakes_dashboard\")\nRun locally:\nshiny::runApp(\"05_quakes_dashboard\")\nView app directly: https://bdbest.shinyapps.io/05_quakes_dashboard"
+  },
+  {
+    "objectID": "shiny.html#rmarkdown-using-crosstalk",
+    "href": "shiny.html#rmarkdown-using-crosstalk",
+    "title": "2  Shiny Applications",
+    "section": "2.4 Rmarkdown using Crosstalk",
+    "text": "2.4 Rmarkdown using Crosstalk\n\nhttps://rstudio.github.io/crosstalk\n\n\nlibrary(crosstalk)\nlibrary(leaflet)\nlibrary(DT)\n\n# Wrap data frame in SharedData\nsd <- SharedData$new(quakes[sample(nrow(quakes), 100),])\n\n# Create a filter input\nfilter_slider(\"mag\", \"Magnitude\", sd, column=~mag, step=0.1, width=250)\n\n\nMagnitude\n\n\n\n\n# Use SharedData like a dataframe with Crosstalk-enabled widgets\nbscols(\n  leaflet(sd) %>% \n    addTiles() %>% \n    addMarkers(),\n  datatable(\n    sd, extensions=\"Scroller\", style=\"bootstrap\", class=\"compact\", width=\"100%\",\n    options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)))"
+  },
+  {
+    "objectID": "shiny.html#further-resources",
+    "href": "shiny.html#further-resources",
+    "title": "2  Shiny Applications",
+    "section": "Further Resources",
+    "text": "Further Resources\n\nShiny Cheatsheet\nShiny Tutorial\nIntroduction to Shiny - RStudio"
+  },
+  {
     "objectID": "intro.html",
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
     "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
-  },
-  {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]
