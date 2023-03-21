@@ -37,8 +37,6 @@ jobs:
             tidyverse
             github::mitchelloharawild/icons
 
-            plotly, reactlog, shiny, shinydashboard
-
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
