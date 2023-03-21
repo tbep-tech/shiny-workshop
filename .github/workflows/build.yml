@@ -34,7 +34,7 @@ jobs:
             reactlog
             shiny
             shinydashboard
-            tidvyerse
+            tidyverse
             github::mitchelloharawild/icons
 
             plotly, reactlog, shiny, shinydashboard
