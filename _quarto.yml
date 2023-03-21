@@ -13,6 +13,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - quarto.qmd
     - shiny.qmd
     - summary.qmd
     - references.qmd
