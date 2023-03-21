@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dashboards: Using R to create actionable science - 2&nbsp; Interactive: Shiny Applications</title>
+<title>Dashboards: Using R to create actionable science - 3&nbsp; Interactive: Shiny Applications</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,7 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./summary.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./quarto.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -183,12 +183,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></a>
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -206,18 +211,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#install-shiny-r-package" id="toc-install-shiny-r-package" class="nav-link" data-scroll-target="#install-shiny-r-package"><span class="toc-section-number">2.1</span>  Install <code>shiny</code> R package</a></li>
-  <li><a href="#create-your-first-shiny-web-app" id="toc-create-your-first-shiny-web-app" class="nav-link" data-scroll-target="#create-your-first-shiny-web-app"><span class="toc-section-number">2.2</span>  Create your first Shiny web app</a>
+  <li><a href="#install-shiny-r-package" id="toc-install-shiny-r-package" class="nav-link" data-scroll-target="#install-shiny-r-package"><span class="toc-section-number">3.1</span>  Install <code>shiny</code> R package</a></li>
+  <li><a href="#create-your-first-shiny-web-app" id="toc-create-your-first-shiny-web-app" class="nav-link" data-scroll-target="#create-your-first-shiny-web-app"><span class="toc-section-number">3.2</span>  Create your first Shiny web app</a>
   <ul class="collapse">
-  <li><a href="#run-in-showcase-mode" id="toc-run-in-showcase-mode" class="nav-link" data-scroll-target="#run-in-showcase-mode"><span class="toc-section-number">2.2.1</span>  Run in showcase mode</a></li>
+  <li><a href="#run-in-showcase-mode" id="toc-run-in-showcase-mode" class="nav-link" data-scroll-target="#run-in-showcase-mode"><span class="toc-section-number">3.2.1</span>  Run in showcase mode</a></li>
   </ul></li>
-  <li><a href="#download-run-examples" id="toc-download-run-examples" class="nav-link" data-scroll-target="#download-run-examples"><span class="toc-section-number">2.3</span>  Download &amp; run examples</a>
+  <li><a href="#download-run-examples" id="toc-download-run-examples" class="nav-link" data-scroll-target="#download-run-examples"><span class="toc-section-number">3.3</span>  Download &amp; run examples</a>
   <ul class="collapse">
-  <li><a href="#faithful" id="toc-faithful" class="nav-link" data-scroll-target="#faithful"><span class="toc-section-number">2.3.1</span>  <code>01_faithful</code></a></li>
-  <li><a href="#quakes_mag" id="toc-quakes_mag" class="nav-link" data-scroll-target="#quakes_mag"><span class="toc-section-number">2.3.2</span>  <code>02_quakes_mag</code></a></li>
-  <li><a href="#quakes_depth" id="toc-quakes_depth" class="nav-link" data-scroll-target="#quakes_depth"><span class="toc-section-number">2.3.3</span>  <code>03_quakes_depth</code></a></li>
-  <li><a href="#quakes_map" id="toc-quakes_map" class="nav-link" data-scroll-target="#quakes_map"><span class="toc-section-number">2.3.4</span>  <code>04_quakes_map</code></a></li>
-  <li><a href="#quakes_dashboard" id="toc-quakes_dashboard" class="nav-link" data-scroll-target="#quakes_dashboard"><span class="toc-section-number">2.3.5</span>  <code>05_quakes_dashboard</code></a></li>
+  <li><a href="#faithful" id="toc-faithful" class="nav-link" data-scroll-target="#faithful"><span class="toc-section-number">3.3.1</span>  <code>01_faithful</code></a></li>
+  <li><a href="#quakes_mag" id="toc-quakes_mag" class="nav-link" data-scroll-target="#quakes_mag"><span class="toc-section-number">3.3.2</span>  <code>02_quakes_mag</code></a></li>
+  <li><a href="#quakes_depth" id="toc-quakes_depth" class="nav-link" data-scroll-target="#quakes_depth"><span class="toc-section-number">3.3.3</span>  <code>03_quakes_depth</code></a></li>
+  <li><a href="#quakes_map" id="toc-quakes_map" class="nav-link" data-scroll-target="#quakes_map"><span class="toc-section-number">3.3.4</span>  <code>04_quakes_map</code></a></li>
+  <li><a href="#quakes_dashboard" id="toc-quakes_dashboard" class="nav-link" data-scroll-target="#quakes_dashboard"><span class="toc-section-number">3.3.5</span>  <code>05_quakes_dashboard</code></a></li>
   </ul></li>
   <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further Resources</a></li>
   </ul>
@@ -228,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></h1>
 </div>
 
 
@@ -247,8 +252,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="unnumbered objectives anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>Use the Shiny framework to develop online interactive applications accepting user input to render outputs from arbitrary R functions. Server requirements differentiating from simpler Rmarkdown renderings will be reviewed.</p>
 </section>
-<section id="install-shiny-r-package" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="install-shiny-r-package"><span class="header-section-number">2.1</span> Install <code>shiny</code> R package</h2>
+<section id="install-shiny-r-package" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="install-shiny-r-package"><span class="header-section-number">3.1</span> Install <code>shiny</code> R package</h2>
 <p>Ensure you have the <code>shiny</code> R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “shiny”.</p>
 <p>A few other packages will get used so let’s use the librarian::shelf() command to install if needed:</p>
 <div class="cell">
@@ -256,8 +261,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  plotly, reactlog, shiny, shinydashboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="create-your-first-shiny-web-app" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="create-your-first-shiny-web-app"><span class="header-section-number">2.2</span> Create your first Shiny web app</h2>
+<section id="create-your-first-shiny-web-app" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="create-your-first-shiny-web-app"><span class="header-section-number">3.2</span> Create your first Shiny web app</h2>
 <p>Similar to other examples, let’s create a simple Shiny app starting from the provided default by going to <strong>File</strong> -&gt; <strong>New File</strong> -&gt; <strong>Shiny Web App</strong>… and name it <strong><em>app-faithful</em></strong> (after <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful">faithful</a>, the Old Faithful geyser eruption frequency dataset used in this default example):</p>
 <p><img src="figs/shiny/new-shiny_app-faithful.png" class="img-fluid" width="400"></p>
 <p>For now, let’s go with the default <strong>Single File</strong> option that puts the entire application in <code>app.R</code> rather than splitting it in two (<code>ui.R</code>/<code>server.R</code>). You should see the following contents in the new <code>app.R</code> file contents:</p>
@@ -315,8 +320,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now you can change the values in the slider on the left, then see the plot updated:</p>
 <p><img src="figs/shiny/faithful-app.png" class="img-fluid" width="600"></p>
 <p>In Shiny parlance, the histogram plot is <strong><em>reactive</em></strong> to the slider. Normally when creating web apps, this type of “reactivity” is quite complicated to code, but here by simply using <code>input$bins</code> in the plotting function for the <code>output$distPlot</code>, Shiny registers that this plot needs to be updated when the user changes the <code>input$bins</code> value.</p>
-<section id="run-in-showcase-mode" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="run-in-showcase-mode"><span class="header-section-number">2.2.1</span> Run in showcase mode</h3>
+<section id="run-in-showcase-mode" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="run-in-showcase-mode"><span class="header-section-number">3.2.1</span> Run in showcase mode</h3>
 <p>This default example along with other are made available in the shiny package’s installed folder:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get path to "examples" under your installation of the Shiny R package</span></span>
@@ -344,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="download-run-examples" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="download-run-examples"><span class="header-section-number">2.3</span> Download &amp; run examples</h2>
+<section id="download-run-examples" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="download-run-examples"><span class="header-section-number">3.3</span> Download &amp; run examples</h2>
 <p>Next, let’s go through examples together.</p>
 <p>Download <a href="https://github.com/bbest/shiny-intro/archive/master.zip">shiny-intro-master.zip</a> into your <code>r3-exercises/</code>, unzip it and rename the top-level folder to <code>apps/</code> so you can see the following application folders directly under <code>r3-exercises/apps/</code>:</p>
 <ul>
@@ -358,8 +363,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Numbered folders in this repository correspond with iterative development and enhancement of a Shiny app.</p>
 <p>The following sections in this Rmarkdown document demonstrate how you can develop output visualizations for use in a Shiny app, especially by defining input variables as a list (<code>input$*</code>).</p>
 <p>Knitting Rmarkdown documents and pushing to Github then allows the HTML to be viewable (using the <a href="https://pages.github.com">Github Pages</a> feature). In contrast, Github and most web hosting services can <strong><em>not</em></strong> host a Shiny app. Although the <a href="http://rstudio.github.io/leaflet">leaflet</a> and <a href="https://plot.ly/ggplot2">plotly</a> visualizations in this document are interactive in the web browser, they do not require the Shiny library or a Shiny server to be displayed. Rather, the HTML output can be easily hosted on the most basic web server or passed as an email attachment. The Shiny context allows for ultimate flexibility with user interactions, but may be overkill for basic visualization. Check out all the amazing <a href="http://www.htmlwidgets.org/">htmlwidgets.org</a> and framework that works in the three contexts of: 1) RStudio, 2) Rmarkdown, and 3) Shiny.</p>
-<section id="faithful" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="faithful"><span class="header-section-number">2.3.1</span> <code>01_faithful</code></h3>
+<section id="faithful" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="faithful"><span class="header-section-number">3.3.1</span> <code>01_faithful</code></h3>
 <ul>
 <li><p>Code: <a href="https://github.com/bbest/shiny-intro/tree/master/01_faithful">01_faithful</a></p></li>
 <li><p>Run from GitHub:</p>
@@ -380,8 +385,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="quakes_mag" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="quakes_mag"><span class="header-section-number">2.3.2</span> <code>02_quakes_mag</code></h3>
+<section id="quakes_mag" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="quakes_mag"><span class="header-section-number">3.3.2</span> <code>02_quakes_mag</code></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -405,8 +410,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"02_quakes_mag"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="quakes_depth" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="quakes_depth"><span class="header-section-number">2.3.3</span> <code>03_quakes_depth</code></h3>
+<section id="quakes_depth" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="quakes_depth"><span class="header-section-number">3.3.3</span> <code>03_quakes_depth</code></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -438,8 +443,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="http://benbestphd.com/shiny-intro/crosstalk.html">Fiji earthquakes</a></p></li>
 </ul>
 </section>
-<section id="quakes_map" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="quakes_map"><span class="header-section-number">2.3.4</span> <code>04_quakes_map</code></h3>
+<section id="quakes_map" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="quakes_map"><span class="header-section-number">3.3.4</span> <code>04_quakes_map</code></h3>
 <ul>
 <li><a href="http://rstudio.github.io/leaflet/markers.html#icon-markers">Leaflet for R - Markers</a></li>
 </ul>
@@ -453,8 +458,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="sc">~</span>mag, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">stroke =</span> <span class="cn">FALSE</span>, <span class="at">fillOpacity =</span> <span class="fl">0.5</span>,</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">glue</span>(<span class="st">"&lt;b&gt;mag&lt;/b&gt;: {mag}&lt;br&gt;depth: {depth} m"</span>), <span class="at">label =</span> <span class="sc">~</span><span class="fu">as.character</span>(mag))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-fe534ec269b2549504b1" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-fe534ec269b2549504b1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[-20.42,-20.62,-26,-17.97,-20.42,-19.68,-11.7,-28.11,-28.74,-17.47,-21.44,-12.26,-18.54,-21,-20.7,-15.94,-13.64,-17.83,-23.5,-22.63],[181.62,181.03,184.1,181.66,181.96,184.31,166.1,181.93,181.74,179.59,180.69,167,182.11,181.66,169.92,184.95,165.96,181.5,179.78,180.31],[4.8,4.2,5.4,4.1,4,4,4.8,4.4,4.7,4.3,4.4,4.6,4.4,4.4,6.1,4.3,6,4.5,4.4,4.4],null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,["<b>mag<\/b>: 4.8<br>depth: 562 m","<b>mag<\/b>: 4.2<br>depth: 650 m","<b>mag<\/b>: 5.4<br>depth: 42 m","<b>mag<\/b>: 4.1<br>depth: 626 m","<b>mag<\/b>: 4<br>depth: 649 m","<b>mag<\/b>: 4<br>depth: 195 m","<b>mag<\/b>: 4.8<br>depth: 82 m","<b>mag<\/b>: 4.4<br>depth: 194 m","<b>mag<\/b>: 4.7<br>depth: 211 m","<b>mag<\/b>: 4.3<br>depth: 622 m","<b>mag<\/b>: 4.4<br>depth: 583 m","<b>mag<\/b>: 4.6<br>depth: 249 m","<b>mag<\/b>: 4.4<br>depth: 554 m","<b>mag<\/b>: 4.4<br>depth: 600 m","<b>mag<\/b>: 6.1<br>depth: 139 m","<b>mag<\/b>: 4.3<br>depth: 306 m","<b>mag<\/b>: 6<br>depth: 50 m","<b>mag<\/b>: 4.5<br>depth: 590 m","<b>mag<\/b>: 4.4<br>depth: 570 m","<b>mag<\/b>: 4.4<br>depth: 598 m"],null,["4.8","4.2","5.4","4.1","4","4","4.8","4.4","4.7","4.3","4.4","4.6","4.4","4.4","6.1","4.3","6","4.5","4.4","4.4"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-28.74,-11.7],"lng":[165.96,184.95]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d9810b65a8356bd4cebe" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d9810b65a8356bd4cebe">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[-20.42,-20.62,-26,-17.97,-20.42,-19.68,-11.7,-28.11,-28.74,-17.47,-21.44,-12.26,-18.54,-21,-20.7,-15.94,-13.64,-17.83,-23.5,-22.63],[181.62,181.03,184.1,181.66,181.96,184.31,166.1,181.93,181.74,179.59,180.69,167,182.11,181.66,169.92,184.95,165.96,181.5,179.78,180.31],[4.8,4.2,5.4,4.1,4,4,4.8,4.4,4.7,4.3,4.4,4.6,4.4,4.4,6.1,4.3,6,4.5,4.4,4.4],null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,["<b>mag<\/b>: 4.8<br>depth: 562 m","<b>mag<\/b>: 4.2<br>depth: 650 m","<b>mag<\/b>: 5.4<br>depth: 42 m","<b>mag<\/b>: 4.1<br>depth: 626 m","<b>mag<\/b>: 4<br>depth: 649 m","<b>mag<\/b>: 4<br>depth: 195 m","<b>mag<\/b>: 4.8<br>depth: 82 m","<b>mag<\/b>: 4.4<br>depth: 194 m","<b>mag<\/b>: 4.7<br>depth: 211 m","<b>mag<\/b>: 4.3<br>depth: 622 m","<b>mag<\/b>: 4.4<br>depth: 583 m","<b>mag<\/b>: 4.6<br>depth: 249 m","<b>mag<\/b>: 4.4<br>depth: 554 m","<b>mag<\/b>: 4.4<br>depth: 600 m","<b>mag<\/b>: 6.1<br>depth: 139 m","<b>mag<\/b>: 4.3<br>depth: 306 m","<b>mag<\/b>: 6<br>depth: 50 m","<b>mag<\/b>: 4.5<br>depth: 590 m","<b>mag<\/b>: 4.4<br>depth: 570 m","<b>mag<\/b>: 4.4<br>depth: 598 m"],null,["4.8","4.2","5.4","4.1","4","4","4.8","4.4","4.7","4.3","4.4","4.6","4.4","4.4","6.1","4.3","6","4.5","4.4","4.4"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-28.74,-11.7],"lng":[165.96,184.95]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>
@@ -465,8 +470,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"04_quakes_map"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="quakes_dashboard" class="level3" data-number="2.3.5">
-<h3 data-number="2.3.5" class="anchored" data-anchor-id="quakes_dashboard"><span class="header-section-number">2.3.5</span> <code>05_quakes_dashboard</code></h3>
+<section id="quakes_dashboard" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="quakes_dashboard"><span class="header-section-number">3.3.5</span> <code>05_quakes_dashboard</code></h3>
 <p>Use:</p>
 <ul>
 <li><p><a href="http://rstudio.github.io/shinydashboard" class="uri">shinydashboard</a></p></li>
@@ -501,8 +506,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>plotly<span class="sc">::</span><span class="fu">ggplotly</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e3ef74c9debb9636e2e5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-e3ef74c9debb9636e2e5">{"x":{"data":[{"orientation":"v","width":[7,7,7,7,7,7,7,7,7],"base":[0,0,0,0,0,0,0,0,0],"x":[42,49,56,63,70,77,84,91,98],"y":[32,31,19,28,29,17,16,12,15],"text":["count: 32<br />var: 42","count: 31<br />var: 49","count: 19<br />var: 56","count: 28<br />var: 63","count: 29<br />var: 70","count: 17<br />var: 77","count: 16<br />var: 84","count: 12<br />var: 91","count: 15<br />var: 98"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[35.35,104.65],"tickmode":"array","ticktext":["40","60","80","100"],"tickvals":[40,60,80,100],"categoryorder":"array","categoryarray":["40","60","80","100"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"var","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.6,33.6],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1e0f78a64290":{"x":{},"type":"bar"}},"cur_data":"1e0f78a64290","visdat":{"1e0f78a64290":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-efa6376feacd9a810522" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-efa6376feacd9a810522">{"x":{"data":[{"orientation":"v","width":[7,7,7,7,7,7,7,7,7],"base":[0,0,0,0,0,0,0,0,0],"x":[42,49,56,63,70,77,84,91,98],"y":[32,31,19,28,29,17,16,12,15],"text":["count: 32<br />var: 42","count: 31<br />var: 49","count: 19<br />var: 56","count: 28<br />var: 63","count: 29<br />var: 70","count: 17<br />var: 77","count: 16<br />var: 84","count: 12<br />var: 91","count: 15<br />var: 98"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[35.35,104.65],"tickmode":"array","ticktext":["40","60","80","100"],"tickvals":[40,60,80,100],"categoryorder":"array","categoryarray":["40","60","80","100"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"var","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.6,33.6],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1ee61843ba7f":{"x":{},"type":"bar"}},"cur_data":"1ee61843ba7f","visdat":{"1ee61843ba7f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>
@@ -667,13 +672,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./quarto.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./summary.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
