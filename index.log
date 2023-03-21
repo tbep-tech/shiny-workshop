@@ -1,31 +1,31 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.1)  6 MAR 2023 11:13
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.3.1)  21 MAR 2023 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **index.tex
 (./index.tex
-LaTeX2e <2022-11-01>
-L3 programming layer <2022-11-02> (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrreprt.cls
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22> (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrreprt.cls
 Document Class: scrreprt 2022/10/12 v3.38 KOMA-Script document class (report)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2022/10/12 v3.38 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrbase.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrbase.sty
 Package: scrbase 2022/10/12 v3.38 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2022/10/12 v3.38 KOMA-Script package (file load hooks)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
 Package: scrlfile-hook 2022/10/12 v3.38 KOMA-Script package (using LaTeX hooks)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlogo.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlogo.sty
 Package: scrlogo 2022/10/12 v3.38 KOMA-Script package (logo)
-))) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+))) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
 Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
 Already applied: [0000/00/00] Usage of raw or classic option list on input line 368.
-)) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/tocbasic.sty
+)) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/tocbasic.sty
 Package: tocbasic 2022/10/12 v3.38 KOMA-Script package (handling toc-files)
-\scr@dte@tocline@numberwidth=\skip47
+\scr@dte@tocline@numberwidth=\skip48
 \scr@dte@tocline@numbox=\box51
 )
 Package tocbasic Info: omitting babel extension for `toc'
@@ -33,11 +33,11 @@ Package tocbasic Info: omitting babel extension for `toc'
 (tocbasic)             for `toc' on input line 137.
 Class scrreprt Info: File `scrsize11pt.clo' used instead of
 (scrreprt)           file `scrsize11.clo' to setup font sizes on input line 2614.
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
 File: scrsize11pt.clo 2022/10/12 v3.38 KOMA-Script font size class option (11pt)
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/koma-script/typearea.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2022/10/12 v3.38 KOMA-Script package (type area)
-\ta@bcor=\skip48
+\ta@bcor=\skip49
 \ta@div=\count181
 Package typearea Info: You've used standard option `letterpaper'.
 (typearea)             This is correct!
@@ -45,10 +45,10 @@ Package typearea Info: You've used standard option `letterpaper'.
 (typearea)             If you'd like to set the option with \KOMAoptions,
 (typearea)             you'd have to use `paper=letter' there
 (typearea)             instead of `letterpaper', too.
-\ta@hblk=\skip49
-\ta@vblk=\skip50
-\ta@temp=\skip51
-\footheight=\skip52
+\ta@hblk=\skip50
+\ta@vblk=\skip51
+\ta@temp=\skip52
+\footheight=\skip53
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 11
 (typearea)             BCOR = 0.0pt
@@ -74,66 +74,66 @@ Package typearea Info: These are the values describing the layout:
 \c@subsubsection=\count186
 \c@paragraph=\count187
 \c@subparagraph=\count188
-\scr@dte@chapter@maxnumwidth=\skip53
+\scr@dte@chapter@maxnumwidth=\skip54
 Class scrreprt Info: using compatibility default `afterindent=bysign'
 (scrreprt)           for `\chapter on input line 5902.
-\scr@dte@section@maxnumwidth=\skip54
+\scr@dte@section@maxnumwidth=\skip55
 Class scrreprt Info: using compatibility default `runin=bysign'
 (scrreprt)           for `\section on input line 5913.
 Class scrreprt Info: using compatibility default `afterindent=bysign'
 (scrreprt)           for `\section on input line 5913.
-\scr@dte@part@maxnumwidth=\skip55
+\scr@dte@part@maxnumwidth=\skip56
 Class scrreprt Info: using compatibility default `afterindent=true'
 (scrreprt)           for `\part on input line 5922.
-\scr@dte@subsection@maxnumwidth=\skip56
+\scr@dte@subsection@maxnumwidth=\skip57
 Class scrreprt Info: using compatibility default `runin=bysign'
 (scrreprt)           for `\subsection on input line 5932.
 Class scrreprt Info: using compatibility default `afterindent=bysign'
 (scrreprt)           for `\subsection on input line 5932.
-\scr@dte@subsubsection@maxnumwidth=\skip57
+\scr@dte@subsubsection@maxnumwidth=\skip58
 Class scrreprt Info: using compatibility default `runin=bysign'
 (scrreprt)           for `\subsubsection on input line 5942.
 Class scrreprt Info: using compatibility default `afterindent=bysign'
 (scrreprt)           for `\subsubsection on input line 5942.
-\scr@dte@paragraph@maxnumwidth=\skip58
+\scr@dte@paragraph@maxnumwidth=\skip59
 Class scrreprt Info: using compatibility default `runin=bysign'
 (scrreprt)           for `\paragraph on input line 5953.
 Class scrreprt Info: using compatibility default `afterindent=bysign'
 (scrreprt)           for `\paragraph on input line 5953.
-\scr@dte@subparagraph@maxnumwidth=\skip59
+\scr@dte@subparagraph@maxnumwidth=\skip60
 Class scrreprt Info: using compatibility default `runin=bysign'
 (scrreprt)           for `\subparagraph on input line 5963.
 Class scrreprt Info: using compatibility default `afterindent=bysign'
 (scrreprt)           for `\subparagraph on input line 5963.
-\abovecaptionskip=\skip60
-\belowcaptionskip=\skip61
+\abovecaptionskip=\skip61
+\belowcaptionskip=\skip62
 \c@pti@nb@sid@b@x=\box52
 Package tocbasic Info: omitting babel extension for `lof'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lof' on input line 7140.
-\scr@dte@figure@maxnumwidth=\skip62
+\scr@dte@figure@maxnumwidth=\skip63
 \c@figure=\count189
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lot' on input line 7157.
-\scr@dte@table@maxnumwidth=\skip63
+\scr@dte@table@maxnumwidth=\skip64
 \c@table=\count190
 Class scrreprt Info: Redefining `\numberline' on input line 7328.
 \bibindent=\dimen140
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2022/04/08 v2.17n AMS math features
-\@mathmargin=\skip64
+\@mathmargin=\skip65
 For additional information on amsmath, use the `?' option.
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen141
-)) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen142
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count191
@@ -178,21 +178,21 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \totwidth@=\dimen148
 \lineht@=\dimen149
 \@envbody=\toks20
-\multlinegap=\skip65
-\multlinetaggap=\skip66
+\multlinegap=\skip66
+\multlinetaggap=\skip67
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+)) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -226,12 +226,12 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-11-02 L3 programming layer (loader) 
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2022-10-26 L3 backend support: XeTeX
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-02-22 L3 programming layer (loader) 
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
 \g__graphics_track_int=\count269
 \l__pdf_internal_box=\box55
 \g__pdf_backend_object_int=\count270
@@ -239,15 +239,15 @@ File: l3backend-xetex.def 2022-10-26 L3 backend support: XeTeX
 \g__pdf_backend_link_int=\count272
 ))
 Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
 Package: unicode-math-xetex 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2022-06-22 L3 Experimental document command parser
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2022-06-22 LaTeX2e option processing using LaTeX3 keys
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-02-02 L3 Experimental document command parser
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2023-02-02 LaTeX2e option processing using LaTeX3 keys
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_script_int=\count273
 \l__fontspec_language_int=\count274
@@ -263,11 +263,11 @@ Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_tmpa_dim=\dimen150
 \l__fontspec_tmpb_dim=\dimen151
 \l__fontspec_tmpc_dim=\dimen152
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
 Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
@@ -275,13 +275,13 @@ LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 \g__um_fonts_used_int=\count285
 \l__um_primecount_int=\count286
 \g__um_primekern_muskip=\muskip17
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+)) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2022/06/23 v3.0f Micro-typographical refinements (RS)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count287
 )
@@ -295,22 +295,22 @@ LaTeX Info: Redefining \textls on input line 1234.
 \MT@outer@kern=\dimen153
 LaTeX Info: Redefining \textmicrotypecontext on input line 1858.
 \MT@listname@count=\count289
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-xetex.def
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype-xetex.def
 File: microtype-xetex.def 2022/06/23 v3.0f Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 236.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2022/06/23 v3.0f microtype main configuration file (RS)
-)) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+)) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: xetex.def on input line 227.
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1369.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
@@ -319,33 +319,33 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/xcolor/svgnam.def
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/svgnam.def
 File: svgnam.def 2022/06/12 v2.14 Predefined colors according to SVG 1.1 (UK)
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/xcolor/x11nam.def
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/x11nam.def
 File: x11nam.def 2022/06/12 v2.14 Predefined colors according to Unix/X11 (UK)
-)) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2022/06/06 4.5 verbatim text (tvz,hv)
+)) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
 \FV@CodeLineNo=\count290
 \FV@InFile=\read2
 \FV@TabBox=\box57
 \c@FancyVerbLine=\count291
 \FV@StepNumber=\count292
 \FV@OutFile=\write3
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip67
+\OuterFrameSep=\skip68
 \fb@frw=\dimen154
 \fb@frh=\dimen155
 \FrameRule=\dimen156
 \FrameSep=\dimen157
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
-\LTleft=\skip68
-\LTright=\skip69
-\LTpre=\skip70
-\LTpost=\skip71
+\LTleft=\skip69
+\LTright=\skip70
+\LTpre=\skip71
+\LTpost=\skip72
 \LTchunksize=\count293
 \LTcapwidth=\dimen158
 \LT@head=\box58
@@ -360,7 +360,7 @@ Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LT@p@ftn=\toks23
 )
 Class scrreprt Info: longtable captions redefined on input line 95.
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen159
 \lightrulewidth=\dimen160
@@ -379,38 +379,38 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count300
 \@lastruleclass=\count301
 \@thisrulewidth=\dimen171
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen172
 \ar@mcellbox=\box63
 \extrarowheight=\dimen173
 \NC@list=\toks24
-\extratabsurround=\skip72
-\backup@length=\skip73
+\extratabsurround=\skip73
+\backup@length=\skip74
 \ar@cellbox=\box64
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count302
 \calc@Bcount=\count303
 \calc@Adimen=\dimen174
 \calc@Bdimen=\dimen175
-\calc@Askip=\skip74
-\calc@Bskip=\skip75
+\calc@Askip=\skip75
+\calc@Bskip=\skip76
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count304
-\calc@Cskip=\skip76
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
+\calc@Cskip=\skip77
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box65
 \fn@width=\dimen176
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-(/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+(c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (/Users/bbest/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (c:/Users/Marcus.SCCWRP2K/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 107.
@@ -418,9 +418,9 @@ Package graphics Info: Driver file: xetex.def on input line 107.
 \Gin@req@height=\dimen177
 \Gin@req@width=\dimen178
 )
-\cslhangindent=\skip77
-\csllabelwidth=\skip78
-\cslentryspacingunit=\skip79
+\cslhangindent=\skip78
+\csllabelwidth=\skip79
+\cslentryspacingunit=\skip80
 
 ! LaTeX Error: Missing \begin{document}.
 
@@ -429,13 +429,13 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.141 <
-       script src="site_libs/htmlwidgets-1.6.0/htmlwidgets.js"></script> 
+       script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script> 
 Here is how much of TeX's memory you used:
- 14504 strings out of 477623
- 300568 string characters out of 5839482
- 892727 words of memory out of 5000000
- 35574 multiletter control sequences out of 15000+600000
- 469275 words of font info for 30 fonts, out of 8000000 for 9000
+ 14504 strings out of 478663
+ 303288 string characters out of 5845885
+ 1845012 words of memory out of 5000000
+ 34534 multiletter control sequences out of 15000+600000
+ 512303 words of font info for 34 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  108i,1n,106p,10600b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

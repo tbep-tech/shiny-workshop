@@ -22,9 +22,5 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
-    prefer-html: true
-
 
 
