@@ -11,7 +11,7 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This workshop will expose you to the basics of creating interactive dashboards in R. Before we begin, it’s useful to distinguish between dynamic and interactive dashboards."
   },
   {
     "objectID": "quarto.html#learning-objectives",
@@ -25,7 +25,7 @@
     "href": "quarto.html#install-quarto-r-package",
     "title": "2  Dynamic: Quarto",
     "section": "2.1 Install quarto R package",
-    "text": "2.1 Install quarto R package"
+    "text": "2.1 Install quarto R package\nEnsure you have the quarto R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “quarto”."
   },
   {
     "objectID": "quarto.html#quarto-using-crosstalk",
@@ -75,12 +75,5 @@
     "title": "4  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]
