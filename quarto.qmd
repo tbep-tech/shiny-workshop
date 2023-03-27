@@ -17,6 +17,8 @@ Use the Quarto document preparation system to create interactive documents that 
 
 ## Install `quarto` R package
 
+Ensure you have the `quarto` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "quarto".
+
 ## Quarto using Crosstalk
 
 -   <https://rstudio.github.io/crosstalk>
