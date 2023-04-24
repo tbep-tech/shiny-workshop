@@ -4,6 +4,10 @@ The Shiny R package is now ten years old and is a popular tool to create immersi
 
 Anyone interested in learning how to expand existing R skills for dashboard development will benefit from this workshop. This includes student, early career, and advanced professionals from any employment sector and field of expertise.
 
+Also see:
+
+- [Workshop -- Dashboards: Using R to Create Actionable Science | CERF 2023 Biennial Conference ](https://conference.cerf.science/2023-workshop--dashboards--using-r-to-create-actionable-science)
+
 ## Presenters {.unnumbered}
 
 ### Marcus Beck, Ph.D.
