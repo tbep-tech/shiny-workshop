@@ -16,6 +16,7 @@ book:
     - quarto.qmd
     - shiny.qmd
     - summary.qmd
+    - ui_design.qmd
     - references.qmd
 
 bibliography: references.bib
