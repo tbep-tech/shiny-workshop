@@ -1,9 +1,5 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+This workshop will expose you to the basics of creating interactive dashboards in R.  Before we begin, it's useful to distinguish between ***dynamic*** and ***interactive*** dashboards. 
 
-See @knuth84 for additional discussion of literate programming.
-
-```{r}
-1 + 1
-```
+![](figs/dynamicvint.png){width="800"}

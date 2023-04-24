@@ -1,0 +1,45 @@
+# Dynamic: Quarto 
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+
+if (!require(librarian)){
+  install.packages("librarian")
+  library(librarian)
+}
+shelf(
+  htmltools, mitchelloharawild/icons)
+```
+
+## Learning Objectives {.unnumbered .objectives}
+
+Use the Quarto document preparation system to create interactive documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
+
+## Install `quarto` R package
+
+Ensure you have the `quarto` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "quarto".
+
+## Quarto using Crosstalk
+
+-   <https://rstudio.github.io/crosstalk>
+
+```{r}
+library(crosstalk)
+library(leaflet)
+library(DT)
+
+# Wrap data frame in SharedData
+sd <- SharedData$new(quakes[sample(nrow(quakes), 100),])
+
+# Create a filter input
+filter_slider("mag", "Magnitude", sd, column=~mag, step=0.1, width=250)
+
+# Use SharedData like a dataframe with Crosstalk-enabled widgets
+bscols(
+  leaflet(sd) %>% 
+    addTiles() %>% 
+    addMarkers(),
+  datatable(
+    sd, extensions="Scroller", style="bootstrap", class="compact", width="100%",
+    options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)))
+```

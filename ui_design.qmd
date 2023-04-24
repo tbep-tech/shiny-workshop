@@ -1,0 +1,25 @@
+# UI/UX Design w/ user-centered co-design
+
+Definitions:
+
+* `co-design` : Designing with *equal* contribution from stakeholders at *every* step of development
+* `user story` : As a ___ I want ___ so that ___.
+* `use case` : Generalized summary of user stories in context of the application.
+* `iterative design` : Repeating pattern of 1) design next iteration 2) user evaluation 
+* `minimum viable product` : First design iteration with minimal features to be useful.
+* `speak aloud protocol` : Method for user evaluation that aims to minimize evaluator impact.
+
+## user story development
+TODO
+
+### use-case collection
+TODO
+
+### select user-story 
+TODO
+
+### iterative design
+TODO
+
+### speak aloud protocol
+TODO

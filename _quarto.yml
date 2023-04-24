@@ -13,8 +13,10 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - quarto.qmd
     - shiny.qmd
     - summary.qmd
+    - ui_design.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -24,9 +26,7 @@ format:
     theme:
       - cosmo
     css: libs/style.css
-  pdf:
-    documentclass: scrreprt
-    prefer-html: true
-
-
+  # pdf:
+  #   documentclass: scrreprt
+  #   prefer-html: true
 
