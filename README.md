@@ -7,3 +7,6 @@
 
 Website for the CERF 2023 R dashboard workshop.
 
+## workflow
+* create or edit .qmd documents
+* modify nav menu in `_quarto.yml`
