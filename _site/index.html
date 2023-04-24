@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ben Best, Marcus Beck, Tylar Murray, Enrique Montes">
-<meta name="dcterms.date" content="2023-03-06">
+<meta name="dcterms.date" content="2023-04-24">
 
 <title>Dashboards: Using R to create actionable science</title>
 <style>
@@ -22,69 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -126,6 +63,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
+<link rel="stylesheet" href="libs/style.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -159,7 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">About this Workshop</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +129,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#about-this-workshop" id="toc-about-this-workshop" class="nav-link active" data-scroll-target="#about-this-workshop">About this Workshop</a>
+  <ul class="collapse">
+  <li><a href="#presenters" id="toc-presenters" class="nav-link" data-scroll-target="#presenters">Presenters</a>
+  <ul class="collapse">
+  <li><a href="#marcus-beck-ph.d." id="toc-marcus-beck-ph.d." class="nav-link" data-scroll-target="#marcus-beck-ph.d.">Marcus Beck, Ph.D.</a></li>
+  <li><a href="#ben-best-ph.d." id="toc-ben-best-ph.d." class="nav-link" data-scroll-target="#ben-best-ph.d.">Ben Best, Ph.D.</a></li>
+  <li><a href="#enrique-montes-ph.d." id="toc-enrique-montes-ph.d." class="nav-link" data-scroll-target="#enrique-montes-ph.d.">Enrique Montes, Ph.D.</a></li>
+  <li><a href="#tylar-murray" id="toc-tylar-murray" class="nav-link" data-scroll-target="#tylar-murray">Tylar Murray</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -218,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2023-03-06</p>
+      <p class="date">2023-04-24</p>
     </div>
   </div>
   
@@ -228,18 +175,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="about-this-workshop" class="level1 unnumbered">
+<h1 class="unnumbered">About this Workshop</h1>
+<p>The Shiny R package is now ten years old and is a popular tool to create immersive, web-based content. Although many coastal scientists have experience with R, expertise in dashboards is uncommon. This workshop will include a mix of instructor-led demonstrations, discussion, and exercises that will empower attendees to create their own Shiny applications. We will begin by showing what’s possible with the Quarto publishing system and Shiny by demoing existing applications from the Marine Biological Observation Network and the National Estuary Program. We will then transition to instructional material on the fundamentals of reactive programming with Shiny. Recent additions and improvements to Shiny (e.g., drag and drop user interface development, Python integration) will also be demonstrated. The remainder of the workshop will involve hands-on exercises that will allow attendees to develop their own applications using data from the examples above.</p>
+<p>Anyone interested in learning how to expand existing R skills for dashboard development will benefit from this workshop. This includes student, early career, and advanced professionals from any employment sector and field of expertise.</p>
+<section id="presenters" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="presenters">Presenters</h2>
+<section id="marcus-beck-ph.d." class="level3">
+<h3 class="anchored" data-anchor-id="marcus-beck-ph.d.">Marcus Beck, Ph.D.</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img src="figs/about/headshot_marcus.jpg" class="img-fluid"></p>
+</div><div class="column p-right" style="width:70%;">
+<p>Marcus Beck is the Program Scientist for the Tampa Bay Estuary Program in St.&nbsp;Petersburg, Florida and is developing data analysis and visualization methods for Bay health indicators. Marcus has experience researching environmental indicators and developing open science products to support environmental decision-making. He has been using the R statistical programming language for over 15 years and has taught several workshops on its application to environmental sciences. Marcus has also developed several R packages and currently maintains 7 on CRAN. He received a PhD in Conservation Biology with a minor in Statistics from the University of Minnesota in 2013, his Masters in Conservation Biology from the University of Minnesota in 2009, and his Bachelors in Zoology from the University of Florida in 2007.</p>
+</div>
+</div>
+</section>
+<section id="ben-best-ph.d." class="level3">
+<h3 class="anchored" data-anchor-id="ben-best-ph.d.">Ben Best, Ph.D.</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img src="figs/about/headshot_ben.jpg" class="img-fluid"></p>
+</div><div class="column p-right" style="width:70%;">
+<p>Ben Best is an environmental data scientist at his consultancy EcoQuants LLC working predominantly on marine spatial ecology, particularly marine biodiversity and environmentally responsible marine renewable energy development. He taught courses at graduate and undergraduate levels as well as workshops on reproducible research, environmental informatics, spatial analysis, landscape ecology, machine learning and collaborative coding. He has worked on big data marine biogeographic and conservation projects such as OBIS-SEAMAP, Ocean Health Index, Marine Biodiversity Observation Network (MBON), NOAA’s Integrated Ecosystem Assessment, California Cooperative Fisheries Investigation (CalCOFI) and WhaleSafe. He has a PhD from Duke University’s Marine Geospatial Ecology Lab, a Masters in Environmental Sciences from Duke and undergraduate degrees in Aquatic Biology and Geography from UC Santa Barbara.</p>
+</div>
+</div>
+</section>
+<section id="enrique-montes-ph.d." class="level3">
+<h3 class="anchored" data-anchor-id="enrique-montes-ph.d.">Enrique Montes, Ph.D.</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img src="figs/about/headshot_enrique.jpg" class="img-fluid"></p>
+</div><div class="column p-right" style="width:70%;">
+<p>Enrique Montes is a biological oceanographer working at the U. Miami Cooperative Institute for Marine and Atmospheric Studies (CIMAS) and NOAA’s Atlantic Oceanographic and Meteorological Laboratory (AOML) studying responses of marine life to changes in atmospheric and oceanographic conditions. His research integrates environmental, bio-optical, genomic, and taxonomic measurements collected from ships with satellite data to resolve the oceanographic context of local observations, and characterize regional biogeographic conditions and ocean habitats. He is a Co-Investigator of the Marine Biodiversity Observation Network (MBON) in the USA and internationally. Montes is the Principal Investigator of the MBON Pole-to-Pole of the Americas, presides the International Association for Biological Oceanography (IABO), and serves as Executive Committee member of the Scientific Committee on Oceanic Research (SCOR).</p>
+</div>
+</div>
+</section>
+<section id="tylar-murray" class="level3">
+<h3 class="anchored" data-anchor-id="tylar-murray">Tylar Murray</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img src="figs/about/headshot_tylar.jpg" class="img-fluid"></p>
+</div><div class="column p-right" style="width:70%;">
+<p>Tylar Murray is an interdisciplinary PhD with a passion for data visualization, data analysis, pragmatic software engineering, FOSS, and science! Tylar is an advocate of hacker ethic, unix philosophy, AGI superiority, and optimistic futurism. Tylar has software engineering experience spanning the gamut of programming languages, and academic proficiency expanding the interface between the digital and physical worlds. Tylar is an experienced instructor of applied technologies under projects funded by NSF, NASA, Microsoft, Google, and others. Over the last 5 years, Tylar consistently ranks within the top 10% of contributors in terms of both GitHub commit metrics and Stack Overflow reputation ranks, signifying a lasting commitment to open development principles.</p>
 </div>
 </div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

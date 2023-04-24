@@ -1,9 +1,63 @@
-# Preface {.unnumbered}
+# About this Workshop {.unnumbered}
 
-This is a Quarto book.
+The Shiny R package is now ten years old and is a popular tool to create immersive, web-based content. Although many coastal scientists have experience with R, expertise in dashboards is uncommon. This workshop will include a mix of instructor-led demonstrations, discussion, and exercises that will empower attendees to create their own Shiny applications. We will begin by showing what’s possible with the Quarto publishing system and Shiny by demoing existing applications from the Marine Biological Observation Network and the National Estuary Program. We will then transition to instructional material on the fundamentals of reactive programming with Shiny. Recent additions and improvements to Shiny (e.g., drag and drop user interface development, Python integration) will also be demonstrated. The remainder of the workshop will involve hands-on exercises that will allow attendees to develop their own applications using data from the examples above. 
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Anyone interested in learning how to expand existing R skills for dashboard development will benefit from this workshop. This includes student, early career, and advanced professionals from any employment sector and field of expertise.
 
-```{r}
-1 + 1
-```
+## Presenters {.unnumbered}
+
+### Marcus Beck, Ph.D.
+
+::: {.columns}
+
+::::: {.column width="30%"}
+![](figs/about/headshot_marcus.jpg)
+::::: 
+
+::::: {.column width="70%" .p-right}
+Marcus Beck is the Program Scientist for the Tampa Bay Estuary Program in St. Petersburg, Florida and is developing data analysis and visualization methods for Bay health indicators. Marcus has experience researching environmental indicators and developing open science products to support environmental decision-making. He has been using the R statistical programming language for over 15 years and has taught several workshops on its application to environmental sciences.  Marcus has also developed several R packages and currently maintains 7 on CRAN. He received a PhD in Conservation Biology with a minor in Statistics from the University of Minnesota in 2013, his Masters in Conservation Biology from the University of Minnesota in 2009, and his Bachelors in Zoology from the University of Florida in 2007. 
+::::: 
+
+:::
+
+### Ben Best, Ph.D.
+
+::: {.columns}
+
+::::: {.column width="30%"}
+![](figs/about/headshot_ben.jpg)
+::::: 
+
+::::: {.column width="70%" .p-right}
+Ben Best is an environmental data scientist at his consultancy EcoQuants LLC working predominantly on marine spatial ecology, particularly marine biodiversity and environmentally responsible marine renewable energy development. He taught courses at graduate and undergraduate levels as well as workshops on reproducible research, environmental informatics, spatial analysis, landscape ecology, machine learning and collaborative coding. He has worked on big data marine biogeographic and conservation projects such as OBIS-SEAMAP, Ocean Health Index, Marine Biodiversity Observation Network (MBON), NOAA’s Integrated Ecosystem Assessment, California Cooperative Fisheries Investigation (CalCOFI) and WhaleSafe. He has a PhD from Duke University’s Marine Geospatial Ecology Lab, a Masters in Environmental Sciences from Duke and undergraduate degrees in Aquatic Biology and Geography from UC Santa Barbara.
+::::: 
+
+:::
+
+### Enrique Montes, Ph.D.
+
+::: {.columns}
+
+::::: {.column width="30%"}
+![](figs/about/headshot_enrique.jpg)
+::::: 
+
+::::: {.column width="70%" .p-right}
+Enrique Montes is a biological oceanographer working at the U. Miami Cooperative Institute for Marine and Atmospheric Studies (CIMAS) and NOAA’s Atlantic Oceanographic and Meteorological Laboratory (AOML) studying responses of marine life to changes in atmospheric and oceanographic conditions.  His research integrates environmental, bio-optical, genomic, and taxonomic measurements collected from ships with satellite data to resolve the oceanographic context of local observations, and characterize regional biogeographic conditions and ocean habitats.  He is a Co-Investigator of the Marine Biodiversity Observation Network (MBON) in the USA and internationally. Montes is the Principal Investigator of the MBON Pole-to-Pole of the Americas, presides the International Association for Biological Oceanography (IABO), and serves as Executive Committee member of the Scientific Committee on Oceanic Research (SCOR).
+::::: 
+
+:::
+
+### Tylar Murray
+
+::: {.columns}
+
+::::: {.column width="30%"}
+![](figs/about/headshot_tylar.jpg)
+::::: 
+
+::::: {.column width="70%" .p-right}
+Tylar Murray is an interdisciplinary PhD with a passion for data visualization, data analysis, pragmatic software engineering, FOSS, and science! Tylar is an advocate of hacker ethic, unix philosophy, AGI superiority, and optimistic futurism. Tylar has software engineering experience spanning the gamut of programming languages, and academic proficiency expanding the interface between the digital and physical worlds. Tylar is an experienced instructor of applied technologies under projects funded by NSF, NASA, Microsoft, Google, and others. Over the last 5 years, Tylar consistently ranks within the top 10% of contributors in terms of both GitHub commit metrics and Stack Overflow reputation ranks, signifying a lasting commitment to open development principles.
+::::: 
+
+:::
