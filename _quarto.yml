@@ -21,16 +21,18 @@ book:
       This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a>
   chapters:
     - index.qmd
-    - intro.qmd
-    - quarto.qmd
-    - shiny.qmd
-    - summary.qmd
-    - ui_design.qmd
-    - references.qmd
+    - part: "Modules"
+      chapters:
+        - intro.qmd
+        - quarto.qmd
+        - shiny.qmd
+        - summary.qmd
+        - ui_design.qmd
   appendices:
     - setup.qmd
     - rintro.qmd
     - addlquarto.qmd
+    - references.qmd
 
 bibliography: references.bib
 
