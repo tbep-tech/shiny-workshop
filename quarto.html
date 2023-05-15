@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,6 +94,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -141,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Modules</a></li><li class="breadcrumb-item"><a href="./quarto.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -180,51 +202,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">About this Workshop</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./quarto.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ui_design.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">UI/UX Design w/ user-centered co-design</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Modules</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ui_design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">UI/UX Design w/ user-centered co-design</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
@@ -235,6 +262,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./rintro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./addlquarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Additional Quarto Content</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
@@ -250,8 +289,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#install-quarto-r-package" id="toc-install-quarto-r-package" class="nav-link" data-scroll-target="#install-quarto-r-package"><span class="header-section-number">2.1</span> Install <code>quarto</code> R package</a></li>
-  <li><a href="#quarto-using-crosstalk" id="toc-quarto-using-crosstalk" class="nav-link" data-scroll-target="#quarto-using-crosstalk"><span class="header-section-number">2.2</span> Quarto using Crosstalk</a></li>
+  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto"><span class="header-section-number">2.1</span> Install <code>quarto</code></a></li>
+  <li><a href="#quarto-overview" id="toc-quarto-overview" class="nav-link" data-scroll-target="#quarto-overview"><span class="header-section-number">2.2</span> Quarto overview</a></li>
+  <li><a href="#code-chunk-options" id="toc-code-chunk-options" class="nav-link" data-scroll-target="#code-chunk-options"><span class="header-section-number">2.3</span> Code chunk options</a></li>
+  <li><a href="#figures-and-tables" id="toc-figures-and-tables" class="nav-link" data-scroll-target="#figures-and-tables"><span class="header-section-number">2.4</span> Figures and tables</a></li>
+  <li><a href="#quarto-using-crosstalk" id="toc-quarto-using-crosstalk" class="nav-link" data-scroll-target="#quarto-using-crosstalk"><span class="header-section-number">2.5</span> Quarto using Crosstalk</a></li>
+  <li><a href="#publishing" id="toc-publishing" class="nav-link" data-scroll-target="#publishing"><span class="header-section-number">2.6</span> Publishing</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.7</span> Summary</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/quarto.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -279,62 +323,531 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered objectives anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>Use the Quarto document preparation system to create interactive documents that combine text and code. Learn how to share these documents with colleagues through GitHub.</p>
 </section>
-<section id="install-quarto-r-package" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="install-quarto-r-package"><span class="header-section-number">2.1</span> Install <code>quarto</code> R package</h2>
+<section id="install-quarto" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="install-quarto"><span class="header-section-number">2.1</span> Install <code>quarto</code></h2>
 <p>Ensure you have the <code>quarto</code> R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “quarto”.</p>
+<p>Additionally, you can install the Quarto Command Line Interface (CLI). This will allow you to run Quarto from the command line and includes additional features not included with R package. See the quarto <a href="./setup.html#sec-instquarto">setup</a> section for more info.</p>
 </section>
-<section id="quarto-using-crosstalk" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="quarto-using-crosstalk"><span class="header-section-number">2.2</span> Quarto using Crosstalk</h2>
+<section id="quarto-overview" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="quarto-overview"><span class="header-section-number">2.2</span> Quarto overview</h2>
+<p>Quarto is a relatively new document preparation system that lets you create reproducible and dynamic content that is easily shared with others. Quarto is integrated with RStudio and allows you to combine plain text language with analysis code in the same document.</p>
+<p>Quarto belongs to a class of literate programming tools called dynamic documents <span class="citation" data-cites="knuth84">(<a href="references.html#ref-knuth84" role="doc-biblioref">Knuth 1984</a>)</span>. It is not the first of its kind, but it builds substantially on its predecessors by bridging multiple programming langues.</p>
+<p>Advantages of creating analyses using Quarto include:</p>
+<ol type="1">
+<li>Clear demonstration of a workflow using plain text and code</li>
+<li>Reproducible materials allow others to use your work</li>
+<li>Easily shared content (e.g., on GitHub)</li>
+<li>Keeping the data, analysis, and writing all in the same place</li>
+</ol>
+<p>This next section will run through the very basics of creating a Quarto document, some of the options for formatting, and how to generate shared content. You’ll follow along in this module.</p>
+<ol class="example" type="1">
+<li><p>Create a new project in RStudio, first open RStudio and select “New project” from the File menu at the top.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/newproj.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/quarto/newproj.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Then select “New Directory”. Create a directory in a location that’s easy to find.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/newdir.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figs/quarto/newdir.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div></li>
+<li><p>Open a new Quarto file from the File menu under New file &gt; Quarto Document.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/newquarto.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="figs/quarto/newquarto.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Enter a title for the document (e.g., “Quarto practice”) and your name as the author. Use the defaults for the other options and hit “Create”.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/tempquarto.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="figs/quarto/tempquarto.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Save the file in the project root directory (give it any name you want).</p></li>
+<li><p>Let’s get familiar with the components of a Quarto document.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The three main components of a Quarto document are:</p>
+<ul>
+<li>YAML</li>
+<li>Code chunks</li>
+<li>Plain or Markdown text</li>
+</ul>
+</div>
+</div>
+<p>The new file includes some template material showing the main components of a Quarto document. The content at the top is called <a href="https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header" target="_blank">YAML</a>, which defines global options for the document.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto practice"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Marcus Beck"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll also notice that there’s a button on the top-left that lets you toggle between “source” or “visual” editor mode. The source editor simply lets you add text to the document, whereas the visual editor lets you add content that is partially rendered. First time Quarto users may prefer the visual editor.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/editor.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="figs/quarto/editor.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Using the visual editor, we can insert a code chunk (or code cell). This can be done by selecting the appropriate option from the Insert menu. Note the variety of programming langues that can be used with the code chunk.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/insertchunk.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="figs/quarto/insertchunk.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>We can enter any code we want in the code chunks, including options for how the code chunk is evaluated. Options are specified using the hashpipe notation, <code>#|</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'Hello Quarto!'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When the file is rendered, the code is run and results displayed in the output. There are many options to change how code chunks are executed, which we’ll discuss <a href="https://tbep-tech.github.io/flafs-os-workshop/impact.html#code-chunk-options">below</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'Hello Quarto!'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hello Quarto!"</code></pre>
+</div>
+</div>
+<p>We can also run the code chunks separately without rendering the file using the arrow buttons on the top right in the source document. This can be useful for quickly evaluating your code as you include it in the file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Code chunks are executed in the order they appear in the document when a .qmd file is rendered.</p>
+</div>
+</div>
+<p>Descriptive text can be entered anywhere else in the file. This is where we can describe in plain language what our analysis does or any other relevant information. Text can be entered as-is or using simple <a href="https://quarto.org/docs/authoring/markdown-basics.html" target="_blank">markdown</a> text that can format the appearance of the output. If you’re using the visual editor, you can use some of the items in the file menu to modify the text appearance. In the source editor, you can manually enter markdown text:</p>
+<div class="sourceCode">
+<pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown">
+I  can write anything I want right here. Here's some **bold text**.
+
+I can also make lists
+
+1. Item 1
+1. Item 2
+</code>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div>
+<p>When the file is rendered, the markdown text will be formatted. The text will already be formatted if you’re using the visual editor:</p>
+<div class="border">
+<p>I can write anything I want right here. Here’s some <strong>bold text</strong>.</p>
+<p>I can also make lists</p>
+<ol type="1">
+<li>Item 1</li>
+<li>Item 2</li>
+</ol>
+</div></li>
+<li><p>Render the .qmd file to the output format.</p>
+<p>The source file is a .qmd document. We need to render the document to create the output format - HTML (default), PDF, or Word. The following happens when you hit the render button at the top.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/rstudio-qmd-how-it-works.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="figs/quarto/rstudio-qmd-how-it-works.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Here’s what your RStudio session should look like (note the three parts of the source .qmd document - YAML, code chunk, and Markdown text). The rendered HTML file will appear in the Viewer pane on the right.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/completequarto.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="figs/quarto/completequarto.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A rendered Quarto document as an HTML, PDF, Word, or other file format is stand-alone and can be shared with anybody!</p>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="code-chunk-options" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="code-chunk-options"><span class="header-section-number">2.3</span> Code chunk options</h2>
+<p>The behavior of the code chunks when the file is rendered can be changed using the <a href="https://quarto.org/docs/reference/cells/cells-knitr.html" target="_blank">many options</a> available in Quarto. This can be useful for a few reasons.</p>
+<ol type="1">
+<li>Only displaying the output of a code chunk</li>
+<li>Only displaying the code and not running the chunk</li>
+<li>Running the code without displaying output for use in other parts of the document</li>
+<li>Suppressing warnings and messages</li>
+<li>Defining table or figure options (e.g., height, width, captions, etc.)</li>
+</ol>
+<p>Code chunk options can be applied <strong>globally</strong> to all chunks in the document or <strong>separately</strong> for each chunk.</p>
+<p>To apply them globally, they’ll look something like this in the YAML, where options are added after <code>execute:</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be careful with indentation in the YAML, the document won’t render if the indentation is incorrect.</p>
+</div>
+</div>
+<p>To apply to individual code chunks, use the <code>#|</code> (hashpipe) notation at the top of the code chunk. This will override any global options if you’ve included them in the top YAML. Below, <code>echo: true</code> indicates that the code will be displayed in the rendered output.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s a short list of other useful execution options:</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>eval</code></td>
+<td>Evaluate the code chunk (if <code>false</code>, just echos the code into the output).</td>
+</tr>
+<tr class="even">
+<td><code>echo</code></td>
+<td>Include the source code in output</td>
+</tr>
+<tr class="odd">
+<td><code>output</code></td>
+<td>Include the results of executing the code in the output (<code>true</code>, <code>false</code>, or <code>asis</code> to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).</td>
+</tr>
+<tr class="even">
+<td><code>warning</code></td>
+<td>Include warnings in the output.</td>
+</tr>
+<tr class="odd">
+<td><code>error</code></td>
+<td>Include errors in the output (note that this implies that errors executing code will not halt processing of the document).</td>
+</tr>
+<tr class="even">
+<td><code>include</code></td>
+<td>Catch all for preventing any output (code or results) from being included (e.g.&nbsp;<code>include: false</code> suppresses all output from the code block).</td>
+</tr>
+<tr class="odd">
+<td><code>message</code></td>
+<td>Include messages in rendered output</td>
+</tr>
+</tbody>
+</table>
+<p>R code can also be executed “inline” outside of code chunks. This can be useful if you want to include statements that reference particular values or information that is linked directly to data. Inline R code is entered using the <code>r</code> syntax.</p>
+<div class="sourceCode">
+<pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown">
+I can enter inline text like `r 1 + 1`.
+</code>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div>
+<p>Text with inline R code will look like this when the document is rendered.</p>
+<div class="border">
+<p>I can enter inline text like 2.</p>
+</div>
+</section>
+<section id="figures-and-tables" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="figures-and-tables"><span class="header-section-number">2.4</span> Figures and tables</h2>
+<p>Figures and tables are easily added in Quarto, using either R code or importing from an external source.</p>
+<p>Any figures created in code chunks will be included in the rendered output. Relevant code chunk options for figures include <code>fig-height</code>, <code>fig-width</code>, <code>fig-cap</code>, <code>label</code> (for cross-referencing) and <code>fig-align</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-myhist</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Here's my awesome histogram."</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vals)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-myhist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><a href="quarto_files/figure-html/fig-myhist-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Here’s my awesome histogram."><img src="quarto_files/figure-html/fig-myhist-1.png" class="img-fluid figure-img" width="576"></a></p>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Here’s my awesome histogram.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Figures can be cross-referenced in the text using the <code>@</code> notation with the figure label.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Here's a cross-reference to @fig-myhist.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When the file is rendered, the appropriate figure number will be displayed with a link to the figure:</p>
+<div class="border">
+<p>Here’s a cross-reference to <a href="#fig-myhist">Figure&nbsp;<span>2.1</span></a>.</p>
+</div>
+<p>Similarly, tabular output can be created inside code chunks.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-mytable</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Here's my awesome table."</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>totab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Species =</span> <span class="fu">c</span>(<span class="st">'Oysters'</span>, <span class="st">'Seagrass'</span>, <span class="st">'Sand'</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(totab)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>totab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Species =</span> <span class="fu">c</span>(<span class="st">'Oysters'</span>, <span class="st">'Seagrass'</span>, <span class="st">'Sand'</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(totab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-mytable" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;2.1: Here’s my awesome table.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Species</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Oysters</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Seagrass</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sand</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>And a cross-reference:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Here's a cross-reference to @tbl-mytable.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="border">
+<p>Here’s a cross-reference to <a href="#tbl-mytable">Table&nbsp;<span>2.1</span></a>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Label tags for tables and figures should include the <code>tbl-</code> or <code>fig-</code> prefix for proper cross-referencing.</p>
+</div>
+</div>
+<p>Figures can also be imported from an external source (e.g., from your computer or the web) using the <code>![]()</code> notation, where the image is in the <code>img</code> folder in my working directory. You can also simply add a figure from the file menu using the Visual editor.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](figs/quarto/oysters.jpg)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/oysters.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="figs/quarto/oysters.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>You can also add a figure from a URL using the same notation.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://unsplash.com/photos/HH-MuVCKal0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/quarto/oysters.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="figs/quarto/oysters.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Adding captions and labels to external figures looks something like this:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="al">![Here are some beautiful oysters.](figs/quarto/oysters.jpg)</span>{#fig-oysters}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-oysters" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><a href="figs/quarto/oysters.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Here are some beautiful oysters."><img src="figs/quarto/oysters.jpg" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Figure&nbsp;2.2: Here are some beautiful oysters.</figcaption>
+</figure>
+</div>
+<p>The cross-reference is done the same.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Here<span class="st">'s a cross-reference to @fig-oysters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="border">
+<p>Here’s a cross-reference to <a href="#fig-oysters">Figure&nbsp;<span>2.2</span></a>.</p>
+</div>
+<p>Likewise, tables can be imported from an external source (e.g., Excel). You’ll want to do this in a code chunk and add the appropriate options (e.g., to cross-reference <a href="#tbl-habitats">Table&nbsp;<span>2.2</span></a>).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-habitats</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The first six rows of our tidy data"</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>mytab <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">'data/tidy.xlsx'</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, ]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mytab)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mytab <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">'data/tidy.xlsx'</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, ]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mytab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-habitats" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;2.2: The first six rows of our tidy data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Location</th>
+<th style="text-align: left;">Habitat</th>
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Acres</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Clear Bay</td>
+<td style="text-align: left;">Seagrass</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">519</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clear Bay</td>
+<td style="text-align: left;">Oysters</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">390</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clear Bay</td>
+<td style="text-align: left;">Sand</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">742</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fish Bay</td>
+<td style="text-align: left;">Seagrass</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">930</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fish Bay</td>
+<td style="text-align: left;">Oysters</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">680</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fish Bay</td>
+<td style="text-align: left;">Sand</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">611</td>
+<td style="text-align: left;">A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Visit these links for full details on <a href="https://quarto.org/docs/authoring/figures.html" target="_blank">figures</a> and <a href="https://quarto.org/docs/authoring/tables.html" target="_blank">tables</a> in Quarto. R also has a rich <a href="https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541" target="_blank">library of packages</a> for producing tables, most of which play nice with Quarto.</p>
+</section>
+<section id="quarto-using-crosstalk" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="quarto-using-crosstalk"><span class="header-section-number">2.5</span> Quarto using Crosstalk</h2>
 <ul>
 <li><a href="https://rstudio.github.io/crosstalk" class="uri">https://rstudio.github.io/crosstalk</a></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crosstalk)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap data frame in SharedData</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> SharedData<span class="sc">$</span><span class="fu">new</span>(quakes[<span class="fu">sample</span>(<span class="fu">nrow</span>(quakes), <span class="dv">100</span>),])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a filter input</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">filter_slider</span>(<span class="st">"mag"</span>, <span class="st">"Magnitude"</span>, sd, <span class="at">column=</span><span class="sc">~</span>mag, <span class="at">step=</span><span class="fl">0.1</span>, <span class="at">width=</span><span class="dv">250</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crosstalk)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap data frame in SharedData</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> SharedData<span class="sc">$</span><span class="fu">new</span>(quakes[<span class="fu">sample</span>(<span class="fu">nrow</span>(quakes), <span class="dv">100</span>),])</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a filter input</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">filter_slider</span>(<span class="st">"mag"</span>, <span class="st">"Magnitude"</span>, sd, <span class="at">column=</span><span class="sc">~</span>mag, <span class="at">step=</span><span class="fl">0.1</span>, <span class="at">width=</span><span class="dv">250</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="form-group crosstalk-input crosstalk-input-slider js-range-slider" id="mag" style="width: 250px;">
 <label class="control-label" for="mag">Magnitude</label>
-<input data-skin="shiny" data-type="double" data-min="4" data-max="6.4" data-from="4" data-to="6.4" data-step="0.1" data-grid="true" data-grid-num="8" data-grid-snap="false" data-prettify-separator="," data-keyboard="true" data-keyboard-step="4.16666666666667" data-drag-interval="true" data-data-type="number">
+<input data-skin="shiny" data-type="double" data-min="4" data-max="6" data-from="4" data-to="6" data-step="0.1" data-grid="true" data-grid-num="10" data-grid-snap="false" data-prettify-separator="," data-keyboard="true" data-keyboard-step="5" data-drag-interval="true" data-data-type="number">
 <script type="application/json" data-for="mag">{
-  "values": [4, 4, 4, 4.1, 4.1, 4.1, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.6, 4.6, 4.6, 4.6, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.9, 4.9, 4.9, 4.9, 4.9, 4.9, 5, 5, 5, 5, 5, 5, 5, 5, 5.1, 5.1, 5.1, 5.1, 5.2, 5.3, 5.3, 5.5, 5.5, 5.6, 5.7, 6.4],
-  "keys": ["85", "826", "598", "77", "4", "858", "493", "917", "868", "905", "833", "693", "686", "565", "986", "154", "278", "809", "455", "49", "894", "451", "216", "135", "941", "86", "956", "436", "761", "778", "991", "461", "415", "670", "429", "418", "115", "668", "825", "20", "437", "829", "728", "314", "339", "789", "642", "204", "543", "658", "811", "444", "739", "53", "164", "559", "456", "736", "949", "209", "731", "103", "169", "303", "513", "262", "554", "310", "413", "838", "945", "667", "841", "7", "395", "484", "272", "723", "266", "489", "245", "383", "888", "398", "356", "700", "474", "745", "312", "583", "371", "91", "200", "564", "921", "893", "449", "712", "176", "152"],
-  "group": ["SharedDataa48a3d30"]
+  "values": [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4.1, 4.1, 4.1, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.6, 4.6, 4.6, 4.6, 4.6, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.8, 4.9, 4.9, 4.9, 4.9, 5, 5, 5, 5.1, 5.1, 5.1, 5.1, 5.2, 5.2, 5.2, 5.2, 5.3, 5.3, 5.4, 5.4, 5.4, 5.4, 5.5, 5.6, 5.6, 6],
+  "keys": ["284", "770", "698", "900", "433", "816", "52", "794", "955", "775", "994", "483", "823", "966", "763", "120", "387", "79", "506", "686", "650", "876", "809", "90", "923", "740", "447", "419", "237", "670", "913", "375", "611", "393", "648", "40", "301", "467", "914", "491", "319", "544", "878", "755", "111", "450", "543", "578", "802", "560", "336", "898", "359", "933", "460", "190", "267", "769", "9", "511", "613", "258", "507", "950", "982", "822", "118", "498", "292", "581", "594", "7", "847", "967", "121", "608", "223", "260", "254", "291", "229", "295", "580", "445", "385", "91", "322", "74", "692", "81", "752", "675", "363", "3", "651", "936", "496", "636", "935", "870"],
+  "group": ["SharedDatab8be8bd8"]
 }</script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use SharedData like a dataframe with Crosstalk-enabled widgets</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bscols</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">leaflet</span>(sd) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addMarkers</span>(),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    sd, <span class="at">extensions=</span><span class="st">"Scroller"</span>, <span class="at">style=</span><span class="st">"bootstrap"</span>, <span class="at">class=</span><span class="st">"compact"</span>, <span class="at">width=</span><span class="st">"100%"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">options=</span><span class="fu">list</span>(<span class="at">deferRender=</span><span class="cn">TRUE</span>, <span class="at">scrollY=</span><span class="dv">300</span>, <span class="at">scroller=</span><span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use SharedData like a dataframe with Crosstalk-enabled widgets</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bscols</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">leaflet</span>(sd) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addMarkers</span>(),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    sd, <span class="at">extensions=</span><span class="st">"Scroller"</span>, <span class="at">style=</span><span class="st">"bootstrap"</span>, <span class="at">class=</span><span class="st">"compact"</span>, <span class="at">width=</span><span class="st">"100%"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">options=</span><span class="fu">list</span>(<span class="at">deferRender=</span><span class="cn">TRUE</span>, <span class="at">scrollY=</span><span class="dv">300</span>, <span class="at">scroller=</span><span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div class="container-fluid crosstalk-bscols">
 <div class="row">
 <div class="col-xs-6">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-fa4c6cf92fc53231dc21" style="width:100%;height:400px;"></div>
-<script type="application/json" data-for="htmlwidget-fa4c6cf92fc53231dc21">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addSelect","args":["SharedDataa48a3d30"]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[-27.6,-19.28,-15.66,-16.65,-13.8,-25.5,-21.85,-17.7,-15.4,-24.78,-21.04,-32.62,-21.5,-18.6,-21.62,-19.83,-20.9,-21.35,-23.45,-20.07,-19.47,-17.02,-23.5,-19.57,-20.3,-15.87,-20.81,-15.56,-30.28,-17.08,-32.7,-17.97,-22.75,-32.42,-35.56,-21.88,-26.2,-21.92,-24.33,-22.09,-26.53,-21.11,-23.7,-21.34,-12.93,-19.21,-27.27,-17.46,-11.25,-15.85,-24.12,-32.22,-23.73,-19.2,-21.07,-26.46,-15.93,-18.54,-15.99,-17.79,-22.06,-23.43,-26.17,-20.61,-20.94,-21.56,-16.44,-18.69,-17.97,-15.03,-21.3,-22.63,-25.04,-16.23,-17.72,-18.04,-18.89,-26.72,-10.79,-18.26,-12.37,-11.8,-16.99,-15.48,-20.9,-15.67,-20.83,-15.86,-19.66,-23.85,-27.63,-23.28,-17.99,-21.07,-11.7,-15.65,-20.7,-21.05,-19.3,-20.73],[182.1,182.78,186.8,185.51,166.53,182.82,180.89,181.7,186.87,179.22,181.2,181.5,185.2,184.28,182.4,182.54,182.02,170.04,180.23,169.14,169.15,182.93,184.9,184.47,181.4,188.13,184.7,167.62,180.62,185.96,181.7,181.48,173.2,181.21,180.2,180.39,178.35,182.8,179.97,180.38,178.3,181.5,184.13,181.41,169.63,184.7,182.38,181.42,166.36,184.83,180.08,180.2,179.99,184.37,183.78,182.5,167.91,168.93,167.95,181.32,180.47,180,184.2,182.44,181.58,185.5,185.74,169.1,181.66,167.32,180.82,180.31,180.97,167.91,180.3,181.57,169.48,183.35,166.06,180.98,166.93,165.8,187,167.53,181.51,185.23,181.01,166.85,184.31,180.26,182.93,184.61,181.62,181.13,166.1,185.17,184.3,180.9,183,181.42],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"ctKey":["658","728","461","245","893","383","811","85","736","278","395","310","415","670","826","444","809","888","493","413","429","598","949","917","739","398","455","152","209","868","418","731","53","484","164","103","115","564","838","272","723","449","945","314","312","77","339","905","583","668","49","176","371","833","894","451","712","825","921","356","559","169","266","693","216","789","303","686","4","456","135","20","565","642","200","700","437","204","474","667","986","154","513","91","262","829","941","543","86","956","436","554","841","489","7","858","761","778","745","991"],"ctGroup":"SharedDataa48a3d30"}]}],"limits":{"lat":[-35.56,-10.79],"lng":[165.8,188.13]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8f8c9c7de111e28b454f" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-8f8c9c7de111e28b454f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addSelect","args":["SharedDatab8be8bd8"]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[-28.23,-17.7,-30.04,-18.6,-20.7,-21.57,-15.28,-18.48,-23.73,-18.96,-27.28,-30.24,-15.43,-13.34,-11.37,-28.74,-21.29,-27.18,-18.94,-21.79,-22.55,-20.31,-26.54,-18.82,-23.92,-20.04,-26.16,-23.74,-30.09,-17.99,-20.9,-16.2,-18.8,-15.48,-22.14,-19.18,-15.9,-34.02,-12.72,-17.82,-17.82,-20.94,-21.98,-21.81,-17.99,-26,-11.7,-21.91,-25.63,-15.48,-11.81,-12.23,-15.41,-19.41,-24.41,-15.34,-23.73,-22.95,-17.78,-19.36,-15.75,-18.82,-18.18,-18.55,-22.12,-19.26,-20.25,-15.85,-13.09,-25.31,-28,-23.49,-15.24,-18.69,-17.98,-25.28,-15.86,-18.12,-20.49,-23.42,-19.33,-22.43,-21.6,-23.5,-17.95,-13.56,-23.79,-14.65,-14.95,-13.47,-15.61,-22.7,-22.5,-20.48,-22.54,-15.72,-34.1,-27.18,-20.27,-22.2],[182.68,185,181.2,184.28,186.3,185.62,185.98,181.49,182.53,169.48,183.4,181.63,185.19,166.2,166.55,181.74,185.77,182.53,182.43,183.48,183.81,184.06,183.63,182.21,180.21,182.01,179.5,179.99,182.4,168.98,182.02,166.8,182.41,167.53,179.62,169.33,167.16,180.21,166.28,181.27,181.49,181.26,179.6,181.71,181.59,184.1,166.1,181.28,180.26,186.73,165.98,167.02,186.44,182.3,180.03,167.1,184.49,170.56,185.33,186.36,185.23,169.33,180.63,182.23,180.49,184.42,184.75,185.13,169.28,180.15,182,180.06,186.21,169.1,181.61,181.17,166.85,181.88,181.69,180.21,186.16,184.48,180.5,180.13,181.37,166.49,179.89,166.97,167.24,172.29,167.5,183.3,170.4,181.38,172.91,185.64,181.8,182.18,181.51,180.58],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"ctKey":["237","284","498","670","770","608","913","291","229","120","580","491","698","292","769","9","752","359","876","322","445","375","511","636","933","385","319","74","611","613","809","544","692","91","823","258","581","81","594","900","387","393","363","79","966","3","7","878","847","648","507","870","90","506","755","675","950","982","763","822","111","40","460","433","816","52","935","190","301","450","794","955","295","686","923","740","543","651","578","802","936","223","775","967","994","560","260","121","267","118","467","483","254","650","496","447","419","336","914","898"],"ctGroup":"SharedDatab8be8bd8"}]}],"limits":{"lat":[-34.1,-11.37],"lng":[165.98,186.73]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="col-xs-6">
-<div id="htmlwidget-da4d7108e7a1aee4355e" style="width:100%;height:auto;" class="datatables html-widget "></div>
-<script type="application/json" data-for="htmlwidget-da4d7108e7a1aee4355e">{"x":{"crosstalkOptions":{"key":["658","728","461","245","893","383","811","85","736","278","395","310","415","670","826","444","809","888","493","413","429","598","949","917","739","398","455","152","209","868","418","731","53","484","164","103","115","564","838","272","723","449","945","314","312","77","339","905","583","668","49","176","371","833","894","451","712","825","921","356","559","169","266","693","216","789","303","686","4","456","135","20","565","642","200","700","437","204","474","667","986","154","513","91","262","829","941","543","86","956","436","554","841","489","7","858","761","778","745","991"],"group":"SharedDataa48a3d30"},"style":"bootstrap","filter":"none","vertical":false,"extensions":["Scroller"],"data":[["658","728","461","245","893","383","811","85","736","278","395","310","415","670","826","444","809","888","493","413","429","598","949","917","739","398","455","152","209","868","418","731","53","484","164","103","115","564","838","272","723","449","945","314","312","77","339","905","583","668","49","176","371","833","894","451","712","825","921","356","559","169","266","693","216","789","303","686","4","456","135","20","565","642","200","700","437","204","474","667","986","154","513","91","262","829","941","543","86","956","436","554","841","489","7","858","761","778","745","991"],[-27.6,-19.28,-15.66,-16.65,-13.8,-25.5,-21.85,-17.7,-15.4,-24.78,-21.04,-32.62,-21.5,-18.6,-21.62,-19.83,-20.9,-21.35,-23.45,-20.07,-19.47,-17.02,-23.5,-19.57,-20.3,-15.87,-20.81,-15.56,-30.28,-17.08,-32.7,-17.97,-22.75,-32.42,-35.56,-21.88,-26.2,-21.92,-24.33,-22.09,-26.53,-21.11,-23.7,-21.34,-12.93,-19.21,-27.27,-17.46,-11.25,-15.85,-24.12,-32.22,-23.73,-19.2,-21.07,-26.46,-15.93,-18.54,-15.99,-17.79,-22.06,-23.43,-26.17,-20.61,-20.94,-21.56,-16.44,-18.69,-17.97,-15.03,-21.3,-22.63,-25.04,-16.23,-17.72,-18.04,-18.89,-26.72,-10.79,-18.26,-12.37,-11.8,-16.99,-15.48,-20.9,-15.67,-20.83,-15.86,-19.66,-23.85,-27.63,-23.28,-17.99,-21.07,-11.7,-15.65,-20.7,-21.05,-19.3,-20.73],[182.1,182.78,186.8,185.51,166.53,182.82,180.89,181.7,186.87,179.22,181.2,181.5,185.2,184.28,182.4,182.54,182.02,170.04,180.23,169.14,169.15,182.93,184.9,184.47,181.4,188.13,184.7,167.62,180.62,185.96,181.7,181.48,173.2,181.21,180.2,180.39,178.35,182.8,179.97,180.38,178.3,181.5,184.13,181.41,169.63,184.7,182.38,181.42,166.36,184.83,180.08,180.2,179.99,184.37,183.78,182.5,167.91,168.93,167.95,181.32,180.47,180,184.2,182.44,181.58,185.5,185.74,169.1,181.66,167.32,180.82,180.31,180.97,167.91,180.3,181.57,169.48,183.35,166.06,180.98,166.93,165.8,187,167.53,181.51,185.23,181.01,166.85,184.31,180.26,182.93,184.61,181.62,181.13,166.1,185.17,184.3,180.9,183,181.42],[154,348,45,218,42,124,577,450,78,492,591,55,139,255,350,524,402,56,520,66,149,406,61,202,608,52,162,127,350,180,211,578,46,47,42,608,606,273,510,590,605,538,51,464,641,197,45,524,130,299,493,216,527,220,180,184,183,100,190,587,587,553,65,518,573,47,126,218,626,136,624,598,393,182,595,587,259,190,142,631,291,112,70,128,548,66,622,85,170,497,80,76,574,594,82,315,182,616,302,575],[4.6,4.5,4.4,5,5.5,5,4.6,4,4.7,4.3,4.9,4.8,4.4,4.4,4,4.6,4.3,5,4.2,4.8,4.4,4,4.7,4.2,4.6,5,4.3,6.4,4.7,4.2,4.4,4.7,4.6,4.9,4.6,4.7,4.4,5.3,4.8,4.9,4.9,5.5,4.8,4.5,5.1,4.1,4.5,4.2,5.1,4.4,4.3,5.7,5.1,4.2,4.3,4.3,5.6,4.4,5.3,5,4.6,4.7,4.9,4.2,4.3,4.5,4.7,4.2,4.1,4.6,4.3,4.4,4.2,4.5,5.2,5,4.4,4.5,5,4.8,4.2,4.2,4.7,5.1,4.7,4.4,4.3,4.5,4.3,4.3,4.3,4.7,4.8,4.9,4.8,4.1,4.3,4.3,5,4.3],[22,30,11,52,70,25,43,11,44,16,45,26,15,31,12,14,18,22,19,37,15,17,16,28,13,30,20,122,32,29,40,43,26,39,32,30,21,78,44,35,43,104,27,21,57,11,16,16,55,30,21,90,49,18,25,11,109,17,81,49,28,41,37,10,21,29,30,27,19,20,14,18,21,28,74,51,21,36,40,36,16,20,30,61,32,34,15,22,15,32,14,36,38,43,43,15,17,10,65,18]],"container":"<table class=\"table table-condensed\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>lat<\/th>\n      <th>long<\/th>\n      <th>depth<\/th>\n      <th>mag<\/th>\n      <th>stations<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"deferRender":true,"scrollY":300,"scroller":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d94f9b48c3b0ee496f8a" style="width:100%;height:auto;" class="datatables html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d94f9b48c3b0ee496f8a">{"x":{"crosstalkOptions":{"key":["237","284","498","670","770","608","913","291","229","120","580","491","698","292","769","9","752","359","876","322","445","375","511","636","933","385","319","74","611","613","809","544","692","91","823","258","581","81","594","900","387","393","363","79","966","3","7","878","847","648","507","870","90","506","755","675","950","982","763","822","111","40","460","433","816","52","935","190","301","450","794","955","295","686","923","740","543","651","578","802","936","223","775","967","994","560","260","121","267","118","467","483","254","650","496","447","419","336","914","898"],"group":"SharedDatab8be8bd8"},"style":"bootstrap","filter":"none","vertical":false,"extensions":["Scroller"],"data":[["237","284","498","670","770","608","913","291","229","120","580","491","698","292","769","9","752","359","876","322","445","375","511","636","933","385","319","74","611","613","809","544","692","91","823","258","581","81","594","900","387","393","363","79","966","3","7","878","847","648","507","870","90","506","755","675","950","982","763","822","111","40","460","433","816","52","935","190","301","450","794","955","295","686","923","740","543","651","578","802","936","223","775","967","994","560","260","121","267","118","467","483","254","650","496","447","419","336","914","898"],[-28.23,-17.7,-30.04,-18.6,-20.7,-21.57,-15.28,-18.48,-23.73,-18.96,-27.28,-30.24,-15.43,-13.34,-11.37,-28.74,-21.29,-27.18,-18.94,-21.79,-22.55,-20.31,-26.54,-18.82,-23.92,-20.04,-26.16,-23.74,-30.09,-17.99,-20.9,-16.2,-18.8,-15.48,-22.14,-19.18,-15.9,-34.02,-12.72,-17.82,-17.82,-20.94,-21.98,-21.81,-17.99,-26,-11.7,-21.91,-25.63,-15.48,-11.81,-12.23,-15.41,-19.41,-24.41,-15.34,-23.73,-22.95,-17.78,-19.36,-15.75,-18.82,-18.18,-18.55,-22.12,-19.26,-20.25,-15.85,-13.09,-25.31,-28,-23.49,-15.24,-18.69,-17.98,-25.28,-15.86,-18.12,-20.49,-23.42,-19.33,-22.43,-21.6,-23.5,-17.95,-13.56,-23.79,-14.65,-14.95,-13.47,-15.61,-22.7,-22.5,-20.48,-22.54,-15.72,-34.1,-27.18,-20.27,-22.2],[182.68,185,181.2,184.28,186.3,185.62,185.98,181.49,182.53,169.48,183.4,181.63,185.19,166.2,166.55,181.74,185.77,182.53,182.43,183.48,183.81,184.06,183.63,182.21,180.21,182.01,179.5,179.99,182.4,168.98,182.02,166.8,182.41,167.53,179.62,169.33,167.16,180.21,166.28,181.27,181.49,181.26,179.6,181.71,181.59,184.1,166.1,181.28,180.26,186.73,165.98,167.02,186.44,182.3,180.03,167.1,184.49,170.56,185.33,186.36,185.23,169.33,180.63,182.23,180.49,184.42,184.75,185.13,169.28,180.15,182,180.06,186.21,169.1,181.61,181.17,166.85,181.88,181.69,180.21,186.16,184.48,180.5,180.13,181.37,166.49,179.89,166.97,167.24,172.29,167.5,183.3,170.4,181.38,172.91,185.64,181.8,182.18,181.51,180.58],[74,383,49,255,80,66,162,641,232,248,70,80,249,67,188,211,57,60,566,210,82,249,66,417,524,605,492,506,51,234,402,98,385,128,587,254,41,75,70,538,573,556,583,323,595,42,82,548,464,82,51,242,69,589,500,128,60,42,223,100,280,230,639,563,532,223,107,290,654,467,199,530,158,218,598,367,85,649,559,510,44,65,595,512,642,83,526,82,130,64,135,180,106,556,54,138,246,56,609,594],[4.4,4,4.8,4.4,4,4.9,4.4,5,5,4.2,5.1,4.5,4,4.8,4.7,4.7,5.3,4.6,4.3,5.2,5.1,4.4,4.7,5.6,4.6,5.1,4.5,5.2,4.4,4.7,4.3,4.5,5.2,5.1,4.1,4.7,4.8,5.2,4.8,4,4.2,4.4,5.4,4.2,4.1,5.4,4.8,4.5,4.8,4.4,4.7,6,4.3,4.2,4.5,5.3,4.7,4.7,4.1,4.7,4.5,4.4,4.6,4,4,4,5.6,4.6,4.4,4.5,4,4,5,4.2,4.3,4.3,4.5,5.4,4.5,4.5,5.4,4.9,4,4.8,4,4.5,4.9,4.8,4.6,4.7,4.4,4,4.9,4.2,5.5,4.3,4.3,4.5,4.4,4.5],[20,10,20,31,10,38,36,49,55,13,54,17,11,18,24,35,69,21,20,69,68,21,34,129,50,49,25,75,18,28,18,21,67,61,23,35,42,65,47,33,14,21,67,15,26,43,43,30,60,17,28,132,42,19,34,18,35,21,10,40,28,11,39,17,14,15,121,29,22,25,16,23,57,27,27,25,22,88,24,37,110,48,22,40,17,25,43,28,16,14,21,13,38,13,71,21,23,14,32,45]],"container":"<table class=\"table table-condensed\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>lat<\/th>\n      <th>long<\/th>\n      <th>depth<\/th>\n      <th>mag<\/th>\n      <th>stations<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"deferRender":true,"scrollY":300,"scroller":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="publishing" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="publishing"><span class="header-section-number">2.6</span> Publishing</h2>
+<p>A rendered Quarto file can be shared with anyone as a standalone document. The file can also be hosted online and shared by URL. This latter approach is useful to make the document available to anyone with the web address.</p>
+<p>The easiest way to do this is to publish your document to <a href="https://rpubs.com/" target="_blank">RPubs</a>, a free service from Posit for sharing web documents. Click the <kbd><a href="figs/quarto/rstudio-publish-button.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="figs/quarto/rstudio-publish-button.png" width="25" height="23"></a></kbd> publish button on the top-right of the editor toolbar. You will be prompted to create an account if you don’t have one already.</p>
+<p>This can also be done using the <code>quarto</code> R package in the console.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_publish_doc</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/quartoex.qmd"</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">server =</span> <span class="st">"rpubs.com"</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also use the Quarto CLI in the terminal. Here we are publishing the document to <a href="https://quartopub.com/" data-taret="_blank">Quarto Pub</a>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish quarto-pub data/quartoex.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If your Quarto document is in an RStudio project on GitHub, you can also publish to <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages data/quartoex.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summary" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.7</span> Summary</h2>
+<p>In this module we learned the basics of creating dynamic documents with Quarto that combine markdown text with R code. There’s much, much more Quarto can do for you. Please visit <a href="https://quarto.org/" target="_blank">https://quarto.org/</a> for more information on how you can use these documents to fully leverage their potential for open science.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-knuth84" class="csl-entry" role="listitem">
+Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -644,6 +1157,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":true});</script>
 
 
 
