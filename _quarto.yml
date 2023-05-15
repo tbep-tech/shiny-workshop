@@ -14,7 +14,7 @@ book:
   search: true
   date: today
   date-format: "YYYY-MM-DD"
-    page-footer:
+  page-footer:
     left: |
       Website created by authors, with attribution to external content
     right: |
