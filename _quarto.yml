@@ -30,6 +30,7 @@ book:
   appendices:
     - setup.qmd
     - rintro.qmd
+    - addlquarto.qmd
 
 bibliography: references.bib
 

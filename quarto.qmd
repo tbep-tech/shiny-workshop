@@ -21,9 +21,324 @@ shelf(
 
 Use the Quarto document preparation system to create interactive documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
 
-## Install `quarto` R package
+## Install `quarto`
 
 Ensure you have the `quarto` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "quarto".
+
+Additionally, you can install the Quarto Command Line Interface (CLI).  This will allow you to run Quarto from the command line and includes additional features not included with R package.  See the quarto [setup](setup.qmd#sec-instquarto) section for more info.
+
+## Quarto overview
+
+Quarto is a relatively new document preparation system that lets you create reproducible and dynamic content that is easily shared with others.  Quarto is integrated with RStudio and allows you to combine plain text language with analysis code in the same document.  
+
+Quarto belongs to a class of literate programming tools called dynamic documents [@knuth84].  It is not the first of its kind, but it builds substantially on its predecessors by bridging multiple programming langues. 
+
+Advantages of creating analyses using Quarto include:
+
+1. Clear demonstration of a workflow using plain text and code
+1. Reproducible materials allow others to use your work
+1. Easily shared content (e.g., on GitHub)
+1. Keeping the data, analysis, and writing all in the same place
+
+This next section will run through the very basics of creating a Quarto document, some of the options for formatting, and how to generate shared content.  You'll follow along in this module. 
+
+(@) Create a new project in RStudio, first open RStudio and select "New project" from the File menu at the top.
+
+    ![](figs/quarto/newproj.PNG)
+
+    Then select "New Directory".  Create a directory in a location that's easy to find. 
+    
+    ![](figs/quarto/newdir.PNG)
+
+(@) Open a new Quarto file from the File menu under New file > Quarto Document.
+
+    ![](figs/quarto/newquarto.PNG)
+    
+    Enter a title for the document (e.g., "Quarto practice") and your name as the author. Use the defaults for the other options and hit "Create". 
+    
+    ![](figs/quarto/tempquarto.PNG)
+    
+    Save the file in the project root directory (give it any name you want).
+
+(@) Let's get familiar with the components of a Quarto document.
+
+    ::: {.callout-tip}
+    The three main components of a Quarto document are:
+    
+    * YAML
+    * Code chunks
+    * Plain or Markdown text
+    :::
+    
+    The new file includes some template material showing the main components of a Quarto document.  The content at the top is called [YAML](https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header){target="_blank"}, which defines global options for the document.
+    
+    ```yaml
+    ---
+    title: "Quarto practice"
+    author: "Marcus Beck"
+    editor: visual
+    ---
+    ```
+    
+    You'll also notice that there's a button on the top-left that lets you toggle between "source" or "visual" editor mode.  The source editor simply lets you add text to the document, whereas the visual editor lets you add content that is partially rendered.  First time Quarto users may prefer the visual editor. 
+    
+    ![](figs/quarto/editor.PNG)
+    
+    Using the visual editor, we can insert a code chunk (or code cell). This can be done by selecting the appropriate option from the Insert menu.  Note the variety of programming langues that can be used with the code chunk. 
+    
+    ![](figs/quarto/insertchunk.PNG)
+    
+    We can enter any code we want in the code chunks, including options for how the code chunk is evaluated.  Options are specified using the hashpipe notation, `#|`.  
+    
+    ```{{r}}
+    #| echo: true
+    print('Hello Quarto!')
+    ```
+    
+    When the file is rendered, the code is run and results displayed in the output.  There are many options to change how code chunks are executed, which we'll discuss [below](https://tbep-tech.github.io/flafs-os-workshop/impact.html#code-chunk-options). 
+    
+    ```{r}
+    #| echo: true
+    print('Hello Quarto!')
+    ```
+    
+    We can also run the code chunks separately without rendering the file using the arrow buttons on the top right in the source document.  This can be useful for quickly evaluating your code as you include it in the file. 
+    
+    ::: {.callout-tip}
+    Code chunks are executed in the order they appear in the document when a .qmd file is rendered.
+    :::
+    
+    Descriptive text can be entered anywhere else in the file.  This is where we can describe in plain language what our analysis does or any other relevant information.  Text can be entered as-is or using simple [markdown](https://quarto.org/docs/authoring/markdown-basics.html){target="_blank"} text that can format the appearance of the output. If you're using the visual editor, you can use some of the items in the file menu to modify the text appearance.  In the source editor, you can manually enter markdown text:
+    
+    ```{=html}
+    <div class="sourceCode">
+    <pre class="sourceCode markdown">
+    <code class="sourceCode markdown">
+    I  can write anything I want right here. Here's some **bold text**.
+    
+    I can also make lists
+    
+    1. Item 1
+    1. Item 2
+    </code>
+    </pre>
+    </div>
+    ```
+    
+    When the file is rendered, the markdown text will be formatted.  The text will already be formatted if you're using the visual editor: 
+    
+    ::: border
+    I  can write anything I want right here. Here's some **bold text**.
+    
+    I can also make lists
+    
+    1. Item 1
+    1. Item 2
+    :::
+
+(@) Render the .qmd file to the output format. 
+
+    The source file is a .qmd document.  We need to render the document to create the output format - HTML (default), PDF, or Word.  The following happens when you hit the render button at the top.
+
+    ![](figs/quarto/rstudio-qmd-how-it-works.png)
+
+    Here's what your RStudio session should look like (note the three parts of the source .qmd document - YAML, code chunk, and Markdown text). The rendered HTML file will appear in the Viewer pane on the right. 
+     
+    ![](figs/quarto/completequarto.PNG){.border}
+
+    ::: {.callout-tip}
+    A rendered Quarto document as an HTML, PDF, Word, or other file format is stand-alone and can be shared with anybody!
+    :::
+     
+## Code chunk options
+
+The behavior of the code chunks when the file is rendered can be changed using the [many options](https://quarto.org/docs/reference/cells/cells-knitr.html){target="_blank"} available in Quarto.  This can be useful for a few reasons. 
+
+1. Only displaying the output of a code chunk
+1. Only displaying the code and not running the chunk
+1. Running the code without displaying output for use in other parts of the document 
+1. Suppressing warnings and messages
+1. Defining table or figure options (e.g., height, width, captions, etc.)
+
+Code chunk options can be applied __globally__ to all chunks in the document or __separately__ for each chunk.
+
+To apply them globally, they'll look something like this in the YAML, where options are added after `execute:` 
+
+```yaml
+---
+title: "My Document"
+
+execute: 
+  echo: false
+  warning: false
+---
+```
+
+::: {.callout-tip}
+Be careful with indentation in the YAML, the document won't render if the indentation is incorrect.
+:::
+
+To apply to individual code chunks, use the `#|` (hashpipe) notation at the top of the code chunk. This will override any global options if you've included them in the top YAML. Below, `echo: true` indicates that the code will be displayed in the rendered output. 
+
+```{{r}}
+#| echo: true
+plot(1:10)
+```
+
+Here's a short list of other useful execution options:
+
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Option      | Description                                                                                                                                                                                       |
++=============+===================================================================================================================================================================================================+
+| `eval`      | Evaluate the code chunk (if `false`, just echos the code into the output).                                                                                                                        |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `echo`      | Include the source code in output                                                                                                                                                                 |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `output`    | Include the results of executing the code in the output (`true`, `false`, or `asis` to indicate that the output is raw markdown and should not have any of Quarto's standard enclosing markdown). |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `warning`   | Include warnings in the output.                                                                                                                                                                   |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `error`     | Include errors in the output (note that this implies that errors executing code will not halt processing of the document).                                                                        |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `include`   | Catch all for preventing any output (code or results) from being included (e.g. `include: false` suppresses all output from the code block).                                                      |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `message`   | Include messages in rendered output
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+R code can also be executed "inline" outside of code chunks.  This can be useful if you want to include statements that reference particular values or information that is linked directly to data.  Inline R code is entered using the ``r`` syntax. 
+
+```{=html}
+<div class="sourceCode">
+<pre class="sourceCode markdown">
+<code class="sourceCode markdown">
+I can enter inline text like &#96r 1 + 1&#96.
+</code>
+</pre>
+</div>
+```
+
+Text with inline R code will look like this when the document is rendered.
+
+::: border
+I can enter inline text like `r 1 + 1`.
+::: 
+
+## Figures and tables
+
+Figures and tables are easily added in Quarto, using either R code or importing from an external source. 
+
+Any figures created in code chunks will be included in the rendered output. Relevant code chunk options for figures include `fig-height`, `fig-width`, `fig-cap`, `label` (for cross-referencing) and `fig-align`.
+
+```{{r}}
+#| label: fig-myhist
+#| fig-height: 4
+#| fig-width: 6
+#| fig-cap: "Here's my awesome histogram."
+#| fig-align: "center"
+vals <- rnorm(100)
+hist(vals)
+```
+```{r}
+#| label: fig-myhist
+#| fig-height: 4
+#| fig-width: 6
+#| fig-cap: "Here's my awesome histogram."
+#| fig-align: "center"
+vals <- rnorm(100)
+hist(vals)
+```
+
+Figures can be cross-referenced in the text using the `@` notation with the figure label.  
+
+```markdown
+Here's a cross-reference to @fig-myhist.
+```
+
+When the file is rendered, the appropriate figure number will be displayed with a link to the figure:
+
+::: border
+Here's a cross-reference to @fig-myhist.
+:::
+
+Similarly, tabular output can be created inside code chunks. 
+
+```{{r}}
+#| label: tbl-mytable
+#| tbl-cap: "Here's my awesome table."
+totab <- data.frame(
+  Species = c('Oysters', 'Seagrass', 'Sand'),
+  Count = c(12, 5, 4)
+)
+knitr::kable(totab)
+```
+```{r}
+#| label: tbl-mytable
+#| tbl-cap: "Here's my awesome table."
+totab <- data.frame(
+  Species = c('Oysters', 'Seagrass', 'Sand'),
+  Count = c(12, 5, 4)
+)
+knitr::kable(totab)
+```
+
+And a cross-reference: 
+
+```markdown
+Here's a cross-reference to @tbl-mytable.
+```
+::: border
+Here's a cross-reference to @tbl-mytable.
+:::
+
+::: {.callout-tip}
+Label tags for tables and figures should include the `tbl-` or `fig-` prefix for proper cross-referencing.
+:::
+
+Figures can also be imported from an external source (e.g., from your computer or the web) using the `![]()` notation, where the image is in the `img` folder in my working directory.  You can also simply add a figure from the file menu using the Visual editor.  
+
+```markdown
+![](figs/quarto/oysters.jpg)
+```
+![](figs/quarto/oysters.jpg)
+
+You can also add a figure from a URL using the same notation.
+
+```markdown
+![](https://unsplash.com/photos/HH-MuVCKal0)
+```
+![](figs/quarto/oysters.jpg)
+
+Adding captions and labels to external figures looks something like this: 
+
+```markdown
+![Here are some beautiful oysters.](figs/quarto/oysters.jpg){#fig-oysters}
+```
+![Here are some beautiful oysters.](figs/quarto/oysters.jpg){#fig-oysters}
+
+The cross-reference is done the same.
+```r
+Here's a cross-reference to @fig-oysters
+```
+::: border
+Here's a cross-reference to @fig-oysters.
+:::
+
+Likewise, tables can be imported from an external source (e.g., Excel). You'll want to do this in a code chunk and add the appropriate options (e.g., to cross-reference @tbl-habitats). 
+
+```{{r}}
+#| label: tbl-habitats
+#| tbl-cap: "The first six rows of our tidy data"
+mytab <- readxl::read_excel('data/tidy.xlsx')[1:6, ]
+knitr::kable(mytab)
+```
+```{r}
+#| label: tbl-habitats
+#| tbl-cap: "The first six rows of our tidy data"
+mytab <- readxl::read_excel('data/tidy.xlsx')[1:6, ]
+knitr::kable(mytab)
+```
+
+Visit these links for full details on [figures](https://quarto.org/docs/authoring/figures.html){target="_blank"} and [tables](https://quarto.org/docs/authoring/tables.html){target="_blank"} in Quarto. R also has a rich [library of packages](https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541){target="_blank"} for producing tables, most of which play nice with Quarto.  
 
 ## Quarto using Crosstalk
 
@@ -49,3 +364,34 @@ bscols(
     sd, extensions="Scroller", style="bootstrap", class="compact", width="100%",
     options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)))
 ```
+
+## Publishing
+
+A rendered Quarto file can be shared with anyone as a standalone document.  The file can also be hosted online and shared by URL.  This latter approach is useful to make the document available to anyone with the web address.
+
+The easiest way to do this is to publish your document to [RPubs](https://rpubs.com/){target="_blank"}, a free service from Posit for sharing web documents. Click the <kbd>![](figs/quarto/rstudio-publish-button.png){width="25" height="23"}</kbd> publish button on the top-right of the editor toolbar.  You will be prompted to create an account if you don't have one already.
+
+This can also be done using the `quarto` R package in the console.
+
+```r
+quarto::quarto_publish_doc(
+  "data/quartoex.qmd", 
+  server = "rpubs.com"
+  )
+```
+
+You can also use the Quarto CLI in the terminal.  Here we are publishing the document to [Quarto Pub](https://quartopub.com/){taret="_blank"}.
+
+```{.bash filename="Terminal"}
+quarto publish quarto-pub data/quartoex.qmd
+```
+
+If your Quarto document is in an RStudio project on GitHub, you can also publish to [GitHub Pages](https://pages.github.com/){target="_blank"}.
+
+```{.bash filename="Terminal"}
+quarto publish gh-pages data/quartoex.qmd
+```
+
+## Summary
+
+In this module we learned the basics of creating dynamic documents with Quarto that combine markdown text with R code.  There's much, much more Quarto can do for you.  Please visit [https://quarto.org/](https://quarto.org/){target="_blank"} for more information on how you can use these documents to fully leverage their potential for open science.

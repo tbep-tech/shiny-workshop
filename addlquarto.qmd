@@ -1,0 +1,218 @@
+---
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Additional Quarto Content 
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+
+if (!require(librarian)){
+  install.packages("librarian")
+  library(librarian)
+}
+shelf(
+  htmltools, mitchelloharawild/icons)
+```
+
+The following includes additional Quarto instructions that are important, but not immediately relevant for creating dynamic dashboards. 
+
+## Output options
+
+Rendering a Quarto file to an HTML, PDF, or Word document is as simple as adding the appropriate option to the YAML.  This is done by choosing the format when you create a new Quarto file: 
+
+![](figs/quarto/tempquarto.PNG)
+
+The output format can also be added in the YAML of the document.  
+
+```yaml
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+format: html
+---
+```
+
+::: {.callout-tip}
+The default output format is HTML and it does not need to be added explicitly to the YAML.
+:::
+
+Alternative formats are specified the same way (i.e., Word and PDF). 
+
+```yaml
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+format: docx
+---
+```
+
+```yaml
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+format: pdf
+---
+```
+
+You can also specify multiple formats (note the indentation).  The `default` setting just indicates that we want to use all default options for each format and this option must be included.  
+
+```yaml
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+format: 
+  html: default
+  docx: default
+  pdf: default
+---
+```
+
+You can use the dropdown menu to render each file format one at a time.  The dropdown menu will show the options that are included in the YAML.
+
+![](figs/quarto/renderoption.PNG)
+
+You can also render all formats at once using the `quarto` package in the console.  The path to your file will differ depending on where it is in your working directory. 
+
+```r
+quarto::quarto_render('data/quartoex.qmd')
+```
+
+Or you can render all formats at once using the `render` command in the terminal (terminal tab, bottom left pane of RStudio).  This requires the separate installation of Quarto described in the [setup](https://tbep-tech.github.io/flafs-os-workshop/setup.html#install-quarto).  This is the Quarto Command Line Interface (CLI).
+
+```{.bash filename="Terminal"}
+quarto render data/quartoex.qmd
+```
+
+Rendering a file to PDF uses LaTeX and you'll need to install [tinytex](https://yihui.org/tinytex/){target="_blank"} before you can use this option. This can also be done in the terminal. 
+
+```{.bash filename="Terminal"}
+quarto install tool tinytex
+```
+
+There are several options you can include in the YAML to control the formatting of the output.  Some of the options apply to all format types, whereas others are specific to a type.  Here's an example building out these options.  
+
+```yaml
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+toc: true 
+number-sections: true
+format: 
+  html: 
+    code-fold: true
+  docx: default
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=0mm
+---
+```
+
+In the above example, there are two new options that apply globally to the HTML, Word, and PDF outputs.  Specifically, we've indicated that we'd like a table of contents (`toc: true`) and that the sections should be numbered (`number-sections: true`) in the rendered documents.
+
+We've also added some specific options to the HTML and PDF output.  For the HTML output, we've indicated that we want the code chunks to be folded (i.e., toggle between seen and not seen, `code-fold: true`).  For the PDF output, we've changed the geometry of the margins using the `geometry` options. 
+
+Here's what the HTML output would look like: 
+
+![](figs/quarto/formatoptions.PNG){.border}
+
+There are many other options available for each output format, as well as other format types.  View the full list [here](https://quarto.org/docs/output-formats/all-formats.html){target="_blank"}.
+
+## Citations and References
+
+One of the more valuable aspects of Quarto is the ability to easily add and reference other works in your document. This includes finding papers and reports, citing them in your document, and formatting references - all with relative ease in Quarto. 
+
+You can of course do this using the source editor, but it's slightly easier using the visual editor.  If we switch to visual mode (top-left button of the .qmd file), you can type a forward-slash to view a menu of items to insert in the document. Just start typing text to search items to insert.
+
+::: {.callout-tip}
+The [Insert Anything](https://quarto.org/docs/visual-editor/options.html#insert-anything){target="_blank"} tool in the visual editor is useful to... insert anything! Just execute `/` at the beginning of a line or `Ctrl/Cmd + /` after some text.
+:::
+
+![](figs/quarto/insertanything.PNG)
+
+You can also insert a citation from the menu at the top of the .qmd file. 
+
+![](figs/quarto/insertcitation.PNG)
+
+Either option will open the citation menu where you can add citations from a variety of sources (ie., [Zotero](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero){target="_blank"}, [DOI](https://quarto.org/docs/visual-editor/technical.html#citations-from-dois){target="_blank"}, [CrossRef](https://www.crossref.org/){target="_blank"}, [PubMed](https://pubmed.ncbi.nlm.nih.gov/){target="_blank"}, or [DataCite](https://datacite.org/){target="_blank"}).
+
+For example, we can copy/paste a DOI to find a reference of interest. 
+
+![](figs/quarto/doisearch.PNG)
+
+Or we can search by title.
+
+![](figs/quarto/crossrefsearch.png)
+
+Once the paper is found, you can click the Insert button to add it to your document. This adds a reference file, information in the YAML, and the in-text citation.  The reference file will be called `references.bib` by default and includes a [BibTeX](http://www.bibtex.org/){target="_blank"} formatted reference that looks like this: 
+``` markdown
+@article{shafland1982,
+	title = {Lower lethal temperatures for fourteen non-native fishes in Florida},
+	author = {Shafland, Paul L. and Pestrak, James M.},
+	year = {1982},
+	month = {03},
+	date = {1982-03},
+	journal = {Environmental Biology of Fishes},
+	pages = {149--156},
+	volume = {7},
+	number = {2},
+	doi = {10.1007/bf00001785},
+	url = {http://dx.doi.org/10.1007/BF00001785},
+	langid = {en}
+}
+```
+
+The YAML file will now indicate the reference file to use that includes the references (`bibliography: references.bib`).
+
+``` yaml
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+bibliography: references.bib
+toc: true 
+number-sections: true
+format: 
+  html: 
+    code-fold: true
+  docx: default
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=0mm
+---
+```
+
+The text citation will look like this, where `@` is the tag used to reference the citation using the identifier from the references file.
+
+``` markdown
+Many non-native species in Florida have lower lethal temperatures [@shafland1982].
+```
+
+When the Quarto file is rendered, the citation will be formatted and you'll see it added to the references section at the end of the document. 
+
+::: border
+Many non-native species in Florida have lower lethal temperatures [@shafland1982].
+:::
+
+![](figs/quarto/refex.PNG)
+
+The `@` citation syntax also has different options for displaying the citation in the text (full explanation [here](https://quarto.org/docs/authoring/footnotes-and-citations.html){target="_blank"}).  For example, omitting the brackets does the following:
+
+``` markdown
+@shafland1982 state that many non-native species in Florida have lower lethal temperatures.
+```
+
+::: border
+@shafland1982 state that many non-native species in Florida have lower lethal temperatures.
+:::
+
+Additional information about citations in Quarto can be found [here](https://quarto.org/docs/get-started/authoring/rstudio.html#citations){target="_blank"}.

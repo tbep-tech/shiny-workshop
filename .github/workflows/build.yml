@@ -35,6 +35,7 @@ jobs:
             shiny
             shinydashboard
             tidyverse
+            readxl
             github::mitchelloharawild/icons
 
       - name: Set up Quarto
