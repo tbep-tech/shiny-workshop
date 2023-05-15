@@ -8,8 +8,17 @@ book:
   title: "Dashboards: Using R to create actionable science"
   subtitle: "Quarto & Shiny 1-Day Workshop for CERF Conference (2023-11-12)"
   author: "Ben Best, Marcus Beck, Tylar Murray, Enrique Montes"
+  repo-url: https://github.com/tbep-tech/shiny-workshop
+  reader-mode: true
+  repo-actions: [edit]
+  search: true
   date: today
   date-format: "YYYY-MM-DD"
+    page-footer:
+    left: |
+      Website created by authors, with attribution to external content
+    right: |
+      This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a>
   chapters:
     - index.qmd
     - intro.qmd
@@ -26,6 +35,8 @@ format:
     theme:
       - cosmo
     css: libs/style.css
+    code-tools:
+      source: repo
   # pdf:
   #   documentclass: scrreprt
   #   prefer-html: true
