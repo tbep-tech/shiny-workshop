@@ -1,0 +1,186 @@
+---
+filters:
+   - lightbox
+lightbox: auto
+
+execute: 
+  echo: true
+---
+
+# Introduction to R {#rintro}
+
+```{r}
+#| echo: false
+options(repos = "http://cran.rstudio.com/")
+```
+
+## RStudio
+
+[RStudio](https://www.rstudio.com/){target="_blank"} is the go-to Interactive Development Environment (IDE) for R. Rstudio includes many features to improve the user's experience.
+
+Let's get familiar with RStudio.
+
+### Open R and RStudio
+
+Find the RStudio shortcut on your computer and fire it up. You should see something like this:
+
+![](figs/rintro/rstudio.png)
+
+There are four panes in RStudio:
+
+-   **Source**: Your primary window for writing code to send to the console, this is where you write and save R "scripts"
+-   **Console**: This is where code is executed in R
+-   **Environment, History, etc.**: A tabbed window showing your working environment, code execution history, and other useful things
+-   **Files, plots, etc.**: A tabbed window showing a file explorer, a plot window, list of installed packages, help files, and viewer
+
+### Scripting
+
+In most cases, you will not enter and execute code directly in the console. Code can be written in a script and then sent directly to the console.
+
+Open a new script from the File menu...
+
+![](figs/rintro/rstudio_script.jpg)
+
+### Executing code in RStudio
+
+After you write code in an R script, it can be sent to the Console to run the code. There are two ways to do this. First, you can hit the `Run` button at the top right of the scripting window. Second, you can use `ctrl+enter` (`cmd+enter` on a Mac). Either option will run the line(s) of script that are selected.
+
+![](figs/rintro/rstudio_run.jpg)
+
+## R language fundamentals
+
+R is built around functions. The basic syntax of a function follows the form: `function_name(arg1, arg2, ...)`.
+
+With the base install, you will gain access to many functions (`r pkgs <- search(); pkgs <- pkgs[grep("package:",pkgs)]; length(unlist(sapply(pkgs,lsf.str)))`, to be exact). Some examples:
+
+```{r}
+# print
+print("hello world!")
+# sequence
+seq(1, 10)
+# random numbers
+rnorm(100, mean = 10, sd = 2)
+# average 
+mean(rnorm(100))
+# sum
+sum(rnorm(100))
+```
+
+Very often you will see functions used like this:
+
+```{r}
+my_random_sum <- sum(rnorm(100))
+```
+
+The first part of the line is the name of an object that you make up. The second bit, `<-`, is the assignment operator. This tells R to take the result of `sum(rnorm(100))` and store it in an object named, `my_random_sum`. It is stored in the environment and can be used by just executing it's name in the console.
+
+```{r}
+my_random_sum
+```
+
+### What is the environment?
+
+There are two outcomes when you run code. First, the code will simply print output directly in the console. Second, there is no output because you have stored it as a variable using `<-`. Output that is stored is saved in the `environment`. The environment is the collection of named objects that are stored in memory for your current R session.
+
+## Packages
+
+The base installation of R is quite powerful. Packages allow you to include new methods for use in R.
+
+### CRAN
+
+Many packages are available on CRAN, [The Comprehensive R Archive Network](http://cran.r-project.org/){target="_blank"}. This is where you download R and also where most will gain access to packages. As of `r format(Sys.time(), "%Y-%m-%d")`, there are `r nrow(available.packages())` packages on CRAN!
+
+### Installing packages
+
+When a package gets installed, that means the source code is downloaded and put into your library. A default library location is set for you.
+
+We use the `install.packages()` function to download and install a package. Here, we install the readxl package, used below, which is used to upload data from and Excel file.
+
+```{r}
+#| eval: false
+install.packages("readxl")
+```
+
+You should see some text in the R console showing progress of the installation and a prompt after installation is done.
+
+After installation, you can load a package using the `library()` function. This makes all functions in a package available for you to use.
+
+```{r}
+library(readxl)
+```
+
+An important aspect of packages is that you only need to download them once, but every time you start RStudio you need to load them with the `library()` function.
+
+## Data structures in R
+
+Now we can talk about R data structures. Simply put, a data structure is a way for programming languages to handle information storage.
+
+### Vectors (one-dimensional data)
+
+The basic data format in R is a vector - a one-dimensional grouping of elements that have the same type. These are all vectors and they are created with the `c` (concatenate) function:
+
+```{r}
+dbl_var <- c(1, 2.5, 4.5)
+int_var <- c(1L, 6L, 10L)
+log_var <- c(TRUE, FALSE, T, F)
+chr_var <- c("a", "b", "c")
+```
+
+The four types of vectors are `double` (or numeric), `integer`, `logical`, and `character`. The following functions can return useful information about the vectors:
+
+```{r}
+class(dbl_var)
+length(log_var)
+```
+
+### Data frames (two-dimensional data)
+
+A collection of vectors represented as one data object are often described as two-dimensional data, like a spreadsheet, or in R speak, a data frame. Here's a simple example:
+
+```{r}
+ltrs <- c("a", "b", "c")
+nums <- c(1, 2, 3)
+logs <- c(T, F, T)
+mydf <- data.frame(ltrs, nums, logs)
+mydf
+```
+
+The only constraints required to make a data frame are:
+
+1.  Each column (vector) contains the same type of data
+
+2.  The number of observations in each column is equal.
+
+## Getting your data into R
+
+It is the rare case when you manually enter your data in R. Most data analysis workflows typically begin with importing a dataset from an external source. We'll be using `read_excel()` function from the readxl package.
+
+We can import the `ExampleSites.xlsx` dataset as follows. Note the use of a *relative* file path. You can see what R is using as your "working directory" using the `getwd()` function.
+
+```{r}
+sitdat <- read_excel("data/ExampleSites.xlsx")
+```
+
+Let's explore the dataset a bit.
+
+```{r}
+# get the dimensions
+dim(sitdat)
+# get the column names
+names(sitdat)
+# see the first six rows
+head(sitdat)
+# get the overall structure
+str(sitdat)
+```
+
+You can also view a dataset in a spreadsheet style using the `View()` function:
+
+```{r}
+#| eval: false
+View(sitdat)
+```
+
+## Summary
+
+In this intro we learned about R and Rstudio, some of the basic syntax and data structures in R, and how to import files.  You'll be able to follow the rest of the workshop with this knowledge.

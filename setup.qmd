@@ -6,24 +6,23 @@ lightbox: auto
 
 # Setup for the workshop {#setup}
 
-Thanks for your interest in the open science workshop. You will need to do the following, outlined below, before the workshop.  The last item is optional, but strongly encouraged. 
+Thanks for your interest in the R Shiny workshop. You will need to do the following, outlined below, before the workshop. 
 
-1. Install R: [link](https://cran.r-project.org/bin/windows/base/){target="_blank"}
-1. Install RStudio: [link](https://posit.co/download/rstudio-desktop/){target="_blank"}
-1. Install Quarto: [link](https://quarto.org/docs/get-started/){target="_blank"}
-1. GitHub create account: [link](https://github.com){target="_blank"}
-1. Install Git (optional): [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git){target="_blank"}
+1. [Install R](#sec-instr)
+1. [Install RStudio](#sec-instrstudio)
+1. [Install Quarto](#sec-instquarto)
 
 Most of these steps will require administrative privileges on a computer.  Work with your IT staff to complete the setup if you do not have these privileges. 
+
 Please reach out if you have any issues with installation: [mbeck@tbep.org](mailto:mbeck@tbep.org)
 
-## Install R and RStudio
+## Install R and RStudio 
 
 **R** and **RStudio** are separate downloads and installations. R is the underlying statistical computing software. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. *You need to install R before you install RStudio*.
 
 Thanks to the [USGS-R Training group](https://owi.usgs.gov/R/training.html){target="_blank"} and [Data Carpentry](https://datacarpentry.org/R-ecology-lesson/index.html){target="_blank"} for making their installation materials available. The following instructions come directly from their materials, with a few minor edits to help you get set up.
 
-### Windows: Download and install R
+### Windows: Download and install R {#sec-instr}
 
 Go to [CRAN and download](https://cran.rstudio.com/bin/windows/base/){target="_blank"} the R installer for Windows. Make sure to choose the latest stable version (v4.2.3 as of April 2023).
 
@@ -31,21 +30,21 @@ Once the installer downloads, Right-click on it and select "Run as administrator
 
 Type in your credentials and click yes (or if you don't have administrator access have your IT rep install with Admin privileges).
 
-![](img/install_open_as_admin.png)
+![](figs/setup/install_open_as_admin.png)
 
 You can click next through the standard dialogs and accept most defaults. But at the destination screen, please verify that it is installing it to C:\\Program Files\\R
 
-![](img/install_destination.png)
+![](figs/setup/install_destination.png)
 
 At the "Select Components" screen, you can accept the default and install both 32-bit and 64-bit versions.
 
-![](img/install_arch_window.png)
+![](figs/setup/install_arch_window.png)
 
 At this screen, uncheck 'Create a desktop icon' because non-admin users in Windows will be unable to delete it.
 
-![](img/install_tasks.png)
+![](figs/setup/install_tasks.png)
 
-### Windows: Download and install RStudio
+### Windows: Download and install RStudio {#sec-instrstudio}
 
 Download RStudio from [here](https://www.rstudio.com/products/rstudio/download/#download){target="_blank"}.
 
@@ -53,7 +52,7 @@ After download, double-click the installer. It will ask for your administrator c
 
 Accept all the default options for the RStudio install.
 
-![](img/install_rstudio.png)
+![](figs/setup/install_rstudio.png)
 
 ### macOS: Download and install R
 
@@ -72,40 +71,18 @@ Accept all the default options for the RStudio install.
 
 Once installed, RStudio should be accessible from the start menu. Start up RStudio. Once running it should look something like this:
 
-![](img/rstudio.png)
+![](figs/setup/rstudio.png)
 
-## Install Quarto
+## Install Quarto {#sec-instquarto}
 
 A visual editor for Quarto is installed with RStudio.  However, you'll need to install Quarto CLI to make full use of its features.  
 
 Navigate to [https://quarto.org/docs/get-started/](https://quarto.org/docs/get-started/){target="_blank"}.  You'll see a screen that looks like this:
 
-![](img/quartoinstall.PNG)
+![](figs/setup/quartoinstall.PNG)
 
 Select the download appropriate for your operating system (Windows is the big blue button).  After the file is downloaded, navigate to the folder containing the file, double-click to install, and accept the default settings at the prompts.    
 
 After installation is done, open RStudio (or close and open again) and select the Terminal tab.  This tab is located on the bottom-left pane, next to the Console tab.  Type `quarto check` at the prompt and press enter.  You should see something like this if installation was successful. 
 
-![](img/quartocheck.PNG)
-
-## This is hard!
-
-If you have trouble installing any of the software prior to the workshop, you can use use RStudio in the cloud on the Posit website. This is only a backup option and we strongly encourage you to troubleshoot the installation when able.
-
-To use RStudio in the cloud, copy this link and paste it in a web browser: [https://posit.cloud/content/5775087](https://posit.cloud/content/5775087){target="_blank"}
-
-If you do not have a Posit Cloud account, you will see this screen when you first visit the URL:
-
-![](img/cloudsignup.PNG)
-
-<br></br>
-
-You can [setup an account](https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1){target="_blank"} for free using a login you create or through a third-party (Google or GitHub).
-
-After your account is setup, you should a screen that looks like this:
-
-![](img/tempproj.PNG)
-
-<br></br>
-
-You'll see that this is a <b>[TEMPORARY COPY]{style="color:red"}</b> under your account. Make it permanent by clicking the button on top. This will save any changes you make to this project under your account.
+![](figs/setup/quartocheck.PNG)

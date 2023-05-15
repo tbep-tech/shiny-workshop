@@ -14,6 +14,12 @@ Also see:
 
 - [Workshop -- Dashboards: Using R to Create Actionable Science | CERF 2023 Biennial Conference ](https://conference.cerf.science/2023-workshop--dashboards--using-r-to-create-actionable-science)
 
+## Setup {.unnumbered}
+
+Please visit the [setup](setup.qmd) page for instructions on preparing for this workshop.  You will be required to install R, RStudio, and Quarto prior to the workshop. 
+
+We also expect some prior experience using R.  Please visit the [intro to R](rintro.qmd) page for a quick crash course. 
+
 ## Presenters {.unnumbered}
 
 ### Marcus Beck, Ph.D.
