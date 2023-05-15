@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./rintro.html" rel="next">
 <link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -166,6 +167,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Setup for the workshop</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rintro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -180,14 +187,13 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#install-r-and-rstudio" id="toc-install-r-and-rstudio" class="nav-link active" data-scroll-target="#install-r-and-rstudio"><span class="header-section-number">A.1</span> Install R and RStudio</a>
   <ul class="collapse">
-  <li><a href="#windows-download-and-install-r" id="toc-windows-download-and-install-r" class="nav-link" data-scroll-target="#windows-download-and-install-r"><span class="header-section-number">A.1.1</span> Windows: Download and install R</a></li>
-  <li><a href="#windows-download-and-install-rstudio" id="toc-windows-download-and-install-rstudio" class="nav-link" data-scroll-target="#windows-download-and-install-rstudio"><span class="header-section-number">A.1.2</span> Windows: Download and install RStudio</a></li>
+  <li><a href="#sec-instr" id="toc-sec-instr" class="nav-link" data-scroll-target="#sec-instr"><span class="header-section-number">A.1.1</span> Windows: Download and install R</a></li>
+  <li><a href="#sec-instrstudio" id="toc-sec-instrstudio" class="nav-link" data-scroll-target="#sec-instrstudio"><span class="header-section-number">A.1.2</span> Windows: Download and install RStudio</a></li>
   <li><a href="#macos-download-and-install-r" id="toc-macos-download-and-install-r" class="nav-link" data-scroll-target="#macos-download-and-install-r"><span class="header-section-number">A.1.3</span> macOS: Download and install R</a></li>
   <li><a href="#macos-download-and-install-rstudio" id="toc-macos-download-and-install-rstudio" class="nav-link" data-scroll-target="#macos-download-and-install-rstudio"><span class="header-section-number">A.1.4</span> macOS: Download and install RStudio</a></li>
   <li><a href="#check-install" id="toc-check-install" class="nav-link" data-scroll-target="#check-install"><span class="header-section-number">A.1.5</span> Check Install</a></li>
   </ul></li>
-  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto"><span class="header-section-number">A.2</span> Install Quarto</a></li>
-  <li><a href="#this-is-hard" id="toc-this-is-hard" class="nav-link" data-scroll-target="#this-is-hard"><span class="header-section-number">A.3</span> This is hard!</a></li>
+  <li><a href="#sec-instquarto" id="toc-sec-instquarto" class="nav-link" data-scroll-target="#sec-instquarto"><span class="header-section-number">A.2</span> Install Quarto</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/setup.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -211,56 +217,55 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Thanks for your interest in the open science workshop. You will need to do the following, outlined below, before the workshop. The last item is optional, but strongly encouraged.</p>
+<p>Thanks for your interest in the R Shiny workshop. You will need to do the following, outlined below, before the workshop.</p>
 <ol type="1">
-<li>Install R: <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">link</a></li>
-<li>Install RStudio: <a href="https://posit.co/download/rstudio-desktop/" target="_blank">link</a></li>
-<li>Install Quarto: <a href="https://quarto.org/docs/get-started/" target="_blank">link</a></li>
-<li>GitHub create account: <a href="https://github.com" target="_blank">link</a></li>
-<li>Install Git (optional): <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">link</a></li>
+<li><a href="#sec-instr">Install R</a></li>
+<li><a href="#sec-instrstudio">Install RStudio</a></li>
+<li><a href="#sec-instquarto">Install Quarto</a></li>
 </ol>
-<p>Most of these steps will require administrative privileges on a computer. Work with your IT staff to complete the setup if you do not have these privileges. Please reach out if you have any issues with installation: <a href="mailto:mbeck@tbep.org">mbeck@tbep.org</a></p>
+<p>Most of these steps will require administrative privileges on a computer. Work with your IT staff to complete the setup if you do not have these privileges.</p>
+<p>Please reach out if you have any issues with installation: <a href="mailto:mbeck@tbep.org">mbeck@tbep.org</a></p>
 <section id="install-r-and-rstudio" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="install-r-and-rstudio"><span class="header-section-number">A.1</span> Install R and RStudio</h2>
 <p><strong>R</strong> and <strong>RStudio</strong> are separate downloads and installations. R is the underlying statistical computing software. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. <em>You need to install R before you install RStudio</em>.</p>
 <p>Thanks to the <a href="https://owi.usgs.gov/R/training.html" target="_blank">USGS-R Training group</a> and <a href="https://datacarpentry.org/R-ecology-lesson/index.html" target="_blank">Data Carpentry</a> for making their installation materials available. The following instructions come directly from their materials, with a few minor edits to help you get set up.</p>
-<section id="windows-download-and-install-r" class="level3" data-number="A.1.1">
-<h3 data-number="A.1.1" class="anchored" data-anchor-id="windows-download-and-install-r"><span class="header-section-number">A.1.1</span> Windows: Download and install R</h3>
+<section id="sec-instr" class="level3" data-number="A.1.1">
+<h3 data-number="A.1.1" class="anchored" data-anchor-id="sec-instr"><span class="header-section-number">A.1.1</span> Windows: Download and install R</h3>
 <p>Go to <a href="https://cran.rstudio.com/bin/windows/base/" target="_blank">CRAN and download</a> the R installer for Windows. Make sure to choose the latest stable version (v4.2.3 as of April 2023).</p>
 <p>Once the installer downloads, Right-click on it and select “Run as administrator”.</p>
 <p>Type in your credentials and click yes (or if you don’t have administrator access have your IT rep install with Admin privileges).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/install_open_as_admin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/install_open_as_admin.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/install_open_as_admin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/setup/install_open_as_admin.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <p>You can click next through the standard dialogs and accept most defaults. But at the destination screen, please verify that it is installing it to C:\Program Files\R</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/install_destination.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/install_destination.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/install_destination.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figs/setup/install_destination.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <p>At the “Select Components” screen, you can accept the default and install both 32-bit and 64-bit versions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/install_arch_window.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/install_arch_window.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/install_arch_window.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="figs/setup/install_arch_window.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <p>At this screen, uncheck ‘Create a desktop icon’ because non-admin users in Windows will be unable to delete it.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/install_tasks.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/install_tasks.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/install_tasks.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="figs/setup/install_tasks.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </section>
-<section id="windows-download-and-install-rstudio" class="level3" data-number="A.1.2">
-<h3 data-number="A.1.2" class="anchored" data-anchor-id="windows-download-and-install-rstudio"><span class="header-section-number">A.1.2</span> Windows: Download and install RStudio</h3>
+<section id="sec-instrstudio" class="level3" data-number="A.1.2">
+<h3 data-number="A.1.2" class="anchored" data-anchor-id="sec-instrstudio"><span class="header-section-number">A.1.2</span> Windows: Download and install RStudio</h3>
 <p>Download RStudio from <a href="https://www.rstudio.com/products/rstudio/download/#download" target="_blank">here</a>.</p>
 <p>After download, double-click the installer. It will ask for your administrator credentials to install (you might need to have your IT rep install again).</p>
 <p>Accept all the default options for the RStudio install.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/install_rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/install_rstudio.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/install_rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="figs/setup/install_rstudio.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </section>
@@ -286,48 +291,27 @@ ul.task-list li input[type="checkbox"] {
 <p>Once installed, RStudio should be accessible from the start menu. Start up RStudio. Once running it should look something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/rstudio.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/rstudio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="figs/setup/rstudio.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </section>
 </section>
-<section id="install-quarto" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="install-quarto"><span class="header-section-number">A.2</span> Install Quarto</h2>
+<section id="sec-instquarto" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="sec-instquarto"><span class="header-section-number">A.2</span> Install Quarto</h2>
 <p>A visual editor for Quarto is installed with RStudio. However, you’ll need to install Quarto CLI to make full use of its features.</p>
 <p>Navigate to <a href="https://quarto.org/docs/get-started/" target="_blank">https://quarto.org/docs/get-started/</a>. You’ll see a screen that looks like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/quartoinstall.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/quartoinstall.PNG" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/quartoinstall.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="figs/setup/quartoinstall.PNG" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <p>Select the download appropriate for your operating system (Windows is the big blue button). After the file is downloaded, navigate to the folder containing the file, double-click to install, and accept the default settings at the prompts.</p>
 <p>After installation is done, open RStudio (or close and open again) and select the Terminal tab. This tab is located on the bottom-left pane, next to the Console tab. Type <code>quarto check</code> at the prompt and press enter. You should see something like this if installation was successful.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="img/quartocheck.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/quartocheck.PNG" class="img-fluid figure-img"></a></p>
+<p><a href="figs/setup/quartocheck.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="figs/setup/quartocheck.PNG" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-</section>
-<section id="this-is-hard" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="this-is-hard"><span class="header-section-number">A.3</span> This is hard!</h2>
-<p>If you have trouble installing any of the software prior to the workshop, you can use use RStudio in the cloud on the Posit website. This is only a backup option and we strongly encourage you to troubleshoot the installation when able.</p>
-<p>To use RStudio in the cloud, copy this link and paste it in a web browser: <a href="https://posit.cloud/content/5775087" target="_blank">https://posit.cloud/content/5775087</a></p>
-<p>If you do not have a Posit Cloud account, you will see this screen when you first visit the URL:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/cloudsignup.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/cloudsignup.PNG" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-<p><br><br></p>
-<p>You can <a href="https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1" target="_blank">setup an account</a> for free using a login you create or through a third-party (Google or GitHub).</p>
-<p>After your account is setup, you should a screen that looks like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/tempproj.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/tempproj.PNG" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-<p><br><br></p>
-<p>You’ll see that this is a <b><span style="color:red">TEMPORARY COPY</span></b> under your account. Make it permanent by clicking the button on top. This will save any changes you make to this project under your account.</p>
 
 
 </section>
@@ -624,6 +608,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./rintro.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -636,7 +623,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":true,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});</script>
 
 
 
