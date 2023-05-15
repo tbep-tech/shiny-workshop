@@ -1,3 +1,9 @@
+---
+filters:
+   - lightbox
+lightbox: auto
+---
+
 # UI/UX Design w/ user-centered co-design
 
 Definitions:

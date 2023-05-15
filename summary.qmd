@@ -1,3 +1,9 @@
+---
+filters:
+   - lightbox
+lightbox: auto
+---
+
 # Summary
 
 In summary, this book has no content whatsoever.

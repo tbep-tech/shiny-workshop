@@ -27,6 +27,8 @@ book:
     - summary.qmd
     - ui_design.qmd
     - references.qmd
+  appendices:
+    - setup.qmd
 
 bibliography: references.bib
 

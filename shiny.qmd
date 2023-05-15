@@ -1,3 +1,9 @@
+---
+filters:
+   - lightbox
+lightbox: auto
+---
+
 # Interactive: Shiny Applications
 
 ```{r, include=FALSE}

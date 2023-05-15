@@ -1,3 +1,9 @@
+---
+filters:
+   - lightbox
+lightbox: auto
+---
+
 # Dynamic: Quarto 
 
 ```{r, include=FALSE}
