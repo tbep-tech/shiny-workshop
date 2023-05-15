@@ -340,6 +340,12 @@ knitr::kable(mytab)
 
 Visit these links for full details on [figures](https://quarto.org/docs/authoring/figures.html){target="_blank"} and [tables](https://quarto.org/docs/authoring/tables.html){target="_blank"} in Quarto. R also has a rich [library of packages](https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541){target="_blank"} for producing tables, most of which play nice with Quarto.  
 
+## Quarto using `htmlwidgets`
+
+https://quarto.org/docs/interactive/widgets/htmlwidgets.html
+
+leaflet, ploly, dygraphs, threejs
+
 ## Quarto using Crosstalk
 
 -   <https://rstudio.github.io/crosstalk>
@@ -364,6 +370,10 @@ bscols(
     sd, extensions="Scroller", style="bootstrap", class="compact", width="100%",
     options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)))
 ```
+
+## Quarto using Observable
+
+https://quarto.org/docs/computations/ojs.html
 
 ## Publishing
 
