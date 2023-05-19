@@ -478,7 +478,7 @@ bscols(
 
 ## Quarto using Observable
 
-Observable is a relatively new language that also allows dynamic features in a Quarto document.  It is an entirely separate language outside of R, but provides even more functionality that approximates a Shiny Server.  
+Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R, but provides excellent functionality that approximates that provided by a Shiny Server.  
 
 First, import the data as you would in R, then define variables for Observable using `ojs_define()`.
 
@@ -490,9 +490,9 @@ tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/t
 ojs_define(tbwqdat)
 ```
 
-```{ojs}
+<!-- ```{ojs} -->
 
-```
+<!-- ``` -->
 
 https://quarto.org/docs/computations/ojs.html
 
