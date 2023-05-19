@@ -2,6 +2,10 @@
 filters:
    - lightbox
 lightbox: auto
+
+execute:
+  message: false
+  warning: false
 ---
 
 # Dynamic: Quarto 
@@ -331,11 +335,11 @@ Visit these links for full details on [figures](https://quarto.org/docs/authorin
 
 ## Quarto using `htmlwidgets`
 
-The `htmlwidgets` package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
+The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank}" package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
 
 ### leaflet
 
-The `leaflet` package can be used to create interactive maps. 
+The [`leaflet`](http://rstudio.github.io/leaflet/){target="_blank"} package can be used to create interactive maps (also see [`mapview`](https://r-spatial.github.io/mapview/){target="_blank"}) for an "out-of-the-box" option). Here's a quick map of where we are - click on the marker to view the popup.
 
 ```{r}
 library(leaflet)
@@ -347,18 +351,20 @@ leaflet() %>%
 
 ### plotly and dygraphs
 
-The `plotly` and `dygraphs` packages allow you to create interactive plots. They provide similar functionality.
+The [`plotly`](https://plotly.com/r/){target="_blank"} and [`dygraphs`](http://rstudio.github.io/dygraphs/){target="_blank"} packages allow you to create interactive plots. They provide similar functionality, but serve different purposes.  
 
 ```{r}
 library(plotly)
 library(tibble)
 
+# data to plot
 toplo <- tibble(
   Species = c('Oysters', 'Seagrass', 'Sand'),
   `Clear Bay` = c(12, 5, 4), 
   `Fish Bay` = c(6, 7, 9)
 )
 
+# make a plotly plot
 fig <- plot_ly(toplo, x = ~Species, y = ~`Clear Bay`, type = 'bar', name = 'Clear Bay')
 fig <- fig %>% add_trace(y = ~`Fish Bay`, name = 'Fish Bay')
 fig <- fig %>% layout(yaxis = list(title = 'Count'), barmode = 'group')
@@ -366,12 +372,13 @@ fig <- fig %>% layout(yaxis = list(title = 'Count'), barmode = 'group')
 fig
 ```
 
-The `plotly` package has an additional feature that can easily transform existing `ggplot` objects into `plotly` objects. 
+The `plotly` package has an additional feature that can easily transform existing `ggplot` objects into `plotly` objects using the `ggplotly()` function.  This works fairly well for simple plots, although it is usually a better option to build `plotly` plots from scratch.  
 
 ```{r}
 library(ggplot2)
 library(tidyr)
 
+# data to plot
 toplo <- tibble(
     Species = c('Oysters', 'Seagrass', 'Sand'),
     `Clear Bay` = c(12, 5, 4), 
@@ -379,35 +386,51 @@ toplo <- tibble(
   ) %>% 
   pivot_longer(-Species, names_to = 'Bay', values_to = 'Count')
 
+# make a ggplot
 fig <- ggplot(toplo, aes(x = Species, y = Count, fill = Bay)) + 
   geom_bar(stat = 'identity', position = 'dodge')
 
+# conver to plotly
 ggplotly(fig)
 ```
 
-Plotly also works well for three-dimensional plotting. 
+`Plotly` also works well for three-dimensional plotting. Here we show a bathymetric map of Tampa Bay.  The input file is a raster object converted to a matrix (see [here](https://github.com/tbep-tech/shiny-workshop/blob/main/R/tbdem.R){target="_blank"})
 
 ```{r}
 #| fig-width: 12
-#| fig-height: 8
+#| fig-height: 12
 library(plotly)
 
+# file created from a DEM, see 
 load(file = 'data/demmat.RData')
 
-# for changing the aspect ratio 
+plot_ly(z = ~demmat) %>% 
+  add_surface(colorbar = list(title = 'Depth (m)')) 
+```
+
+We can change some of the options using the `layout()` function.  The aspect ratio, grid lines, and axis labels are all changed by created a `list()` object to pass to `layout()`. The color is changed in the `add_surface()` function (options [here](https://plotly.com/r/reference/#surface-colorscale){target="_blank"}).
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+# setup plot options
+axopt <- list(showgrid = F, title = '', 
+              zerolinecolor='rgb(255, 255, 255)', 
+              tickvals = NA)
 scene <- list(
   aspectmode = 'manual', 
   aspectratio = list(x = 0.7, y = 1, z = 0.1),
-  scene = list(bgcolor = "rgb(244, 244, 248)")
+  xaxis = axopt, yaxis = axopt, zaxis = axopt
   )
 
 # create plot
 plot_ly(z = ~demmat) %>% 
-  add_surface(colorbar = list(title = 'Depth (m)')) %>% 
+  add_surface(colorbar = list(title = 'Depth (m)'), colorscale = 'Jet', 
+              reversescale = T) %>% 
   layout(scene = scene)
 ```
 
-The `dygraphs` package is designed for time series data. 
+The `dygraphs` package is designed for time series data. First, we create a time series with random data, then plot it with `dygraphs` with a range selector. 
 
 ```{r}
 library(dygraphs)
