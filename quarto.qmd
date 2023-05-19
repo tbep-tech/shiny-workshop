@@ -337,7 +337,7 @@ Visit these links for full details on [figures](https://quarto.org/docs/authorin
 
 The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank}" package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
 
-### leaflet
+### `leaflet`
 
 The [`leaflet`](http://rstudio.github.io/leaflet/){target="_blank"} package can be used to create interactive maps (also see [`mapview`](https://r-spatial.github.io/mapview/){target="_blank"}) for an "out-of-the-box" option). Here's a quick map of where we are - click on the marker to view the popup.
 
@@ -349,7 +349,7 @@ leaflet() %>%
   addMarkers(lng = -122.663, lat = 45.529, popup = "CERF 2023 conference")
 ```
 
-### plotly and dygraphs
+### `plotly` and `dygraphs`
 
 The [`plotly`](https://plotly.com/r/){target="_blank"} and [`dygraphs`](http://rstudio.github.io/dygraphs/){target="_blank"} packages allow you to create interactive plots. They provide similar functionality, but serve different purposes.  
 
@@ -448,7 +448,7 @@ dygraph(toplo) %>%
   dyRangeSelector()
 ```
 
-## Quarto using Crosstalk
+## Quarto using `crosstalk`
 
 The [`crosstalk`](https://rstudio.github.io/crosstalk){target="_blank"} package can incorporate additional dynamic functionality in a Quarto document.  As the name implies, it allows linking between plots and tables by including embedded Javascript in the rendered HTML file.  This allows functionality that looks interactive as in a Shiny application, but does not require Shiny Server.
 
@@ -477,6 +477,22 @@ bscols(
 ```
 
 ## Quarto using Observable
+
+Observable is a relatively new language that also allows dynamic features in a Quarto document.  It is an entirely separate language outside of R, but provides even more functionality that approximates a Shiny Server.  
+
+First, import the data as you would in R, then define variables for Observable using `ojs_define()`.
+
+```{r}
+# import water quality data
+tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
+
+# define variables
+ojs_define(tbwqdat)
+```
+
+```{ojs}
+
+```
 
 https://quarto.org/docs/computations/ojs.html
 
