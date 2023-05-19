@@ -6,17 +6,6 @@ lightbox: auto
 
 # Dynamic: Quarto 
 
-```{r, include=FALSE}
-knitr::opts_chunk$set(echo = T, warning = F, message = F)
-
-if (!require(librarian)){
-  install.packages("librarian")
-  library(librarian)
-}
-shelf(
-  htmltools, mitchelloharawild/icons)
-```
-
 ## Learning Objectives {.unnumbered .objectives}
 
 Use the Quarto document preparation system to create interactive documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
@@ -342,9 +331,99 @@ Visit these links for full details on [figures](https://quarto.org/docs/authorin
 
 ## Quarto using `htmlwidgets`
 
-https://quarto.org/docs/interactive/widgets/htmlwidgets.html
+The `htmlwidgets` package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
 
-leaflet, ploly, dygraphs, threejs
+### leaflet
+
+The `leaflet` package can be used to create interactive maps. 
+
+```{r}
+library(leaflet)
+
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng = -122.663, lat = 45.529, popup = "CERF 2023 conference")
+```
+
+### plotly and dygraphs
+
+The `plotly` and `dygraphs` packages allow you to create interactive plots. They provide similar functionality.
+
+```{r}
+library(plotly)
+library(tibble)
+
+toplo <- tibble(
+  Species = c('Oysters', 'Seagrass', 'Sand'),
+  `Clear Bay` = c(12, 5, 4), 
+  `Fish Bay` = c(6, 7, 9)
+)
+
+fig <- plot_ly(toplo, x = ~Species, y = ~`Clear Bay`, type = 'bar', name = 'Clear Bay')
+fig <- fig %>% add_trace(y = ~`Fish Bay`, name = 'Fish Bay')
+fig <- fig %>% layout(yaxis = list(title = 'Count'), barmode = 'group')
+
+fig
+```
+
+The `plotly` package has an additional feature that can easily transform existing `ggplot` objects into `plotly` objects. 
+
+```{r}
+library(ggplot2)
+library(tidyr)
+
+toplo <- tibble(
+    Species = c('Oysters', 'Seagrass', 'Sand'),
+    `Clear Bay` = c(12, 5, 4), 
+    `Fish Bay` = c(6, 7, 9)
+  ) %>% 
+  pivot_longer(-Species, names_to = 'Bay', values_to = 'Count')
+
+fig <- ggplot(toplo, aes(x = Species, y = Count, fill = Bay)) + 
+  geom_bar(stat = 'identity', position = 'dodge')
+
+ggplotly(fig)
+```
+
+Plotly also works well for three-dimensional plotting. 
+
+```{r}
+#| fig-width: 12
+#| fig-height: 8
+library(plotly)
+
+load(file = 'data/demmat.RData')
+
+# for changing the aspect ratio 
+scene <- list(
+  aspectmode = 'manual', 
+  aspectratio = list(x = 0.7, y = 1, z = 0.1),
+  scene = list(bgcolor = "rgb(244, 244, 248)")
+  )
+
+# create plot
+plot_ly(z = ~demmat) %>% 
+  add_surface(colorbar = list(title = 'Depth (m)')) %>% 
+  layout(scene = scene)
+```
+
+The `dygraphs` package is designed for time series data. 
+
+```{r}
+library(dygraphs)
+
+# create data
+n <- 1000
+y <- cumsum(rnorm(n))
+dts <- seq.Date(Sys.Date(), by = 'day', length.out = n)
+toplo <- tibble(
+  Date = dts, 
+  y = y
+)
+
+dygraph(toplo) %>% 
+  dyRangeSelector()
+```
 
 ## Quarto using Crosstalk
 
