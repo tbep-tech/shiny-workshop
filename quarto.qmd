@@ -450,20 +450,23 @@ dygraph(toplo) %>%
 
 ## Quarto using Crosstalk
 
--   <https://rstudio.github.io/crosstalk>
+The [`crosstalk`](https://rstudio.github.io/crosstalk){target="_blank"} package can incorporate additional dynamic functionality in a Quarto document.  As the name implies, it allows linking between plots and tables by including embedded Javascript in the rendered HTML file.  This allows functionality that looks interactive as in a Shiny application, but does not require Shiny Server.
 
 ```{r}
 library(crosstalk)
 library(leaflet)
 library(DT)
 
-# Wrap data frame in SharedData
-sd <- SharedData$new(quakes[sample(nrow(quakes), 100),])
+# import water quality data
+tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
 
-# Create a filter input
-filter_slider("mag", "Magnitude", sd, column=~mag, step=0.1, width=250)
+# create shared data
+sd <- SharedData$new(tbwqdat)
 
-# Use SharedData like a dataframe with Crosstalk-enabled widgets
+# create a filter input
+filter_slider("chla", "Chlorophyll-a", sd, column=~chla, step=0.1, width=250)
+
+# use shared data with crosstalk widgets
 bscols(
   leaflet(sd) %>% 
     addTiles() %>% 
@@ -477,9 +480,19 @@ bscols(
 
 https://quarto.org/docs/computations/ojs.html
 
+## Sharing HTML files
+
+An advantage of creating a dynamic HTML file with Quarto is the ability to share it with anybody.  An HTML file can easily be shared by email, although it must be created as a "standalone" file for others to use. You'll notice that sometimes external files or subfolders are created when you use any of the above options to add dynamic content. This is fine if you are working locally, but to share with others, you can create a standalone HTML file by adding the following option in the YAML: 
+
+```yaml
+format:
+  html:
+    embed-resources: true
+```
+
 ## Publishing
 
-A rendered Quarto file can be shared with anyone as a standalone document.  The file can also be hosted online and shared by URL.  This latter approach is useful to make the document available to anyone with the web address.
+A rendered HTML file can also be hosted online and shared by URL.  This approach is useful to make the document available to anyone with the web address.
 
 The easiest way to do this is to publish your document to [RPubs](https://rpubs.com/){target="_blank"}, a free service from Posit for sharing web documents. Click the <kbd>![](figs/quarto/rstudio-publish-button.png){width="25" height="23"}</kbd> publish button on the top-right of the editor toolbar.  You will be prompted to create an account if you don't have one already.
 
