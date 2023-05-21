@@ -456,9 +456,11 @@ The [`crosstalk`](https://rstudio.github.io/crosstalk){target="_blank"} package 
 library(crosstalk)
 library(leaflet)
 library(DT)
+library(dplyr)
 
 # import water quality data
-tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
+tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv') %>% 
+  filter(mo == 7)
 
 # create shared data
 sd <- SharedData$new(tbwqdat)
@@ -478,21 +480,56 @@ bscols(
 
 ## Quarto using Observable
 
-Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R, but provides excellent functionality that approximates that provided by a Shiny Server.  
+Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R that uses JavaScript and allows excellent functionality similar what is provided by a Shiny Server.  
 
-First, import the data as you would in R, then define variables for Observable using `ojs_define()`.
+First, import the data as you would in R, then define variables for Observable using `ojs_define()`.  Note that Observable chunks cannot be run interactively and only work when an entire Quarto document is rendered. 
 
 ```{r}
 # import water quality data
-tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
+tbwqdat <- readr::read_csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
 
 # define variables
-ojs_define(tbwqdat)
+ojs_define(data = tbwqdat)
 ```
 
-<!-- ```{ojs} -->
+```{ojs}
+viewof chla = Inputs.range(
+  [1.8, 17.4], 
+  {value: 1.8, step: 1, label: "Chlorophyll-a (ug/L):"}
+)
+viewof bay_segment = Inputs.checkbox(
+  ["OTB", "HB", "MTB", "LTB"], 
+  { value: ["OTB", "HB", "MTB", "LTB"], 
+    label: "Bay segments:"
+  }
+)
+```
 
-<!-- ``` -->
+```{ojs}
+datatr = transpose(data)
+filtered = datatr.filter(function(dat) {
+  return chla < dat.chla ;
+})
+```
+
+```{ojs}
+Plot.rectY(filtered, 
+  Plot.binX(
+    {y: "count"}, 
+    {x: "chla", thresholds: 10}
+  ))
+  .plot({
+    facet: {
+      data: filtered,
+      x: "bay_segment",
+      marginRight: 80
+    },
+    marks: [
+      Plot.frame(),
+    ]
+  }
+)
+```
 
 https://quarto.org/docs/computations/ojs.html
 

@@ -3,7 +3,7 @@ library(tidyverse)
 library(here)
 
 tbwqdat <- epcdata %>%
-  filter(yr == 2022 & mo == 7)  %>%
-  select(lat = Latitude, lon = Longitude, station = epchc_station, chla)
+  filter(yr == 2021)  %>%
+  select(lat = Latitude, lon = Longitude, bay_segment, station = epchc_station, chla)
 
 write.csv(tbwqdat, file = here('data/tbwqdat.csv'), row.names = F)
