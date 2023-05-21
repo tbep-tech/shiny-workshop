@@ -480,11 +480,10 @@ bscols(
 
 ## Quarto using Observable
 
-Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R that uses JavaScript and allows excellent functionality similar what is provided by a Shiny Server.  
-
-First, import the data as you would in R, then define variables for Observable using `ojs_define()`.  Note that Observable chunks cannot be run interactively and only work when an entire Quarto document is rendered. 
+Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R that uses JavaScript and allows excellent functionality similar what is provided by a Shiny Server.  The following plot showing a historam of chlorophyll values by bay segment is created using the code below.    
 
 ```{r}
+#| echo: false
 # import water quality data
 tbwqdat <- readr::read_csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
 
@@ -493,6 +492,51 @@ ojs_define(data = tbwqdat)
 ```
 
 ```{ojs}
+//| echo: false
+datatr = transpose(data)
+filtered = datatr.filter(function(dat) {
+  return chla < dat.chla &&
+    bay_segment.includes(dat.bay_segment) ;
+})
+viewof chla = Inputs.range(
+  [1.3, 66.6], 
+  {value: 1.3, step: 1, label: "Chlorophyll-a (ug/L):"}
+)
+viewof bay_segment = Inputs.checkbox(
+  ["OTB", "HB", "MTB", "LTB"], 
+  { value: ["OTB", "HB", "MTB", "LTB"], 
+    label: "Bay segments:"
+  }
+)
+Plot.rectY(filtered, 
+  Plot.binX(
+    {y: "count"}, 
+    {x: "chla", thresholds: 10, fill: "bay_segment"}
+  ))
+  .plot({
+    x: {label: "Chlorophyll-a"},
+    color: {legend: true},
+    marks: [
+      Plot.frame(),
+    ]
+  }
+)
+```
+
+First, import the data as you would in R, then define variables for Observable using `ojs_define()`.  Note that Observable chunks cannot be run interactively and only work when an entire Quarto document is rendered. 
+
+```{r}
+#| eval: false
+# import water quality data
+tbwqdat <- readr::read_csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv')
+
+# define variables
+ojs_define(data = tbwqdat)
+```
+
+Then we create some selector widgets to filter by the range of chlorophyll values and data by individual bay segments. 
+
+```{{ojs}}
 viewof chla = Inputs.range(
   [1.8, 17.4], 
   {value: 1.8, step: 1, label: "Chlorophyll-a (ug/L):"}
@@ -505,25 +549,27 @@ viewof bay_segment = Inputs.checkbox(
 )
 ```
 
-```{ojs}
+A filtering function is then created to filter the data based on the selections from the widget.  Note use of the `transpose()` function. This is required to use R data in a row/column format to an array format used in a JavaScript setting.  
+
+```{{ojs}}
 datatr = transpose(data)
 filtered = datatr.filter(function(dat) {
-  return chla < dat.chla ;
+  return chla < dat.chla &&
+    bay_segment.includes(dat.bay_segment) ;
 })
 ```
 
-```{ojs}
+Finally, we create the plot using the filtered data function. 
+
+```{{ojs}}
 Plot.rectY(filtered, 
   Plot.binX(
     {y: "count"}, 
-    {x: "chla", thresholds: 10}
+    {x: "chla", thresholds: 10, fill: "bay_segment"}
   ))
   .plot({
-    facet: {
-      data: filtered,
-      x: "bay_segment",
-      marginRight: 80
-    },
+    x: {label: "Chlorophyll-a"},
+    color: {legend: true},
     marks: [
       Plot.frame(),
     ]
@@ -531,7 +577,7 @@ Plot.rectY(filtered,
 )
 ```
 
-https://quarto.org/docs/computations/ojs.html
+Additional information on using Observable with Quarto is available [here](https://quarto.org/docs/computations/ojs.html){target="_blank"}
 
 ## Sharing HTML files
 
