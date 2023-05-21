@@ -480,7 +480,7 @@ bscols(
 
 ## Quarto using Observable
 
-Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R that uses JavaScript and allows excellent functionality similar what is provided by a Shiny Server.  The following plot showing a historam of chlorophyll values by bay segment is created using the code below.    
+Observable is a relatively new language that also allows dynamic features to be included in a Quarto document.  It is an entirely separate language outside of R that uses JavaScript and allows excellent functionality similar what is provided by a Shiny Server.  The following plot showing a histogram of chlorophyll values by bay segment that is created using the code below.    
 
 ```{r}
 #| echo: false
@@ -523,7 +523,7 @@ Plot.rectY(filtered,
 )
 ```
 
-First, import the data as you would in R, then define variables for Observable using `ojs_define()`.  Note that Observable chunks cannot be run interactively and only work when an entire Quarto document is rendered. 
+First, import the data as you would in R, then define variables for Observable using `ojs_define()`.  Note that Observable code chunks cannot be run interactively and only work when an entire Quarto document is rendered. 
 
 ```{r}
 #| eval: false
