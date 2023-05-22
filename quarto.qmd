@@ -474,8 +474,16 @@ bscols(
     addTiles() %>% 
     addMarkers(),
   datatable(
-    sd, extensions="Scroller", style="bootstrap", class="compact", width="100%",
-    options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)))
+    sd, extensions = "Scroller", style="bootstrap", class = "compact", width = "100%", rownames = F,
+    options =list(
+      scrollY = 300, scroller = TRUE, 
+      columnDefs = list(
+        list(visible = F, targets = c(0:1, 4)),
+         list(className = 'dt-left', targets = '_all'))
+      ),
+      colnames = c('lat', 'lon', 'Bay segment', 'Station', 'mo', 'Chl-a (ug/L)')
+    )
+  )
 ```
 
 ## Quarto using Observable
