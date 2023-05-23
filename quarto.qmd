@@ -453,6 +453,43 @@ dygraph(toplo) %>%
 The [`crosstalk`](https://rstudio.github.io/crosstalk){target="_blank"} package can incorporate additional dynamic functionality in a Quarto document.  As the name implies, it allows linking between plots and tables by including embedded Javascript in the rendered HTML file.  This allows functionality that looks interactive as in a Shiny application, but does not require Shiny Server.
 
 ```{r}
+#| eval: false
+library(crosstalk)
+library(leaflet)
+library(DT)
+library(dplyr)
+
+# import water quality data
+tbwqdat <- read.csv('https://github.com/tbep-tech/shiny-workshop/raw/main/data/tbwqdat.csv') %>% 
+  filter(mo == 7)
+
+# create shared data
+sd <- SharedData$new(tbwqdat)
+
+# create a filter input
+filter_slider("chla", "Chlorophyll-a", sd, column=~chla, step=0.1, width=250)
+
+# use shared data with crosstalk widgets
+bscols(
+  leaflet(sd) %>% 
+    addTiles() %>% 
+    addMarkers(),
+  datatable(
+    sd, extensions = "Scroller", style="bootstrap", class = "compact", width = "100%", rownames = F,
+    options =list(
+      scrollY = 300, scroller = TRUE, 
+      columnDefs = list(
+        list(visible = F, targets = c(0:1, 4)),
+         list(className = 'dt-left', targets = '_all'))
+      ),
+      colnames = c('lat', 'lon', 'Bay segment', 'Station', 'mo', 'Chl-a (ug/L)')
+    )
+  )
+```
+
+
+```{r}
+#| echo: false
 library(crosstalk)
 library(leaflet)
 library(DT)
