@@ -11,6 +11,9 @@ Thanks for your interest in the R Shiny workshop. You will need to do the follow
 1. [Install R](#sec-instr)
 1. [Install RStudio](#sec-instrstudio)
 1. [Install Quarto](#sec-instquarto)
+1. [Setup GitHub Account](#sec-setgit)
+1. [Install Git](#sec-instgit) (optional)
+1. [Setup shinyapps.io](#sec-setshi)
 
 Most of these steps will require administrative privileges on a computer.  Work with your IT staff to complete the setup if you do not have these privileges. 
 
@@ -86,3 +89,86 @@ Select the download appropriate for your operating system (Windows is the big bl
 After installation is done, open RStudio (or close and open again) and select the Terminal tab.  This tab is located on the bottom-left pane, next to the Console tab.  Type `quarto check` at the prompt and press enter.  You should see something like this if installation was successful. 
 
 ![](figs/setup/quartocheck.PNG)
+
+## Create GitHub account {#sec-setgit}
+
+Open a web browser and enter the url [https://github.com](https://github.com){target="_blank"}.  On the top-right, you should see a button to sign up. Click the button and register an account by choosing an email, username, and password. 
+
+![](figs/setup/githubsignup.PNG)
+
+## Install Git (optional) {#sec-instgit}
+
+After you've registered a new GitHub account, you can install the Git software on your computer. Git is version control software used by RStudio that allows you to access GitHub.  Open the url [https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git){target="_blank"} and follow the instructions for your operating system. 
+
+After Git is installed, open RStudio (or close and open again) to verify the installation.  You should see a new "Git" tab located in the top-right pane of RStudio. 
+
+![](figs/setup/gitpane.PNG)
+
+### Make sure RStudio can talk to GitHub via Git
+
+The next step can be a bit tricky, but is essential if you want to access your GitHub using RStudio and Git.  First, install the `usethis` R package in RStudio. 
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("usethis")
+```
+
+You must let Git know who you are and that you have permission to write to a GitHub repository.  First, let Git know who you are, where you enter your user name and email associated with the account from the previous step. 
+
+```{r}
+#| eval: false
+#| echo: true
+usethis::use_git_config(user.name="Jane Doe", user.email="jane@example.org")
+```
+
+Next, you need to setup a personal access token (PAT) that defines the permissions to write to a repository.  This can be done as follows:
+
+```{r}
+#| eval: false
+#| echo: true
+usethis::create_github_token()
+```
+
+Then follow the remaining prompts to complete the PAT creation.  A more thorough explanation can be found [here](https://happygitwithr.com/https-pat.html#https-pat){target="_blank"}. 
+
+## Setup shinyapps.io {#sec-setshi}
+
+The [shinyapps.io](https://shinyapps.io){target="_blank"} website is a service provided by Posit for hosting Shiny applications online.  A free option is available, with additional paid tiers depending on your needs.  Although there are other free options, this website is the easiest and quickest way to host a Shiny application. 
+
+First, navigate to [shinyapps.io](https://shinyapps.io){target="_blank"} and click the "Sign Up" button.  After you've setup your GitHub account, you can sign up for shinyapps.io by selecting the GitHub sign up option.
+
+![](figs/setup/shinyappssignup.PNG)
+
+Next, install the `rsconnect` package in R.  This package lets you connect to shinyapps.io and push applications from your local computer.
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("rsconnect")
+```
+
+You need to obtain an access token from shinyapps.io to configure the `rsconnect` package to use your account. In your shinyapps.io dashboard, click your user name on the top right and select Tokens.  
+
+![](figs/setup/shinyappstoken.PNG)
+
+Add a new token, copy/paste the command to setup your account info, and execute it in the R console. It will look something like this and there will a button that allows you to copy the command to your clipboard, where `<TOKEN>` and `<SECRET>` are specific to your account and should not be shared. 
+
+```{r}
+#| eval: false
+#| echo: true
+rsconnect::setAccountInfo(name='beckmw',
+			  token='<TOKEN>',
+			  secret='<SECRET>')
+```
+
+Now you will be able to push a Shiny application to your shinyapps.io account as follows. 
+
+```{r}
+#| eval: false
+#| echo: true
+library(rsconnect)
+deployApp()
+```
+
+More info can be found [here](https://shiny.posit.co/r/articles/share/shinyapps/){target="_blank"}.

@@ -16,7 +16,7 @@ Also see:
 
 ## Setup {.unnumbered}
 
-Please visit the [setup](setup.qmd) page for instructions on preparing for this workshop.  You will be required to install R, RStudio, and Quarto prior to the workshop. 
+Please visit the [setup](setup.qmd) page for instructions on preparing for this workshop.  You will be required to install R, RStudio, and Quarto prior to the workshop. You will also need to setup a GitHub and shinyapps.io account. 
 
 We also expect some prior experience using R.  Please visit the [intro to R](rintro.qmd) page for a quick crash course. 
 
