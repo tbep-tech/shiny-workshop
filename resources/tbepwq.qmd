@@ -1,0 +1,18 @@
+---
+title: "Water Quality"
+description: "A water quality dashboard for Tampa Bay"
+image: "../figs/resources/targetmapex.PNG"
+format: 
+  html: 
+    toc: true
+---
+
+## Background
+
+The water quality dashboard provides an in-depth view of water quality conditions in Tampa Bay, including a report card to assess annual trends by major bay segments. Additional features include an assessment of seasonal trends, site-level trends, and data downloads.   
+
+## Dashboard
+
+View the dashboard by visiting [https://shiny.tbep.org/wq-dash](https://shiny.tbep.org/wq-dash){target="_blank"}
+
+![](../figs/resources/wqdashscreenshot.png)

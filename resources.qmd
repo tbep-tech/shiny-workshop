@@ -1,0 +1,12 @@
+---
+title: Resources
+listing: 
+  id: list-resources
+  contents: 
+   - "resources/*.qmd"
+  type: grid
+  categories: true
+---
+
+::: {#list-resources}
+:::

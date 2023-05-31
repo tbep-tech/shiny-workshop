@@ -32,6 +32,7 @@ book:
     - setup.qmd
     - rintro.qmd
     - addlquarto.qmd
+    - resources.qmd
     - references.qmd
 
 bibliography: references.bib
