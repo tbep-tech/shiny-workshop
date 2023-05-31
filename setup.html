@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -60,7 +94,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -80,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">Appendices</a></li><li class="breadcrumb-item"><a href="./setup.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Setup for the workshop</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -211,6 +246,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#check-install" id="toc-check-install" class="nav-link" data-scroll-target="#check-install"><span class="header-section-number">A.1.5</span> Check Install</a></li>
   </ul></li>
   <li><a href="#sec-instquarto" id="toc-sec-instquarto" class="nav-link" data-scroll-target="#sec-instquarto"><span class="header-section-number">A.2</span> Install Quarto</a></li>
+  <li><a href="#sec-setgit" id="toc-sec-setgit" class="nav-link" data-scroll-target="#sec-setgit"><span class="header-section-number">A.3</span> Create GitHub account</a></li>
+  <li><a href="#sec-instgit" id="toc-sec-instgit" class="nav-link" data-scroll-target="#sec-instgit"><span class="header-section-number">A.4</span> Install Git (optional)</a>
+  <ul class="collapse">
+  <li><a href="#make-sure-rstudio-can-talk-to-github-via-git" id="toc-make-sure-rstudio-can-talk-to-github-via-git" class="nav-link" data-scroll-target="#make-sure-rstudio-can-talk-to-github-via-git"><span class="header-section-number">A.4.1</span> Make sure RStudio can talk to GitHub via Git</a></li>
+  </ul></li>
+  <li><a href="#sec-setshi" id="toc-sec-setshi" class="nav-link" data-scroll-target="#sec-setshi"><span class="header-section-number">A.5</span> Setup shinyapps.io</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/setup.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -239,6 +280,9 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="#sec-instr">Install R</a></li>
 <li><a href="#sec-instrstudio">Install RStudio</a></li>
 <li><a href="#sec-instquarto">Install Quarto</a></li>
+<li><a href="#sec-setgit">Setup GitHub Account</a></li>
+<li><a href="#sec-instgit">Install Git</a> (optional)</li>
+<li><a href="#sec-setshi">Setup shinyapps.io</a></li>
 </ol>
 <p>Most of these steps will require administrative privileges on a computer. Work with your IT staff to complete the setup if you do not have these privileges.</p>
 <p>Please reach out if you have any issues with installation: <a href="mailto:mbeck@tbep.org">mbeck@tbep.org</a></p>
@@ -329,6 +373,73 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="figs/setup/quartocheck.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="figs/setup/quartocheck.PNG" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
+</section>
+<section id="sec-setgit" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="sec-setgit"><span class="header-section-number">A.3</span> Create GitHub account</h2>
+<p>Open a web browser and enter the url <a href="https://github.com" target="_blank">https://github.com</a>. On the top-right, you should see a button to sign up. Click the button and register an account by choosing an email, username, and password.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/setup/githubsignup.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="figs/setup/githubsignup.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="sec-instgit" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="sec-instgit"><span class="header-section-number">A.4</span> Install Git (optional)</h2>
+<p>After you’ve registered a new GitHub account, you can install the Git software on your computer. Git is version control software used by RStudio that allows you to access GitHub. Open the url <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a> and follow the instructions for your operating system.</p>
+<p>After Git is installed, open RStudio (or close and open again) to verify the installation. You should see a new “Git” tab located in the top-right pane of RStudio.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/setup/gitpane.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="figs/setup/gitpane.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<section id="make-sure-rstudio-can-talk-to-github-via-git" class="level3" data-number="A.4.1">
+<h3 data-number="A.4.1" class="anchored" data-anchor-id="make-sure-rstudio-can-talk-to-github-via-git"><span class="header-section-number">A.4.1</span> Make sure RStudio can talk to GitHub via Git</h3>
+<p>The next step can be a bit tricky, but is essential if you want to access your GitHub using RStudio and Git. First, install the <code>usethis</code> R package in RStudio.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"usethis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You must let Git know who you are and that you have permission to write to a GitHub repository. First, let Git know who you are, where you enter your user name and email associated with the account from the previous step.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name=</span><span class="st">"Jane Doe"</span>, <span class="at">user.email=</span><span class="st">"jane@example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, you need to setup a personal access token (PAT) that defines the permissions to write to a repository. This can be done as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then follow the remaining prompts to complete the PAT creation. A more thorough explanation can be found <a href="https://happygitwithr.com/https-pat.html#https-pat" target="_blank">here</a>.</p>
+</section>
+</section>
+<section id="sec-setshi" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="sec-setshi"><span class="header-section-number">A.5</span> Setup shinyapps.io</h2>
+<p>The <a href="https://shinyapps.io" target="_blank">shinyapps.io</a> website is a service provided by Posit for hosting Shiny applications online. A free option is available, with additional paid tiers depending on your needs. Although there are other free options, this website is the easiest and quickest way to host a Shiny application.</p>
+<p>First, navigate to <a href="https://shinyapps.io" target="_blank">shinyapps.io</a> and click the “Sign Up” button. After you’ve setup your GitHub account, you can sign up for shinyapps.io by selecting the GitHub sign up option.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/setup/shinyappssignup.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="figs/setup/shinyappssignup.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Next, install the <code>rsconnect</code> package in R. This package lets you connect to shinyapps.io and push applications from your local computer.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rsconnect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You need to obtain an access token from shinyapps.io to configure the <code>rsconnect</code> package to use your account. In your shinyapps.io dashboard, click your user name on the top right and select Tokens.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/setup/shinyappstoken.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="figs/setup/shinyappstoken.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Add a new token, copy/paste the command to setup your account info, and execute it in the R console. It will look something like this and there will a button that allows you to copy the command to your clipboard, where <code>&lt;TOKEN&gt;</code> and <code>&lt;SECRET&gt;</code> are specific to your account and should not be shared.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rsconnect<span class="sc">::</span><span class="fu">setAccountInfo</span>(<span class="at">name=</span><span class="st">'beckmw'</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">token=</span><span class="st">'&lt;TOKEN&gt;'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">secret=</span><span class="st">'&lt;SECRET&gt;'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now you will be able to push a Shiny application to your shinyapps.io account as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsconnect)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">deployApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>More info can be found <a href="https://shiny.posit.co/r/articles/share/shinyapps/" target="_blank">here</a>.</p>
 
 
 </section>
@@ -640,7 +751,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":true});</script>
 
 
 
