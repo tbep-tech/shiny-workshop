@@ -5,6 +5,7 @@ image: "../figs/resources/targetmapex.PNG"
 format: 
   html: 
     toc: true
+categories: "Tampa Bay"
 ---
 
 ## Background
