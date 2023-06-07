@@ -14,6 +14,7 @@ book:
   search: true
   date: today
   date-format: "YYYY-MM-DD"
+  page-navigation: true
   page-footer:
     left: |
       Website created by authors, with attribution to external content
@@ -28,11 +29,13 @@ book:
         - shiny.qmd
         - summary.qmd
         - ui_design.qmd
+    - part: resources.qmd
+      chapters:
+        - resources/tbepwq.qmd
   appendices:
     - setup.qmd
     - rintro.qmd
     - addlquarto.qmd
-    - resources.qmd
     - references.qmd
 
 bibliography: references.bib
