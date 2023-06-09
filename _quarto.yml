@@ -33,6 +33,11 @@ book:
       chapters:
         - resources/tbepwq.qmd
         - resources/tbepsg.qmd
+        - resources/tbepbt.qmd
+        - resources/tbeptc.qmd
+        - resources/tbepnk.qmd
+        - resources/tbeplu.qmd
+        - resources/tbeppp.qmd
   appendices:
     - setup.qmd
     - rintro.qmd

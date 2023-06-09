@@ -1,0 +1,24 @@
+---
+pagetitle: "Piney Point Data"
+description: "A Piney Point dashboard for Tampa Bay"
+image: "../figs/resources/ppchl.png"
+format: 
+  html: 
+    toc: true
+categories: "Tampa Bay"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Piney Point Data {.unnumbered}
+
+## Background
+
+Piney Point is a former fertilizer processing facility on the southeast shore of Tampa Bay.  In March 2021, 215 million gallons of nutrient-rich wastewater from Piney Point were discharged to Tampa Bay.  This dashboard provides a summary of the response-based monitoring data collected in 2021 to assess the effects of this large nutrient influx on the bay's resources.
+
+## Dashboard
+
+View the dashboard by visiting [https://shiny.tbep.org/piney-point](https://shiny.tbep.org/piney-point){target="_blank"}
+
+![](../figs/resources/pineypointdashscreenshot.png)

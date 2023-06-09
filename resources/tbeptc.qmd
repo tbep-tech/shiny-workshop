@@ -1,0 +1,24 @@
+---
+pagetitle: "Tidal Creek Data"
+description: "A tidal creek dashboard for Tampa Bay"
+image: "../figs/resources/tidalcreek.png"
+format: 
+  html: 
+    toc: true
+categories: "Tampa Bay"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Tidal Creek Data {.unnumbered}
+
+## Background
+
+Tidal creeks or tributaries are essential habitats in the Tampa Bay estuary and serve as important focal points for understanding watershed inputs that affect water quality. This dashboard provides an interface to view and download results for all tidal creeks in the identified population of over 300 creeks in southwest Florida.  A summary report card, individual creek indicators, and data downloads are available.
+
+## Dashboard
+
+View the dashboard by visiting [https://shiny.tbep.org/tidalcreek-dash](https://shiny.tbep.org/tidalcreek-dash){target="_blank"}
+
+![](../figs/resources/tidalcreekdashscreenshot.png)

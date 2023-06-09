@@ -1,0 +1,24 @@
+---
+pagetitle: "Land Use Data"
+description: "A land use change dashboard for Tampa Bay"
+image: "../figs/resources/alluvial.png"
+format: 
+  html: 
+    toc: true
+categories: "Tampa Bay"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Land Use Data {.unnumbered}
+
+## Background
+
+Upland, coastal, and subtidal habitats have changed dramatically in Tampa Bay and its watershed over the last several decades. This dashboard provides an overview of how these habitats have changed over time.  Summaries are provided in simple tables and as change analysis plots that show shifts between habitat types.  Data downloads are also available.
+
+## Dashboard
+
+View the dashboard by visiting [https://shiny.tbep.org/landuse-change](https://shiny.tbep.org/landuse-change){target="_blank"}
+
+![](../figs/resources/landusescreenshot.png)
