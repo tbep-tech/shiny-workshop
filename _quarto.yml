@@ -31,6 +31,7 @@ book:
         - ui_design.qmd
     - part: resources.qmd
       chapters:
+        - resources/useful.qmd
         - resources/tbepwq.qmd
         - resources/tbepsg.qmd
         - resources/tbepbt.qmd
