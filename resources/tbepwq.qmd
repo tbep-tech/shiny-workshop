@@ -6,6 +6,9 @@ format:
   html: 
     toc: true
 categories: "Tampa Bay"
+filters:
+   - lightbox
+lightbox: auto
 ---
 
 # Water Quality {.unnumbered}

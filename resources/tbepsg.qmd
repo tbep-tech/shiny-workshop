@@ -1,0 +1,24 @@
+---
+pagetitle: "Seagrass Data"
+description: "A seagrass transect dashboard for Tampa Bay"
+image: "../figs/resources/mapsel.PNG"
+format: 
+  html: 
+    toc: true
+categories: "Tampa Bay"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Seagrass Data {.unnumbered}
+
+## Background
+
+The seagrass transect dashboard can be used to view results for the annual transect monitoring program in Tampa Bay.  Data are available from the mid-1990s to present day.  The dashboard provides summary information, results for individual transects, estimates of the seagrass edge, and data downloads.
+
+## Dashboard
+
+View the dashboard by visiting [https://shiny.tbep.org/seagrasstransect-dash](https://shiny.tbep.org/seagrasstransect-dash){target="_blank"}
+
+![](../figs/resources/transectdashscreenshot.png)

@@ -17,7 +17,7 @@ book:
   page-navigation: true
   page-footer:
     left: |
-      Website created by authors, with attribution to external content
+      Website created by instructors, with attribution to external content
     right: |
       This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a>
   chapters:
@@ -32,6 +32,7 @@ book:
     - part: resources.qmd
       chapters:
         - resources/tbepwq.qmd
+        - resources/tbepsg.qmd
   appendices:
     - setup.qmd
     - rintro.qmd

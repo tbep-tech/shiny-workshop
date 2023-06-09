@@ -6,7 +6,6 @@ listing:
    - "resources/*.qmd"
   type: grid
   categories: true
-  # fields: [image, title, description]
 ---
 
 ::: {#list-resources}
