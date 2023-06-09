@@ -158,7 +158,63 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Benthic Data\n\n\n\nTampa Bay\n\n\n\nA benthic data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand Use Data\n\n\n\nTampa Bay\n\n\n\nA land use change dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNekton Data\n\n\n\nTampa Bay\n\n\n\nA nekton data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPiney Point Data\n\n\n\nTampa Bay\n\n\n\nA Piney Point dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSeagrass Data\n\n\n\nTampa Bay\n\n\n\nA seagrass transect dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidal Creek Data\n\n\n\nTampa Bay\n\n\n\nA tidal creek dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality\n\n\n\nTampa Bay\n\n\n\nA water quality dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Benthic Data\n\n\n\nTampa Bay\n\n\n\nA benthic data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand Use Data\n\n\n\nTampa Bay\n\n\n\nA land use change dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNekton Data\n\n\n\nTampa Bay\n\n\n\nA nekton data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPiney Point Data\n\n\n\nTampa Bay\n\n\n\nA Piney Point dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSeagrass Data\n\n\n\nTampa Bay\n\n\n\nA seagrass transect dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidal Creek Data\n\n\n\nTampa Bay\n\n\n\nA tidal creek dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUseful Links\n\n\nAdditional resources for continued learning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality\n\n\n\nTampa Bay\n\n\n\nA water quality dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "resources/useful.html#quarto",
+    "href": "resources/useful.html#quarto",
+    "title": "Useful Links",
+    "section": "Quarto",
+    "text": "Quarto\n\nOfficial Quarto Website\nQuarto Reference Materials\nLearning Quarto with RStudio\nOpenscapes Quarto Tutorial"
+  },
+  {
+    "objectID": "resources/useful.html#shiny",
+    "href": "resources/useful.html#shiny",
+    "title": "Useful Links",
+    "section": "Shiny",
+    "text": "Shiny\n\nOfficial Shiny Website\nLearning Shiny with RStudio\nMastering Shiny\nShiny Cheatsheet\nEngineering Production Grade Shiny Apps"
+  },
+  {
+    "objectID": "resources/useful.html#open-science-websites",
+    "href": "resources/useful.html#open-science-websites",
+    "title": "Useful Links",
+    "section": "Open Science Websites",
+    "text": "Open Science Websites\n\nNCEAS Open Science for Synthesis workshop\nNCEAS Reproducible Research Techniques\nOpen Science Foundation open science workshop\nOpenscapes\nOpenscapes Champions Lesson Series\nSupercharge your research: A 10 week plan for open data science\nROpenSci guidance on creating a Code of Conduct\nNOAA Reproducible Reporting with R\nPeerJ collection on practical data science"
+  },
+  {
+    "objectID": "resources/useful.html#data-management-tools",
+    "href": "resources/useful.html#data-management-tools",
+    "title": "Useful Links",
+    "section": "Data Management Tools",
+    "text": "Data Management Tools\n\nEnvironmental Data Initiative Data Management Resources\nUniversity of California DMPTool\nUS Geological Survey resources for Metadata Creation\nELIXIR and others Data Stewardship Wizard\nTBEP Data Management SOP"
+  },
+  {
+    "objectID": "resources/useful.html#tbep-r-trainings",
+    "href": "resources/useful.html#tbep-r-trainings",
+    "title": "Useful Links",
+    "section": "TBEP R Trainings",
+    "text": "TBEP R Trainings\n\nPeconic Estuary Program R training, recording\nTBEP June 2020 R training, recordings\nWriting functions in R\nR package development workflow\nA soft introduction to Shiny"
+  },
+  {
+    "objectID": "resources/useful.html#r-lessons-tutorials",
+    "href": "resources/useful.html#r-lessons-tutorials",
+    "title": "Useful Links",
+    "section": "R Lessons & Tutorials",
+    "text": "R Lessons & Tutorials\n\nSoftware Carpentry: R for Reproducible Scientific Analysis\nData Carpentry: Geospatial Workshop\nData Carpentry: R for Data Analysis and Visualization of Ecological Data\nData Carpentry: Data Organization in Spreadsheets\nR for Water Resources Data Science\nRStudio Webinars, many topics\nR For Cats: Basic introduction site, with cats!\nTopical cheatsheets from RStudio, also viewed from the help menu\nCheatsheet from CRAN of base R functions\nTotally awesome R-related artwork by Allison Horst\nColor reference PDF with text names, Color cheatsheet PDF from NCEAS"
+  },
+  {
+    "objectID": "resources/useful.html#r-ebookscourses",
+    "href": "resources/useful.html#r-ebookscourses",
+    "title": "Useful Links",
+    "section": "R eBooks/Courses",
+    "text": "R eBooks/Courses\n\nJenny Bryan’s Stat545.com\nGarrett Grolemund and Hadley Wickham’s R For Data Science\nChester Ismay and Albert Y. Kim’s Modern DiveR\nJulia Silge and David Robinson Text Mining with R\nHadley Wickham’s Advanced R\nHadley Wickham’s R for Data Science\nYihui Xie R Markdown: The Definitive Guide\nWinston Chang R Graphics Cookbook\nWegman et al. Remote Sensing and GIS for Ecologists: Using Open Source Software\nLovelace et al. Geocomputation with R\nEdszer Pebesma and Roger Bivand Spatial Data Science"
+  },
+  {
+    "objectID": "resources/useful.html#gitgithub",
+    "href": "resources/useful.html#gitgithub",
+    "title": "Useful Links",
+    "section": "Git/Github",
+    "text": "Git/Github\n\nJenny Bryan’s Happy Git and Github for the useR\nGit and GitHub for the Casual User\nCoding Club Intro to Github"
   },
   {
     "objectID": "resources/tbepwq.html#background",
@@ -305,7 +361,7 @@
     "href": "rintro.html#r-language-fundamentals",
     "title": "Appendix B — Introduction to R",
     "section": "B.2 R language fundamentals",
-    "text": "B.2 R language fundamentals\nR is built around functions. The basic syntax of a function follows the form: function_name(arg1, arg2, ...).\nWith the base install, you will gain access to many functions (2344, to be exact). Some examples:\n\n# print\nprint(\"hello world!\")\n\n[1] \"hello world!\"\n\n# sequence\nseq(1, 10)\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n# random numbers\nrnorm(100, mean = 10, sd = 2)\n\n  [1] 11.292607 10.025544 11.199934 10.534135  7.182948  8.766558 10.631603\n  [8]  8.534724  8.964956 10.487922  9.917823  7.805751 13.666069 10.996961\n [15] 10.842916  7.158086  9.227225 13.541350 12.715960  6.372137  8.751216\n [22] 11.163428  9.742294 11.516900  8.715461  8.236242  9.532685  8.671934\n [29] 12.511471  6.164961 12.802696  9.418138  9.449706 10.293533 10.795873\n [36] 11.115466 12.010350 11.725962 12.585360 11.764470 15.308660  7.924983\n [43] 10.597525 10.897291 10.316945  7.626954 11.814591 10.123489 10.145602\n [50]  8.472490  7.265434  8.651950 10.060198 11.280230 12.573326  8.185284\n [57]  7.192397  8.367441 11.536866  9.360304 12.647851 11.888489 13.039166\n [64] 15.236350 14.064644 10.830244 10.714400 10.593373 12.020263  7.961041\n [71]  9.429796 11.073421  8.581901 12.622335 10.697804 10.169419 11.336988\n [78]  8.007040  9.456196  5.312876  9.155862 11.911416  9.732186  6.937890\n [85] 10.800903  9.297277  9.786722 10.620072 10.469532 13.370454  8.889575\n [92]  9.161441 10.030083 11.259621  8.949466  8.740068  9.267385 11.047801\n [99] 10.258207 10.210064\n\n# average \nmean(rnorm(100))\n\n[1] -0.09225812\n\n# sum\nsum(rnorm(100))\n\n[1] -13.29895\n\n\nVery often you will see functions used like this:\n\nmy_random_sum &lt;- sum(rnorm(100))\n\nThe first part of the line is the name of an object that you make up. The second bit, &lt;-, is the assignment operator. This tells R to take the result of sum(rnorm(100)) and store it in an object named, my_random_sum. It is stored in the environment and can be used by just executing it’s name in the console.\n\nmy_random_sum\n\n[1] 0.1544916\n\n\n\nB.2.1 What is the environment?\nThere are two outcomes when you run code. First, the code will simply print output directly in the console. Second, there is no output because you have stored it as a variable using &lt;-. Output that is stored is saved in the environment. The environment is the collection of named objects that are stored in memory for your current R session."
+    "text": "B.2 R language fundamentals\nR is built around functions. The basic syntax of a function follows the form: function_name(arg1, arg2, ...).\nWith the base install, you will gain access to many functions (2344, to be exact). Some examples:\n\n# print\nprint(\"hello world!\")\n\n[1] \"hello world!\"\n\n# sequence\nseq(1, 10)\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n# random numbers\nrnorm(100, mean = 10, sd = 2)\n\n  [1]  7.987045  7.541413 13.187048  9.514163  8.303389  8.819845  8.702243\n  [8] 12.342438 10.841816 10.041518  8.210543 10.833797 13.075432  8.257699\n [15]  7.926351  6.623358  9.278322 11.226860  9.312430  9.729548  9.910368\n [22]  7.715081 11.701263 10.807368 11.633940  7.436418 13.366558  7.537458\n [29]  8.450281 11.228678 10.712835 11.455627  8.487529  7.742908  9.823154\n [36] 12.153959  9.518124  7.738114 12.760046  9.984648  9.849024 10.695047\n [43]  8.182569  9.699338 10.065889 11.533412  9.328026 10.267243 13.716814\n [50]  7.422263  9.646309  9.299833  9.312268 11.003082  7.495633 10.265713\n [57] 11.452302  8.936018  9.442010  7.038298 11.387943 11.101806 10.262103\n [64] 11.775135  9.502318 13.828540  7.930706  7.457109  9.683191  7.074510\n [71]  9.580733  7.617495 10.161991 12.717939 11.800025 11.073222 13.789877\n [78] 10.733275 13.793229  6.129819  7.683965 13.336504  6.466503 11.740973\n [85] 10.495834  9.070995 12.668070  9.224913 12.881233  7.713958  6.352462\n [92]  8.794821 11.955119 13.342684  8.832734  9.398097  8.233728 12.378888\n [99]  9.499249  7.663422\n\n# average \nmean(rnorm(100))\n\n[1] 0.01679412\n\n# sum\nsum(rnorm(100))\n\n[1] 7.001573\n\n\nVery often you will see functions used like this:\n\nmy_random_sum &lt;- sum(rnorm(100))\n\nThe first part of the line is the name of an object that you make up. The second bit, &lt;-, is the assignment operator. This tells R to take the result of sum(rnorm(100)) and store it in an object named, my_random_sum. It is stored in the environment and can be used by just executing it’s name in the console.\n\nmy_random_sum\n\n[1] 9.840139\n\n\n\nB.2.1 What is the environment?\nThere are two outcomes when you run code. First, the code will simply print output directly in the console. Second, there is no output because you have stored it as a variable using &lt;-. Output that is stored is saved in the environment. The environment is the collection of named objects that are stored in memory for your current R session."
   },
   {
     "objectID": "rintro.html#packages",
