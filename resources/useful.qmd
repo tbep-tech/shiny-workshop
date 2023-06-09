@@ -1,7 +1,7 @@
 ---
 pagetitle: "Useful Links"
 description: "Additional resources for continued learning"
-# image: "../figs/resources/ppchl.png"
+image: "../figs/resources/linksimage.png"
 format: 
   html: 
     toc: true
