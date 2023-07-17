@@ -1,0 +1,31 @@
+
+---
+pagetitle: "Sanctuaries Climate Dashboard"
+description: "NOAA NMS Climate Dashboard"
+image: "../figs/resources/nms_climate_dash.png"
+format: 
+  html: 
+    toc: true
+categories: 
+   - "MBON"
+   - "Climate Change"
+   - "Time Series"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# NMS Climate Dashboard {.unnumbered}
+
+## Background
+
+Dashboard of climate indicators across NOAA National Marine Sanctuaries.
+
+## Docs
+
+View the docs at [noaa-onms.github.io/climate-dashboard/
+](https://noaa-onms.github.io/climate-dashboard/
+){target="_blank"}
+
+![screenshot](../figs/resources/nms_climate_dash.png)
+
