@@ -259,13 +259,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#user-story-development" id="toc-user-story-development" class="nav-link active" data-scroll-target="#user-story-development"><span class="header-section-number">5.1</span> user story development</a>
-  <ul class="collapse">
-  <li><a href="#use-case-collection" id="toc-use-case-collection" class="nav-link" data-scroll-target="#use-case-collection"><span class="header-section-number">5.1.1</span> use-case collection</a></li>
-  <li><a href="#select-user-story" id="toc-select-user-story" class="nav-link" data-scroll-target="#select-user-story"><span class="header-section-number">5.1.2</span> select user-story</a></li>
-  <li><a href="#iterative-design" id="toc-iterative-design" class="nav-link" data-scroll-target="#iterative-design"><span class="header-section-number">5.1.3</span> iterative design</a></li>
-  <li><a href="#speak-aloud-protocol" id="toc-speak-aloud-protocol" class="nav-link" data-scroll-target="#speak-aloud-protocol"><span class="header-section-number">5.1.4</span> speak aloud protocol</a></li>
-  </ul></li>
+  <li><a href="#user-story-collection" id="toc-user-story-collection" class="nav-link active" data-scroll-target="#user-story-collection"><span class="header-section-number">5.0.1</span> user story collection</a></li>
+  <li><a href="#select-use-case" id="toc-select-use-case" class="nav-link" data-scroll-target="#select-use-case"><span class="header-section-number">5.0.2</span> select use case</a></li>
+  <li><a href="#iterative-design" id="toc-iterative-design" class="nav-link" data-scroll-target="#iterative-design"><span class="header-section-number">5.0.3</span> iterative design</a></li>
+  <li><a href="#speak-aloud-protocol" id="toc-speak-aloud-protocol" class="nav-link" data-scroll-target="#speak-aloud-protocol"><span class="header-section-number">5.0.4</span> speak aloud protocol</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">5.1</span> Definitions:</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/ui_design.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -289,36 +287,45 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Definitions:</p>
+<p>User-centered user-inteface (UI) and user-experience (UX) co-design is a conceptual framework for collecting, organizing, and developing to meet user needs.</p>
+<p>The process can be summarized as:</p>
+<ol type="1">
+<li>collect user stories</li>
+<li>create use case from the user stories</li>
+<li>solve the user story</li>
+</ol>
+<section id="user-story-collection" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="user-story-collection"><span class="header-section-number">5.0.1</span> user story collection</h3>
+<p>A “user story” can be represented by a statement in the following form:</p>
+<pre><code>"As a ___ I want ___ so that ___."</code></pre>
+<p>Early in the development of project ideas, collecting use-cases in this form will help identify the outcomes that are most important for your userbase.</p>
+</section>
+<section id="select-use-case" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="select-use-case"><span class="header-section-number">5.0.2</span> select use case</h3>
+<p>Developing a user story can be an important part of explicitly defining the needs and wants of your target users. Once a set of use cases have been collected, a user story can be created that will satisfy multiple use cases. A good user story is generic enough to cover many use cases but specific enough to be clearly resolved.</p>
+<p>A use case is a task or workflow for which your product is used.</p>
+<p>Examples: * “check a region of interest for recent anomalous temperatures” * “get an email alert when a major temperature anomaly is detected” * “see where the most biologically diverse areas are”</p>
+</section>
+<section id="iterative-design" class="level3" data-number="5.0.3">
+<h3 data-number="5.0.3" class="anchored" data-anchor-id="iterative-design"><span class="header-section-number">5.0.3</span> iterative design</h3>
+<p>The aim of an iterative design process is to involve users as the features of a product are built piece-by-piece.</p>
+</section>
+<section id="speak-aloud-protocol" class="level3" data-number="5.0.4">
+<h3 data-number="5.0.4" class="anchored" data-anchor-id="speak-aloud-protocol"><span class="header-section-number">5.0.4</span> speak aloud protocol</h3>
+<p>“Speak aloud protocol” is a way of collecting user feedback that encourages a user of the product to speak their thoughts aloud when using the product. The facilitator should try to minimize guidance or influence on the user and encourage free-form expression from the user. This protocol can be particularly useful for identifying the “pain points” in a user workflow, wherein a user gets stuck wondering how to move to the next step of their task.</p>
+</section>
+<section id="definitions" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="definitions"><span class="header-section-number">5.1</span> Definitions:</h2>
 <ul>
-<li><code>co-design</code> : Designing with <em>equal</em> contribution from stakeholders at <em>every</em> step of development</li>
+<li><code>co-design</code> : Designing with equal contribution from stakeholders at <em>every</em> step of development</li>
 <li><code>user story</code> : As a ___ I want ___ so that ___.</li>
 <li><code>use case</code> : Generalized summary of user stories in context of the application.</li>
 <li><code>iterative design</code> : Repeating pattern of 1) design next iteration 2) user evaluation</li>
 <li><code>minimum viable product</code> : First design iteration with minimal features to be useful.</li>
 <li><code>speak aloud protocol</code> : Method for user evaluation that aims to minimize evaluator impact.</li>
 </ul>
-<section id="user-story-development" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="user-story-development"><span class="header-section-number">5.1</span> user story development</h2>
-<p>TODO</p>
-<section id="use-case-collection" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="use-case-collection"><span class="header-section-number">5.1.1</span> use-case collection</h3>
-<p>TODO</p>
-</section>
-<section id="select-user-story" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="select-user-story"><span class="header-section-number">5.1.2</span> select user-story</h3>
-<p>TODO</p>
-</section>
-<section id="iterative-design" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="iterative-design"><span class="header-section-number">5.1.3</span> iterative design</h3>
-<p>TODO</p>
-</section>
-<section id="speak-aloud-protocol" class="level3" data-number="5.1.4">
-<h3 data-number="5.1.4" class="anchored" data-anchor-id="speak-aloud-protocol"><span class="header-section-number">5.1.4</span> speak aloud protocol</h3>
-<p>TODO</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
