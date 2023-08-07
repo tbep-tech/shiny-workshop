@@ -158,7 +158,7 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Benthic Data\n\n\n\nTampa Bay\n\n\n\nA benthic data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand Use Data\n\n\n\nTampa Bay\n\n\n\nA land use change dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNekton Data\n\n\n\nTampa Bay\n\n\n\nA nekton data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPiney Point Data\n\n\n\nTampa Bay\n\n\n\nA Piney Point dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSeagrass Data\n\n\n\nTampa Bay\n\n\n\nA seagrass transect dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidal Creek Data\n\n\n\nTampa Bay\n\n\n\nA tidal creek dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUseful Links\n\n\nAdditional resources for continued learning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality\n\n\n\nTampa Bay\n\n\n\nA water quality dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Benthic Data\n\n\n\nTampa Bay\n\n\n\nA benthic data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFL Water Quality Dash\n\n\n\nWater Quality\n\n\nTime Series\n\n\n\nDashboard for displaying basic water quality data in Florida.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand Use Data\n\n\n\nTampa Bay\n\n\n\nA land use change dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNMS Climate Dashboard\n\n\n\nMBON\n\n\nClimate Change\n\n\nTime Series\n\n\n\nNOAA NMS Climate Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNekton Data\n\n\n\nTampa Bay\n\n\n\nA nekton data dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOBIS Indicators\n\n\n\nMBON\n\n\nBioDiversity\n\n\nSpatial Mapping\n\n\n\nA library for mapping biodiversity using OBIS data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPiney Point Data\n\n\n\nTampa Bay\n\n\n\nA Piney Point dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSeagrass Data\n\n\n\nTampa Bay\n\n\n\nA seagrass transect dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidal Creek Data\n\n\n\nTampa Bay\n\n\n\nA tidal creek dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUseful Links\n\n\nAdditional resources for continued learning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWater Quality\n\n\n\nTampa Bay\n\n\n\nA water quality dashboard for Tampa Bay\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "resources/useful.html#quarto",
@@ -315,6 +315,48 @@
     "text": "Dashboard\nView the dashboard by visiting https://shiny.tbep.org/piney-point"
   },
   {
+    "objectID": "resources/fl_wq_dash.html#background",
+    "href": "resources/fl_wq_dash.html#background",
+    "title": "FL Water Quality Dash",
+    "section": "Background",
+    "text": "Background\nData and decision support tools for assessing water quality in Florida."
+  },
+  {
+    "objectID": "resources/fl_wq_dash.html#docs",
+    "href": "resources/fl_wq_dash.html#docs",
+    "title": "FL Water Quality Dash",
+    "section": "Docs",
+    "text": "Docs\nView the dashboard at 7yl4r.shinyapps.io/wq-dash\n\n\n\nscreenshot"
+  },
+  {
+    "objectID": "resources/nms_climate_dash.html#background",
+    "href": "resources/nms_climate_dash.html#background",
+    "title": "NMS Climate Dashboard",
+    "section": "Background",
+    "text": "Background\nDashboard of climate indicators across NOAA National Marine Sanctuaries."
+  },
+  {
+    "objectID": "resources/nms_climate_dash.html#docs",
+    "href": "resources/nms_climate_dash.html#docs",
+    "title": "NMS Climate Dashboard",
+    "section": "Docs",
+    "text": "Docs\nView the docs at noaa-onms.github.io/climate-dashboard/\n\n\n\nscreenshot"
+  },
+  {
+    "objectID": "resources/obisindicators.html#background",
+    "href": "resources/obisindicators.html#background",
+    "title": "OBIS Indicators",
+    "section": "Background",
+    "text": "Background\nR package for generating indicators from OBIS"
+  },
+  {
+    "objectID": "resources/obisindicators.html#docs",
+    "href": "resources/obisindicators.html#docs",
+    "title": "OBIS Indicators",
+    "section": "Docs",
+    "text": "Docs\nView the docs at marinebon.github.io/obisindicators/\n\n\n\nexample_es50_map"
+  },
+  {
     "objectID": "setup.html#install-r-and-rstudio",
     "href": "setup.html#install-r-and-rstudio",
     "title": "Appendix A — Setup for the workshop",
@@ -361,14 +403,14 @@
     "href": "rintro.html#r-language-fundamentals",
     "title": "Appendix B — Introduction to R",
     "section": "B.2 R language fundamentals",
-    "text": "B.2 R language fundamentals\nR is built around functions. The basic syntax of a function follows the form: function_name(arg1, arg2, ...).\nWith the base install, you will gain access to many functions (2344, to be exact). Some examples:\n\n# print\nprint(\"hello world!\")\n\n[1] \"hello world!\"\n\n# sequence\nseq(1, 10)\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n# random numbers\nrnorm(100, mean = 10, sd = 2)\n\n  [1] 10.539871  7.376328  9.622177  7.779560 11.413522  7.866607  9.252881\n  [8]  9.982377  7.956589  9.526982 11.090501 10.473920  8.762959  7.397262\n [15]  9.658522  8.525228 10.913627 10.150721  9.987029  7.271584  8.530737\n [22] 11.741551  6.257662 11.732074 10.405877  8.403957  9.926365 11.313083\n [29]  9.731136  7.756261 11.295984  5.789444  8.217197  8.873762  9.094807\n [36] 14.596722 10.980999  8.946561 13.929705  9.151321 11.093486  9.983530\n [43]  9.008392  7.521401 12.045016  8.513349 10.499493  7.866008 10.121401\n [50] 12.399804  8.950009 11.652666 10.706385  8.975719 13.394010  8.387987\n [57] 12.179359 14.634700  4.037554  6.806171 11.344833 11.575480 11.321612\n [64]  8.456198 15.294157 15.640198  7.630603  9.520765  9.172815 12.013499\n [71] 11.231083  6.424318  9.001298 10.590064 11.418360 11.123913 11.275837\n [78]  8.982276 10.184938  9.719035 10.509871 12.548611  9.733981  7.365042\n [85] 10.993410 10.307303  6.984372 12.879707 12.895404 10.017108 11.242839\n [92]  7.104808  9.620769  6.315353  7.569433 13.742119 11.703887 11.371487\n [99]  7.685621 10.943619\n\n# average \nmean(rnorm(100))\n\n[1] 0.08871397\n\n# sum\nsum(rnorm(100))\n\n[1] -3.405382\n\n\nVery often you will see functions used like this:\n\nmy_random_sum &lt;- sum(rnorm(100))\n\nThe first part of the line is the name of an object that you make up. The second bit, &lt;-, is the assignment operator. This tells R to take the result of sum(rnorm(100)) and store it in an object named, my_random_sum. It is stored in the environment and can be used by just executing it’s name in the console.\n\nmy_random_sum\n\n[1] 7.3668\n\n\n\nB.2.1 What is the environment?\nThere are two outcomes when you run code. First, the code will simply print output directly in the console. Second, there is no output because you have stored it as a variable using &lt;-. Output that is stored is saved in the environment. The environment is the collection of named objects that are stored in memory for your current R session."
+    "text": "B.2 R language fundamentals\nR is built around functions. The basic syntax of a function follows the form: function_name(arg1, arg2, ...).\nWith the base install, you will gain access to many functions (2344, to be exact). Some examples:\n\n# print\nprint(\"hello world!\")\n\n[1] \"hello world!\"\n\n# sequence\nseq(1, 10)\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n# random numbers\nrnorm(100, mean = 10, sd = 2)\n\n  [1]  7.124592  8.183326  5.725705  9.201597  6.959101  6.245782  7.505220\n  [8]  8.190014  6.418716 10.261105  9.362660 14.879468  8.656199  3.877287\n [15]  7.697117 12.170708 12.016782  7.731776  9.376629  8.397814 11.218384\n [22] 10.777248 11.842974 10.655961 12.468508 12.344690  6.324166 10.614848\n [29] 12.554025  9.098610  9.734283 12.577197  9.396508  8.327745  8.464318\n [36] 10.049441  8.480562  9.306903  7.685427 11.477647 10.040138  6.568952\n [43] 11.064473  5.777589 12.333300 10.362634 11.267392 10.421376  6.579526\n [50]  5.589922 13.987583 10.932357  9.691422 11.137570  9.326510  6.761708\n [57]  9.042835  4.207854 10.440576 12.267637  8.488914  8.389356  5.600231\n [64]  6.211475 12.461298 10.424488  9.594473 10.049839  7.578874 11.421827\n [71] 10.777364 10.083877  9.516446 12.501606 10.332169  8.674526 11.075576\n [78]  7.754986 11.880374 11.594614  8.865785 10.063990 10.990950 13.543545\n [85]  8.125651 12.387462  9.833715 12.036739 12.746522 10.460438  7.358451\n [92]  8.684751  8.691640  8.473367 13.142877 18.427020  8.810526 10.063011\n [99]  8.179672  6.355259\n\n# average \nmean(rnorm(100))\n\n[1] 0.02253667\n\n# sum\nsum(rnorm(100))\n\n[1] 7.591561\n\n\nVery often you will see functions used like this:\n\nmy_random_sum &lt;- sum(rnorm(100))\n\nThe first part of the line is the name of an object that you make up. The second bit, &lt;-, is the assignment operator. This tells R to take the result of sum(rnorm(100)) and store it in an object named, my_random_sum. It is stored in the environment and can be used by just executing it’s name in the console.\n\nmy_random_sum\n\n[1] 4.251902\n\n\n\nB.2.1 What is the environment?\nThere are two outcomes when you run code. First, the code will simply print output directly in the console. Second, there is no output because you have stored it as a variable using &lt;-. Output that is stored is saved in the environment. The environment is the collection of named objects that are stored in memory for your current R session."
   },
   {
     "objectID": "rintro.html#packages",
     "href": "rintro.html#packages",
     "title": "Appendix B — Introduction to R",
     "section": "B.3 Packages",
-    "text": "B.3 Packages\nThe base installation of R is quite powerful. Packages allow you to include new methods for use in R.\n\nB.3.1 CRAN\nMany packages are available on CRAN, The Comprehensive R Archive Network. This is where you download R and also where most will gain access to packages. As of 2023-07-17, there are 19833 packages on CRAN!\n\n\nB.3.2 Installing packages\nWhen a package gets installed, that means the source code is downloaded and put into your library. A default library location is set for you.\nWe use the install.packages() function to download and install a package. Here, we install the readxl package, used below, which is used to upload data from and Excel file.\n\ninstall.packages(\"readxl\")\n\nYou should see some text in the R console showing progress of the installation and a prompt after installation is done.\nAfter installation, you can load a package using the library() function. This makes all functions in a package available for you to use.\n\nlibrary(readxl)\n\nAn important aspect of packages is that you only need to download them once, but every time you start RStudio you need to load them with the library() function."
+    "text": "B.3 Packages\nThe base installation of R is quite powerful. Packages allow you to include new methods for use in R.\n\nB.3.1 CRAN\nMany packages are available on CRAN, The Comprehensive R Archive Network. This is where you download R and also where most will gain access to packages. As of 2023-08-07, there are 19861 packages on CRAN!\n\n\nB.3.2 Installing packages\nWhen a package gets installed, that means the source code is downloaded and put into your library. A default library location is set for you.\nWe use the install.packages() function to download and install a package. Here, we install the readxl package, used below, which is used to upload data from and Excel file.\n\ninstall.packages(\"readxl\")\n\nYou should see some text in the R console showing progress of the installation and a prompt after installation is done.\nAfter installation, you can load a package using the library() function. This makes all functions in a package available for you to use.\n\nlibrary(readxl)\n\nAn important aspect of packages is that you only need to download them once, but every time you start RStudio you need to load them with the library() function."
   },
   {
     "objectID": "rintro.html#data-structures-in-r",

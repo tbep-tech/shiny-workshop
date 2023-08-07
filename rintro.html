@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -249,6 +249,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Piney Point Data</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources/fl_wq_dash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FL Water Quality Dash</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources/nms_climate_dash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NMS Climate Dashboard</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources/obisindicators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OBIS Indicators</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -399,31 +417,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random numbers</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 10.539871  7.376328  9.622177  7.779560 11.413522  7.866607  9.252881
-  [8]  9.982377  7.956589  9.526982 11.090501 10.473920  8.762959  7.397262
- [15]  9.658522  8.525228 10.913627 10.150721  9.987029  7.271584  8.530737
- [22] 11.741551  6.257662 11.732074 10.405877  8.403957  9.926365 11.313083
- [29]  9.731136  7.756261 11.295984  5.789444  8.217197  8.873762  9.094807
- [36] 14.596722 10.980999  8.946561 13.929705  9.151321 11.093486  9.983530
- [43]  9.008392  7.521401 12.045016  8.513349 10.499493  7.866008 10.121401
- [50] 12.399804  8.950009 11.652666 10.706385  8.975719 13.394010  8.387987
- [57] 12.179359 14.634700  4.037554  6.806171 11.344833 11.575480 11.321612
- [64]  8.456198 15.294157 15.640198  7.630603  9.520765  9.172815 12.013499
- [71] 11.231083  6.424318  9.001298 10.590064 11.418360 11.123913 11.275837
- [78]  8.982276 10.184938  9.719035 10.509871 12.548611  9.733981  7.365042
- [85] 10.993410 10.307303  6.984372 12.879707 12.895404 10.017108 11.242839
- [92]  7.104808  9.620769  6.315353  7.569433 13.742119 11.703887 11.371487
- [99]  7.685621 10.943619</code></pre>
+<pre><code>  [1]  7.124592  8.183326  5.725705  9.201597  6.959101  6.245782  7.505220
+  [8]  8.190014  6.418716 10.261105  9.362660 14.879468  8.656199  3.877287
+ [15]  7.697117 12.170708 12.016782  7.731776  9.376629  8.397814 11.218384
+ [22] 10.777248 11.842974 10.655961 12.468508 12.344690  6.324166 10.614848
+ [29] 12.554025  9.098610  9.734283 12.577197  9.396508  8.327745  8.464318
+ [36] 10.049441  8.480562  9.306903  7.685427 11.477647 10.040138  6.568952
+ [43] 11.064473  5.777589 12.333300 10.362634 11.267392 10.421376  6.579526
+ [50]  5.589922 13.987583 10.932357  9.691422 11.137570  9.326510  6.761708
+ [57]  9.042835  4.207854 10.440576 12.267637  8.488914  8.389356  5.600231
+ [64]  6.211475 12.461298 10.424488  9.594473 10.049839  7.578874 11.421827
+ [71] 10.777364 10.083877  9.516446 12.501606 10.332169  8.674526 11.075576
+ [78]  7.754986 11.880374 11.594614  8.865785 10.063990 10.990950 13.543545
+ [85]  8.125651 12.387462  9.833715 12.036739 12.746522 10.460438  7.358451
+ [92]  8.684751  8.691640  8.473367 13.142877 18.427020  8.810526 10.063011
+ [99]  8.179672  6.355259</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.08871397</code></pre>
+<pre><code>[1] 0.02253667</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -3.405382</code></pre>
+<pre><code>[1] 7.591561</code></pre>
 </div>
 </div>
 <p>Very often you will see functions used like this:</p>
@@ -434,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_random_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.3668</code></pre>
+<pre><code>[1] 4.251902</code></pre>
 </div>
 </div>
 <section id="what-is-the-environment" class="level3" data-number="B.2.1">
@@ -447,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The base installation of R is quite powerful. Packages allow you to include new methods for use in R.</p>
 <section id="cran" class="level3" data-number="B.3.1">
 <h3 data-number="B.3.1" class="anchored" data-anchor-id="cran"><span class="header-section-number">B.3.1</span> CRAN</h3>
-<p>Many packages are available on CRAN, <a href="http://cran.r-project.org/" target="_blank">The Comprehensive R Archive Network</a>. This is where you download R and also where most will gain access to packages. As of 2023-07-17, there are 19833 packages on CRAN!</p>
+<p>Many packages are available on CRAN, <a href="http://cran.r-project.org/" target="_blank">The Comprehensive R Archive Network</a>. This is where you download R and also where most will gain access to packages. As of 2023-08-07, there are 19861 packages on CRAN!</p>
 </section>
 <section id="installing-packages" class="level3" data-number="B.3.2">
 <h3 data-number="B.3.2" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">B.3.2</span> Installing packages</h3>
@@ -878,7 +896,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":true});</script>
 
 
 
