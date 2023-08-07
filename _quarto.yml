@@ -39,6 +39,9 @@ book:
         - resources/tbepnk.qmd
         - resources/tbeplu.qmd
         - resources/tbeppp.qmd
+        - resources/fl_wq_dash.qmd
+        - resources/nms_climate_dash.qmd
+        - resources/obisindicators.qmd
   appendices:
     - setup.qmd
     - rintro.qmd
