@@ -4,7 +4,7 @@ filters:
 lightbox: auto
 ---
 
-# UI/UX Design w/ user-centered co-design
+# Co-designing
 User-centered user-inteface (UI) and user-experience (UX) co-design is a conceptual framework for collecting, organizing, and developing to meet user needs.
 
 The process can be summarized as:
