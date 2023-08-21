@@ -8,6 +8,7 @@ format:
 categories: 
    - "Water Quality"
    - "Time Series"
+   - "flexdashboard"
 filters:
    - lightbox
 lightbox: auto
