@@ -5,7 +5,9 @@ image: "../figs/resources/mapsel.PNG"
 format: 
   html: 
     toc: true
-categories: "Tampa Bay"
+categories: 
+  - "Tampa Bay"
+  - "flexdashboard"
 filters:
    - lightbox
 lightbox: auto

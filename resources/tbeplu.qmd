@@ -5,7 +5,8 @@ image: "../figs/resources/alluvial.png"
 format: 
   html: 
     toc: true
-categories: "Tampa Bay"
+categories: 
+  - "Tampa Bay"
 filters:
    - lightbox
 lightbox: auto
