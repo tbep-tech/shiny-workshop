@@ -329,6 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#make-sure-rstudio-can-talk-to-github-via-git" id="toc-make-sure-rstudio-can-talk-to-github-via-git" class="nav-link" data-scroll-target="#make-sure-rstudio-can-talk-to-github-via-git"><span class="header-section-number">A.4.1</span> Make sure RStudio can talk to GitHub via Git</a></li>
   </ul></li>
   <li><a href="#sec-setshi" id="toc-sec-setshi" class="nav-link" data-scroll-target="#sec-setshi"><span class="header-section-number">A.5</span> Setup shinyapps.io</a></li>
+  <li><a href="#sec-cloud" id="toc-sec-cloud" class="nav-link" data-scroll-target="#sec-cloud"><span class="header-section-number">A.6</span> Posit Cloud (optional)</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/setup.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -360,8 +361,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#sec-setgit">Setup GitHub Account</a></li>
 <li><a href="#sec-instgit">Install Git</a> (optional)</li>
 <li><a href="#sec-setshi">Setup shinyapps.io</a></li>
+<li><a href="#sec-cloud">Posit Cloud</a> (optional)</li>
 </ol>
-<p>Most of these steps will require administrative privileges on a computer. Work with your IT staff to complete the setup if you do not have these privileges.</p>
+<p>Most of these steps will require administrative privileges on a computer. Work with your IT staff to complete the setup if you do not have these privileges. As an alternative, you can use Posit Cloud to participate (see <a href="#sec-cloud"><span>Section&nbsp;A.6</span></a>), although we strongly encourage you to install the software on your personal computer for use after the workshop.</p>
 <p>Please reach out if you have any issues with installation: <a href="mailto:mbeck@tbep.org">mbeck@tbep.org</a></p>
 <section id="install-r-and-rstudio" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="install-r-and-rstudio"><span class="header-section-number">A.1</span> Install R and RStudio</h2>
@@ -517,6 +519,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">deployApp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>More info can be found <a href="https://shiny.posit.co/r/articles/share/shinyapps/" target="_blank">here</a>.</p>
+</section>
+<section id="sec-cloud" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="sec-cloud"><span class="header-section-number">A.6</span> Posit Cloud (optional)</h2>
+<p>Posit Cloud provides an environment to use RStudio and the resources above through a web browser. We’ve created a workspace on Posit Cloud that includes most of the content described above. Open the following URL in a web browser: <a href="https://posit.cloud/content/5544370" target="_blank">https://posit.cloud/content/5544370</a></p>
+<p>You will see a login screen that looks like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/setup/positsignup.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="figs/setup/positsignup.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Sign up using a personal login or existing account (Google, GitHub, etc.).</p>
+<p>Once you’ve signed in, you’ll the workspace in your browser. You’ll need to make a permanent copy to save your work.</p>
 
 
 </section>
@@ -828,7 +842,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 
