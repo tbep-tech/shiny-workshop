@@ -6,7 +6,7 @@ project:
 
 book:
   title: "Dashboards: Using R to create actionable science"
-  subtitle: "Quarto & Shiny 1-Day Workshop for CERF Conference (2023-11-12)"
+  subtitle: "Quarto & Shiny: CERF 1-Day Workshop, Nov. 12th, 2023"
   author: "Ben Best, Marcus Beck, Tylar Murray, Enrique Montes"
   repo-url: https://github.com/tbep-tech/shiny-workshop
   reader-mode: true

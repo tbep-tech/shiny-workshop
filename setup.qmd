@@ -14,8 +14,9 @@ Thanks for your interest in the R Shiny workshop. You will need to do the follow
 1. [Setup GitHub Account](#sec-setgit)
 1. [Install Git](#sec-instgit) (optional)
 1. [Setup shinyapps.io](#sec-setshi)
+1. [Posit Cloud](#sec-cloud) (optional)
 
-Most of these steps will require administrative privileges on a computer.  Work with your IT staff to complete the setup if you do not have these privileges. 
+Most of these steps will require administrative privileges on a computer.  Work with your IT staff to complete the setup if you do not have these privileges.  As an alternative, you can use Posit Cloud to participate (see @sec-cloud), although we strongly encourage you to install the software on your personal computer for use after the workshop.
 
 Please reach out if you have any issues with installation: [mbeck@tbep.org](mailto:mbeck@tbep.org)
 
@@ -172,3 +173,15 @@ deployApp()
 ```
 
 More info can be found [here](https://shiny.posit.co/r/articles/share/shinyapps/){target="_blank"}.
+
+## Posit Cloud (optional) {#sec-cloud}
+
+Posit Cloud provides an environment to use RStudio and the resources above through a web browser.  We've created a workspace on Posit Cloud that includes most of the content described above.  Open the following URL in a web browser: [https://posit.cloud/content/5544370](https://posit.cloud/content/5544370){target="_blank"}
+
+You will see a login screen that looks like this: 
+
+![](figs/setup/positsignup.png)
+
+Sign up using a personal login or existing account (Google, GitHub, etc.).
+
+Once you've signed in, you'll the workspace in your browser.  You'll need to make a permanent copy to save your work.  
