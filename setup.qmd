@@ -184,4 +184,8 @@ You will see a login screen that looks like this:
 
 Sign up using a personal login or existing account (Google, GitHub, etc.).
 
-Once you've signed in, you'll the workspace in your browser.  You'll need to make a permanent copy to save your work.  
+You'll see the workspace in your browser once you've signed in.  You'll need to make a permanent copy to save your work.  Just click the button at the top marked "+ Save as Permanent Copy".  When this is done, the red text at the top indicating "TEMPORARY COPY" will no longer be visible.    
+
+![](figs/setup/positworkspace.PNG)
+
+Now you can follow along with the workshop content.
