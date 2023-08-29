@@ -1,13 +1,11 @@
-
 ---
 pagetitle: "Rocky Intertidal Dashboard"
-description: "MBON Pole to Pole Biodiversity Dashboard"
+description: "MBON Pole to Pole Biodiversity Dashboard."
 image: "../figs/resources/rs_dash.png"
 format: 
   html: 
     toc: true
 categories: 
-   - "MBON Pole to Pole"
    - "Biodiversity"
    - "Spatial mapping"
    - "Flexdashboard"
@@ -20,12 +18,11 @@ lightbox: auto
 
 ## Background
 
-Dashboard of biodiversity monitoring observations from rocky intertidal habitats.
+Data visualization dashboard of biodiversity monitoring observations from rocky intertidal habitats.
 
 ## Docs
 
-View the docs in this [Github repository
-](https://github.com/gonzalobravoargentina/MBON_CoralNet_Dashboard
+View the dashboard in this [Github repository](https://github.com/gonzalobravoargentina/MBON_CoralNet_Dashboard/
 ){target="_blank"}
 
 ![screenshot](../figs/resources/rs_dash.png)
