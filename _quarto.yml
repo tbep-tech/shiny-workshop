@@ -42,6 +42,7 @@ book:
         - resources/fl_wq_dash.qmd
         - resources/nms_climate_dash.qmd
         - resources/obisindicators.qmd
+        - resources/rocky_shore_dash.qmd
   appendices:
     - setup.qmd
     - rintro.qmd
