@@ -7,7 +7,7 @@ format:
     toc: true
 categories: 
    - "MBON"
-   - "BioDiversity"
+   - "Biodiversity"
    - "Spatial Mapping"
 filters:
    - lightbox

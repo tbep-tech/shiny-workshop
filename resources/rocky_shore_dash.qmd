@@ -7,8 +7,8 @@ format:
     toc: true
 categories: 
    - "Biodiversity"
-   - "Spatial mapping"
-   - "Flexdashboard"
+   - "Spatial Mapping"
+   - "flexdashboard"
 filters:
    - lightbox
 lightbox: auto
