@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -289,6 +323,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#dynamic-and-interactive-applications" id="toc-dynamic-and-interactive-applications" class="nav-link active" data-scroll-target="#dynamic-and-interactive-applications"><span class="header-section-number">2</span> Dynamic and Interactive applications</a>
   <ul class="collapse">
   <li><a href="#reactivity" id="toc-reactivity" class="nav-link" data-scroll-target="#reactivity"><span class="header-section-number">2.1</span> Reactivity</a></li>
+  <li><a href="#a-simple-example" id="toc-a-simple-example" class="nav-link" data-scroll-target="#a-simple-example"><span class="header-section-number">2.2</span> A simple example</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">2.3</span> Next steps</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/intro.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -325,11 +361,99 @@ ul.task-list li input[type="checkbox"] {
 <section id="dynamic-and-interactive-applications" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Dynamic and Interactive applications</h1>
 <p>This workshop will expose you to the basics of creating interactive dashboards in R. Before we begin, it’s useful to distinguish between <strong><em>dynamic</em></strong> and <strong><em>interactive</em></strong> dashboards.</p>
-<p><a href="figs/dynamicvint.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/dynamicvint.png" class="img-fluid" width="800"></a> A Shiny application is fully <strong><em>interactive</em></strong> - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI. This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience. These applications require combined or separate R scripts that define the UI and server components.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/dynamicvint.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/dynamicvint.png" class="img-fluid figure-img" width="800"></a></p>
+</figure>
+</div>
+<p>A Shiny application is fully <strong><em>interactive</em></strong> - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI. This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience. These applications require combined or separate R scripts that define the UI and server components.</p>
 <p>By comparison, <strong><em>dynamic</em></strong> applications can have the look and feel of an interactive Shiny dashboard, but are fundamentally different. They are standalone and do not include a server component. Any functionality is pre-built into the application and they are built before being hosted on a web platform as an HTML file. Applications such as Quarto (and its predecessor RMarkdown) can be used to create dynamic applications.</p>
-<p>This workshop will cover both dynamic and interactive applications. Your needs for creating an application will determine which approach you use. In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications. You may find that you can build a simpler dynamic application with some of the newer web tools.</p>
+<p>This workshop will cover both dynamic and interactive applications. Your needs for creating an application will determine which approach you use. In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications. You may find that you can build a simpler dynamic application without having to integrate interacive Shiny components.</p>
 <section id="reactivity" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="reactivity"><span class="header-section-number">2.1</span> Reactivity</h2>
+<p>For <strong><em>dynamic</em></strong> applications, there’s not much you need to understand about coding beyond what you might already now about R. Creating the interactive components generally follows a familiar format. However, creating <strong><em>interactive</em></strong> applications in Shiny requires a fundamental shift in how you think about coding. It’s all done in R, but the pieces interact differently. You’re used to an R script from running top to bottom - code for a Shiny app runs up, down, and sideways depending on how you structure the components.</p>
+<p>A Shiny app runs from an R script, but instead of executing code linearly, it uses <strong>reactive</strong> programming that detects when an input is changed on the application, runs the minimal amount of code that uses that input, then updates the output as needed. So, rather than thinking of the script as linear, think of it as having interconnected components that share pieces of information to produce the results.</p>
+<p>This can be daunting at first because it requires you to think about which pieces of your code require inputs from other pieces and how that information is used to create output. Reactivity creates the building blocks of a Shiny app. Every Shiny app has the following:</p>
+<ul>
+<li><strong>User interface (UI)</strong>: Includes all inputs and outputs, as well as the appearance of the dashboard. Here, when we say “output” we mean the final product (e.g.&nbsp;a plot, table, etc.) that is placed on the <code>ui</code>, but created by processing inputs sent to the <code>server</code>. In web-speak, this is the front end.</li>
+<li><strong>Server</strong>: The guts or engine of how the inputs are used to create the outputs, this is where the working parts of your analysis live. It can be as simple or as complicated as you like. In web-speak, this is the back end.</li>
+</ul>
+<p>At it’s core, a Shiny app is an R script that contains The <code>ui</code> and <code>server</code> components. In practice, it looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You “launch” or run the dashboard by sourcing the script or hitting the green “Run App” button on the top right.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/intro/simpleapp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figs/intro/simpleapp.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>If you run this code, you’ll see a local web browser pop up. It will be empty because this app does nothing, but this is only a starting point. All we need to do is populate the <code>ui</code> and <code>server</code> objects with code to do some things.</p>
+</section>
+<section id="a-simple-example" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="a-simple-example"><span class="header-section-number">2.2</span> A simple example</h2>
+<p>Now let’s make our simple example do something. As with most problems, it’s good to start with identifying where you want to go and then work backwards to figure out how to get there. Let’s end with a simple histogram to visualize some data for the normal distribution, but with different sample sizes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="intro_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Changing the sample size:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="intro_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To make a Shiny app out of this, we need to identify our inputs and our outputs. The input in this case is what we want to be able to modify (the sample size) and the output is the plot. Inputs/outputs go in the <code>ui</code> object. The <code>server</code> takes the inputs, does something with them, then sends the results back to the <code>ui</code>. Putting this into our template would look something like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">'n'</span>, <span class="at">label =</span> <span class="st">'Sample size'</span>, <span class="at">value =</span> <span class="dv">50</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="st">'myplot'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>myplot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    dat <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(input<span class="sc">$</span>n)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(dat)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Okay, so what is happening under the hood when you change the sample size?</p>
+<ol type="1">
+<li>The <code>input</code> value <code>n</code> (you name it) from the <code>ui</code> is sent to the <code>server</code>, seen as <code>input$n</code>.</li>
+<li>The <code>dat</code> object is created as a random sample with size <code>n</code> and then a histogram is created as reactive output with <code>renderPlot</code></li>
+<li>The plot output named <code>myplot</code> (you name it) is appended to the <code>output</code> list of objects</li>
+<li>The plot is then rendered on the <code>ui</code> side using <code>plotOutput</code> by referencing the <code>myplot</code> name from the <code>output</code> object.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/intro/simpleappflo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="figs/intro/simpleappflo.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>All of this happens each time the input values are changed, such that the output <strong>reacts</strong> to any change in the input. This is a fundamental principle of Shiny functionality.</p>
+</section>
+<section id="next-steps" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">2.3</span> Next steps</h2>
+<p>Throughout this workshop, we’ll cover the fundamentals of web-based applications in R for actionable science. We’ll first talk about <a href="quarto.html"><span>Chapter&nbsp;2</span></a> dynamic applications and then dive into <a href="shiny.html"><span>Chapter&nbsp;3</span></a> interactive applications. Throughout, we’ll highlight real applications that demonstrate how these operate in the wild for their intended uses.</p>
 
 
 </section>
@@ -642,7 +766,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":true,"descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":true,"descPosition":"bottom","selector":".lightbox"});</script>
 
 
 
