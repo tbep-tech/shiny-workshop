@@ -282,7 +282,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#dynamic-and-interactive-applications" id="toc-dynamic-and-interactive-applications" class="nav-link active" data-scroll-target="#dynamic-and-interactive-applications"><span class="header-section-number">2</span> Dynamic and Interactive applications</a>
+  <ul class="collapse">
+  <li><a href="#reactivity" id="toc-reactivity" class="nav-link" data-scroll-target="#reactivity"><span class="header-section-number">2.1</span> Reactivity</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/intro.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -304,14 +313,27 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Shiny is an R package that lets you create rich, interactive web applications. Shiny lets you take an existing R script and expose it using a web browser so that you or anybody else can use it outside of R. Shiny is commonly used to:</p>
+<ul>
+<li>Communicate complex workflows to a non-technical audience with informative visualizations and interactive components</li>
+<li>Share your analysis easily with colleagues without having to walk them through details of your script</li>
+<li>Help inform your understanding of an analysis by creating a user interface to quickly evaluate data</li>
+</ul>
+<p>In the applied sciences world, Shiny can be a very important tool to “bridge the research-management divide”. A very simple example is the use of Shiny to replace a 500 page document that has hundreds of figures with a simple application that allows the user to jump to an exact slice of the data that they want.</p>
+<p>There are many advantages to using Shiny over other platforms for creating web applications. As R users, the value of Shiny is that you only need to know how to use R. You do not need to know anything about web programming, such as HTML, CSS, or JavaScript. On the other hand, Shiny gives you the power to tap into the broader suite of web programming tools when you’re ready to or have a need to expand your application.</p>
+<p>More simply, Shiny lets you create a web interface for any R workflow. This means that any custom analysis or graphic you’ve made can be fully integrated into your dashboard, unlike other platforms that may have rigid and less customizable templates designed for ease of use.</p>
+<section id="dynamic-and-interactive-applications" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Dynamic and Interactive applications</h1>
 <p>This workshop will expose you to the basics of creating interactive dashboards in R. Before we begin, it’s useful to distinguish between <strong><em>dynamic</em></strong> and <strong><em>interactive</em></strong> dashboards.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="figs/dynamicvint.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/dynamicvint.png" class="img-fluid figure-img" width="800"></a></p>
-</figure>
-</div>
+<p><a href="figs/dynamicvint.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/dynamicvint.png" class="img-fluid" width="800"></a> A Shiny application is fully <strong><em>interactive</em></strong> - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI. This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience. These applications require combined or separate R scripts that define the UI and server components.</p>
+<p>By comparison, <strong><em>dynamic</em></strong> applications can have the look and feel of an interactive Shiny dashboard, but are fundamentally different. They are standalone and do not include a server component. Any functionality is pre-built into the application and they are built before being hosted on a web platform as an HTML file. Applications such as Quarto (and its predecessor RMarkdown) can be used to create dynamic applications.</p>
+<p>This workshop will cover both dynamic and interactive applications. Your needs for creating an application will determine which approach you use. In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications. You may find that you can build a simpler dynamic application with some of the newer web tools.</p>
+<section id="reactivity" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="reactivity"><span class="header-section-number">2.1</span> Reactivity</h2>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -616,11 +638,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">Website created by instructors, with attribution to external content</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/intro.qmd" class="toc-action">Edit this page</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","loop":true,"closeEffect":"zoom","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":true,"descPosition":"bottom"});</script>
 
 
 
