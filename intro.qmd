@@ -55,10 +55,6 @@ You "launch" or run the dashboard by sourcing the script or hitting the green "R
 
 ![](figs/intro/simpleapp.png)
 
-```{r, echo = F, out.width = '100%', fig.align = 'center'}
-knitr::include_graphics('figure/simpleapp.PNG')
-```
-
 If you run this code, you'll see a local web browser pop up.  It will be empty because this app does nothing, but this is only a starting point.  All we need to do is populate the `ui` and `server` objects with code to do some things.  
 
 ## A simple example
