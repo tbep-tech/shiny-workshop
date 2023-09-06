@@ -4,7 +4,7 @@ filters:
 lightbox: auto
 ---
 
-# Interactive: Shiny Applications
+# Interactive: Shiny Applications {#sec-shiny}
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
