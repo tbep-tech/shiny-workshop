@@ -6,6 +6,27 @@ lightbox: auto
 
 # Introduction
 
+Shiny is an R package that lets you create rich, interactive web applications.  Shiny lets you take an existing R script and expose it using a web browser so that you or anybody else can use it outside of R.  Shiny is commonly used to: 
+
+* Communicate complex workflows to a non-technical audience with informative visualizations and interactive components
+* Share your analysis easily with colleagues without having to walk them through details of your script
+* Help inform your understanding of an analysis by creating a user interface to quickly evaluate data
+
+In the applied sciences world, Shiny can be a very important tool to "bridge the research-management divide".  A very simple example is the use of Shiny to replace a 500 page document that has hundreds of figures with a simple application that allows the user to jump to an exact slice of the data that they want.   
+
+There are many advantages to using Shiny over other platforms for creating web applications.  As R users, the value of Shiny is that you only need to know how to use R.  You do not need to know anything about web programming, such as HTML, CSS, or JavaScript.  On the other hand, Shiny gives you the power to tap into the broader suite of web programming tools when you're ready to or have a need to expand your application. 
+
+More simply, Shiny lets you create a web interface for any R workflow. This means that any custom analysis or graphic you've made can be fully integrated into your dashboard, unlike other platforms that may have rigid and less customizable templates designed for ease of use.  
+
+# Dynamic and Interactive applications 
+
 This workshop will expose you to the basics of creating interactive dashboards in R.  Before we begin, it's useful to distinguish between ***dynamic*** and ***interactive*** dashboards. 
 
 ![](figs/dynamicvint.png){width="800"}
+A Shiny application is fully ***interactive*** - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI.  This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience.  These applications require combined or separate R scripts that define the UI and server components.
+
+By comparison, ***dynamic*** applications can have the look and feel of an interactive Shiny dashboard, but are fundamentally different.  They are standalone and do not include a server component.  Any functionality is pre-built into the application and they are built before being hosted on a web platform as an HTML file.  Applications such as Quarto (and its predecessor RMarkdown) can be used to create dynamic applications.  
+
+This workshop will cover both dynamic and interactive applications.  Your needs for creating an application will determine which approach you use.  In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications.  You may find that you can build a simpler dynamic application with some of the newer web tools.  
+
+## Reactivity
