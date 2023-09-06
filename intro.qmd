@@ -105,6 +105,6 @@ Okay, so what is happening under the hood when you change the sample size?
 
 All of this happens each time the input values are changed, such that the output __reacts__ to any change in the input. This is a fundamental principle of Shiny functionality.
 
-## Next steps
+# Next steps
 
-Throughout this workshop, we'll cover the fundamentals of web-based applications in R for actionable science.  We'll first talk about @sec-quarto dynamic applications and then dive into @sec-shiny interactive applications.  Throughout, we'll highlight real applications that demonstrate how these operate in the wild for their intended uses.  
+Throughout this workshop, we'll cover the fundamentals of web-based applications in R for actionable science.  We'll first talk about Quarto dynamic applications in @sec-quarto and then dive into Shiny interactive applications in @sec-shiny. We'll also discuss often overlooked but important concepts of the user experience when developing and engaging with a web application in @sec-codesign.  Throughout, we'll highlight real applications that demonstrate how these operate in the wild for their intended uses, many of which are highlighted on our [resources](https://tbep-tech.github.io/shiny-workshop/resources.html) page.  

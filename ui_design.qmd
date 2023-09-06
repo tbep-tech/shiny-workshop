@@ -4,7 +4,8 @@ filters:
 lightbox: auto
 ---
 
-# Co-designing
+# Co-designing {#sec-codesign}
+
 The user experience of a product will make or break your project.
 This section aims to provide terminology and practices to maximize the conversion of development effort into improved user experience. 
 
