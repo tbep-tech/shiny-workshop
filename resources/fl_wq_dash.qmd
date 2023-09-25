@@ -1,0 +1,29 @@
+---
+pagetitle: "FL Water Quality Dashboard"
+description: "Dashboard for displaying basic water quality data in Florida."
+image: "../figs/resources/fl_wq_dash.png"
+format: 
+  html: 
+    toc: true
+categories: 
+   - "Water Quality"
+   - "Time Series"
+   - "flexdashboard"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# FL Water Quality Dash {.unnumbered}
+
+## Background
+
+Data and decision support tools for assessing water quality in Florida.
+
+## Docs
+
+View the dashboard at [7yl4r.shinyapps.io/wq-dash](https://7yl4r.shinyapps.io/wq-dash/
+){target="_blank"}
+
+![screenshot](../figs/resources/fl_wq_dash.png)
+

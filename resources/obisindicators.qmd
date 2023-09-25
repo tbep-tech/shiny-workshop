@@ -1,0 +1,28 @@
+---
+pagetitle: "OBIS Indicators R Library"
+description: "A library for mapping biodiversity using OBIS data"
+image: "../figs/resources/obisindicators.png"
+format: 
+  html: 
+    toc: true
+categories: 
+   - "MBON"
+   - "Biodiversity"
+   - "Spatial Mapping"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# OBIS Indicators {.unnumbered}
+
+## Background
+
+R package for generating indicators from OBIS
+
+## Docs
+
+View the docs at [marinebon.github.io/obisindicators/](https://marinebon.github.io/obisindicators/){target="_blank"}
+
+![example_es50_map](../figs/resources/obisindicators.png)
+

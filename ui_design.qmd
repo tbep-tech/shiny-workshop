@@ -4,28 +4,59 @@ filters:
 lightbox: auto
 ---
 
-# UI/UX Design w/ user-centered co-design
+# Co-designing {#sec-codesign}
 
-Definitions:
+The user experience of a product will make or break your project.
+This section aims to provide terminology and practices to maximize the conversion of development effort into improved user experience. 
 
-* `co-design` : Designing with *equal* contribution from stakeholders at *every* step of development
+The process can be summarized as:
+
+1. collect user stories
+2. create use case from the user stories
+3. solve the user story
+4. iterate!
+
+### user story collection
+A "user story" can be represented by a statement in the following form:
+
+```
+"As a ___ I want ___ so that ___."
+```
+
+Early in the development of project ideas, collecting use-cases in this form will help identify the outcomes that are most important for your userbase.
+
+
+### select use case
+Developing a user story can be an important part of explicitly defining the needs and wants of your target users.
+Once a set of use cases have been collected, a user story can be created that will satisfy multiple use cases.
+A good user story is generic enough to cover many use cases but specific enough to be clearly resolved.
+
+A use case is a task or workflow for which your product is used.
+
+Examples:
+* "check a region of interest for recent anomalous temperatures"
+* "get an email alert when a major temperature anomaly is detected"
+* "see where the most biologically diverse areas are"
+
+### iterative design
+The aim of an iterative design process is to involve users as the features of a product are built piece-by-piece.
+
+
+### Think Aloud Protocol
+["Think aloud protocol"](https://en.wikipedia.org/wiki/Think_aloud_protocol) is a way of collecting user feedback that encourages a user of the product to speak their thoughts aloud when using the product.
+The facilitator should try to minimize guidance or influence on the user and encourage free-form expression from the user.
+This protocol can be particularly useful for identifying the pain points in a user workflow, wherein a user gets stuck wondering how to move to the next step of their task.
+
+## Definitions:
+
+* `co-design` : Designing with equal contribution from stakeholders at *every* step of development
 * `user story` : As a ___ I want ___ so that ___.
 * `use case` : Generalized summary of user stories in context of the application.
 * `iterative design` : Repeating pattern of 1) design next iteration 2) user evaluation 
 * `minimum viable product` : First design iteration with minimal features to be useful.
 * `speak aloud protocol` : Method for user evaluation that aims to minimize evaluator impact.
 
-## user story development
-TODO
-
-### use-case collection
-TODO
-
-### select user-story 
-TODO
-
-### iterative design
-TODO
-
-### speak aloud protocol
-TODO
+## References:
+* [R Graph Gallery](https://r-graph-gallery.com/) - useful for choosing data visualizations
+* ["Building on a human-centred, iterative, and agile co-design strategy to facilitate the availability of deep ocean data"](https://academic.oup.com/icesjms/article/80/2/347/6694272)
+* [More on the Think Aloud Protocol from Nielsen Norman Group](https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/)

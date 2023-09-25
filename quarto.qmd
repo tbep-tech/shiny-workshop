@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-# Dynamic: Quarto 
+# Dynamic: Quarto {#sec-quarto}
 
 ## Learning Objectives {.unnumbered .objectives}
 
