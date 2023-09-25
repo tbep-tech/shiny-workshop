@@ -43,6 +43,7 @@ book:
         - resources/nms_climate_dash.qmd
         - resources/obisindicators.qmd
         - resources/rocky_shore_dash.qmd
+        - resources/seascapes.qmd
   appendices:
     - setup.qmd
     - rintro.qmd

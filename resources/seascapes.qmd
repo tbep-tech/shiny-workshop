@@ -1,0 +1,34 @@
+---
+pagetitle: "Seascapes for Sanctuaries"
+description: "Seascapes over time and space for US Sanctuaries"
+image: "../figs/resources/seascapes-for-sanctuaries.png"
+format: 
+  html: 
+    toc: true
+categories: 
+   - "MBON"
+   - "Water Quality"
+   - "Time Series"
+   - "Spatial Mapping"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Seascapes for Sanctuaries {.unnumbered}
+
+## Background
+
+Seascapes are a dynamic sea water classification product derived from satellite imagery by [Maria Kavanaugh](https://ceoas.oregonstate.edu/people/maria-kavanaugh) et al.
+
+
+The [app's source code](https://github.com/noaa-onms/seascapes-app/tree/main/app) makes use of custom data wrangling and visualization functions in the R package [seascapeR](https://marinebon.github.io/seascapeR/).
+
+## Docs
+
+View the dashboard at [shiny.marinebon.app/seascapes](https://shiny.marinebon.app/seascapes/){target="_blank"}.\
+![screenshot](../figs/resources/seascapes_app.png)
+
+The different [Seascape Classes](https://shiny.marinebon.app/seascapes/classes.html) are based on a combination of variables derived from clustering.\
+![screenshot](../figs/resources/seascapes_class.png)
+
