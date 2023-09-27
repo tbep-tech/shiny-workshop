@@ -53,7 +53,7 @@ shinyApp(ui = ui, server = server)
 
 You "launch" or run the dashboard by sourcing the script or hitting the green "Run App" button on the top right. 
 
-![](figs/intro/simpleapp.png)
+![](figs/intro/simpleapp.PNG)
 
 If you run this code, you'll see a local web browser pop up.  It will be empty because this app does nothing, but this is only a starting point.  All we need to do is populate the `ui` and `server` objects with code to do some things.  
 
