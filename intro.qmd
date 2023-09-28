@@ -103,7 +103,9 @@ Okay, so what is happening under the hood when you change the sample size?
 
 ![](figs/intro/simpleappflo.png)
 
-All of this happens each time the input values are changed, such that the output __reacts__ to any change in the input. This is a fundamental principle of Shiny functionality.
+All of this happens each time the input values are changed, such that the output __reacts__ to any change in the input. This is a fundamental principle of Shiny functionality, simplified as follows.
+
+![](figs/intro/flow.tif)
 
 # Next steps
 
