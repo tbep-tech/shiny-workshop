@@ -327,14 +327,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>Seascapes are a dynamic sea water classification product derived from satellite imagery by <a href="https://ceoas.oregonstate.edu/people/maria-kavanaugh">Maria Kavanaugh</a> et al.</p>
-<p>The <a href="https://github.com/noaa-onms/seascapes-app/tree/main/app">app’s source code</a> makes use of custom data wrangling and visualization functions in the R package <a href="https://marinebon.github.io/seascapeR/">seascapeR</a>.</p>
+<p>The <a href="https://github.com/noaa-onms/seascapes-app/tree/main/app">source code</a> of the <a href="https://shiny.posit.co">Shiny</a> app makes use of custom data wrangling functions in the R package <a href="https://marinebon.github.io/seascapeR/">seascapeR</a> and the following <a href="https://www.htmlwidgets.org">htmlwidgets</a> for interactive visualization:</p>
+<ul>
+<li>map: <a href="http://rstudio.github.io/leaflet/">leaflet</a></li>
+<li>time series: <a href="https://rstudio.github.io/dygraphs/">dygraphs</a></li>
+</ul>
 </section>
 <section id="docs" class="level2">
 <h2 class="anchored" data-anchor-id="docs">Docs</h2>
 <p>View the dashboard at <a href="https://shiny.marinebon.app/seascapes/" target="_blank">shiny.marinebon.app/seascapes</a>.<br>
-<a href="../figs/resources/seascapes_app.png" class="lightbox" title="screenshot" data-gallery="quarto-lightbox-gallery-1"><img src="../figs/resources/seascapes_app.png" class="img-fluid" alt="screenshot"></a></p>
+<a href="../figs/resources/seascapes_app.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="screenshot"><img src="../figs/resources/seascapes_app.png" class="img-fluid" alt="screenshot"></a></p>
 <p>The different <a href="https://shiny.marinebon.app/seascapes/classes.html">Seascape Classes</a> are based on a combination of variables derived from clustering.<br>
-<a href="../figs/resources/seascapes_class.png" class="lightbox" title="screenshot" data-gallery="quarto-lightbox-gallery-2"><img src="../figs/resources/seascapes_class.png" class="img-fluid" alt="screenshot"></a></p>
+<a href="../figs/resources/seascapes_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="screenshot"><img src="../figs/resources/seascapes_class.png" class="img-fluid" alt="screenshot"></a></p>
 
 
 </section>
@@ -646,7 +650,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 
