@@ -105,7 +105,7 @@ Okay, so what is happening under the hood when you change the sample size?
 
 All of this happens each time the input values are changed, such that the output __reacts__ to any change in the input. This is a fundamental principle of Shiny functionality, simplified as follows.
 
-![](figs/intro/flow.png)
+![](figs/intro/flow.png){width=50% fig-align="center"}
 
 # Next steps
 
