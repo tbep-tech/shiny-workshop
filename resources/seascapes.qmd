@@ -22,7 +22,10 @@ lightbox: auto
 Seascapes are a dynamic sea water classification product derived from satellite imagery by [Maria Kavanaugh](https://ceoas.oregonstate.edu/people/maria-kavanaugh) et al.
 
 
-The [app's source code](https://github.com/noaa-onms/seascapes-app/tree/main/app) makes use of custom data wrangling and visualization functions in the R package [seascapeR](https://marinebon.github.io/seascapeR/).
+The [source code](https://github.com/noaa-onms/seascapes-app/tree/main/app) of the [Shiny](https://shiny.posit.co) app makes use of custom data wrangling functions in the R package [seascapeR](https://marinebon.github.io/seascapeR/) and the following [htmlwidgets](https://www.htmlwidgets.org) for interactive visualization:
+
+- map: [leaflet](http://rstudio.github.io/leaflet/)
+- time series:[dygraphs](https://rstudio.github.io/dygraphs/)
 
 ## Docs
 
