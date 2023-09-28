@@ -1,7 +1,7 @@
 ---
 pagetitle: "Seascapes for Sanctuaries"
 description: "Seascapes over time and space for US Sanctuaries"
-image: "../figs/resources/seascapes-for-sanctuaries.png"
+image: "../figs/resources/seascapes_app.png"
 format: 
   html: 
     toc: true
