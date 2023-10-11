@@ -10,6 +10,11 @@ execute:
 
 # Dynamic: Quarto {#sec-quarto}
 
+```{r}
+#| echo: false
+library(fontawesome)
+```
+
 ## Learning Objectives {.unnumbered .objectives}
 
 Use the Quarto document preparation system to create interactive documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
@@ -18,7 +23,7 @@ Use the Quarto document preparation system to create interactive documents that 
 
 Ensure you have the `quarto` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "quarto".
 
-Additionally, you can install the Quarto Command Line Interface (CLI).  This will allow you to run Quarto from the command line and includes additional features not included with R package.  See the quarto [setup](setup.qmd#sec-instquarto) section for more info.
+Additionally, you can install the Quarto Command Line Interface (CLI).  This will allow you to run Quarto from the command line and includes additional features not included with the R package.  See the quarto [setup](setup.qmd#sec-instquarto) section for more info.
 
 ## Quarto overview
 
@@ -142,7 +147,17 @@ This next section will run through the very basics of creating a Quarto document
     ::: {.callout-tip}
     A rendered Quarto document as an HTML, PDF, Word, or other file format is stand-alone and can be shared with anybody!
     :::
-     
+
+<h3>`r fa('hat-wizard')` Exercise</h3>
+
+Repeat the above steps to create an RStudio project and Quarto file. 
+
+1. Create an RStudio project (skip is using Posit Cloud)
+1. Open a new Quarto file
+1. Create a code chunk and add some R code
+1. Add some Markdown text outside of the code chunk
+1. Render your file to HTML
+
 ## Code chunk options
 
 The behavior of the code chunks when the file is rendered can be changed using the [many options](https://quarto.org/docs/reference/cells/cells-knitr.html){target="_blank"} available in Quarto.  This can be useful for a few reasons. 
@@ -333,9 +348,19 @@ knitr::kable(mytab)
 
 Visit these links for full details on [figures](https://quarto.org/docs/authoring/figures.html){target="_blank"} and [tables](https://quarto.org/docs/authoring/tables.html){target="_blank"} in Quarto. R also has a rich [library of packages](https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541){target="_blank"} for producing tables, most of which play nice with Quarto.  
 
+<h3>`r fa('hat-wizard')` Exercise</h3>
+
+Create some tables, figures, and cross-references as above. 
+
+1. In the same file from the first exercise, create a code chunk and add some R code to create a simple plot (e.g., `hist(mtcars$mpg)`)
+1. Give the code chunk a label and figure caption
+1. Use the figure label to add a cross-reference outside of the code chunk
+1. Repeat the above, but this time create a table (e.g., `knitr::kable(mtcars)`)
+1. Render your document to marvel at your work
+
 ## Quarto using `htmlwidgets`
 
-The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank}" package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
+The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank"} package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
 
 ### `leaflet`
 
@@ -447,6 +472,15 @@ toplo <- tibble(
 dygraph(toplo) %>% 
   dyRangeSelector()
 ```
+
+<h3>`r fa('hat-wizard')` Exercise</h3>
+
+Add some `htmlwidgets` to your Quarto document. 
+
+1. Create a code chunk and add some code to produce a `leaflet` map.  You can use the same lat/lon coordinates from above or pick your own [Google Maps](https://maps.google.com/){target="_blank"}. Install the `leaflet` package if you need to.
+1. Create another code chunk and add some code to produce a `plotly` object.  For simplicity, use the `ggplotly()` function to convert an existing `ggplot` object.  You can reuse the code from above. Install the `plotly` package if you need to.
+1. Create another code cunk and add some code to create a `dygraph` object.  You can use the same code from above or create your own time series.  Install the `dygraphs` package if you need to.
+1. Render your document to marvel at your work
 
 ## Quarto using `crosstalk`
 
@@ -660,6 +694,10 @@ If your Quarto document is in an RStudio project on GitHub, you can also publish
 ```{.bash filename="Terminal"}
 quarto publish gh-pages data/quartoex.qmd
 ```
+
+<h3>`r fa('hat-wizard')` Exercise</h3>
+
+Publish your Quarto document using any of the methods above (bonus points if you use GitHub). 
 
 ## Summary
 
