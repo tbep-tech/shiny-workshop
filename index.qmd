@@ -21,6 +21,7 @@ Also see:
 ```{r}
 load(file = 'data/agenda.RData')
 knitr::kable(agenda)
+
 ```
 
 ## Setup {.unnumbered}
