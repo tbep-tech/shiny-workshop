@@ -156,7 +156,7 @@ Repeat the above steps to create an RStudio project and Quarto file.
 1. Open a new Quarto file
 1. Create a code chunk and add some R code
 1. Add some Markdown text outside of the code chunk
-1. Render your file to HTML
+1. Render your document to marvel at your work
 
 ## Code chunk options
 
@@ -477,9 +477,9 @@ dygraph(toplo) %>%
 
 Add some `htmlwidgets` to your Quarto document. 
 
-1. Create a code chunk and add some code to produce a `leaflet` map.  You can use the same lat/lon coordinates from above or pick your own [Google Maps](https://maps.google.com/){target="_blank"}. Install the `leaflet` package if you need to.
+1. Create a code chunk and add some code to produce a `leaflet` map.  You can use the same lat/lon coordinates from above or pick your own from [Google Maps](https://maps.google.com/){target="_blank"}. Install the `leaflet` package if you need to.
 1. Create another code chunk and add some code to produce a `plotly` object.  For simplicity, use the `ggplotly()` function to convert an existing `ggplot` object.  You can reuse the code from above. Install the `plotly` package if you need to.
-1. Create another code cunk and add some code to create a `dygraph` object.  You can use the same code from above or create your own time series.  Install the `dygraphs` package if you need to.
+1. Create another code chunk and add some code to create a `dygraph` object.  You can use the same code from above or create your own time series.  Install the `dygraphs` package if you need to.
 1. Render your document to marvel at your work
 
 ## Quarto using `crosstalk`
