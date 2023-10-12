@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dashboards: Using R to create actionable science - 5&nbsp; Co-designing</title>
+<title>Dashboards: Using R to create actionable science - 4&nbsp; Co-designing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./resources.html" rel="next">
-<link href="./summary.html" rel="prev">
+<link href="./shiny.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Modules</a></li><li class="breadcrumb-item"><a href="./ui_design.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Co-designing</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Modules</a></li><li class="breadcrumb-item"><a href="./ui_design.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Co-designing</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -143,14 +143,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./ui_design.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Co-designing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Co-designing</span></span></a>
   </div>
 </li>
       </ul>
@@ -289,12 +283,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#user-story-collection" id="toc-user-story-collection" class="nav-link active" data-scroll-target="#user-story-collection"><span class="header-section-number">5.0.1</span> user story collection</a></li>
-  <li><a href="#select-use-case" id="toc-select-use-case" class="nav-link" data-scroll-target="#select-use-case"><span class="header-section-number">5.0.2</span> select use case</a></li>
-  <li><a href="#iterative-design" id="toc-iterative-design" class="nav-link" data-scroll-target="#iterative-design"><span class="header-section-number">5.0.3</span> iterative design</a></li>
-  <li><a href="#think-aloud-protocol" id="toc-think-aloud-protocol" class="nav-link" data-scroll-target="#think-aloud-protocol"><span class="header-section-number">5.0.4</span> Think Aloud Protocol</a></li>
-  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">5.1</span> Definitions:</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5.2</span> References:</a></li>
+  <li><a href="#user-story-collection" id="toc-user-story-collection" class="nav-link active" data-scroll-target="#user-story-collection"><span class="header-section-number">4.0.1</span> user story collection</a></li>
+  <li><a href="#select-use-case" id="toc-select-use-case" class="nav-link" data-scroll-target="#select-use-case"><span class="header-section-number">4.0.2</span> select use case</a></li>
+  <li><a href="#iterative-design" id="toc-iterative-design" class="nav-link" data-scroll-target="#iterative-design"><span class="header-section-number">4.0.3</span> iterative design</a></li>
+  <li><a href="#think-aloud-protocol" id="toc-think-aloud-protocol" class="nav-link" data-scroll-target="#think-aloud-protocol"><span class="header-section-number">4.0.4</span> Think Aloud Protocol</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">4.1</span> Definitions:</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.2</span> References:</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/tbep-tech/shiny-workshop/edit/main/ui_design.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -303,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span id="sec-codesign" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Co-designing</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/tbep-tech/shiny-workshop/blob/main/ui_design.qmd"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-codesign" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Co-designing</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/tbep-tech/shiny-workshop/blob/main/ui_design.qmd"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -326,28 +320,28 @@ ul.task-list li input[type="checkbox"] {
 <li>solve the user story</li>
 <li>iterate!</li>
 </ol>
-<section id="user-story-collection" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="user-story-collection"><span class="header-section-number">5.0.1</span> user story collection</h3>
+<section id="user-story-collection" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="user-story-collection"><span class="header-section-number">4.0.1</span> user story collection</h3>
 <p>A “user story” can be represented by a statement in the following form:</p>
 <pre><code>"As a ___ I want ___ so that ___."</code></pre>
 <p>Early in the development of project ideas, collecting use-cases in this form will help identify the outcomes that are most important for your userbase.</p>
 </section>
-<section id="select-use-case" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="select-use-case"><span class="header-section-number">5.0.2</span> select use case</h3>
+<section id="select-use-case" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="select-use-case"><span class="header-section-number">4.0.2</span> select use case</h3>
 <p>Developing a user story can be an important part of explicitly defining the needs and wants of your target users. Once a set of use cases have been collected, a user story can be created that will satisfy multiple use cases. A good user story is generic enough to cover many use cases but specific enough to be clearly resolved.</p>
 <p>A use case is a task or workflow for which your product is used.</p>
 <p>Examples: * “check a region of interest for recent anomalous temperatures” * “get an email alert when a major temperature anomaly is detected” * “see where the most biologically diverse areas are”</p>
 </section>
-<section id="iterative-design" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="iterative-design"><span class="header-section-number">5.0.3</span> iterative design</h3>
+<section id="iterative-design" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="iterative-design"><span class="header-section-number">4.0.3</span> iterative design</h3>
 <p>The aim of an iterative design process is to involve users as the features of a product are built piece-by-piece.</p>
 </section>
-<section id="think-aloud-protocol" class="level3" data-number="5.0.4">
-<h3 data-number="5.0.4" class="anchored" data-anchor-id="think-aloud-protocol"><span class="header-section-number">5.0.4</span> Think Aloud Protocol</h3>
+<section id="think-aloud-protocol" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="think-aloud-protocol"><span class="header-section-number">4.0.4</span> Think Aloud Protocol</h3>
 <p><a href="https://en.wikipedia.org/wiki/Think_aloud_protocol">“Think aloud protocol”</a> is a way of collecting user feedback that encourages a user of the product to speak their thoughts aloud when using the product. The facilitator should try to minimize guidance or influence on the user and encourage free-form expression from the user. This protocol can be particularly useful for identifying the pain points in a user workflow, wherein a user gets stuck wondering how to move to the next step of their task.</p>
 </section>
-<section id="definitions" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="definitions"><span class="header-section-number">5.1</span> Definitions:</h2>
+<section id="definitions" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="definitions"><span class="header-section-number">4.1</span> Definitions:</h2>
 <ul>
 <li><code>co-design</code> : Designing with equal contribution from stakeholders at <em>every</em> step of development</li>
 <li><code>user story</code> : As a ___ I want ___ so that ___.</li>
@@ -357,8 +351,8 @@ ul.task-list li input[type="checkbox"] {
 <li><code>speak aloud protocol</code> : Method for user evaluation that aims to minimize evaluator impact.</li>
 </ul>
 </section>
-<section id="references" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="references"><span class="header-section-number">5.2</span> References:</h2>
+<section id="references" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="references"><span class="header-section-number">4.2</span> References:</h2>
 <ul>
 <li><a href="https://r-graph-gallery.com/">R Graph Gallery</a> - useful for choosing data visualizations</li>
 <li><a href="https://academic.oup.com/icesjms/article/80/2/347/6694272">“Building on a human-centred, iterative, and agile co-design strategy to facilitate the availability of deep ocean data”</a></li>
@@ -655,8 +649,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span>
+      <a href="./shiny.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
