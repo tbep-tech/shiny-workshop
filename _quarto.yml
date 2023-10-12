@@ -27,7 +27,6 @@ book:
         - intro.qmd
         - quarto.qmd
         - shiny.qmd
-        - summary.qmd
         - ui_design.qmd
     - part: resources.qmd
       chapters:
