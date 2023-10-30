@@ -1,0 +1,25 @@
+---
+pagetitle: "Scallop Data"
+description: "A scallop dashboard for Tampa Bay"
+image: "../figs/resources/scallopdashex.PNG"
+format: 
+  html: 
+    toc: true
+categories: 
+  - "Tampa Bay"
+filters:
+   - lightbox
+lightbox: auto
+---
+
+# Scallop Data {.unnumbered}
+
+## Background
+
+The Scallop Data dashboard provides a summary of participatory science efforts to monitor the scallop population in Tampa Bay.  The dashboard is dynamic and created using RMarkdown (Quarto predecessor).  It does not include any server components as required by interactive Shiny dashboards.
+
+## Dashboard
+
+View the dashboard by visiting [https://tbep-tech.github.io/scallop-dashoard](https://tbep-tech.github.io/scallop-dashoard){target="_blank"}
+
+![](../figs/resources/scallopcreenshot.png)
