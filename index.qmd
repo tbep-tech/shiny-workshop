@@ -23,6 +23,12 @@ load(file = 'data/agenda.RData')
 knitr::kable(agenda)
 ```
 
+## Important links {.unnumbered}
+
+* Workshop Website: [https://tbep-tech.github.io/shiny-workshop](https://tbep-tech.github.io/shiny-workshop){target="_blank"}
+* Live Chat: [https://app.gitter.im/#/room/#shiny-workshop:gitter.im](https://app.gitter.im/#/room/#shiny-workshop:gitter.im){target="_blank"}
+* Posit Cloud: [https://posit.cloud/content/5544370](https://posit.cloud/content/5544370){target="_blank"}
+
 ## Setup {.unnumbered}
 
 Please visit the [setup](setup.qmd) page for instructions on preparing for this workshop. You will be required to install R, RStudio, and Quarto prior to the workshop. You will also need to setup a GitHub and shinyapps.io account.
