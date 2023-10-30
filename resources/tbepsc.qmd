@@ -1,7 +1,7 @@
 ---
 pagetitle: "Scallop Data"
 description: "A scallop dashboard for Tampa Bay"
-image: "../figs/resources/scallopdashex.PNG"
+image: "../figs/resources/scallopdashex.png"
 format: 
   html: 
     toc: true
