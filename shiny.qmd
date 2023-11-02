@@ -169,7 +169,7 @@ shiny::runApp(dir_app, display.mode = "normal")
 
 ## Creating a complex Shiny app
 
-In this next more complicated app we'll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series of for any of the available variables from another drop-down selection. The map will show the location of the selected station.
+In this next more complicated app we'll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series of for any of the available indicators from another drop-down selection. The map will show the location of the selected station.
 
 ![Complex app to create using water quality data from Tampa Bay, FL.](figs/shiny/app-wq.png)
 
@@ -209,14 +209,14 @@ d <- epcdata |>
     `Chlorophyll-a (ug/L)`  = chla,
     `Secchi depth (m)`      = sd_m) |>
   pivot_longer(
-    names_to  = 'variable',
+    names_to  = 'indicator',
     values_to = 'value',
     `Total Nitrogen (mg/L)`:`Secchi depth (m)`)
 
 # * data for select ----
-stations  <- unique(d$station)
-variables <- unique(d$variable)
-locations <- d |>
+stations   <- unique(d$station)
+indicators <- unique(d$indicator)
+locations  <- d |>
   select(station, lon, lat) |>
   unique()
 
@@ -235,9 +235,9 @@ basemap <- leaflet(locations) |>
 ui <- fluidPage(
 
   wellPanel(
-    h2("Plot water quality data"),
-    selectInput("sel_sta", "Station",  choices = stations),
-    selectInput("sel_var", "Variable", choices = variables),
+    h2("Water Quality"),
+    selectInput("sel_sta", "Station",   choices = stations),
+    selectInput("sel_ind", "Indicator", choices = indicators),
     plotlyOutput('tsplot'),
     leafletOutput('map') )
 
@@ -251,8 +251,8 @@ server <- function(input, output, session) {
 
     d |>
       filter(
-        station  == input$sel_sta,
-        variable == input$sel_var)
+        station   == input$sel_sta,
+        indicator == input$sel_ind)
   })
 
   # * tsplot: time series plot ----
@@ -260,9 +260,11 @@ server <- function(input, output, session) {
 
     g <- ggplot(
       get_data(),
-      aes(x = SampleTime, y = value) ) +
+      aes(
+        x = SampleTime,
+        y = value) ) +
       geom_line() +
-      labs(y = input$sel_var)
+      labs(y = input$sel_ind)
 
     ggplotly(g)
   })
@@ -319,7 +321,7 @@ The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the
 
 1. What are the 3 goals of **tidy data**, per  [tidyr.tidyverse.org](https://tidyr.tidyverse.org)?
 
-1. Let's assume we want three variables: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Do we need to pivot _**longer**_ (`?tidyr::pivot_longer`) or _**wider**_ (`?tidyr::pivot_longer`) to get each row as its own observation?
+1. Let's assume we want three indicators: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Do we need to pivot _**longer**_ (`?tidyr::pivot_longer`) or _**wider**_ (`?tidyr::pivot_longer`) to get each row as its own observation?
 
 1. ...
 
@@ -332,7 +334,7 @@ The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the
     1. Every _**row**_ is an observation.
     1. Every _**cell**_ is a single value.
 
-1. The `epcdata` is currently in _**wide**_ format, with each variable as its own column. We want to pivot it _**longer**_ so that each row is an observation of a single variable.
+1. The `epcdata` is currently in _**wide**_ format, with each variable as its own column. We want to pivot it _**longer**_ so that each row is an observation of a single indicator.
 
 1. ...
 
@@ -388,25 +390,46 @@ d <- epcdata |>
     `Chlorophyll-a (ug/L)`  = chla,
     `Secchi depth (m)`      = sd_m) |>
   pivot_longer(
-    names_to  = 'variable',
+    names_to  = 'indicator',
     values_to = 'value',
     `Total Nitrogen (mg/L)`:`Secchi depth (m)`)
-
 d
 ```
 
+We additionally need to prepare data for the following elements:
 
-## HTMLWidgets: Wrapping JavaScript in R
+1. **Stations**\
+   List of unique station numbers for selecting from a drop-down menu.
+1. **Indicators**\
+   List of unique indicators for selecting from a drop-down menu.
+1. **Locations**\
+   List of unique station locations (i.e. stations with lat/lon coordinates) to display on the map.
+
+```{r}
+# * data for select ----
+stations   <- unique(d$station)
+indicators <- unique(d$indicator)
+locations  <- d |>
+  select(station, lon, lat) |>
+  unique()
+
+stations
+indicators
+locations
+```
+
+
+### HTMLWidgets: Wrapping JavaScript in R
 
 Libraries like `plotly` and `leaflet` are built on the concept of HTMLWidgets, allowing R users to leverage JavaScript libraries without needing to know JavaScript. They provide a high level of interactivity and customization with simple R syntax.
 
 For example, `plotly` enables interactive plots, and `leaflet` allows for the creation of interactive maps. These functionalities greatly enhance the user experience without requiring extensive web development skills from the R programmer.
 
-## Transforming the Default App
+### Transforming the Default App
 
 Now, let's apply these concepts to transform our default Old Faithful app into a more complex application that visualizes time series data on a map.
 
-### Step 1: Setting Up the Data
+#### Step 1: Setting Up the Data
 
 Let's load the `tbeptools` package and prepare the data using `dplyr` functions.
 
@@ -415,7 +438,7 @@ library(tbeptools)
 # ... rest of the data preparation using dplyr
 ```
 
-### Step 2: Enhancing the UI
+#### Step 2: Enhancing the UI
 
 We will add dropdown menus for station and parameter selection and placeholders for `plotly` and `leaflet` outputs.
 
@@ -427,7 +450,7 @@ ui <- fluidPage(
 )
 ```
 
-### Step 3: Expanding Server Logic
+#### Step 3: Expanding Server Logic
 
 Incorporate reactivity by creating a reactive expression to filter the data based on user input. Then, use `plotly` for the time series plot and `leaflet` for mapping.
 
@@ -450,7 +473,7 @@ server <- function(input, output, session) {
 }
 ```
 
-### Step 4: Run the App
+#### Step 4: Run the App
 
 ```r
 shinyApp(ui, server)
