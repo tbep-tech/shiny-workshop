@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-# Dynamic: Quarto {#sec-quarto}
+# Dynamic: Quarto docs {#sec-quarto}
 
 ```{r}
 #| echo: false
