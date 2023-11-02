@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dashboards: Using R to create actionable science - 3&nbsp; Interactive: Shiny Applications</title>
+<title>Dashboards: Using R to create actionable science - 3&nbsp; Interactive: Shiny apps</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,21 +98,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.2.0/leaflet.js"></script>
-<script src="site_libs/plotly-binding-4.10.3/plotly.js"></script>
-<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="libs/style.css">
@@ -127,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Modules</a></li><li class="breadcrumb-item"><a href="./shiny.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Modules</a></li><li class="breadcrumb-item"><a href="./shiny.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny apps</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,13 +169,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto docs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shiny.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny apps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,17 +328,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#install-shiny-r-package" id="toc-install-shiny-r-package" class="nav-link" data-scroll-target="#install-shiny-r-package"><span class="header-section-number">3.1</span> Install <code>shiny</code> R package</a></li>
-  <li><a href="#create-your-first-shiny-web-app" id="toc-create-your-first-shiny-web-app" class="nav-link" data-scroll-target="#create-your-first-shiny-web-app"><span class="header-section-number">3.2</span> Create your first Shiny web app</a>
+  <li><a href="#create-your-first-shiny-app" id="toc-create-your-first-shiny-app" class="nav-link" data-scroll-target="#create-your-first-shiny-app"><span class="header-section-number">3.2</span> Create your first Shiny app</a>
   <ul class="collapse">
   <li><a href="#run-in-showcase-mode" id="toc-run-in-showcase-mode" class="nav-link" data-scroll-target="#run-in-showcase-mode"><span class="header-section-number">3.2.1</span> Run in showcase mode</a></li>
   </ul></li>
-  <li><a href="#download-run-examples" id="toc-download-run-examples" class="nav-link" data-scroll-target="#download-run-examples"><span class="header-section-number">3.3</span> Download &amp; run examples</a>
+  <li><a href="#creating-a-complex-shiny-app" id="toc-creating-a-complex-shiny-app" class="nav-link" data-scroll-target="#creating-a-complex-shiny-app"><span class="header-section-number">3.3</span> Creating a complex Shiny app</a>
   <ul class="collapse">
-  <li><a href="#faithful" id="toc-faithful" class="nav-link" data-scroll-target="#faithful"><span class="header-section-number">3.3.1</span> <code>01_faithful</code></a></li>
-  <li><a href="#quakes_mag" id="toc-quakes_mag" class="nav-link" data-scroll-target="#quakes_mag"><span class="header-section-number">3.3.2</span> <code>02_quakes_mag</code></a></li>
-  <li><a href="#quakes_depth" id="toc-quakes_depth" class="nav-link" data-scroll-target="#quakes_depth"><span class="header-section-number">3.3.3</span> <code>03_quakes_depth</code></a></li>
-  <li><a href="#quakes_map" id="toc-quakes_map" class="nav-link" data-scroll-target="#quakes_map"><span class="header-section-number">3.3.4</span> <code>04_quakes_map</code></a></li>
-  <li><a href="#quakes_dashboard" id="toc-quakes_dashboard" class="nav-link" data-scroll-target="#quakes_dashboard"><span class="header-section-number">3.3.5</span> <code>05_quakes_dashboard</code></a></li>
+  <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data"><span class="header-section-number">3.3.1</span> Preparing the data</a></li>
+  </ul></li>
+  <li><a href="#htmlwidgets-wrapping-javascript-in-r" id="toc-htmlwidgets-wrapping-javascript-in-r" class="nav-link" data-scroll-target="#htmlwidgets-wrapping-javascript-in-r"><span class="header-section-number">3.4</span> HTMLWidgets: Wrapping JavaScript in R</a></li>
+  <li><a href="#transforming-the-default-app" id="toc-transforming-the-default-app" class="nav-link" data-scroll-target="#transforming-the-default-app"><span class="header-section-number">3.5</span> Transforming the Default App</a>
+  <ul class="collapse">
+  <li><a href="#step-1-setting-up-the-data" id="toc-step-1-setting-up-the-data" class="nav-link" data-scroll-target="#step-1-setting-up-the-data"><span class="header-section-number">3.5.1</span> Step 1: Setting Up the Data</a></li>
+  <li><a href="#step-2-enhancing-the-ui" id="toc-step-2-enhancing-the-ui" class="nav-link" data-scroll-target="#step-2-enhancing-the-ui"><span class="header-section-number">3.5.2</span> Step 2: Enhancing the UI</a></li>
+  <li><a href="#step-3-expanding-server-logic" id="toc-step-3-expanding-server-logic" class="nav-link" data-scroll-target="#step-3-expanding-server-logic"><span class="header-section-number">3.5.3</span> Step 3: Expanding Server Logic</a></li>
+  <li><a href="#step-4-run-the-app" id="toc-step-4-run-the-app" class="nav-link" data-scroll-target="#step-4-run-the-app"><span class="header-section-number">3.5.4</span> Step 4: Run the App</a></li>
   </ul></li>
   <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further Resources</a></li>
   </ul>
@@ -364,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span id="sec-shiny" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny Applications</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/tbep-tech/shiny-workshop/blob/main/shiny.qmd"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-shiny" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interactive: Shiny apps</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/tbep-tech/shiny-workshop/blob/main/shiny.qmd">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -386,22 +375,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="install-shiny-r-package" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="install-shiny-r-package"><span class="header-section-number">3.1</span> Install <code>shiny</code> R package</h2>
 <p>Ensure you have the <code>shiny</code> R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “shiny”.</p>
-<p>A few other packages will get used so let’s use the librarian::shelf() command to install if needed:</p>
+<p>A few other packages will get used so let’s use the <a href="https://github.com/DesiQuintans/librarian#readme"><code>librarian::shelf()</code></a> function to load the libraries and install if needed:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>librarian<span class="sc">::</span><span class="fu">shelf</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  plotly, reactlog, shiny, shinydashboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="create-your-first-shiny-web-app" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="create-your-first-shiny-web-app"><span class="header-section-number">3.2</span> Create your first Shiny web app</h2>
-<p>Similar to other examples, let’s create a simple Shiny app starting from the provided default by going to <strong>File</strong> -&gt; <strong>New File</strong> -&gt; <strong>Shiny Web App</strong>… and name it <strong><em>app-faithful</em></strong> (after <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful">faithful</a>, the Old Faithful geyser eruption frequency dataset used in this default example):</p>
+<section id="create-your-first-shiny-app" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="create-your-first-shiny-app"><span class="header-section-number">3.2</span> Create your first Shiny app</h2>
+<p>Let’s create a simple Shiny app starting with the provided default in RStudio by going to the menu <strong>File</strong> -&gt; <strong>New File</strong> -&gt; <strong>Shiny Web App</strong>… and name it <strong><em>app-faithful</em></strong> (after <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful">faithful</a>, the Old Faithful geyser eruption frequency dataset used in this default example):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="figs/shiny/new-shiny_app-faithful.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/shiny/new-shiny_app-faithful.png" class="img-fluid figure-img" width="400"></a></p>
 </figure>
 </div>
-<p>For now, let’s go with the default <strong>Single File</strong> option that puts the entire application in <code>app.R</code> rather than splitting it in two (<code>ui.R</code>/<code>server.R</code>). You should see the following contents in the new <code>app.R</code> file contents:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<p>For now, let’s go with the default <strong>Single File</strong> option that puts the entire application in <code>app.R</code> rather than splitting it in two (<code>ui.R</code>/<code>server.R</code>). You should see the following contents in the new file <code>app.R</code>:</p>
+<div class="cell">
+<details>
+<summary>Show Code: <code>app.R</code></summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a Shiny web application. You can run the application by clicking</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the 'Run App' button above.</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
@@ -450,19 +442,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the application </span></span>
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>Let’s next <strong>Run App</strong>. Note that you can change the options by clicking on the down triangle next to the button, such as running the app in your default web browser (<strong><em>Run External</em></strong>), a pop-up window or in RStudio’s Viewer Pane.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="figs/shiny/shiny-run-app-options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figs/shiny/shiny-run-app-options.png" class="img-fluid figure-img" width="200"></a></p>
 </figure>
 </div>
-<p>Now you can change the values in the slider on the left, then see the plot updated:</p>
+<p>Now you can change the values in the slider on the left to change the “Number of bins” (<code>input$bins</code>) and see the updated plot (<code>output$distPlot</code>):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="figs/shiny/faithful-app.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="figs/shiny/faithful-app.png" class="img-fluid figure-img" width="600"></a></p>
 </figure>
 </div>
-<p>In Shiny parlance, the histogram plot is <strong><em>reactive</em></strong> to the slider. Normally when creating web apps, this type of “reactivity” is quite complicated to code, but here by simply using <code>input$bins</code> in the plotting function for the <code>output$distPlot</code>, Shiny registers that this plot needs to be updated when the user changes the <code>input$bins</code> value.</p>
+<p>In Shiny parlance, the histogram plot is <strong><em>reactive</em></strong> to the slider (see <a href="./intro.html#reactivity">Reactivity</a>). Normally when creating web apps, this type of “reactivity” is quite complicated to code, but here by simply using <code>input$bins</code> in the plotting function for the <code>output$distPlot</code>, Shiny registers that this plot needs to be updated when the user changes the <code>input$bins</code> value.</p>
 <section id="run-in-showcase-mode" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="run-in-showcase-mode"><span class="header-section-number">3.2.1</span> Run in showcase mode</h3>
 <p>This default example along with other are made available in the shiny package’s installed folder:</p>
@@ -484,200 +478,384 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Another way to launch the shiny app is with the following:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set directory to 01_hello app, aka the simplest default faithful app</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dir_hello_app <span class="ot">&lt;-</span> <span class="fu">file.path</span>(dir_examples, <span class="st">"01_hello"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the app with display.mode = "auto"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   which under shiny R package uses "showcase" mode because of the DESCRIPTION  file there (see ?shiny::runApp)</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(dir_hello_app)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dir_app <span class="ot">&lt;-</span> <span class="fu">file.path</span>(dir_examples, <span class="st">"01_hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the app</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(dir_app)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What happens as you change the <code>display.mode</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lookup help for the argument <code>display.mode</code> in the runApp() function (enter <code>?runApp</code> in R Console).</p>
+<ol type="1">
+<li>What is the default mode for this app?</li>
+<li>How is that defined?</li>
+<li>What’s an alternative <code>display.mode</code> value to apply?</li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>The default mode is “showcase”, which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.</p></li>
+<li><p>This is defined by the DESCRIPTION file in the same folder:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.path</span>(dir_app, <span class="st">"DESCRIPTION"</span>) <span class="sc">|&gt;</span> <span class="fu">readLines</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Title: Hello Shiny!"                "Author: RStudio, Inc."             
+[3] "AuthorUrl: http://www.rstudio.com/" "License: MIT"                      
+[5] "DisplayMode: Showcase"              "Tags: getting-started"             
+[7] "Type: Shiny"                       </code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>The other mode is “normal”:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(dir_app, <span class="at">display.mode =</span> <span class="st">"normal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 </section>
-<section id="download-run-examples" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="download-run-examples"><span class="header-section-number">3.3</span> Download &amp; run examples</h2>
-<p>Next, let’s go through examples together.</p>
-<p>Download <a href="https://github.com/bbest/shiny-intro/archive/master.zip">shiny-intro-master.zip</a> into your <code>r3-exercises/</code>, unzip it and rename the top-level folder to <code>apps/</code> so you can see the following application folders directly under <code>r3-exercises/apps/</code>:</p>
-<ul>
-<li><code>01_faithful</code>: default app from using RStudio, File &gt; New File &gt; Shiny Web App… <a href="figs/shiny/screenshot-01_faithful.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="figs/shiny/screenshot-01_faithful.png" class="img-fluid"></a></li>
-<li><code>02_quakes_mag</code>: swap to quakes dataset, adjust histogram by magnitude</li>
-<li><code>03_quakes_depth</code>: add depth slider, select box for variable to histogram</li>
-<li><code>04_quakes_map</code>: add leaflet map</li>
-<li><code>05_quakes_dashboard</code>: enhance user interface (ie “ui”) with <code>shinydashboard</code> <img src="figs/shiny/screenshot-05_quakes_dashboard.png" class="img-fluid"></li>
-</ul>
-<p>Numbered folders in this repository correspond with iterative development and enhancement of a Shiny app.</p>
-<p>The following sections in this Rmarkdown document demonstrate how you can develop output visualizations for use in a Shiny app, especially by defining input variables as a list (<code>input$*</code>).</p>
-<p>Knitting Rmarkdown documents and pushing to Github then allows the HTML to be viewable (using the <a href="https://pages.github.com">Github Pages</a> feature). In contrast, Github and most web hosting services can <strong><em>not</em></strong> host a Shiny app. Although the <a href="http://rstudio.github.io/leaflet">leaflet</a> and <a href="https://plot.ly/ggplot2">plotly</a> visualizations in this document are interactive in the web browser, they do not require the Shiny library or a Shiny server to be displayed. Rather, the HTML output can be easily hosted on the most basic web server or passed as an email attachment. The Shiny context allows for ultimate flexibility with user interactions, but may be overkill for basic visualization. Check out all the amazing <a href="http://www.htmlwidgets.org/">htmlwidgets.org</a> and framework that works in the three contexts of: 1) RStudio, 2) Rmarkdown, and 3) Shiny.</p>
-<section id="faithful" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="faithful"><span class="header-section-number">3.3.1</span> <code>01_faithful</code></h3>
-<ul>
-<li><p>Code: <a href="https://github.com/bbest/shiny-intro/tree/master/01_faithful">01_faithful</a></p></li>
-<li><p>Run from GitHub:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">"bbest/shiny-intro"</span>, <span class="at">subdir=</span><span class="st">"01_faithful"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Run locally:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"01_faithful"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-<p>In order to quickly experiment with visualization, we could pull the code from within the rendering function of the Shiny app and set the input list values that would otherwise be set from the user interface…</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>input <span class="ot">=</span> <span class="fu">list</span>(<span class="at">bins =</span> <span class="dv">30</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>] </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<section id="creating-a-complex-shiny-app" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="creating-a-complex-shiny-app"><span class="header-section-number">3.3</span> Creating a complex Shiny app</h2>
+<p>In this next more complicated app we’ll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series of for any of the available variables from another drop-down selection. The map will show the location of the selected station.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="shiny_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="shiny_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="figs/shiny/app-wq.png" class="lightbox" title="Complex app to create using water quality data from Tampa Bay, FL." data-gallery="quarto-lightbox-gallery-4"><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Complex app to create using water quality data from Tampa Bay, FL.</figcaption>
 </figure>
 </div>
-</div>
-</div>
-</section>
-<section id="quakes_mag" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="quakes_mag"><span class="header-section-number">3.3.2</span> <code>02_quakes_mag</code></h3>
+<p>Here is the full set of expandable code for the app:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">slider_mag =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> quakes <span class="sc">%&gt;%</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    mag <span class="sc">&gt;=</span> input<span class="sc">$</span>slider_mag[<span class="dv">1</span>],</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    mag <span class="sc">&lt;=</span> input<span class="sc">$</span>slider_mag[<span class="dv">2</span>])</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(d<span class="sc">$</span>mag, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<details>
+<summary>Show Code: <code>app.R</code></summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># goal: create an app to select a time series by station/parameter, create a plot and show on map</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tbeptools"</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">repos =</span> <span class="fu">c</span>(</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">tbeptech =</span> <span class="st">'https://tbep-tech.r-universe.dev'</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">CRAN     =</span> <span class="st">'https://cloud.r-project.org'</span>) )</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'variable'</span>,</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">'value'</span>,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>stations  <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>variable)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>locations <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="co"># * base map ----</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>basemap <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addLabelOnlyMarkers</span>(</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">noHide   =</span> T,</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">textOnly =</span> T) )</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Plot water quality data"</span>),</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,  <span class="at">choices =</span> stations),</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_var"</span>, <span class="st">"Variable"</span>, <span class="at">choices =</span> variables),</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">'tsplot'</span>),</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">'map'</span>) )</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>        station  <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>        variable <span class="sc">==</span> input<span class="sc">$</span>sel_var)</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> SampleTime, <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_var)</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>    basemap <span class="sc">|&gt;</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">'red'</span>,</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>You might notice the extra four dashes at the end of some of the comments in the code. Adding comments like these allows you to easily navigate to that section of code from the lower-left of the Source pane in RStudio:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="shiny_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="shiny_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within." data-gallery="quarto-lightbox-gallery-5"><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
+<figcaption class="figure-caption">When comments end with four or more dashes <code>----</code> in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in <code>app.R</code> that might otherwise be split into seperate files: <code>global.R</code>, <code>ui.R</code> and <code>server.R</code>. Then an asterisk prefix <code>*</code> is used to bullet key sections within.</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<ul>
-<li><p>Code: <a href="https://github.com/bbest/shiny-intro/tree/master/02_quakes_mag">02_quakes_mag</a></p></li>
-<li><p>Run from GitHub:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">"bbest/shiny-intro"</span>, <span class="at">subdir=</span><span class="st">"02_quakes_mag"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Run locally:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"02_quakes_mag"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-<section id="quakes_depth" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="quakes_depth"><span class="header-section-number">3.3.3</span> <code>03_quakes_depth</code></h3>
+<p>In this extended tutorial, we will delve deeper into reactivity, data wrangling with <code>dplyr</code>, and the advantages of using R libraries that wrap JavaScript functionality. We’ll start from the default Shiny application using the Old Faithful Geyser data and transform it into a more complex application.</p>
+<section id="preparing-the-data" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="preparing-the-data"><span class="header-section-number">3.3.1</span> Preparing the data</h3>
+<p>First, let’s prepare the water quality data for our app from the Tampa Bay Estuary Program R package <a href="https://tbep-tech.github.io/tbeptools/index.html">tbeptools</a> that we’ll install if it’s not already installed on your computer.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">select_var =</span> <span class="st">"depth"</span>, </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">slider_mag =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">slider_depth =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> quakes <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    mag   <span class="sc">&gt;=</span> input<span class="sc">$</span>slider_mag[<span class="dv">1</span>],</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    mag   <span class="sc">&lt;=</span> input<span class="sc">$</span>slider_mag[<span class="dv">2</span>],</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    depth <span class="sc">&gt;=</span> input<span class="sc">$</span>slider_depth[<span class="dv">1</span>],</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    depth <span class="sc">&lt;=</span> input<span class="sc">$</span>slider_depth[<span class="dv">2</span>])</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(d[,input<span class="sc">$</span>select_var], <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="shiny_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="shiny_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tbeptools"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">repos =</span> <span class="fu">c</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">tbeptech =</span> <span class="st">'https://tbep-tech.r-universe.dev'</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">CRAN     =</span> <span class="st">'https://cloud.r-project.org'</span>) )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>epcdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27,601 × 26
+   bay_segment epchc_station SampleTime             yr    mo Latitude Longitude
+   &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1 HB                      6 2023-04-17 10:00:00  2023     4     27.9     -82.5
+ 2 HB                      7 2023-04-17 10:15:00  2023     4     27.9     -82.5
+ 3 HB                      8 2023-04-17 13:35:00  2023     4     27.9     -82.4
+ 4 MTB                     9 2023-04-17 12:14:00  2023     4     27.8     -82.4
+ 5 MTB                    11 2023-04-17 10:29:00  2023     4     27.8     -82.5
+ 6 MTB                    13 2023-04-17 10:43:00  2023     4     27.8     -82.5
+ 7 MTB                    14 2023-04-17 11:33:00  2023     4     27.8     -82.5
+ 8 MTB                    16 2023-04-26 09:22:00  2023     4     27.7     -82.5
+ 9 MTB                    19 2023-04-26 09:33:00  2023     4     27.7     -82.6
+10 LTB                    23 2023-04-26 11:43:00  2023     4     27.7     -82.6
+# ℹ 27,591 more rows
+# ℹ 19 more variables: Total_Depth_m &lt;dbl&gt;, Sample_Depth_m &lt;dbl&gt;, tn &lt;dbl&gt;,
+#   tn_q &lt;chr&gt;, sd_m &lt;dbl&gt;, sd_raw_m &lt;dbl&gt;, sd_q &lt;chr&gt;, chla &lt;dbl&gt;,
+#   chla_q &lt;chr&gt;, Sal_Top_ppth &lt;dbl&gt;, Sal_Mid_ppth &lt;dbl&gt;,
+#   Sal_Bottom_ppth &lt;dbl&gt;, Temp_Water_Top_degC &lt;dbl&gt;,
+#   Temp_Water_Mid_degC &lt;dbl&gt;, Temp_Water_Bottom_degC &lt;dbl&gt;,
+#   `Turbidity_JTU-NTU` &lt;chr&gt;, Turbidity_Q &lt;chr&gt;, Color_345_F45_PCU &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>The dataset <code>epcdata</code> (<code>?epcdata</code> for details) is “lazily loaded” as part of the <code>tbeptools</code> R package, available once the package is loaded with <code>library(tbeptools)</code>, similar to how <code>faithful</code> (<code>?faithful</code> for details) is automatically available from the base R package <code>datasets</code>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How should we tidy <code>epcdata</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>What are the 3 goals of <strong>tidy data</strong>, per <a href="https://tidyr.tidyverse.org">tidyr.tidyverse.org</a>?</p></li>
+<li><p>Let’s assume we want three variables: Total Nitrogen (mg/L) (<code>tn</code>), Chlorophyll-a (ug/L) (<code>chla</code>), and Secchi depth (m) (<code>sd_m</code>). Do we need to pivot <em><strong>longer</strong></em> (<code>?tidyr::pivot_longer</code>) or <em><strong>wider</strong></em> (<code>?tidyr::pivot_longer</code>) to get each row as its own observation?</p></li>
+<li><p>…</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>The 3 goals of <strong>tidy data</strong> are:</p>
+<ol type="1">
+<li>Every <em><strong>column</strong></em> is a variable.</li>
+<li>Every <em><strong>row</strong></em> is an observation.</li>
+<li>Every <em><strong>cell</strong></em> is a single value.</li>
+</ol></li>
+<li><p>The <code>epcdata</code> is currently in <em><strong>wide</strong></em> format, with each variable as its own column. We want to pivot it <em><strong>longer</strong></em> so that each row is an observation of a single variable.</p></li>
+<li><p>…</p></li>
+</ol>
 </div>
 </div>
 </div>
-<ul>
-<li><p>Code: <a href="https://github.com/bbest/shiny-intro/tree/master/03_quakes_depth">03_quakes_depth</a></p></li>
-<li><p>Run from GitHub:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">"bbest/shiny-intro"</span>, <span class="at">subdir=</span><span class="st">"03_quakes_depth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Run locally:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"03_quakes_depth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><a href="https://github.com/bbest/shiny-intro/tree/master/04_quakes_map">shiny-intro/04_quakes_map at master · bbest/shiny-intro</a></p></li>
-<li><p><a href="https://github.com/bbest/shiny-intro/tree/master/05_quakes_dashboard">shiny-intro/05_quakes_dashboard at master · bbest/shiny-intro</a></p></li>
-<li><p><a href="http://benbestphd.com/shiny-intro/crosstalk.html">Fiji earthquakes</a></p></li>
-</ul>
-</section>
-<section id="quakes_map" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="quakes_map"><span class="header-section-number">3.3.4</span> <code>04_quakes_map</code></h3>
-<ul>
-<li><a href="http://rstudio.github.io/leaflet/markers.html#icon-markers">Leaflet for R - Markers</a></li>
-</ul>
+</div>
+</div>
+<p>The <code>dplyr</code> package is the ‘swiss army knife’ (or ‘plyers’) for data wrangling, along with its close cousin <code>tidyr</code>. Let’s look at some basic operations: filtering, selecting, and pivoting.</p>
+<ol type="1">
+<li><p><strong>Filter</strong><br>
+Reduce <em><strong>rows</strong></em> based on condition(s) that evaluate logically (i.e.&nbsp;True or False)</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station <span class="sc">==</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Select</strong><br>
+Reduce <em><strong>columns</strong></em> to only those specified</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">station =</span> epchc_station, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon     =</span> Longitude,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat     =</span> Latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Pivot</strong><br>
+Transform the data from wide to long format, or vice versa</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'var'</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">'val'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>Applying the above concepts, we get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(<span class="at">data =</span> quakes[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="sc">~</span>mag, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">stroke =</span> <span class="cn">FALSE</span>, <span class="at">fillOpacity =</span> <span class="fl">0.5</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">glue</span>(<span class="st">"&lt;b&gt;mag&lt;/b&gt;: {mag}&lt;br&gt;depth: {depth} m"</span>), <span class="at">label =</span> <span class="sc">~</span><span class="fu">as.character</span>(mag))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0e59d949db4b511cb9f1" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0e59d949db4b511cb9f1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[-20.42,-20.62,-26,-17.97,-20.42,-19.68,-11.7,-28.11,-28.74,-17.47,-21.44,-12.26,-18.54,-21,-20.7,-15.94,-13.64,-17.83,-23.5,-22.63],[181.62,181.03,184.1,181.66,181.96,184.31,166.1,181.93,181.74,179.59,180.69,167,182.11,181.66,169.92,184.95,165.96,181.5,179.78,180.31],[4.8,4.2,5.4,4.1,4,4,4.8,4.4,4.7,4.3,4.4,4.6,4.4,4.4,6.1,4.3,6,4.5,4.4,4.4],null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,["<b>mag<\/b>: 4.8<br>depth: 562 m","<b>mag<\/b>: 4.2<br>depth: 650 m","<b>mag<\/b>: 5.4<br>depth: 42 m","<b>mag<\/b>: 4.1<br>depth: 626 m","<b>mag<\/b>: 4<br>depth: 649 m","<b>mag<\/b>: 4<br>depth: 195 m","<b>mag<\/b>: 4.8<br>depth: 82 m","<b>mag<\/b>: 4.4<br>depth: 194 m","<b>mag<\/b>: 4.7<br>depth: 211 m","<b>mag<\/b>: 4.3<br>depth: 622 m","<b>mag<\/b>: 4.4<br>depth: 583 m","<b>mag<\/b>: 4.6<br>depth: 249 m","<b>mag<\/b>: 4.4<br>depth: 554 m","<b>mag<\/b>: 4.4<br>depth: 600 m","<b>mag<\/b>: 6.1<br>depth: 139 m","<b>mag<\/b>: 4.3<br>depth: 306 m","<b>mag<\/b>: 6<br>depth: 50 m","<b>mag<\/b>: 4.5<br>depth: 590 m","<b>mag<\/b>: 4.4<br>depth: 570 m","<b>mag<\/b>: 4.4<br>depth: 598 m"],null,["4.8","4.2","5.4","4.1","4","4","4.8","4.4","4.7","4.3","4.4","4.6","4.4","4.4","6.1","4.3","6","4.5","4.4","4.4"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-28.74,-11.7],"lng":[165.96,184.95]}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'variable'</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">'value'</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 82,803 × 6
+   station SampleTime            lat   lon variable                value
+     &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;
+ 1       6 2023-04-17 10:00:00  27.9 -82.5 Total Nitrogen (mg/L)   0.235
+ 2       6 2023-04-17 10:00:00  27.9 -82.5 Chlorophyll-a (ug/L)    1.5  
+ 3       6 2023-04-17 10:00:00  27.9 -82.5 Secchi depth (m)      NaN    
+ 4       7 2023-04-17 10:15:00  27.9 -82.5 Total Nitrogen (mg/L)   0.284
+ 5       7 2023-04-17 10:15:00  27.9 -82.5 Chlorophyll-a (ug/L)    2.1  
+ 6       7 2023-04-17 10:15:00  27.9 -82.5 Secchi depth (m)        1.4  
+ 7       8 2023-04-17 13:35:00  27.9 -82.4 Total Nitrogen (mg/L)   0.246
+ 8       8 2023-04-17 13:35:00  27.9 -82.4 Chlorophyll-a (ug/L)    3.2  
+ 9       8 2023-04-17 13:35:00  27.9 -82.4 Secchi depth (m)      NaN    
+10       9 2023-04-17 12:14:00  27.8 -82.4 Total Nitrogen (mg/L)   0.183
+# ℹ 82,793 more rows</code></pre>
 </div>
 </div>
-<ul>
-<li><p>Code: <a href="https://github.com/bbest/shiny-intro/tree/master/04_quakes_map">04_quakes_map</a></p></li>
-<li><p>Run from GitHub:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">"bbest/shiny-intro"</span>, <span class="at">subdir=</span><span class="st">"04_quakes_map"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Run locally:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"04_quakes_map"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
 </section>
-<section id="quakes_dashboard" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="quakes_dashboard"><span class="header-section-number">3.3.5</span> <code>05_quakes_dashboard</code></h3>
-<p>Use:</p>
-<ul>
-<li><p><a href="http://rstudio.github.io/shinydashboard" class="uri">shinydashboard</a></p></li>
-<li><p><a href="https://github.com/tidyverse/ggplot2" class="uri">ggplot2</a></p></li>
-<li><p><a href="https://plot.ly/ggplot2" class="uri">plot.ly</a></p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">select_var   =</span> <span class="st">"depth"</span>, </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">slider_mag   =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">slider_depth =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>get_df <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> quakes <span class="sc">%&gt;%</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>      mag   <span class="sc">&gt;=</span> input<span class="sc">$</span>slider_mag[<span class="dv">1</span>],</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>      mag   <span class="sc">&lt;=</span> input<span class="sc">$</span>slider_mag[<span class="dv">2</span>],</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      depth <span class="sc">&gt;=</span> input<span class="sc">$</span>slider_depth[<span class="dv">1</span>],</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>      depth <span class="sc">&lt;=</span> input<span class="sc">$</span>slider_depth[<span class="dv">2</span>])</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>var <span class="ot">&lt;-</span> df[[input<span class="sc">$</span>select_var]]</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  df</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>df        <span class="ot">&lt;-</span> <span class="fu">get_df</span>()</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>bin_width <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">c</span>(<span class="dv">7</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>var))))</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(var)) <span class="sc">+</span> </span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span>bin_width)</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>plotly<span class="sc">::</span><span class="fu">ggplotly</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-417d408c801f4c9e5d3b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-417d408c801f4c9e5d3b">{"x":{"data":[{"orientation":"v","width":[7,7,7,7,7,7,7,7,7],"base":[0,0,0,0,0,0,0,0,0],"x":[42,49,56,63,70,77,84,91,98],"y":[32,31,19,28,29,17,16,12,15],"text":["count: 32<br />var: 42","count: 31<br />var: 49","count: 19<br />var: 56","count: 28<br />var: 63","count: 29<br />var: 70","count: 17<br />var: 77","count: 16<br />var: 84","count: 12<br />var: 91","count: 15<br />var: 98"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283104,"r":7.3059360730593621,"b":40.182648401826491,"l":37.260273972602747},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[35.350000000000001,104.65000000000001],"tickmode":"array","ticktext":["40","60","80","100"],"tickvals":[40,60,80,100],"categoryorder":"array","categoryarray":["40","60","80","100"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"var","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.6000000000000001,33.600000000000001],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1d813c753eb2":{"x":{},"type":"bar"}},"cur_data":"1d813c753eb2","visdat":{"1d813c753eb2":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<ul>
-<li><p>Code: <a href="https://github.com/bbest/shiny-intro/tree/master/05_quakes_dashboard">05_quakes_dashboard</a></p></li>
-<li><p>Run from GitHub:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">"bbest/shiny-intro"</span>, <span class="at">subdir=</span><span class="st">"05_quakes_dashboard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Run locally:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"05_quakes_dashboard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>View app directly: <a href="https://bdbest.shinyapps.io/05_quakes_dashboard" class="uri">https://bdbest.shinyapps.io/05_quakes_dashboard</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://bdbest.shinyapps.io/05_quakes_dashboard"><img src="figs/shiny/screenshot-05_quakes_dashboard.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div></li>
-</ul>
+</section>
+<section id="htmlwidgets-wrapping-javascript-in-r" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="htmlwidgets-wrapping-javascript-in-r"><span class="header-section-number">3.4</span> HTMLWidgets: Wrapping JavaScript in R</h2>
+<p>Libraries like <code>plotly</code> and <code>leaflet</code> are built on the concept of HTMLWidgets, allowing R users to leverage JavaScript libraries without needing to know JavaScript. They provide a high level of interactivity and customization with simple R syntax.</p>
+<p>For example, <code>plotly</code> enables interactive plots, and <code>leaflet</code> allows for the creation of interactive maps. These functionalities greatly enhance the user experience without requiring extensive web development skills from the R programmer.</p>
+</section>
+<section id="transforming-the-default-app" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="transforming-the-default-app"><span class="header-section-number">3.5</span> Transforming the Default App</h2>
+<p>Now, let’s apply these concepts to transform our default Old Faithful app into a more complex application that visualizes time series data on a map.</p>
+<section id="step-1-setting-up-the-data" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="step-1-setting-up-the-data"><span class="header-section-number">3.5.1</span> Step 1: Setting Up the Data</h3>
+<p>Let’s load the <code>tbeptools</code> package and prepare the data using <code>dplyr</code> functions.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... rest of the data preparation using dplyr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-2-enhancing-the-ui" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="step-2-enhancing-the-ui"><span class="header-section-number">3.5.2</span> Step 2: Enhancing the UI</h3>
+<p>We will add dropdown menus for station and parameter selection and placeholders for <code>plotly</code> and <code>leaflet</code> outputs.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># ... UI elements including selectInput for stations and parameters</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plotlyOutput</span>(<span class="st">'timeSeriesPlot'</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">leafletOutput</span>(<span class="st">'mapOutput'</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-3-expanding-server-logic" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="step-3-expanding-server-logic"><span class="header-section-number">3.5.3</span> Step 3: Expanding Server Logic</h3>
+<p>Incorporate reactivity by creating a reactive expression to filter the data based on user input. Then, use <code>plotly</code> for the time series plot and <code>leaflet</code> for mapping.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Reactive expression for filtering data</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>   filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... data filtering based on input</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Render plotly time series plot</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>   output<span class="sc">$</span>timeSeriesPlot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... plotting logic using filtered_data()</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Render leaflet map</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>   output<span class="sc">$</span>mapOutput <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... mapping logic using filtered_data()</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-4-run-the-app" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="step-4-run-the-app"><span class="header-section-number">3.5.4</span> Step 4: Run the App</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="further-resources" class="level2 unnumbered">
@@ -686,6 +864,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://shiny.rstudio.com/articles/cheatsheet.html">Shiny Cheatsheet</a></li>
 <li><a href="https://shiny.rstudio.com/tutorial/">Shiny Tutorial</a></li>
 <li><a href="https://www.rstudio.com/resources/webinars/introduction-to-shiny/">Introduction to Shiny - RStudio</a></li>
+<li><a href="https://mastering-shiny.org/index.html">Mastering Shiny</a> book</li>
 </ul>
 
 
@@ -979,7 +1158,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./quarto.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Dynamic: Quarto docs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -998,7 +1177,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 
