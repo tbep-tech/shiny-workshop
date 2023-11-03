@@ -20,6 +20,6 @@ The Scallop Data dashboard provides a summary of participatory science efforts t
 
 ## Dashboard
 
-View the dashboard by visiting [https://tbep-tech.github.io/scallop-dashoard](https://tbep-tech.github.io/scallop-dashoard){target="_blank"}
+View the dashboard by visiting [https://tbep-tech.github.io/scallop-search/](https://tbep-tech.github.io/scallop-search/){target="_blank"}
 
 ![](../figs/resources/scallopscreenshot.png)
