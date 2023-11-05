@@ -327,22 +327,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#install-shiny-r-package" id="toc-install-shiny-r-package" class="nav-link" data-scroll-target="#install-shiny-r-package"><span class="header-section-number">3.1</span> Install <code>shiny</code> R package</a></li>
+  <li><a href="#install-shiny-and-other-r-packages" id="toc-install-shiny-and-other-r-packages" class="nav-link" data-scroll-target="#install-shiny-and-other-r-packages"><span class="header-section-number">3.1</span> Install <code>shiny</code> and other R packages</a></li>
   <li><a href="#create-your-first-shiny-app" id="toc-create-your-first-shiny-app" class="nav-link" data-scroll-target="#create-your-first-shiny-app"><span class="header-section-number">3.2</span> Create your first Shiny app</a>
   <ul class="collapse">
   <li><a href="#run-in-showcase-mode" id="toc-run-in-showcase-mode" class="nav-link" data-scroll-target="#run-in-showcase-mode"><span class="header-section-number">3.2.1</span> Run in showcase mode</a></li>
   </ul></li>
-  <li><a href="#creating-a-complex-shiny-app" id="toc-creating-a-complex-shiny-app" class="nav-link" data-scroll-target="#creating-a-complex-shiny-app"><span class="header-section-number">3.3</span> Creating a complex Shiny app</a>
+  <li><a href="#create-a-complex-shiny-app" id="toc-create-a-complex-shiny-app" class="nav-link" data-scroll-target="#create-a-complex-shiny-app"><span class="header-section-number">3.3</span> Create a complex Shiny app</a>
   <ul class="collapse">
-  <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data"><span class="header-section-number">3.3.1</span> Preparing the data</a></li>
-  </ul></li>
-  <li><a href="#htmlwidgets-wrapping-javascript-in-r" id="toc-htmlwidgets-wrapping-javascript-in-r" class="nav-link" data-scroll-target="#htmlwidgets-wrapping-javascript-in-r"><span class="header-section-number">3.4</span> HTMLWidgets: Wrapping JavaScript in R</a></li>
-  <li><a href="#transforming-the-default-app" id="toc-transforming-the-default-app" class="nav-link" data-scroll-target="#transforming-the-default-app"><span class="header-section-number">3.5</span> Transforming the Default App</a>
-  <ul class="collapse">
-  <li><a href="#step-1-setting-up-the-data" id="toc-step-1-setting-up-the-data" class="nav-link" data-scroll-target="#step-1-setting-up-the-data"><span class="header-section-number">3.5.1</span> Step 1: Setting Up the Data</a></li>
-  <li><a href="#step-2-enhancing-the-ui" id="toc-step-2-enhancing-the-ui" class="nav-link" data-scroll-target="#step-2-enhancing-the-ui"><span class="header-section-number">3.5.2</span> Step 2: Enhancing the UI</a></li>
-  <li><a href="#step-3-expanding-server-logic" id="toc-step-3-expanding-server-logic" class="nav-link" data-scroll-target="#step-3-expanding-server-logic"><span class="header-section-number">3.5.3</span> Step 3: Expanding Server Logic</a></li>
-  <li><a href="#step-4-run-the-app" id="toc-step-4-run-the-app" class="nav-link" data-scroll-target="#step-4-run-the-app"><span class="header-section-number">3.5.4</span> Step 4: Run the App</a></li>
+  <li><a href="#prepare-data" id="toc-prepare-data" class="nav-link" data-scroll-target="#prepare-data"><span class="header-section-number">3.3.1</span> Prepare data</a></li>
+  <li><a href="#add-user-interface" id="toc-add-user-interface" class="nav-link" data-scroll-target="#add-user-interface"><span class="header-section-number">3.3.2</span> Add User Interface</a></li>
+  <li><a href="#add-server-functions" id="toc-add-server-functions" class="nav-link" data-scroll-target="#add-server-functions"><span class="header-section-number">3.3.3</span> Add Server Functions</a></li>
+  <li><a href="#run-app" id="toc-run-app" class="nav-link" data-scroll-target="#run-app"><span class="header-section-number">3.3.4</span> Run App</a></li>
   </ul></li>
   <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further Resources</a></li>
   </ul>
@@ -372,14 +367,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered objectives anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>Use the Shiny framework to develop online interactive applications accepting user input to render outputs from arbitrary R functions. Server requirements differentiating from simpler Rmarkdown renderings will be reviewed.</p>
 </section>
-<section id="install-shiny-r-package" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="install-shiny-r-package"><span class="header-section-number">3.1</span> Install <code>shiny</code> R package</h2>
-<p>Ensure you have the <code>shiny</code> R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “shiny”.</p>
-<p>A few other packages will get used so let’s use the <a href="https://github.com/DesiQuintans/librarian#readme"><code>librarian::shelf()</code></a> function to load the libraries and install if needed:</p>
+<section id="install-shiny-and-other-r-packages" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="install-shiny-and-other-r-packages"><span class="header-section-number">3.1</span> Install <code>shiny</code> and other R packages</h2>
+<p>Ensure you have the <code>librarian</code> R package installed. Look in RStudio’s Packages pane and Install if not found when searching for “librarian”. This allows us to use the helper function <a href="https://github.com/DesiQuintans/librarian#readme"><code>librarian::shelf()</code></a> to load the libraries and install if needed:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>librarian<span class="sc">::</span><span class="fu">shelf</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  plotly, reactlog, shiny, shinydashboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr, ggplot2, leaflet, plotly, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  tbep<span class="sc">-</span>tech<span class="sc">/</span>tbeptools,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  shiny, shinydashboard, tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note that the <code>tbeptools</code> R package is installed from source on Github given the ‘owner/repository’ naming convention, so <code>tbep-tech/tbeptools</code> has source code at <a href="https://github.com/tbep-tech/tbeptools">github.com/tbep-tech/tbeptools</a>.</p>
+<p>If you did not already have the <code>shiny</code> package installed, you should restar RStudio to use additional menu items for the next step.</p>
 </section>
 <section id="create-your-first-shiny-app" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="create-your-first-shiny-app"><span class="header-section-number">3.2</span> Create your first Shiny app</h2>
@@ -538,12 +536,12 @@ Answers
 </div>
 </section>
 </section>
-<section id="creating-a-complex-shiny-app" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="creating-a-complex-shiny-app"><span class="header-section-number">3.3</span> Creating a complex Shiny app</h2>
-<p>In this next more complicated app we’ll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series of for any of the available variables from another drop-down selection. The map will show the location of the selected station.</p>
+<section id="create-a-complex-shiny-app" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="create-a-complex-shiny-app"><span class="header-section-number">3.3</span> Create a complex Shiny app</h2>
+<p>In this next more complicated app we’ll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series for any of the available indicators from another drop-down selection. The map will show the location of the selected station.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/shiny/app-wq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Complex app to create using water quality data from Tampa Bay, FL."><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/shiny/app-wq.png" class="lightbox" title="Complex app to create using water quality data from Tampa Bay, FL." data-gallery="quarto-lightbox-gallery-4"><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">Complex app to create using water quality data from Tampa Bay, FL.</figcaption>
 </figure>
 </div>
@@ -580,14 +578,14 @@ Answers
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
 <span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'variable'</span>,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'indicator'</span>,</span>
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">'value'</span>,</span>
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>stations  <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>variable)</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>locations <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
 <span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
 <span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
 <span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
@@ -606,9 +604,9 @@ Answers
 <span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Plot water quality data"</span>),</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,  <span class="at">choices =</span> stations),</span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_var"</span>, <span class="st">"Variable"</span>, <span class="at">choices =</span> variables),</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
 <span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">'tsplot'</span>),</span>
 <span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">'map'</span>) )</span>
 <span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
@@ -622,8 +620,8 @@ Answers
 <span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
 <span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>        station  <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>        variable <span class="sc">==</span> input<span class="sc">$</span>sel_var)</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
 <span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>  })</span>
 <span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
@@ -631,45 +629,47 @@ Answers
 <span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> SampleTime, <span class="at">y =</span> value) ) <span class="sc">+</span></span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_var)</span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>    basemap <span class="sc">|&gt;</span></span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">'red'</span>,</span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>    basemap <span class="sc">|&gt;</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">'red'</span>,</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>You might notice the extra four dashes at the end of some of the comments in the code. Adding comments like these allows you to easily navigate to that section of code from the lower-left of the Source pane in RStudio:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within."><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
+<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within." data-gallery="quarto-lightbox-gallery-5"><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
 <figcaption class="figure-caption">When comments end with four or more dashes <code>----</code> in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in <code>app.R</code> that might otherwise be split into seperate files: <code>global.R</code>, <code>ui.R</code> and <code>server.R</code>. Then an asterisk prefix <code>*</code> is used to bullet key sections within.</figcaption>
 </figure>
 </div>
 <p>In this extended tutorial, we will delve deeper into reactivity, data wrangling with <code>dplyr</code>, and the advantages of using R libraries that wrap JavaScript functionality. We’ll start from the default Shiny application using the Old Faithful Geyser data and transform it into a more complex application.</p>
-<section id="preparing-the-data" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="preparing-the-data"><span class="header-section-number">3.3.1</span> Preparing the data</h3>
+<section id="prepare-data" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">3.3.1</span> Prepare data</h3>
 <p>First, let’s prepare the water quality data for our app from the Tampa Bay Estuary Program R package <a href="https://tbep-tech.github.io/tbeptools/index.html">tbeptools</a> that we’ll install if it’s not already installed on your computer.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
@@ -717,7 +717,7 @@ How should we tidy <code>epcdata</code>?
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>What are the 3 goals of <strong>tidy data</strong>, per <a href="https://tidyr.tidyverse.org">tidyr.tidyverse.org</a>?</p></li>
-<li><p>Let’s assume we want three variables: Total Nitrogen (mg/L) (<code>tn</code>), Chlorophyll-a (ug/L) (<code>chla</code>), and Secchi depth (m) (<code>sd_m</code>). Do we need to pivot <em><strong>longer</strong></em> (<code>?tidyr::pivot_longer</code>) or <em><strong>wider</strong></em> (<code>?tidyr::pivot_longer</code>) to get each row as its own observation?</p></li>
+<li><p>Let’s assume we want three indicators: Total Nitrogen (mg/L) (<code>tn</code>), Chlorophyll-a (ug/L) (<code>chla</code>), and Secchi depth (m) (<code>sd_m</code>). Do we need to pivot <em><strong>longer</strong></em> (<code>?tidyr::pivot_longer</code>) or <em><strong>wider</strong></em> (<code>?tidyr::pivot_longer</code>) to get each row as its own observation?</p></li>
 <li><p>…</p></li>
 </ol>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -739,7 +739,7 @@ Answers
 <li>Every <em><strong>row</strong></em> is an observation.</li>
 <li>Every <em><strong>cell</strong></em> is a single value.</li>
 </ol></li>
-<li><p>The <code>epcdata</code> is currently in <em><strong>wide</strong></em> format, with each variable as its own column. We want to pivot it <em><strong>longer</strong></em> so that each row is an observation of a single variable.</p></li>
+<li><p>The <code>epcdata</code> is currently in <em><strong>wide</strong></em> format, with each variable as its own column. We want to pivot it <em><strong>longer</strong></em> so that each row is an observation of a single indicator.</p></li>
 <li><p>…</p></li>
 </ol>
 </div>
@@ -786,14 +786,13 @@ Transform the data from wide to long format, or vice versa</p>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'variable'</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">'indicator'</span>,</span>
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">'value'</span>,</span>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 82,803 × 6
-   station SampleTime            lat   lon variable                value
+   station SampleTime            lat   lon indicator               value
      &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;
  1       6 2023-04-17 10:00:00  27.9 -82.5 Total Nitrogen (mg/L)   0.235
  2       6 2023-04-17 10:00:00  27.9 -82.5 Chlorophyll-a (ug/L)    1.5  
@@ -808,54 +807,83 @@ Transform the data from wide to long format, or vice versa</p>
 # ℹ 82,793 more rows</code></pre>
 </div>
 </div>
+<p>We additionally need to prepare data for the following elements:</p>
+<ol type="1">
+<li><strong>Stations</strong><br>
+List of unique station numbers for selecting from a drop-down menu.</li>
+<li><strong>Indicators</strong><br>
+List of unique indicators for selecting from a drop-down menu.</li>
+<li><strong>Locations</strong><br>
+List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) to display on the map.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>stations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  6  7  8  9 11 13 14 16 19 23 24 25 28 32 33 36 38 40 41 44 46 47 50 51 52
+[26] 55 60 63 64 65 66 67 68 70 71 73 80 81 82 84 90 91 92 93 95</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>indicators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Total Nitrogen (mg/L)" "Chlorophyll-a (ug/L)"  "Secchi depth (m)"     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 45 × 3
+   station   lon   lat
+     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1       6 -82.5  27.9
+ 2       7 -82.5  27.9
+ 3       8 -82.4  27.9
+ 4       9 -82.4  27.8
+ 5      11 -82.5  27.8
+ 6      13 -82.5  27.8
+ 7      14 -82.5  27.8
+ 8      16 -82.5  27.7
+ 9      19 -82.6  27.7
+10      23 -82.6  27.7
+# ℹ 35 more rows</code></pre>
+</div>
+</div>
 </section>
+<section id="add-user-interface" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="add-user-interface"><span class="header-section-number">3.3.2</span> Add User Interface</h3>
+<p>Let’s add dropdown menus for station and parameter selection and placeholders for <code>plotly</code> and <code>leaflet</code> outputs. These outputs are <strong>htmlwidgets </strong> you learned about in the morning (see <a href="https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets">Quarto using htmlwidgets</a>), except we will be udpating them <em>interactively</em> based on user intput.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># ... UI elements including selectInput for stations and parameters</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plotlyOutput</span>(<span class="st">'timeSeriesPlot'</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">leafletOutput</span>(<span class="st">'mapOutput'</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="htmlwidgets-wrapping-javascript-in-r" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="htmlwidgets-wrapping-javascript-in-r"><span class="header-section-number">3.4</span> HTMLWidgets: Wrapping JavaScript in R</h2>
-<p>Libraries like <code>plotly</code> and <code>leaflet</code> are built on the concept of HTMLWidgets, allowing R users to leverage JavaScript libraries without needing to know JavaScript. They provide a high level of interactivity and customization with simple R syntax.</p>
-<p>For example, <code>plotly</code> enables interactive plots, and <code>leaflet</code> allows for the creation of interactive maps. These functionalities greatly enhance the user experience without requiring extensive web development skills from the R programmer.</p>
-</section>
-<section id="transforming-the-default-app" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="transforming-the-default-app"><span class="header-section-number">3.5</span> Transforming the Default App</h2>
-<p>Now, let’s apply these concepts to transform our default Old Faithful app into a more complex application that visualizes time series data on a map.</p>
-<section id="step-1-setting-up-the-data" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="step-1-setting-up-the-data"><span class="header-section-number">3.5.1</span> Step 1: Setting Up the Data</h3>
-<p>Let’s load the <code>tbeptools</code> package and prepare the data using <code>dplyr</code> functions.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... rest of the data preparation using dplyr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="step-2-enhancing-the-ui" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="step-2-enhancing-the-ui"><span class="header-section-number">3.5.2</span> Step 2: Enhancing the UI</h3>
-<p>We will add dropdown menus for station and parameter selection and placeholders for <code>plotly</code> and <code>leaflet</code> outputs.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># ... UI elements including selectInput for stations and parameters</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plotlyOutput</span>(<span class="st">'timeSeriesPlot'</span>),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">leafletOutput</span>(<span class="st">'mapOutput'</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="step-3-expanding-server-logic" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="step-3-expanding-server-logic"><span class="header-section-number">3.5.3</span> Step 3: Expanding Server Logic</h3>
+<section id="add-server-functions" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="add-server-functions"><span class="header-section-number">3.3.3</span> Add Server Functions</h3>
 <p>Incorporate reactivity by creating a reactive expression to filter the data based on user input. Then, use <code>plotly</code> for the time series plot and <code>leaflet</code> for mapping.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Reactive expression for filtering data</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>   filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... data filtering based on input</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>   })</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Render plotly time series plot</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>   output<span class="sc">$</span>timeSeriesPlot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... plotting logic using filtered_data()</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>   })</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Render leaflet map</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>   output<span class="sc">$</span>mapOutput <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... mapping logic using filtered_data()</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>   })</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Reactive expression for filtering data</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>   filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... data filtering based on input</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Render plotly time series plot</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>   output<span class="sc">$</span>timeSeriesPlot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... plotting logic using filtered_data()</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Render leaflet map</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>   output<span class="sc">$</span>mapOutput <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>       <span class="co"># ... mapping logic using filtered_data()</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>   })</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-4-run-the-app" class="level3" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="step-4-run-the-app"><span class="header-section-number">3.5.4</span> Step 4: Run the App</h3>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="run-app" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="run-app"><span class="header-section-number">3.3.4</span> Run App</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="further-resources" class="level2 unnumbered">
@@ -1177,7 +1205,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 
