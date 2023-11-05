@@ -21,16 +21,20 @@ shelf(
 
 Use the Shiny framework to develop online interactive applications accepting user input to render outputs from arbitrary R functions. Server requirements differentiating from simpler Rmarkdown renderings will be reviewed.
 
-## Install `shiny` R package
+## Install `shiny` and other R packages
 
-Ensure you have the `shiny` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "shiny".
-
-A few other packages will get used so let's use the [`librarian::shelf()`](https://github.com/DesiQuintans/librarian#readme) function to load the libraries and install if needed:
+Ensure you have the `librarian` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "librarian". This allows us to use the helper function [`librarian::shelf()`](https://github.com/DesiQuintans/librarian#readme) to load the libraries and install if needed:
 
 ```{r}
 librarian::shelf(
-  plotly, reactlog, shiny, shinydashboard)
+  dplyr, ggplot2, leaflet, plotly, 
+  tbep-tech/tbeptools,
+  shiny, shinydashboard, tidyr)
 ```
+
+Note that the `tbeptools` R package is installed from source on Github given the 'owner/repository' naming convention, so `tbep-tech/tbeptools` has source code at [github.com/tbep-tech/tbeptools](https://github.com/tbep-tech/tbeptools).
+
+If you did not already have the `shiny` package installed, you should restar RStudio to use additional menu items for the next step.
 
 ## Create your first Shiny app
 
@@ -167,9 +171,9 @@ shiny::runApp(dir_app, display.mode = "normal")
 
 :::
 
-## Creating a complex Shiny app
+## Create a complex Shiny app
 
-In this next more complicated app we'll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series of for any of the available indicators from another drop-down selection. The map will show the location of the selected station.
+In this next more complicated app we'll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series for any of the available indicators from another drop-down selection. The map will show the location of the selected station.
 
 ![Complex app to create using water quality data from Tampa Bay, FL.](figs/shiny/app-wq.png)
 
@@ -297,7 +301,7 @@ You might notice the extra four dashes at the end of some of the comments in the
 
 In this extended tutorial, we will delve deeper into reactivity, data wrangling with `dplyr`, and the advantages of using R libraries that wrap JavaScript functionality. We'll start from the default Shiny application using the Old Faithful Geyser data and transform it into a more complex application.
 
-### Preparing the data
+### Prepare data
 
 First, let's prepare the water quality data for our app from the Tampa Bay Estuary Program R package [tbeptools](https://tbep-tech.github.io/tbeptools/index.html) that we'll install if it's not already installed on your computer. 
 
@@ -418,29 +422,9 @@ indicators
 locations
 ```
 
+### Add User Interface
 
-### HTMLWidgets: Wrapping JavaScript in R
-
-Libraries like `plotly` and `leaflet` are built on the concept of HTMLWidgets, allowing R users to leverage JavaScript libraries without needing to know JavaScript. They provide a high level of interactivity and customization with simple R syntax.
-
-For example, `plotly` enables interactive plots, and `leaflet` allows for the creation of interactive maps. These functionalities greatly enhance the user experience without requiring extensive web development skills from the R programmer.
-
-### Transforming the Default App
-
-Now, let's apply these concepts to transform our default Old Faithful app into a more complex application that visualizes time series data on a map.
-
-#### Step 1: Setting Up the Data
-
-Let's load the `tbeptools` package and prepare the data using `dplyr` functions.
-
-```r
-library(tbeptools)
-# ... rest of the data preparation using dplyr
-```
-
-#### Step 2: Enhancing the UI
-
-We will add dropdown menus for station and parameter selection and placeholders for `plotly` and `leaflet` outputs.
+Let's add dropdown menus for station and parameter selection and placeholders for `plotly` and `leaflet` outputs. These outputs are **htmlwidgets ** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be udpating them _interactively_ based on user intput.
 
 ```r
 ui <- fluidPage(
@@ -450,7 +434,7 @@ ui <- fluidPage(
 )
 ```
 
-#### Step 3: Expanding Server Logic
+### Add Server Functions
 
 Incorporate reactivity by creating a reactive expression to filter the data based on user input. Then, use `plotly` for the time series plot and `leaflet` for mapping.
 
@@ -473,12 +457,11 @@ server <- function(input, output, session) {
 }
 ```
 
-#### Step 4: Run the App
+### Run App
 
 ```r
 shinyApp(ui, server)
 ```
-
 
 ## Further Resources {.unnumbered}
 
