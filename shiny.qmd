@@ -34,7 +34,9 @@ librarian::shelf(
 
 Note that the `tbeptools` R package is installed from source on Github given the 'owner/repository' naming convention, so `tbep-tech/tbeptools` has source code at [github.com/tbep-tech/tbeptools](https://github.com/tbep-tech/tbeptools).
 
-If you did not already have the `shiny` package installed, you should restar RStudio to use additional menu items for the next step.
+Later we'll use the simpler base function `library()` to load the libraries in the Shiny app since when publishing to [ShinyApps.io](https://ShinyApps.io) dependent libraries are automatically installed based on using `library()` (and not `librarian::shelf()`).
+
+If you did not already have the `shiny` package installed, you should restart RStudio to use additional menu items for the next step.
 
 ## Create your first Shiny app
 
@@ -100,15 +102,24 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
+### Run App
+
 Let's next **Run App**. Note that you can change the options by clicking on the down triangle next to the button, such as running the app in your default web browser (***Run External***), a pop-up window or in RStudio's Viewer Pane.
 
 ![](figs/shiny/shiny-run-app-options.png){width="200"}
+
+This is equivalent to sourcing the `app.R` file in the R console, including the last line which launches the application after defining the user interface (`ui`) and server functions (`server`):
+
+```r
+shinyApp(ui, server)
+```
 
 Now you can change the values in the slider on the left to change the "Number of bins" (`input$bins`) and see the updated plot (`output$distPlot`):
 
 ![](figs/shiny/faithful-app.png){width="600"}
 
 In Shiny parlance, the histogram plot is ***reactive*** to the slider (see [Reactivity](./intro.html#reactivity)). Normally when creating web apps, this type of "reactivity" is quite complicated to code, but here by simply using `input$bins` in the plotting function for the `output$distPlot`, Shiny registers that this plot needs to be updated when the user changes the `input$bins` value.
+
 
 ### Run in showcase mode
 
@@ -184,7 +195,8 @@ Here is the full set of expandable code for the app:
 #| code-summary: "Show Code: `app.R`"
 #| eval: false
 
-# goal: create an app to select a time series by station/parameter, create a plot and show on map
+# Goal: Create an app to show a time series by station and indicator.
+#  Also show map of stations and selected station.
 
 # global.R ----
 
@@ -197,8 +209,8 @@ if (!"tbeptools" %in% rownames(installed.packages()))
   install.packages(
     "tbeptools",
     repos = c(
-      tbeptech = 'https://tbep-tech.r-universe.dev',
-      CRAN     = 'https://cloud.r-project.org') )
+      tbeptech = "https://tbep-tech.r-universe.dev",
+      CRAN     = "https://cloud.r-project.org") )
 library(tbeptools)
 library(tidyr)
 
@@ -213,8 +225,8 @@ d <- epcdata |>
     `Chlorophyll-a (ug/L)`  = chla,
     `Secchi depth (m)`      = sd_m) |>
   pivot_longer(
-    names_to  = 'indicator',
-    values_to = 'value',
+    names_to  = "indicator",
+    values_to = "value",
     `Total Nitrogen (mg/L)`:`Secchi depth (m)`)
 
 # * data for select ----
@@ -224,27 +236,14 @@ locations  <- d |>
   select(station, lon, lat) |>
   unique()
 
-# * base map ----
-basemap <- leaflet(locations) |>
-  addProviderTiles(providers$CartoDB.Positron) |>
-  addLabelOnlyMarkers(
-    lat          = ~lat,
-    lng          = ~lon,
-    label        = ~as.character(station),
-    labelOptions = labelOptions(
-      noHide   = T,
-      textOnly = T) )
-
 #  ui.R ----
 ui <- fluidPage(
-
   wellPanel(
     h2("Water Quality"),
     selectInput("sel_sta", "Station",   choices = stations),
     selectInput("sel_ind", "Indicator", choices = indicators),
-    plotlyOutput('tsplot'),
-    leafletOutput('map') )
-
+    plotlyOutput("tsplot"),
+    leafletOutput("map") )
 )
 
 #  server.R ----
@@ -252,7 +251,6 @@ server <- function(input, output, session) {
 
   # * get_data(): reactive to inputs ----
   get_data <- reactive({
-
     d |>
       filter(
         station   == input$sel_sta,
@@ -261,15 +259,13 @@ server <- function(input, output, session) {
 
   # * tsplot: time series plot ----
   output$tsplot <- renderPlotly({
-
-    g <- ggplot(
+   g <- ggplot(
       get_data(),
       aes(
         x = SampleTime,
         y = value) ) +
       geom_line() +
       labs(y = input$sel_ind)
-
     ggplotly(g)
   })
 
@@ -281,12 +277,23 @@ server <- function(input, output, session) {
       filter(
         station == input$sel_sta)
 
-    basemap |>
+    # create map
+    leaflet(locations) |>
+      addProviderTiles(providers$CartoDB.Positron) |>
+      # add all stations
+      addLabelOnlyMarkers(
+        lat          = ~lat,
+        lng          = ~lon,
+        label        = ~as.character(station),
+        labelOptions = labelOptions(
+          noHide   = T,
+          textOnly = T) ) |>
+      # add selected station
       addCircles(
         data   = locs_sta,
         lng    = ~lon,
         lat    = ~lat,
-        color  = 'red',
+        color  = "red",
         weight = 20)
   })
 }
@@ -310,8 +317,8 @@ if (!"tbeptools" %in% rownames(installed.packages()))
   install.packages(
     "tbeptools",
     repos = c(
-      tbeptech = 'https://tbep-tech.r-universe.dev',
-      CRAN     = 'https://cloud.r-project.org') )
+      tbeptech = "https://tbep-tech.r-universe.dev",
+      CRAN     = "https://cloud.r-project.org") )
 library(tbeptools)
 
 epcdata
@@ -325,9 +332,7 @@ The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the
 
 1. What are the 3 goals of **tidy data**, per  [tidyr.tidyverse.org](https://tidyr.tidyverse.org)?
 
-1. Let's assume we want three indicators: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Do we need to pivot _**longer**_ (`?tidyr::pivot_longer`) or _**wider**_ (`?tidyr::pivot_longer`) to get each row as its own observation?
-
-1. ...
+1. Let's assume we want three indicators: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Based on tidy principles, we want each row to capture a unique "observation" and any co-varying "variables" (such as location and time). So, do we need to pivot _**longer**_ (`?tidyr::pivot_longer`) or _**wider**_ (`?tidyr::pivot_longer`) to get each row as its own observation?
 
 ::::: {.callout-tip icon=false collapse=true}
 
@@ -339,8 +344,6 @@ The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the
     1. Every _**cell**_ is a single value.
 
 1. The `epcdata` is currently in _**wide**_ format, with each variable as its own column. We want to pivot it _**longer**_ so that each row is an observation of a single indicator.
-
-1. ...
 
 :::::
 
@@ -369,10 +372,10 @@ The `dplyr` package is the 'swiss army knife' (or 'plyers') for data wrangling, 
 1. **Pivot**\
    Transform the data from wide to long format, or vice versa
    ```{.r}
-   data |> 
+   d |> 
      tidyr::pivot_longer(
-       names_to  = 'var', 
-       values_to = 'val')
+       names_to  = "var", 
+       values_to = "val")
    ```
 
 Applying the above concepts, we get:
@@ -394,8 +397,8 @@ d <- epcdata |>
     `Chlorophyll-a (ug/L)`  = chla,
     `Secchi depth (m)`      = sd_m) |>
   pivot_longer(
-    names_to  = 'indicator',
-    values_to = 'value',
+    names_to  = "indicator",
+    values_to = "value",
     `Total Nitrogen (mg/L)`:`Secchi depth (m)`)
 d
 ```
@@ -424,48 +427,144 @@ locations
 
 ### Add User Interface
 
-Let's add dropdown menus for station and parameter selection and placeholders for `plotly` and `leaflet` outputs. These outputs are **htmlwidgets ** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be udpating them _interactively_ based on user intput.
+Let's add dropdown menus for station and indicator selection and placeholders for `plotly` and `leaflet` outputs. These outputs are **htmlwidgets ** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them _interactively_ based on user input.
 
 ```r
+#  ui.R ----
 ui <- fluidPage(
-   # ... UI elements including selectInput for stations and parameters
-   plotlyOutput('timeSeriesPlot'),
-   leafletOutput('mapOutput')
+
+  # * layout ----
+  wellPanel(
+    h2("Water Quality"),
+    
+    # * input widgets ----
+    selectInput("sel_sta", "Station",   choices = stations),
+    selectInput("sel_ind", "Indicator", choices = indicators),
+    
+    # * output htmlwidgets ----
+    plotlyOutput("tsplot"),
+    leafletOutput("map") )
 )
 ```
 
+#### Layout
+
+Notice that `shiny::fluidPage()` and `shiny::wellPanel()` are used to setup the layout of the app. For more details, check out [Shiny - Application layout guide](https://shiny.posit.co/r/articles/build/layout-guide/). And for even more advanced layout options, checkout [shinydashboard](https://rstudio.github.io/shinydashboard) and [bslib](https://rstudio.github.io/bslib/) R packages.
+
+
+::: {.callout-caution}
+
+##### How does this layout compare with the first app?
+
+:::
+
+#### Input Widgets
+
+Notice that [`shiny::selectInput()`]() is used to setup the dropdown menus.
+
+::: {.callout-caution}
+
+##### What are the arguments used by  `shiny::selectInput()`? 
+
+:::
+
+::: {.callout-caution}
+
+##### What other input widgets might you use?
+
+Check out the [Shiny - Widget Gallery](https://shiny.posit.co/r/gallery/widgets/widget-gallery/).
+
+:::
+
+#### Htmlwidget outputs
+
+Notice that [`plotly::plotlyOutput()`]() and [`leaflet::leafletOutput()`]() are used to layout the **htmlwidgets ** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them _interactively_ based on user input with server-side functions.
+
 ### Add Server Functions
 
-Incorporate reactivity by creating a reactive expression to filter the data based on user input. Then, use `plotly` for the time series plot and `leaflet` for mapping.
+The htmlwidget R packages made for Shiny generally have two functions: 1) an `*Output` to place in the layout (ui.R); and 2) a `render*` function amongst the back-side functions (server.R) based on user inputs:
+
+- general form: `render*` (server.R) -> `*Output` (ui.R)
+- `plotly`: `renderPlotly()` -> `plotlyOutput()`
+- `leaflet`: `leafletOutput()` -> `renderLeaflet()`
+    
+#### Render time series plot
+
+Let's add a `renderPlotly()` function to update the time series plot based on user inputs. The `renderPlotly()` function takes a [`plotly`](https://plotly.com/r/) interactive plot object. We can use the `plotly::ggplotly()` function to take a static `ggplot2` plot object and make it an interactive plotly object. Using [`ggplot2`](https://ggplot2.tidyverse.org/) allows us to take advantage of the Grammar of Graphics principles to render plots using a layered approach (see [cheatsheet]( https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf), [summary](https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149) or [book](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl)). 
+
+The `get_data()` function allows us to generate a data frame reactive to user inputs and available for use across multiple server-side functions (although here we only use one). For more, see [Shiny - Use reactive expressions](https://shiny.posit.co/r/getstarted/shiny-basics/lesson6/).
 
 ```r
+#  server.R ----
 server <- function(input, output, session) {
-   # Reactive expression for filtering data
-   filtered_data <- reactive({
-       # ... data filtering based on input
-   })
 
-   # Render plotly time series plot
-   output$timeSeriesPlot <- renderPlotly({
-       # ... plotting logic using filtered_data()
-   })
+  # * get_data(): reactive to inputs ----
+  get_data <- reactive({
+    d |>
+      filter(
+        station   == input$sel_sta,
+        indicator == input$sel_ind)
+  })
 
-   # Render leaflet map
-   output$mapOutput <- renderLeaflet({
-       # ... mapping logic using filtered_data()
-   })
+  # * tsplot: time series plot ----
+  output$tsplot <- renderPlotly({
+    g <- ggplot(
+      get_data(),
+      aes(
+        x = SampleTime,
+        y = value) ) +
+      geom_line() +
+      labs(y = input$sel_ind)
+    ggplotly(g)
+  })
 }
 ```
 
-### Run App
+#### Render map
+
+Let's add a `renderLeaflet()` function to update the map based on user inputs. The `renderLeaflet()` function takes a [`leaflet`](https://rstudio.github.io/leaflet/) interactive map object. We can use the `leaflet::addLabelOnlyMarkers` function to add station labels. And to highlight the selected station we can use `leaflet::addCircles()`.
 
 ```r
-shinyApp(ui, server)
+  # * map ----
+  output$map <- renderLeaflet({
+
+    # filter locations by station
+    locs_sta <- locations |>
+      filter(
+        station == input$sel_sta)
+
+    # create map
+    leaflet(locations) |>
+      addProviderTiles(providers$CartoDB.Positron) |>
+      # add all stations
+      addLabelOnlyMarkers(
+        lat          = ~lat,
+        lng          = ~lon,
+        label        = ~as.character(station),
+        labelOptions = labelOptions(
+          noHide   = T,
+          textOnly = T) ) |>
+      # add selected station
+      addCircles(
+        data   = locs_sta,
+        lng    = ~lon,
+        lat    = ~lat,
+        color  = "red",
+        weight = 20)
+  })
 ```
+
+## Publish App
+
+Of the options to [Share your Shiny apps](https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/), the easiest is using [ShinyApps.io](https://www.shinyapps.io/), which makes a publicly accessible web page for your app for up to 5 apps for free (see [Pricing](https://www.shinyapps.io/#pricing-anchor) for details). Visit [Shiny - Getting started with shinyapps.io](https://shiny.posit.co/r/articles/share/shinyapps/) to run through the following sequence:
+
+1. Install the `rsconnect` R package.
+1. Create an account at [ShinyApps.io](https://www.shinyapps.io/).
+1. Configure `rsconnect` with token in RStudio.
+1. Publish the app from RStudio.
 
 ## Further Resources {.unnumbered}
 
--   [Shiny Cheatsheet](https://shiny.rstudio.com/articles/cheatsheet.html)
--   [Shiny Tutorial](https://shiny.rstudio.com/tutorial/)
--   [Introduction to Shiny - RStudio](https://www.rstudio.com/resources/webinars/introduction-to-shiny/)
+- [Shiny Cheatsheet](https://shiny.rstudio.com/articles/cheatsheet.html)
+- [Shiny Tutorial](https://shiny.rstudio.com/tutorial/)
 - [Mastering Shiny](https://mastering-shiny.org/index.html) book

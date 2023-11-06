@@ -59,6 +59,7 @@ format:
     css: libs/style.css
     code-tools:
       source: repo
+    toc-depth: 4
   # pdf:
   #   documentclass: scrreprt
   #   prefer-html: true
