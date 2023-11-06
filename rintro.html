@@ -327,22 +327,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#rstudio" id="toc-rstudio" class="nav-link active" data-scroll-target="#rstudio"><span class="header-section-number">B.1</span> RStudio</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#open-r-and-rstudio" id="toc-open-r-and-rstudio" class="nav-link" data-scroll-target="#open-r-and-rstudio"><span class="header-section-number">B.1.1</span> Open R and RStudio</a></li>
   <li><a href="#scripting" id="toc-scripting" class="nav-link" data-scroll-target="#scripting"><span class="header-section-number">B.1.2</span> Scripting</a></li>
   <li><a href="#executing-code-in-rstudio" id="toc-executing-code-in-rstudio" class="nav-link" data-scroll-target="#executing-code-in-rstudio"><span class="header-section-number">B.1.3</span> Executing code in RStudio</a></li>
   </ul></li>
   <li><a href="#r-language-fundamentals" id="toc-r-language-fundamentals" class="nav-link" data-scroll-target="#r-language-fundamentals"><span class="header-section-number">B.2</span> R language fundamentals</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#what-is-the-environment" id="toc-what-is-the-environment" class="nav-link" data-scroll-target="#what-is-the-environment"><span class="header-section-number">B.2.1</span> What is the environment?</a></li>
   </ul></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">B.3</span> Packages</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#cran" id="toc-cran" class="nav-link" data-scroll-target="#cran"><span class="header-section-number">B.3.1</span> CRAN</a></li>
   <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages"><span class="header-section-number">B.3.2</span> Installing packages</a></li>
   </ul></li>
   <li><a href="#data-structures-in-r" id="toc-data-structures-in-r" class="nav-link" data-scroll-target="#data-structures-in-r"><span class="header-section-number">B.4</span> Data structures in R</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#vectors-one-dimensional-data" id="toc-vectors-one-dimensional-data" class="nav-link" data-scroll-target="#vectors-one-dimensional-data"><span class="header-section-number">B.4.1</span> Vectors (one-dimensional data)</a></li>
   <li><a href="#data-frames-two-dimensional-data" id="toc-data-frames-two-dimensional-data" class="nav-link" data-scroll-target="#data-frames-two-dimensional-data"><span class="header-section-number">B.4.2</span> Data frames (two-dimensional data)</a></li>
   </ul></li>
@@ -429,31 +429,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random numbers</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 11.458854  9.487886  8.940645 11.264211 11.436893  6.596555  9.448880
-  [8] 13.520256 12.821766 10.877002  9.639559 10.348576  9.443314  9.479239
- [15]  9.860213  8.452518 13.181936 11.865344 10.221066 11.997865  9.759843
- [22]  9.416743 12.815628  9.981278 10.295033 10.140754  7.056276 13.011125
- [29]  8.050306  7.081217 10.697892 10.924789 10.873750  9.934683  8.780941
- [36]  9.158467  8.394265 10.286103 10.539785  6.717281 10.358094 10.950953
- [43] 10.315729 10.570965  9.699732  7.672766 10.831608 10.531652  8.632623
- [50] 11.361940  6.844003 12.734091 11.718274 13.725646 10.514374  9.990675
- [57]  8.665183  9.689662 13.249095 12.197812  9.335473  7.134150  5.262534
- [64] 11.001255  9.814359  9.071780  6.548034  9.280461 11.672573  8.093227
- [71]  7.133970  8.682356  8.263120 10.605483  9.161835 10.878875 14.366831
- [78] 12.104186  9.620235  7.655856 12.045508 11.142518  9.944237  8.342238
- [85]  7.998681 10.682959  5.249622  8.632339  6.392689 10.246288  8.947370
- [92]  8.805735  8.075524  6.786736  9.422671  7.110614  8.521830  8.221900
- [99]  8.711083  5.436222</code></pre>
+<pre><code>  [1] 11.004173 10.449305 10.728990  7.185421 10.528996 10.131451 10.492123
+  [8]  7.070841 10.375144 10.101527 11.014414 10.487565  7.747175 10.720264
+ [15]  4.514712 12.201533 13.446025 12.738976  9.545276  9.102271 10.750975
+ [22]  6.226107  8.365530 10.326981 11.425260 10.184787 10.687223  8.574004
+ [29]  7.784957  9.775928  6.898476  9.153512  9.534374  9.467273  9.688495
+ [36]  9.041761 11.229185  8.795835 10.621471 10.991330  9.666779 12.818803
+ [43] 10.179274  9.308239 12.114452 10.229981 15.415303 10.251032  6.710151
+ [50]  8.903269  7.710018 10.477254  8.466322 11.523050  7.511499  8.657178
+ [57]  6.907896 11.959608  8.683089  9.131607  7.457679  9.551412 11.430171
+ [64]  6.699644  9.845907  9.723837 14.167552  9.737572 11.277631 10.581481
+ [71]  7.109603  7.011979 10.354589 14.147424  9.895071 13.047881  9.213873
+ [78] 10.158006 10.509707  8.790323 13.487461 10.774295  7.108436 11.544641
+ [85] 12.607818  5.642289  9.592636  8.723386  9.775052  7.169452 10.333485
+ [92] 10.733748 10.424659 10.725426  9.534900  5.378018 14.795211 10.064299
+ [99]  8.747614 10.590329</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.007230356</code></pre>
+<pre><code>[1] -0.2175945</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.613323</code></pre>
+<pre><code>[1] -21.9157</code></pre>
 </div>
 </div>
 <p>Very often you will see functions used like this:</p>
@@ -464,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_random_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6196284</code></pre>
+<pre><code>[1] 2.197511</code></pre>
 </div>
 </div>
 <section id="what-is-the-environment" class="level3" data-number="B.2.1">
@@ -477,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The base installation of R is quite powerful. Packages allow you to include new methods for use in R.</p>
 <section id="cran" class="level3" data-number="B.3.1">
 <h3 data-number="B.3.1" class="anchored" data-anchor-id="cran"><span class="header-section-number">B.3.1</span> CRAN</h3>
-<p>Many packages are available on CRAN, <a href="http://cran.r-project.org/" target="_blank">The Comprehensive R Archive Network</a>. This is where you download R and also where most will gain access to packages. As of 2023-11-05, there are 19956 packages on CRAN!</p>
+<p>Many packages are available on CRAN, <a href="http://cran.r-project.org/" target="_blank">The Comprehensive R Archive Network</a>. This is where you download R and also where most will gain access to packages. As of 2023-11-06, there are 19957 packages on CRAN!</p>
 </section>
 <section id="installing-packages" class="level3" data-number="B.3.2">
 <h3 data-number="B.3.2" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">B.3.2</span> Installing packages</h3>
@@ -908,7 +908,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":true});</script>
 
 
 
