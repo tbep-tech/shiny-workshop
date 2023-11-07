@@ -160,6 +160,34 @@ Repeat the above steps to create an RStudio project and Quarto file.
 1. Add some Markdown text outside of the code chunk
 1. Render your document to marvel at your work
 
+::::: {.callout-tip icon=false collapse=true}
+
+#### `r fa('wand-magic-sparkles')` Answers
+
+This is an example of what your Quarto file might look like: 
+
+````{.markdown}
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+---
+
+I  can write anything I want right here. Here's some **bold text**.
+    
+I can also make lists
+    
+1. Item 1
+1. Item 2
+    
+```{{r}}
+#| echo: true
+print('Hello Quarto!')
+```
+````
+
+:::::
+
 :::
 
 ## Code chunk options
@@ -364,6 +392,50 @@ Create some tables, figures, and cross-references as above.
 1. Repeat the above, but this time create a table (e.g., `knitr::kable(mtcars)`)
 1. Render your document to marvel at your work
 
+::::: {.callout-tip icon=false collapse=true}
+
+#### `r fa('wand-magic-sparkles')` Answers
+
+This is an example of what your Quarto file might look like: 
+
+````{.markdown}
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+---
+
+I  can write anything I want right here. Here's some **bold text**.
+    
+I can also make lists
+    
+1. Item 1
+1. Item 2
+    
+```{{r}}
+#| echo: true
+print('Hello Quarto!')
+```
+
+@fig-myhist shows an awesome histogram. 
+
+```{{r}}
+#| label: fig-myhist
+#| fig-cap: "Here's my awesome histogram."
+hist(mtcars$mpg)
+```
+
+@tbl-mytable shows an awesome table. 
+
+```{{r}}
+#| label: tbl-mytable
+#| tbl-cap: "Here's my awesome table."
+knitr::kable(mtcars)
+```
+````
+
+:::::
+
 :::
 
 ## Quarto using `htmlwidgets`
@@ -488,9 +560,80 @@ dygraph(toplo) %>%
 Add some `htmlwidgets` to your Quarto document. 
 
 1. Create a code chunk and add some code to produce a `leaflet` map.  You can use the same lat/lon coordinates from above or pick your own from [Google Maps](https://maps.google.com/){target="_blank"}. Install the `leaflet` package if you need to.
-1. Create another code chunk and add some code to produce a `plotly` object.  For simplicity, use the `ggplotly()` function to convert an existing `ggplot` object.  You can reuse the code from above. Install the `plotly` package if you need to.
 1. Create another code chunk and add some code to create a `dygraph` object.  You can use the same code from above or create your own time series.  Install the `dygraphs` package if you need to.
 1. Render your document to marvel at your work
+
+::::: {.callout-tip icon=false collapse=true}
+
+#### `r fa('wand-magic-sparkles')` Answers
+
+This is an example of what your Quarto file might look like: 
+
+````{.markdown}
+---
+title: "Quarto practice"
+author: "Marcus Beck"
+editor: visual
+---
+
+```{{r}}
+#| echo: false
+#| message: false
+library(leaflet)
+library(dygraphs)
+library(tibble)
+```
+
+I  can write anything I want right here. Here's some **bold text**.
+    
+I can also make lists
+    
+1. Item 1
+1. Item 2
+    
+```{{r}}
+#| echo: true
+print('Hello Quarto!')
+```
+
+@fig-myhist shows an awesome histogram. 
+
+```{{r}}
+#| label: fig-myhist
+#| fig-cap: "Here's my awesome histogram."
+hist(mtcars$mpg)
+```
+
+@tbl-mytable shows an awesome table. 
+
+```{{r}}
+#| label: tbl-mytable
+#| tbl-cap: "Here's my awesome table."
+knitr::kable(mtcars)
+```
+
+```{{r}}
+leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = -82.5, lat = 27.5)
+```
+
+```{{r}}
+# create data
+n <- 1000
+y <- cumsum(rnorm(n))
+dts <- seq.Date(Sys.Date(), by = 'day', length.out = n)
+toplo <- tibble(
+  Date = dts, 
+  y = y
+)
+
+dygraph(toplo) %>% 
+  dyRangeSelector()
+```
+````
+
+:::::
 
 :::
 
