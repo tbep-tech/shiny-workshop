@@ -148,7 +148,6 @@ This next section will run through the very basics of creating a Quarto document
     A rendered Quarto document as an HTML, PDF, Word, or other file format is stand-alone and can be shared with anybody!
     :::
 
-
 ::: {.callout-note icon=false}
 
 ### `r fa('hat-wizard')` Exercise
@@ -162,7 +161,6 @@ Repeat the above steps to create an RStudio project and Quarto file.
 1. Render your document to marvel at your work
 
 :::
-
 
 ## Code chunk options
 
@@ -354,7 +352,9 @@ knitr::kable(mytab)
 
 Visit these links for full details on [figures](https://quarto.org/docs/authoring/figures.html){target="_blank"} and [tables](https://quarto.org/docs/authoring/tables.html){target="_blank"} in Quarto. R also has a rich [library of packages](https://towardsdatascience.com/top-7-packages-for-making-beautiful-tables-in-r-7683d054e541){target="_blank"} for producing tables, most of which play nice with Quarto.  
 
-<h3>`r fa('hat-wizard')` Exercise</h3>
+::: {.callout-note icon=false}
+
+### `r fa('hat-wizard')` Exercise
 
 Create some tables, figures, and cross-references as above. 
 
@@ -363,6 +363,8 @@ Create some tables, figures, and cross-references as above.
 1. Use the figure label to add a cross-reference outside of the code chunk
 1. Repeat the above, but this time create a table (e.g., `knitr::kable(mtcars)`)
 1. Render your document to marvel at your work
+
+:::
 
 ## Quarto using `htmlwidgets`
 
@@ -479,7 +481,9 @@ dygraph(toplo) %>%
   dyRangeSelector()
 ```
 
-<h3>`r fa('hat-wizard')` Exercise</h3>
+::: {.callout-note icon=false}
+
+### `r fa('hat-wizard')` Exercise
 
 Add some `htmlwidgets` to your Quarto document. 
 
@@ -487,6 +491,8 @@ Add some `htmlwidgets` to your Quarto document.
 1. Create another code chunk and add some code to produce a `plotly` object.  For simplicity, use the `ggplotly()` function to convert an existing `ggplot` object.  You can reuse the code from above. Install the `plotly` package if you need to.
 1. Create another code chunk and add some code to create a `dygraph` object.  You can use the same code from above or create your own time series.  Install the `dygraphs` package if you need to.
 1. Render your document to marvel at your work
+
+:::
 
 ## Quarto using `crosstalk`
 
@@ -701,9 +707,13 @@ If your Quarto document is in an RStudio project on GitHub, you can also publish
 quarto publish gh-pages data/quartoex.qmd
 ```
 
-<h3>`r fa('hat-wizard')` Exercise</h3>
+::: {.callout-note icon=false}
+
+### `r fa('hat-wizard')` Exercise
 
 Publish your Quarto document using any of the methods above (bonus points if you use GitHub). 
+
+:::
 
 ## Summary
 
