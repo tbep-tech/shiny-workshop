@@ -18,6 +18,7 @@ The following is a non-exhaustive list of additional resources you can use for c
 
 * [Official Quarto Website](https://quarto.org/){target="_blank"}
 * [Quarto Reference Materials](https://quarto.org/docs/reference/){target="_blank"}
+* [Quarto Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html){target="_blank"}
 * [Learning Quarto with RStudio](https://quarto.org/docs/get-started/hello/rstudio.html){target="_blank"}
 * [Openscapes Quarto Tutorial](https://openscapes.github.io/quarto-website-tutorial/){target="_blank"}
 
