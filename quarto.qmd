@@ -148,7 +148,10 @@ This next section will run through the very basics of creating a Quarto document
     A rendered Quarto document as an HTML, PDF, Word, or other file format is stand-alone and can be shared with anybody!
     :::
 
-<h3>`r fa('hat-wizard')` Exercise</h3>
+
+::: {.callout-note icon=false}
+
+### `r fa('hat-wizard')` Exercise
 
 Repeat the above steps to create an RStudio project and Quarto file. 
 
@@ -157,6 +160,9 @@ Repeat the above steps to create an RStudio project and Quarto file.
 1. Create a code chunk and add some R code
 1. Add some Markdown text outside of the code chunk
 1. Render your document to marvel at your work
+
+:::
+
 
 ## Code chunk options
 
