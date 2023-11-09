@@ -1,6 +1,7 @@
 ---
 filters:
   - lightbox
+  - line-highlight
 lightbox: auto
 ---
 
@@ -14,7 +15,8 @@ if (!require(librarian)){
   library(librarian)
 }
 shelf(
-  htmltools, mitchelloharawild/icons)
+  htmltools, fontawesome)
+  #mitchelloharawild/icons)
 ```
 
 ## Learning Objectives {.unnumbered .objectives}
@@ -118,8 +120,57 @@ Now you can change the values in the slider on the left to change the "Number of
 
 ![](figs/shiny/faithful-app.png){width="600"}
 
-In Shiny parlance, the histogram plot is ***reactive*** to the slider (see [Reactivity](./intro.html#reactivity)). Normally when creating web apps, this type of "reactivity" is quite complicated to code, but here by simply using `input$bins` in the plotting function for the `output$distPlot`, Shiny registers that this plot needs to be updated when the user changes the `input$bins` value.
+### Understanding reactivity
 
+In Shiny parlance, the histogram plot is ***reactive*** to the slider (see [Reactivity](./intro.html#reactivity)). Normally when creating web apps, this type of "reactivity" is quite complicated to code, but here by simply using `input$bins` in the plotting function for the `output$distPlot`, Shiny registers that this plot needs to be updated when the user changes the `input$bins` value. Let's breakdown the sequence of operations to ensure we understand **reactivity**:
+
+1.  User changes the slider value (e.g., moves from the default value of 30 to max of 50):\
+    ![](./figs/shiny/faithful_slide-bins.png){width=200} <!--300px-->\
+    This slider was created with the following code:
+    
+    ```{r}
+    #| eval: false
+    #| class-source: "numberLines"
+    #| source-line-numbers: "2"
+    
+    sliderInput(
+      "bins",
+      "Number of bins:", min = 1, max = 50, value = 30)
+    ```
+    
+    Note that the first argument of  `sliderInput()` (see [`?sliderInput()`](https://shiny.posit.co/r/reference/shiny/latest/sliderinput)) is `inputID`, which is the name of the input variable to be used in the server function. In this case, the `inputID` is `"bins"` and the value of the slider is then accessed in the server function with `input$bins`. In summary:\
+`sliderInput("bins",...)` (in ui.R) becomes → `input$bins` (in server.R)
+    
+1.  Shiny registers that the `input$bins` value has changed and re-runs any functions in server.R that use this value, which in this case is `output$distPlot` defined by:
+    
+    ```{r}
+    #| eval: false
+    #| class-source: "numberLines"
+    #| source-line-numbers: "4"
+    
+    output$distPlot <- renderPlot({
+      # generate bins based on input$bins from ui.R
+      x    <- faithful[, 2]
+      bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+      # draw the histogram with the specified number of bins
+      hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    })
+    ```
+
+1.  The updated `output$distPlot` from server.R is refreshed in the layout of ui.R by `plotOutput()` since the first argument of this function is `outputID` which has the value `"distPlot"`:
+
+    ```{r}
+    #| eval: false
+    #| class-source: "numberLines"
+    #| source-line-numbers: "3"
+  
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+    ```
+    ![](./figs/shiny/faithful_distplot.png){width=400} <!--571px-->
 
 ### Run in showcase mode
 
@@ -150,9 +201,11 @@ dir_app <- file.path(dir_examples, "01_hello")
 shiny::runApp(dir_app)
 ```
 
-::: {.callout-caution}
+::: {.callout-note icon=false}
 
-#### What happens as you change the `display.mode`?
+### `r fa('hat-wizard')` Exercise
+
+What happens as you change the `display.mode`?
 
 Lookup help for the argument `display.mode` in the runApp() function (enter `?runApp` in R Console). 
 
@@ -162,7 +215,8 @@ Lookup help for the argument `display.mode` in the runApp() function (enter `?ru
 
 ::::: {.callout-tip icon=false collapse=true}
 
-#### Answers
+#### `r fa('wand-magic-sparkles')` Answers
+
 
 1. The default mode is "showcase", which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.
 
