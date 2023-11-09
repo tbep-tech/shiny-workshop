@@ -429,31 +429,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random numbers</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1]  7.308835  9.294330  8.029659 10.842802  7.971028  8.064288  8.823282
-  [8]  4.933682 10.735431 10.722482 10.490798 11.266026 12.284051 11.773789
- [15]  9.525324 11.626791 12.117011 14.811439 11.363569  7.815565 13.480951
- [22]  8.494122  8.036832 10.260441 13.743277  6.394676 10.608809 10.880844
- [29] 10.565264 11.999815 15.134919  8.167347  6.540170 11.145996  9.714438
- [36]  8.006492 12.023404  7.944725  8.754946 13.507734 14.380907 11.901678
- [43]  9.836763  8.331082  8.553270 11.247063 13.583705  9.968711 12.016873
- [50] 10.902932  6.475480 10.458502  8.602552 11.232268 10.013600  8.681590
- [57]  9.537583 10.325028 11.280036  6.721411 10.383939 10.582494 10.016757
- [64] 11.166685 10.856437  7.954392 11.311310 15.432618 12.514032 12.162789
- [71]  8.342973  9.939294  7.540196  7.127383  8.032027  9.621994  8.892501
- [78] 12.064586 11.261025 12.121477 10.131559 10.791970  8.505257 10.331419
- [85] 10.341059 12.352940  6.054550 10.452270 10.337699 11.637503 14.141488
- [92] 11.292925  9.111030 11.573601 11.003304  9.870496 12.661260  7.035223
- [99] 15.022756 12.199884</code></pre>
+<pre><code>  [1]  9.539148 11.173639 11.352103  7.876807 10.139567 12.310212  9.314088
+  [8]  8.196828  4.846182 11.295615 11.764991  9.154951 11.876823 10.632808
+ [15]  8.589645  8.221989  6.990938 13.024685  8.023086  7.815345  8.627639
+ [22] 10.576946 10.292885 11.186405 11.929858  8.250936 11.859250  6.339981
+ [29] 10.560699  9.631612  7.758365  9.043851  9.981357  8.665335  8.194237
+ [36]  9.238875  9.401885 10.196535  8.603463  8.763108 11.064241 10.349202
+ [43] 10.117187 15.166979  9.932482 11.725841 11.188881 12.468910 10.415617
+ [50]  8.029622  9.876533  6.480876 12.126307  8.084200  3.974635 12.480025
+ [57] 11.855455  9.004318 10.522932  7.345793 11.416804 14.351119 10.887804
+ [64]  9.705598  9.822095 10.102285 14.215409 11.948771  8.254331  7.817462
+ [71]  9.323390  8.415480  9.578237  8.724450 11.137299 11.078469  8.742037
+ [78] 12.234346  7.794242  9.154710 11.884756  6.629730 11.510931  9.311577
+ [85]  6.833372  5.941485  9.195917 10.985906 11.484052  8.292016 10.497422
+ [92]  9.164715  7.085754  5.328380  7.962004  9.070046 13.653722  9.634528
+ [99]  9.046496 10.805846</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># average </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06246294</code></pre>
+<pre><code>[1] -0.07998689</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sum</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5145464</code></pre>
+<pre><code>[1] -12.60558</code></pre>
 </div>
 </div>
 <p>Very often you will see functions used like this:</p>
@@ -464,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_random_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.28139</code></pre>
+<pre><code>[1] 15.04916</code></pre>
 </div>
 </div>
 <section id="what-is-the-environment" class="level3" data-number="B.2.1">
@@ -477,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The base installation of R is quite powerful. Packages allow you to include new methods for use in R.</p>
 <section id="cran" class="level3" data-number="B.3.1">
 <h3 data-number="B.3.1" class="anchored" data-anchor-id="cran"><span class="header-section-number">B.3.1</span> CRAN</h3>
-<p>Many packages are available on CRAN, <a href="http://cran.r-project.org/" target="_blank">The Comprehensive R Archive Network</a>. This is where you download R and also where most will gain access to packages. As of 2023-11-07, there are 19961 packages on CRAN!</p>
+<p>Many packages are available on CRAN, <a href="http://cran.r-project.org/" target="_blank">The Comprehensive R Archive Network</a>. This is where you download R and also where most will gain access to packages. As of 2023-11-09, there are 19998 packages on CRAN!</p>
 </section>
 <section id="installing-packages" class="level3" data-number="B.3.2">
 <h3 data-number="B.3.2" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">B.3.2</span> Installing packages</h3>
@@ -908,7 +908,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":true,"descPosition":"bottom","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"closeEffect":"zoom","descPosition":"bottom"});</script>
 
 
 
