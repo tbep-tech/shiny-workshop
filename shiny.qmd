@@ -222,6 +222,7 @@ Lookup help for the argument `display.mode` in the runApp() function (enter `?ru
 5.  Run the other examples.
 
 ::: {.callout-tip icon="false" collapse="true"}
+
 #### `r fa('wand-magic-sparkles')` Answers
 
 1.  The default mode is `"showcase"`, which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.
@@ -266,6 +267,7 @@ Check out the available input widgets in the [Shiny - Widget Gallery](https://sh
 3.  Look at the app with the additional argument to `shinyApp()` of `options = list(display.mode = "showcase")` and see how the different server functions get highlighted as you interact with the different inputs.
 
 ::: {.callout-tip icon="false" collapse="true"}
+
 #### `r fa('wand-magic-sparkles')` Answers
 
 Here's the full app using `selectInput()` to select a letter and display it in the main panel:
@@ -527,15 +529,19 @@ epcdata
 
 The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the `tbeptools` R package, available once the package is loaded with `library(tbeptools)`, similar to how `faithful` (`?faithful` for details) is automatically available from the base R package `datasets`.
 
-::: callout-caution
-#### How should we tidy `epcdata`?
+
+::: {.callout-note icon="false"}
+### `r fa('hat-wizard')` Exercise: _**Tidy**_ data concepts
+
+How should we prepare `epcdata` data to be tidy?
 
 1.  What are the 3 goals of **tidy data**, per [tidyr.tidyverse.org](https://tidyr.tidyverse.org)?
 
 2.  Let's assume we want three indicators: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Based on tidy principles, we want each row to capture a unique "observation" and any co-varying "variables" (such as location and time). So, do we need to pivot ***longer*** (`?tidyr::pivot_longer`) or ***wider*** (`?tidyr::pivot_longer`) to get each row as its own observation?
 
 ::: {.callout-tip icon="false" collapse="true"}
-#### Answers
+
+#### `r fa('wand-magic-sparkles')` Answers
 
 1.  The 3 goals of **tidy data** are:
     1.  Every ***column*** is a variable.
@@ -545,9 +551,10 @@ The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the
 :::
 :::
 
-The `dplyr` package is the 'swiss army knife' (or 'plyers') for data wrangling, along with its close cousin `tidyr`. Let's look at some basic operations: filtering, selecting, and pivoting.
+The `dplyr` package is the 'swiss army knife' (or 'plyers') for data wrangling, along with its close cousin `tidyr`. Let's look at some basic operations: filtering, selecting, and pivoting. Be sure to reference [Posit Cheatsheets](https://posit.co/resources/cheatsheets/) like: [Data tidying with tidyr :: Cheatsheet](https://rstudio.github.io/cheatsheets/html/tidyr.html) and [Data transformation with dplyr :: Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html).
 
 1.  **Filter**\
+    ![](./figs/shiny/dplyr_filter.png){width=100}\
     Reduce ***rows*** based on condition(s) that evaluate logically (i.e. True or False)
 
     ``` r
@@ -556,6 +563,7 @@ The `dplyr` package is the 'swiss army knife' (or 'plyers') for data wrangling, 
     ```
 
 2.  **Select**\
+    ![](./figs/shiny/dplyr_select.png){width=100}\
     Reduce ***columns*** to only those specified
 
     ``` r
@@ -568,7 +576,8 @@ The `dplyr` package is the 'swiss army knife' (or 'plyers') for data wrangling, 
     ```
 
 3.  **Pivot**\
-    Transform the data from wide to long format, or vice versa
+    ![](./figs/shiny/tidyr_pivot-longer.png){width=150}\
+    Transform the data from wide _**to long**_ format, or vice versa
 
     ``` r
     d |> 
