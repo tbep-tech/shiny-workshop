@@ -207,6 +207,7 @@ Note that this example runs a similar Old Faithful app in a different location w
 ![](figs/shiny/faithful_showcase.png){width="600"}
 
 ::: {.callout-note icon="false"}
+
 ### `r fa('hat-wizard')` Exercise: play with `display.mode`
 
 Lookup help for the argument `display.mode` in the runApp() function (enter `?runApp` in R Console).
@@ -671,6 +672,7 @@ Notice that [`shiny::selectInput()`]() is used to setup the dropdown menus.
 ##### What are the arguments used by `shiny::selectInput()`?
 :::
 
+
 ::: callout-caution
 ##### What other input widgets might you use?
 
@@ -681,7 +683,7 @@ Check out the [Shiny - Widget Gallery](https://shiny.posit.co/r/gallery/widgets/
 
 Notice that [`plotly::plotlyOutput()`]() and [`leaflet::leafletOutput()`]() are used to layout the **htmlwidgets** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them *interactively* based on user input with server-side functions.
 
-### Add Server Functions
+### Add Server functions
 
 The htmlwidget R packages made for Shiny generally have two functions: 1) an `*Output` to place in the layout (ui.R); and 2) a `render*` function amongst the back-side functions (server.R) based on user inputs:
 
@@ -754,6 +756,25 @@ Let's add a `renderLeaflet()` function to update the map based on user inputs. T
         weight = 20)
   })
 ```
+
+::: {.callout-note icon="false"}
+
+### `r fa('hat-wizard')` Exercise: Render table
+
+Use the htmlwidget `DT::datatable()` to add an interactive table to the app. The `DT::datatable()` function takes a data frame object. We can use the `get_data()` function to generate a data frame reactive to user inputs.
+
+TODO...
+
+::: {.callout-tip icon="false" collapse="true"}
+
+#### `r fa('wand-magic-sparkles')` Answer
+
+TODO...
+
+:::
+
+:::
+
 
 ## Publish App
 
