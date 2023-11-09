@@ -440,17 +440,17 @@ knitr::kable(mtcars)
 
 ## Quarto using `htmlwidgets`
 
-The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank"} package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
+The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank"} package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to automatically embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
 
 ### `leaflet`
 
-The [`leaflet`](http://rstudio.github.io/leaflet/){target="_blank"} package can be used to create interactive maps (also see [`mapview`](https://r-spatial.github.io/mapview/){target="_blank"}) for an "out-of-the-box" option). Here's a quick map of where we are - click on the marker to view the popup.
+The [`leaflet`](http://rstudio.github.io/leaflet/){target="_blank"} package can be used to create interactive maps (also see [`mapview`](https://r-spatial.github.io/mapview/){target="_blank"} for an "out-of-the-box" option). Here's a quick map of where we are - click on the marker to view the popup.
 
 ```{r}
 library(leaflet)
 
 leaflet() %>%
-  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addTiles() %>%  # Add default basemap tiles
   addMarkers(lng = -122.663, lat = 45.529, popup = "CERF 2023 conference")
 ```
 
@@ -811,7 +811,7 @@ Plot.rectY(filtered,
 )
 ```
 
-Additional information on using Observable with Quarto is available [here](https://quarto.org/docs/computations/ojs.html){target="_blank"}
+Additional information on using Observable with Quarto is available [here](https://quarto.org/docs/computations/ojs.html){target="_blank"}.
 
 ## Sharing HTML files
 
