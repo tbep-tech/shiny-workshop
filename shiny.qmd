@@ -42,7 +42,7 @@ If you did not already have the `shiny` package installed, you should restart RS
 
 ## Create your first Shiny app
 
-Let's create a simple Shiny app starting with the provided default in RStudio by going to the menu **File** -\> **New File** -\> **Shiny Web App**... and name it ***app-faithful*** (after [faithful](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful), the Old Faithful geyser eruption frequency dataset used in this default example):
+Let's create a simple Shiny app starting with the provided default in RStudio by going to the menu **File** -\> **New File** -\> **Shiny Web App**... and name it ***app-faithful*** (after [`faithful`](https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful), the Old Faithful geyser eruption frequency dataset used in this default example):
 
 ![](figs/shiny/new-shiny_app-faithful.png){width="400"}
 
@@ -112,7 +112,7 @@ Let's next **Run App**. Note that you can change the options by clicking on the 
 
 This is equivalent to sourcing the `app.R` file in the R console, including the last line which launches the application after defining the user interface (`ui`) and server functions (`server`):
 
-```r
+``` r
 shinyApp(ui, server)
 ```
 
@@ -125,29 +125,29 @@ Now you can change the values in the slider on the left to change the "Number of
 In Shiny parlance, the histogram plot is ***reactive*** to the slider (see [Reactivity](./intro.html#reactivity)). Normally when creating web apps, this type of "reactivity" is quite complicated to code, but here by simply using `input$bins` in the plotting function for the `output$distPlot`, Shiny registers that this plot needs to be updated when the user changes the `input$bins` value. Let's breakdown the sequence of operations to ensure we understand **reactivity**:
 
 1.  User changes the slider value (e.g., moves from the default value of 30 to max of 50):\
-    ![](./figs/shiny/faithful_slide-bins.png){width=200} <!--300px-->\
+    ![](./figs/shiny/faithful_slide-bins.png){width="200"} <!--300px-->\
     This slider was created with the following code:
-    
+
     ```{r}
     #| eval: false
     #| class-source: "numberLines"
     #| source-line-numbers: "2"
-    
+
     sliderInput(
       "bins",
       "Number of bins:", min = 1, max = 50, value = 30)
     ```
-    
-    Note that the first argument of  `sliderInput()` (see [`?sliderInput()`](https://shiny.posit.co/r/reference/shiny/latest/sliderinput)) is `inputID`, which is the name of the input variable to be used in the server function. In this case, the `inputID` is `"bins"` and the value of the slider is then accessed in the server function with `input$bins`. In summary:\
-`sliderInput("bins",...)` (in ui.R) becomes → `input$bins` (in server.R)
-    
-1.  Shiny registers that the `input$bins` value has changed and re-runs any functions in server.R that use this value, which in this case is `output$distPlot` defined by:
-    
+
+    Note that the first argument of `sliderInput()` (see [`?sliderInput()`](https://shiny.posit.co/r/reference/shiny/latest/sliderinput)) is `inputID`, which is the name of the input variable to be used in the server function. In this case, the `inputID` is `"bins"` and the value of the slider is then accessed in the server function with `input$bins`. In summary:\
+    `sliderInput("bins",...)` (in ui.R) becomes → `input$bins` (in server.R)
+
+2.  Shiny registers that the `input$bins` value has changed and re-runs any functions in server.R that use this value, which in this case is `output$distPlot` defined by:
+
     ```{r}
     #| eval: false
     #| class-source: "numberLines"
     #| source-line-numbers: "4"
-    
+
     output$distPlot <- renderPlot({
       # generate bins based on input$bins from ui.R
       x    <- faithful[, 2]
@@ -158,19 +158,20 @@ In Shiny parlance, the histogram plot is ***reactive*** to the slider (see [Reac
     })
     ```
 
-1.  The updated `output$distPlot` from server.R is refreshed in the layout of ui.R by `plotOutput()` since the first argument of this function is `outputID` which has the value `"distPlot"`:
+3.  The updated `output$distPlot` from server.R is refreshed in the layout of ui.R by `plotOutput()` since the first argument of this function is `outputID` which has the value `"distPlot"`:
 
     ```{r}
     #| eval: false
     #| class-source: "numberLines"
     #| source-line-numbers: "3"
-  
+      
     # Show a plot of the generated distribution
     mainPanel(
       plotOutput("distPlot")
     )
     ```
-    ![](./figs/shiny/faithful_distplot.png){width=400} <!--571px-->
+
+    ![](./figs/shiny/faithful_distplot.png){width="400"} <!--571px-->
 
 ### Run in showcase mode
 
@@ -187,7 +188,7 @@ dirs_examples <- list.dirs(dir_examples, recursive = F)
 basename(dirs_examples)
 ```
 
-Another way to launch the shiny app is with the following:
+Another way to launch a shiny app is using `runApp()` on a directory, like...
 
 ```{r}
 # set directory to 01_hello app, aka the simplest default faithful app
@@ -201,39 +202,185 @@ dir_app <- file.path(dir_examples, "01_hello")
 shiny::runApp(dir_app)
 ```
 
-::: {.callout-note icon=false}
+Note that this example runs a similar Old Faithful app in a different location with an extra display on the right side highlighting the code that executes as you interact with the user interface.
 
-### `r fa('hat-wizard')` Exercise
+![](figs/shiny/faithful_showcase.png){width="600"}
 
-What happens as you change the `display.mode`?
+::: {.callout-note icon="false"}
+### `r fa('hat-wizard')` Exercise: play with `display.mode`
 
-Lookup help for the argument `display.mode` in the runApp() function (enter `?runApp` in R Console). 
+Lookup help for the argument `display.mode` in the runApp() function (enter `?runApp` in R Console).
 
-1. What is the default mode for this app?
-1. How is that defined?
-1. What's an alternative `display.mode` value to apply?
+1.  What is the default `display.mode` for the app with the path `dir_app`?
 
-::::: {.callout-tip icon=false collapse=true}
+2.  How is that defined?
 
+3.  What's an alternative `display.mode` value to apply?
+
+4.  Change the `display.mode` in your `app-faithful/app.R` by modifying arguments in the last line of `shinyApp()`.
+
+5.  Run the other examples.
+
+::: {.callout-tip icon="false" collapse="true"}
 #### `r fa('wand-magic-sparkles')` Answers
 
+1.  The default mode is `"showcase"`, which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.
 
-1. The default mode is "showcase", which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.
+2.  This is defined by the `DESCRIPTION` file in the same folder:
 
-2. This is defined by the DESCRIPTION file in the same folder:
 ```{r}
 file.path(dir_app, "DESCRIPTION") |> readLines()
 ```
-    
-3. The other mode is "normal":
+
+1.  The other mode is `"normal"`:
 
 ```{r}
 #| eval: false
 shiny::runApp(dir_app, display.mode = "normal")
 ```
 
-:::::
+1.  In the last line of `app-faithful/app.R` you would insert the extra argument `options = list(display.mode = "showcase")`:
 
+```{r}
+#| eval: false
+shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
+```
+
+1.  In the last line of `app-faithful/app.R` you would insert the extra argument `options = list(display.mode = "showcase")`:
+:::
+:::
+
+::: {.callout-note icon="false"}
+### `r fa('hat-wizard')` Exercise: add an input
+
+Check out the available input widgets in the [Shiny - Widget Gallery](https://shiny.posit.co/r/gallery/widgets/widget-gallery/).
+
+1.  Add any of the input widgets into the ui.R section of your `app-faithful/app.R`.
+
+    Look at the help for the various `*Input()` functions and try out different argument values.
+
+    The inputs do not have to be related at all to the `faithful` dataset. For choices, you can use a numeric vector like `1:10` or a character vector like `LETTERS[1:10]`.
+
+2.  Display the value of the selection in the input widget with a `verbatimTextOutput()` added to the ui.R section and `renderPrint()` in the server.R section.
+
+3.  Look at the app with the additional argument to `shinyApp()` of `options = list(display.mode = "showcase")` and see how the different server functions get highlighted as you interact with the different inputs.
+
+::: {.callout-tip icon="false" collapse="true"}
+#### `r fa('wand-magic-sparkles')` Answers
+
+Here's the full app using `selectInput()` to select a letter and display it in the main panel:
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show Code: `app.R`"
+#| eval: false
+
+library(shiny)
+
+ui <- fluidPage(
+
+  titlePanel("Old Faithful Geyser Data"),
+
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(
+        "bins",
+        "Number of bins:",
+        min = 1, max = 50, value = 30),
+
+      # add letter input
+      selectInput(
+        "sel_lttr",
+        "Select letter:",
+        choices = LETTERS[1:5]) ),
+
+    mainPanel(
+      plotOutput("distPlot"),
+
+      # add letter output
+      verbatimTextOutput("txt_lttr") ) )
+)
+
+server <- function(input, output) {
+
+  output$distPlot <- renderPlot({
+    x    <- faithful[, 2]
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+    hist(
+      x, breaks = bins, col = 'darkgray', border = 'white',
+      xlab = 'Waiting time to next eruption (in mins)',
+      main = 'Histogram of waiting times')
+  })
+
+  # render letter input to output
+  output$txt_lttr <- renderPrint({ input$sel_lttr })
+}
+
+# run app in showcase mode
+shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
+```
+
+Let's explicitly discuss each added bit of code:
+
+1.  First, add the `selectInput()` into the ui.R section:
+
+    ```{r}
+    #| eval: false
+      
+    # add letter input
+    selectInput(
+      "sel_lttr",
+      "Select letter:",
+      choices = LETTERS[1:5])
+    ```
+
+    Be sure your parenthesis are all closed and you have a comma in between elements sharing a common parent (e.g., `,` in between `sliderInput()` and `selectInput()` sharing parent of `sidebarPanel()`).
+
+2.  Second, add the `verbatimTextOutput()` into the ui.R section as a place to display the value of the new widget:
+
+    ```{r}
+    #| eval: false
+      
+    # add letter output
+    verbatimTextOutput("txt_lttr")
+    ```
+
+3.  Last to show the value of the selected widget, add `renderPrint()` into the server.R section:
+
+    ```{r}
+    #| eval: false
+      
+    # render letter input to output
+    output$txt_lttr <- renderPrint({ input$sel_lttr })
+    ```
+
+4.  Finally, to show in showcase mode, add the extra argument to `shinyApp()`:
+
+    ```{r}
+    #| eval: false
+
+    # run app in showcase mode
+    shinyApp(
+      ui = ui, server = server, 
+      options = list(display.mode = "showcase"))
+    ```
+
+    Notice how only the function that gets updated (<span style="background-color: #ffffb3;">highlighted</span>) is based on the changed \`input\$\*\`.\
+    ![](./figs/shiny/faithful_showcase-select.png)
+:::
+:::
+
+::: callout-tip
+### Tip: enable Rainbow Parentheses in RStudio
+
+The more you develop Shiny apps, the more you'll appreciate [Rainbow Parentheses in RStudio](https://posit.co/blog/rstudio-1-4-preview-rainbow-parentheses/). This feature is disabled by default. To enable: visit the menu Tools \> Global Options, select Code -\> Display, and check the box next to Rainbow Parentheses.
+
+![](https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-1-4-preview-rainbow-parentheses/rainbowOptions.png){width="200"}
+
+Then...
+
+![](https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-1-4-preview-rainbow-parentheses/colorfulCode.png){width="400"}
 :::
 
 ## Create a complex Shiny app
@@ -358,13 +505,13 @@ shinyApp(ui, server)
 
 You might notice the extra four dashes at the end of some of the comments in the code. Adding comments like these allows you to easily navigate to that section of code from the lower-left of the Source pane in RStudio:
 
-![When comments end with four or more dashes `----` in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in `app.R` that might otherwise be split into seperate files: `global.R`, `ui.R` and `server.R`. Then an asterisk prefix `*` is used to bullet key sections within.](./figs/shiny/app-wq_headers.png){width=201px}
+![When comments end with four or more dashes `----` in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in `app.R` that might otherwise be split into seperate files: `global.R`, `ui.R` and `server.R`. Then an asterisk prefix `*` is used to bullet key sections within.](./figs/shiny/app-wq_headers.png){width="201px"}
 
 In this extended tutorial, we will delve deeper into reactivity, data wrangling with `dplyr`, and the advantages of using R libraries that wrap JavaScript functionality. We'll start from the default Shiny application using the Old Faithful Geyser data and transform it into a more complex application.
 
 ### Prepare data
 
-First, let's prepare the water quality data for our app from the Tampa Bay Estuary Program R package [tbeptools](https://tbep-tech.github.io/tbeptools/index.html) that we'll install if it's not already installed on your computer. 
+First, let's prepare the water quality data for our app from the Tampa Bay Estuary Program R package [tbeptools](https://tbep-tech.github.io/tbeptools/index.html) that we'll install if it's not already installed on your computer.
 
 ```{r}
 if (!"tbeptools" %in% rownames(installed.packages()))
@@ -380,57 +527,55 @@ epcdata
 
 The dataset `epcdata` (`?epcdata` for details) is "lazily loaded" as part of the `tbeptools` R package, available once the package is loaded with `library(tbeptools)`, similar to how `faithful` (`?faithful` for details) is automatically available from the base R package `datasets`.
 
-::: {.callout-caution}
-
+::: callout-caution
 #### How should we tidy `epcdata`?
 
-1. What are the 3 goals of **tidy data**, per  [tidyr.tidyverse.org](https://tidyr.tidyverse.org)?
+1.  What are the 3 goals of **tidy data**, per [tidyr.tidyverse.org](https://tidyr.tidyverse.org)?
 
-1. Let's assume we want three indicators: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Based on tidy principles, we want each row to capture a unique "observation" and any co-varying "variables" (such as location and time). So, do we need to pivot _**longer**_ (`?tidyr::pivot_longer`) or _**wider**_ (`?tidyr::pivot_longer`) to get each row as its own observation?
+2.  Let's assume we want three indicators: Total Nitrogen (mg/L) (`tn`), Chlorophyll-a (ug/L) (`chla`), and Secchi depth (m) (`sd_m`). Based on tidy principles, we want each row to capture a unique "observation" and any co-varying "variables" (such as location and time). So, do we need to pivot ***longer*** (`?tidyr::pivot_longer`) or ***wider*** (`?tidyr::pivot_longer`) to get each row as its own observation?
 
-::::: {.callout-tip icon=false collapse=true}
-
+::: {.callout-tip icon="false" collapse="true"}
 #### Answers
 
-1. The 3 goals of **tidy data** are:
-    1. Every _**column**_ is a variable.
-    1. Every _**row**_ is an observation.
-    1. Every _**cell**_ is a single value.
-
-1. The `epcdata` is currently in _**wide**_ format, with each variable as its own column. We want to pivot it _**longer**_ so that each row is an observation of a single indicator.
-
-:::::
-
+1.  The 3 goals of **tidy data** are:
+    1.  Every ***column*** is a variable.
+    2.  Every ***row*** is an observation.
+    3.  Every ***cell*** is a single value.
+2.  The `epcdata` is currently in ***wide*** format, with each variable as its own column. We want to pivot it ***longer*** so that each row is an observation of a single indicator.
+:::
 :::
 
 The `dplyr` package is the 'swiss army knife' (or 'plyers') for data wrangling, along with its close cousin `tidyr`. Let's look at some basic operations: filtering, selecting, and pivoting.
 
-1. **Filter**\
-   Reduce _**rows**_ based on condition(s) that evaluate logically (i.e. True or False)
-   ```{.r}
-   d |> 
-     dplyr::filter(station == 8)
-   ```
+1.  **Filter**\
+    Reduce ***rows*** based on condition(s) that evaluate logically (i.e. True or False)
 
-1. **Select**\
-   Reduce _**columns**_ to only those specified
-   ```{.r}
-   d |> 
-     dplyr::select(
-       station = epchc_station, 
-       SampleTime,
-       lon     = Longitude,
-       lat     = Latitude)
-   ```
+    ``` r
+    d |> 
+      dplyr::filter(station == 8)
+    ```
 
-1. **Pivot**\
-   Transform the data from wide to long format, or vice versa
-   ```{.r}
-   d |> 
-     tidyr::pivot_longer(
-       names_to  = "var", 
-       values_to = "val")
-   ```
+2.  **Select**\
+    Reduce ***columns*** to only those specified
+
+    ``` r
+    d |> 
+      dplyr::select(
+        station = epchc_station, 
+        SampleTime,
+        lon     = Longitude,
+        lat     = Latitude)
+    ```
+
+3.  **Pivot**\
+    Transform the data from wide to long format, or vice versa
+
+    ``` r
+    d |> 
+      tidyr::pivot_longer(
+        names_to  = "var", 
+        values_to = "val")
+    ```
 
 Applying the above concepts, we get:
 
@@ -459,12 +604,12 @@ d
 
 We additionally need to prepare data for the following elements:
 
-1. **Stations**\
-   List of unique station numbers for selecting from a drop-down menu.
-1. **Indicators**\
-   List of unique indicators for selecting from a drop-down menu.
-1. **Locations**\
-   List of unique station locations (i.e. stations with lat/lon coordinates) to display on the map.
+1.  **Stations**\
+    List of unique station numbers for selecting from a drop-down menu.
+2.  **Indicators**\
+    List of unique indicators for selecting from a drop-down menu.
+3.  **Locations**\
+    List of unique station locations (i.e. stations with lat/lon coordinates) to display on the map.
 
 ```{r}
 # * data for select ----
@@ -481,9 +626,9 @@ locations
 
 ### Add User Interface
 
-Let's add dropdown menus for station and indicator selection and placeholders for `plotly` and `leaflet` outputs. These outputs are **htmlwidgets ** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them _interactively_ based on user input.
+Let's add dropdown menus for station and indicator selection and placeholders for `plotly` and `leaflet` outputs. These outputs are **htmlwidgets** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them *interactively* based on user input.
 
-```r
+``` r
 #  ui.R ----
 ui <- fluidPage(
 
@@ -505,50 +650,43 @@ ui <- fluidPage(
 
 Notice that `shiny::fluidPage()` and `shiny::wellPanel()` are used to setup the layout of the app. For more details, check out [Shiny - Application layout guide](https://shiny.posit.co/r/articles/build/layout-guide/). And for even more advanced layout options, checkout [shinydashboard](https://rstudio.github.io/shinydashboard) and [bslib](https://rstudio.github.io/bslib/) R packages.
 
-
-::: {.callout-caution}
-
+::: callout-caution
 ##### How does this layout compare with the first app?
-
 :::
 
 #### Input Widgets
 
 Notice that [`shiny::selectInput()`]() is used to setup the dropdown menus.
 
-::: {.callout-caution}
-
-##### What are the arguments used by  `shiny::selectInput()`? 
-
+::: callout-caution
+##### What are the arguments used by `shiny::selectInput()`?
 :::
 
-::: {.callout-caution}
-
+::: callout-caution
 ##### What other input widgets might you use?
 
 Check out the [Shiny - Widget Gallery](https://shiny.posit.co/r/gallery/widgets/widget-gallery/).
-
 :::
 
 #### Htmlwidget outputs
 
-Notice that [`plotly::plotlyOutput()`]() and [`leaflet::leafletOutput()`]() are used to layout the **htmlwidgets ** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them _interactively_ based on user input with server-side functions.
+Notice that [`plotly::plotlyOutput()`]() and [`leaflet::leafletOutput()`]() are used to layout the **htmlwidgets** you learned about in the morning (see [Quarto using htmlwidgets](https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets)), except we will be updating them *interactively* based on user input with server-side functions.
 
 ### Add Server Functions
 
 The htmlwidget R packages made for Shiny generally have two functions: 1) an `*Output` to place in the layout (ui.R); and 2) a `render*` function amongst the back-side functions (server.R) based on user inputs:
 
-- general form: `render*` (server.R) -> `*Output` (ui.R)
-- `plotly`: `renderPlotly()` -> `plotlyOutput()`
-- `leaflet`: `leafletOutput()` -> `renderLeaflet()`
-    
+-   general form: `render*` (server.R) -\> `*Output` (ui.R)
+-   `plotly`: `renderPlotly()` -\> `plotlyOutput()`
+-   `leaflet`: `leafletOutput()` -\> `renderLeaflet()`
+
 #### Render time series plot
 
-Let's add a `renderPlotly()` function to update the time series plot based on user inputs. The `renderPlotly()` function takes a [`plotly`](https://plotly.com/r/) interactive plot object. We can use the `plotly::ggplotly()` function to take a static `ggplot2` plot object and make it an interactive plotly object. Using [`ggplot2`](https://ggplot2.tidyverse.org/) allows us to take advantage of the Grammar of Graphics principles to render plots using a layered approach (see [cheatsheet]( https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf), [summary](https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149) or [book](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl)). 
+Let's add a `renderPlotly()` function to update the time series plot based on user inputs. The `renderPlotly()` function takes a [`plotly`](https://plotly.com/r/) interactive plot object. We can use the `plotly::ggplotly()` function to take a static `ggplot2` plot object and make it an interactive plotly object. Using [`ggplot2`](https://ggplot2.tidyverse.org/) allows us to take advantage of the Grammar of Graphics principles to render plots using a layered approach (see [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf), [summary](https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149) or [book](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl)).
 
 The `get_data()` function allows us to generate a data frame reactive to user inputs and available for use across multiple server-side functions (although here we only use one). For more, see [Shiny - Use reactive expressions](https://shiny.posit.co/r/getstarted/shiny-basics/lesson6/).
 
-```r
+``` r
 #  server.R ----
 server <- function(input, output, session) {
 
@@ -578,7 +716,7 @@ server <- function(input, output, session) {
 
 Let's add a `renderLeaflet()` function to update the map based on user inputs. The `renderLeaflet()` function takes a [`leaflet`](https://rstudio.github.io/leaflet/) interactive map object. We can use the `leaflet::addLabelOnlyMarkers` function to add station labels. And to highlight the selected station we can use `leaflet::addCircles()`.
 
-```r
+``` r
   # * map ----
   output$map <- renderLeaflet({
 
@@ -612,13 +750,13 @@ Let's add a `renderLeaflet()` function to update the map based on user inputs. T
 
 Of the options to [Share your Shiny apps](https://shiny.posit.co/r/getstarted/shiny-basics/lesson7/), the easiest is using [ShinyApps.io](https://www.shinyapps.io/), which makes a publicly accessible web page for your app for up to 5 apps for free (see [Pricing](https://www.shinyapps.io/#pricing-anchor) for details). Visit [Shiny - Getting started with shinyapps.io](https://shiny.posit.co/r/articles/share/shinyapps/) to run through the following sequence:
 
-1. Install the `rsconnect` R package.
-1. Create an account at [ShinyApps.io](https://www.shinyapps.io/).
-1. Configure `rsconnect` with token in RStudio.
-1. Publish the app from RStudio.
+1.  Install the `rsconnect` R package.
+2.  Create an account at [ShinyApps.io](https://www.shinyapps.io/).
+3.  Configure `rsconnect` with token in RStudio.
+4.  Publish the app from RStudio.
 
 ## Further Resources {.unnumbered}
 
-- [Shiny Cheatsheet](https://shiny.rstudio.com/articles/cheatsheet.html)
-- [Shiny Tutorial](https://shiny.rstudio.com/tutorial/)
-- [Mastering Shiny](https://mastering-shiny.org/index.html) book
+-   [Shiny Cheatsheet](https://shiny.rstudio.com/articles/cheatsheet.html)
+-   [Shiny Tutorial](https://shiny.rstudio.com/tutorial/)
+-   [Mastering Shiny](https://mastering-shiny.org/index.html) book
