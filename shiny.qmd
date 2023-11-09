@@ -228,23 +228,23 @@ Lookup help for the argument `display.mode` in the runApp() function (enter `?ru
 
 2.  This is defined by the `DESCRIPTION` file in the same folder:
 
-```{r}
-file.path(dir_app, "DESCRIPTION") |> readLines()
-```
+    ```{r}
+    file.path(dir_app, "DESCRIPTION") |> readLines()
+    ```
 
 1.  The other mode is `"normal"`:
 
-```{r}
-#| eval: false
-shiny::runApp(dir_app, display.mode = "normal")
-```
+    ```{r}
+    #| eval: false
+    shiny::runApp(dir_app, display.mode = "normal")
+    ```
 
 1.  In the last line of `app-faithful/app.R` you would insert the extra argument `options = list(display.mode = "showcase")`:
 
-```{r}
-#| eval: false
-shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
-```
+    ```{r}
+    #| eval: false
+    shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
+    ```
 
 1.  In the last line of `app-faithful/app.R` you would insert the extra argument `options = list(display.mode = "showcase")`:
 :::
@@ -366,7 +366,7 @@ Let's explicitly discuss each added bit of code:
       options = list(display.mode = "showcase"))
     ```
 
-    Notice how only the function that gets updated (<span style="background-color: #ffffb3;">highlighted</span>) is based on the changed \`input\$\*\`.\
+    Notice how only the function that gets updated ([highlighted]{style="background-color: #ffffb3;"}) is based on the changed \`input\$\*\`.\
     ![](./figs/shiny/faithful_showcase-select.png)
 :::
 :::
