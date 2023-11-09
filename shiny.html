@@ -572,8 +572,7 @@ This slider was created with the following code:</p>
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>The default mode is <code>"showcase"</code>, which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.</p></li>
-<li><p>This is defined by the <code>DESCRIPTION</code> file in the same folder:</p></li>
-</ol>
+<li><p>This is defined by the <code>DESCRIPTION</code> file in the same folder:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.path</span>(dir_app, <span class="st">"DESCRIPTION"</span>) <span class="sc">|&gt;</span> <span class="fu">readLines</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -582,21 +581,16 @@ This slider was created with the following code:</p>
 [5] "DisplayMode: Showcase"              "Tags: getting-started"             
 [7] "Type: Shiny"                       </code></pre>
 </div>
-</div>
-<ol type="1">
-<li>The other mode is <code>"normal"</code>:</li>
-</ol>
+</div></li>
+<li><p>The other mode is <code>"normal"</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(dir_app, <span class="at">display.mode =</span> <span class="st">"normal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>In the last line of <code>app-faithful/app.R</code> you would insert the extra argument <code>options = list(display.mode = "showcase")</code>:</li>
-</ol>
+</div></li>
+<li><p>In the last line of <code>app-faithful/app.R</code> you would insert the extra argument <code>options = list(display.mode = "showcase")</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">display.mode =</span> <span class="st">"showcase"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>In the last line of <code>app-faithful/app.R</code> you would insert the extra argument <code>options = list(display.mode = "showcase")</code>:</li>
+</div></li>
+<li><p>In the last line of <code>app-faithful/app.R</code> you would insert the extra argument <code>options = list(display.mode = "showcase")</code>:</p></li>
 </ol>
 </div>
 </div>
@@ -750,7 +744,7 @@ Tip: enable Rainbow Parentheses in RStudio
 <p>In this next more complicated app we’ll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series for any of the available indicators from another drop-down selection. The map will show the location of the selected station.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/shiny/app-wq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Complex app to create using water quality data from Tampa Bay, FL."><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/shiny/app-wq.png" class="lightbox" title="Complex app to create using water quality data from Tampa Bay, FL." data-gallery="quarto-lightbox-gallery-7"><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">Complex app to create using water quality data from Tampa Bay, FL.</figcaption>
 </figure>
 </div>
@@ -868,7 +862,7 @@ Tip: enable Rainbow Parentheses in RStudio
 <p>You might notice the extra four dashes at the end of some of the comments in the code. Adding comments like these allows you to easily navigate to that section of code from the lower-left of the Source pane in RStudio:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within."><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
+<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within." data-gallery="quarto-lightbox-gallery-8"><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
 <figcaption class="figure-caption">When comments end with four or more dashes <code>----</code> in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in <code>app.R</code> that might otherwise be split into seperate files: <code>global.R</code>, <code>ui.R</code> and <code>server.R</code>. Then an asterisk prefix <code>*</code> is used to bullet key sections within.</figcaption>
 </figure>
 </div>
@@ -1522,7 +1516,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":true,"closeEffect":"zoom"});</script>
 
 
 
