@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>First, <strong><em>dynamic</em></strong> applications can have the look and feel of an interactive Shiny dashboard, but are fundamentally different. They are standalone and do not include a server component. Any interactive functionality is pre-built into the application and they are built before being hosted on a web platform as an HTML file. Applications such as Quarto (and its predecessor RMarkdown) can be used to create dynamic applications. Here’s an <a href="https://tbep-tech.github.io/scallop-search/" target="_blank">example</a>.</p>
 <p>By comparison, a Shiny application is fully <strong><em>interactive</em></strong> - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI. This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience. These applications require combined or separate R scripts that define the UI and server components. Here’s an <a href="https://shiny.tbep.org/landuse-change/" target="_blank">example</a>.</p>
-<p>This workshop will cover both dynamic and interactive applications. Your needs for creating an application will determine which approach you use. In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications. You may find that you can build a simpler dynamic application without having to integrate interactive Shiny components. Here’s an <a href="https://shiny.tbep.org/landuse-change/" target="_blank">example</a>.</p>
+<p>This workshop will cover both dynamic and interactive applications. Your needs for creating an application will determine which approach you use. In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications. You may find that you can build a simpler dynamic application without having to integrate interactive Shiny components.</p>
 <section id="reactivity" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="reactivity"><span class="header-section-number">2.1</span> Reactivity</h2>
 <p>For <strong><em>dynamic</em></strong> applications, there’s not much you need to understand about coding beyond what you might already now about R. Creating the interactive components generally follows a familiar format. However, creating <strong><em>interactive</em></strong> applications in Shiny requires a fundamental shift in how you think about coding. It’s all done in R, but the pieces interact differently. You’re used to an R script from running top to bottom - code for a Shiny app runs up, down, and sideways depending on how you structure the components.</p>
@@ -777,7 +777,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 
