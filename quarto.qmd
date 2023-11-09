@@ -17,7 +17,7 @@ library(fontawesome)
 
 ## Learning Objectives {.unnumbered .objectives}
 
-Use the Quarto document preparation system to create interactive documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
+Use the Quarto document preparation system to create ***dynamic*** documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
 
 ## Install `quarto`
 
@@ -154,7 +154,7 @@ This next section will run through the very basics of creating a Quarto document
 
 Repeat the above steps to create an RStudio project and Quarto file. 
 
-1. Create an RStudio project (skip is using Posit Cloud)
+1. Create an RStudio project (skip if using Posit Cloud)
 1. Open a new Quarto file
 1. Create a code chunk and add some R code
 1. Add some Markdown text outside of the code chunk

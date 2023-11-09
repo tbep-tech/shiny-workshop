@@ -14,9 +14,9 @@ Shiny is an R package that lets you create rich, interactive web applications.  
 
 In the applied sciences world, Shiny can be a very important tool to "bridge the research-management divide".  A very simple example is the use of Shiny to replace a 500 page document that has hundreds of figures with a simple application that allows the user to jump to an exact slice of the data that they want.   
 
-There are many advantages to using Shiny over other platforms for creating web applications.  As R users, the value of Shiny is that you only need to know how to use R.  You do not need to know anything about web programming, such as HTML, CSS, or JavaScript.  On the other hand, Shiny gives you the power to tap into the broader suite of web programming tools when you're ready to or have a need to expand your application. 
+There are many advantages to using Shiny over other platforms for creating web applications.  As R users, the value of Shiny is that you only need to know how to use R.  You do not need to know anything about web programming, such as HTML, CSS, or JavaScript.  On the other hand, Shiny gives you the power to tap into the broader suite of web programming tools when you're ready or have a need to expand your application. 
 
-More simply, Shiny lets you create a web interface for any R workflow. This means that any custom analysis or graphic you've made can be fully integrated into your dashboard, unlike other platforms that may have rigid and less customizable templates designed for ease of use.  
+More simply, Shiny lets you create a web interface for any R workflow. This means that any custom analysis or graphic you've made can be fully integrated into your dashboard, unlike other platforms that may have rigid and less customizable templates.  
 
 # Dynamic and Interactive applications 
 
@@ -26,7 +26,7 @@ This workshop will expose you to the basics of creating interactive dashboards i
 
 First, ***dynamic*** applications can have the look and feel of an interactive Shiny dashboard, but are fundamentally different.  They are standalone and do not include a server component.  Any interactive functionality is pre-built into the application and they are built before being hosted on a web platform as an HTML file.  Applications such as Quarto (and its predecessor RMarkdown) can be used to create dynamic applications. Here's an [example](https://tbep-tech.github.io/scallop-search/){target="_blank"}.
 
-By comparison, a Shiny application is fully ***interactive*** - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI.  This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience.  These applications require combined or separate R scripts that define the UI and server components. Here's an [example](https://tbep-tech.github.io/scallop-search/){target="_blank"}.
+By comparison, a Shiny application is fully ***interactive*** - it has both a user interface (UI) and server allowing a user to send requests to the server through the UI.  This allows reactivity of the application components, where the content that a user sees on the UI is controlled by their inputs in a fully interactive experience.  These applications require combined or separate R scripts that define the UI and server components. Here's an [example](https://shiny.tbep.org/landuse-change/){target="_blank"}.
 
 This workshop will cover both dynamic and interactive applications.  Your needs for creating an application will determine which approach you use.  In general, more complexity will require an interactive approach, but the rapidly evolving toolbox has greatly expanded the capabilities of dynamic applications.  You may find that you can build a simpler dynamic application without having to integrate interactive Shiny components. Here's an [example](https://shiny.tbep.org/landuse-change/){target="_blank"}.
 
@@ -55,7 +55,7 @@ You "launch" or run the dashboard by sourcing the script or hitting the green "R
 
 ![](figs/intro/simpleapp.PNG)
 
-If you run this code, you'll see a local web browser pop up.  It will be empty because this app does nothing, but this is only a starting point.  All we need to do is populate the `ui` and `server` objects with code to do some things.  
+If you run this code, you'll see a local web browser pop up.  It will be empty because this app does nothing - it's just a template.  All we need to do is populate the `ui` and `server` objects with code to do some things.  
 
 ## A simple example
 
@@ -73,7 +73,7 @@ dat <- rnorm(10)
 hist(dat)
 ```
 
-To make a Shiny app out of this, we need to identify our inputs and our outputs.  The input in this case is what we want to be able to modify (the sample size) and the output is the plot.  Inputs/outputs go in the `ui` object.  The `server` takes the inputs, does something with them, then sends the results back to the `ui`. Putting this into our template would look something like this: 
+To make a Shiny app out of this, we need to identify our inputs and outputs.  The input in this case is what we want to be able to modify (the sample size) and the output is the plot.  Inputs/outputs go in the `ui` object.  The `server` takes the inputs, does something with them, then sends the results back to the `ui`. Putting this into our template would look something like this: 
 
 ```{r}
 #| eval: false
@@ -98,8 +98,8 @@ Okay, so what is happening under the hood when you change the sample size?
 
 1. The `input` value `n` (you name it) from the `ui` is sent to the `server`, seen as `input$n`. 
 1. The `dat` object is created as a random sample with size `n` and then a histogram is created as reactive output with `renderPlot`
-1. The plot output named `myplot` (you name it) is appended to the `output` list of objects
-1. The plot is then rendered on the `ui` side using `plotOutput` by referencing the `myplot` name from the `output` object. 
+1. The plot output named `myplot` (you name it) is appended to the `output` list of objects in the `server` function
+1. The plot is then rendered on the `ui` using `plotOutput` by referencing the `myplot` name from the `output` object 
 
 ![](figs/intro/simpleappflo.png)
 

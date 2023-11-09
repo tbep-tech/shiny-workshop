@@ -19,7 +19,7 @@ shelf(
 
 ## Learning Objectives {.unnumbered .objectives}
 
-Use the Shiny framework to develop online interactive applications accepting user input to render outputs from arbitrary R functions. Server requirements differentiating from simpler Rmarkdown renderings will be reviewed.
+Use the Shiny framework to develop online ***interactive*** applications accepting user input to render outputs from arbitrary R functions. Server requirements differentiating from simpler Rmarkdown renderings will be reviewed.
 
 ## Install `shiny` and other R packages
 
