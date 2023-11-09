@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-your-first-shiny-app" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="create-your-first-shiny-app"><span class="header-section-number">3.2</span> Create your first Shiny app</h2>
-<p>Let’s create a simple Shiny app starting with the provided default in RStudio by going to the menu <strong>File</strong> -&gt; <strong>New File</strong> -&gt; <strong>Shiny Web App</strong>… and name it <strong><em>app-faithful</em></strong> (after <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful">faithful</a>, the Old Faithful geyser eruption frequency dataset used in this default example):</p>
+<p>Let’s create a simple Shiny app starting with the provided default in RStudio by going to the menu <strong>File</strong> -&gt; <strong>New File</strong> -&gt; <strong>Shiny Web App</strong>… and name it <strong><em>app-faithful</em></strong> (after <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/faithful"><code>faithful</code></a>, the Old Faithful geyser eruption frequency dataset used in this default example):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="figs/shiny/new-shiny_app-faithful.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/shiny/new-shiny_app-faithful.png" class="img-fluid figure-img" width="400"></a></p>
@@ -525,7 +525,7 @@ This slider was created with the following code:</p>
  [9] "09_upload"     "10_download"   "11_timer"     </code></pre>
 </div>
 </div>
-<p>Another way to launch the shiny app is with the following:</p>
+<p>Another way to launch a shiny app is using <code>runApp()</code> on a directory, like…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set directory to 01_hello app, aka the simplest default faithful app</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dir_app <span class="ot">&lt;-</span> <span class="fu">file.path</span>(dir_examples, <span class="st">"01_hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -534,22 +534,29 @@ This slider was created with the following code:</p>
 <div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the app</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(dir_app)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note that this example runs a similar Old Faithful app in a different location with an extra display on the right side highlighting the code that executes as you interact with the user interface.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="figs/shiny/faithful_showcase.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="figs/shiny/faithful_showcase.png" class="img-fluid figure-img" width="600"></a></p>
+</figure>
+</div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 416L168.6 180.7c15.3-34.4 40.3-63.5 72-83.7l146.9-94c3-1.9 6.5-2.9 10-2.9C407.7 0 416 8.3 416 18.6v1.6c0 2.6-.5 5.1-1.4 7.5L354.8 176.9c-1.9 4.7-2.8 9.7-2.8 14.7c0 5.5 1.2 11 3.4 16.1L448 416H240.9l11.8-35.4 40.4-13.5c6.5-2.2 10.9-8.3 10.9-15.2s-4.4-13-10.9-15.2l-40.4-13.5-13.5-40.4C237 276.4 230.9 272 224 272s-13 4.4-15.2 10.9l-13.5 40.4-40.4 13.5C148.4 339 144 345.1 144 352s4.4 13 10.9 15.2l40.4 13.5L207.1 416H64zM279.6 141.5c-1.1-3.3-4.1-5.5-7.6-5.5s-6.5 2.2-7.6 5.5l-6.7 20.2-20.2 6.7c-3.3 1.1-5.5 4.1-5.5 7.6s2.2 6.5 5.5 7.6l20.2 6.7 6.7 20.2c1.1 3.3 4.1 5.5 7.6 5.5s6.5-2.2 7.6-5.5l6.7-20.2 20.2-6.7c3.3-1.1 5.5-4.1 5.5-7.6s-2.2-6.5-5.5-7.6l-20.2-6.7-6.7-20.2zM32 448H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg> Exercise
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 416L168.6 180.7c15.3-34.4 40.3-63.5 72-83.7l146.9-94c3-1.9 6.5-2.9 10-2.9C407.7 0 416 8.3 416 18.6v1.6c0 2.6-.5 5.1-1.4 7.5L354.8 176.9c-1.9 4.7-2.8 9.7-2.8 14.7c0 5.5 1.2 11 3.4 16.1L448 416H240.9l11.8-35.4 40.4-13.5c6.5-2.2 10.9-8.3 10.9-15.2s-4.4-13-10.9-15.2l-40.4-13.5-13.5-40.4C237 276.4 230.9 272 224 272s-13 4.4-15.2 10.9l-13.5 40.4-40.4 13.5C148.4 339 144 345.1 144 352s4.4 13 10.9 15.2l40.4 13.5L207.1 416H64zM279.6 141.5c-1.1-3.3-4.1-5.5-7.6-5.5s-6.5 2.2-7.6 5.5l-6.7 20.2-20.2 6.7c-3.3 1.1-5.5 4.1-5.5 7.6s2.2 6.5 5.5 7.6l20.2 6.7 6.7 20.2c1.1 3.3 4.1 5.5 7.6 5.5s6.5-2.2 7.6-5.5l6.7-20.2 20.2-6.7c3.3-1.1 5.5-4.1 5.5-7.6s-2.2-6.5-5.5-7.6l-20.2-6.7-6.7-20.2zM32 448H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg> Exercise: play with <code>display.mode</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>What happens as you change the <code>display.mode</code>?</p>
 <p>Lookup help for the argument <code>display.mode</code> in the runApp() function (enter <code>?runApp</code> in R Console).</p>
 <ol type="1">
-<li>What is the default mode for this app?</li>
-<li>How is that defined?</li>
-<li>What’s an alternative <code>display.mode</code> value to apply?</li>
+<li><p>What is the default <code>display.mode</code> for the app with the path <code>dir_app</code>?</p></li>
+<li><p>How is that defined?</p></li>
+<li><p>What’s an alternative <code>display.mode</code> value to apply?</p></li>
+<li><p>Change the <code>display.mode</code> in your <code>app-faithful/app.R</code> by modifying arguments in the last line of <code>shinyApp()</code>.</p></li>
+<li><p>Run the other examples.</p></li>
 </ol>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -564,8 +571,8 @@ This slider was created with the following code:</p>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>The default mode is “showcase”, which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.</p></li>
-<li><p>This is defined by the DESCRIPTION file in the same folder:</p></li>
+<li><p>The default mode is <code>"showcase"</code>, which shows you the code and highlights in yellow the code that gets executed as the user interacts with the inputs.</p></li>
+<li><p>This is defined by the <code>DESCRIPTION</code> file in the same folder:</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.path</span>(dir_app, <span class="st">"DESCRIPTION"</span>) <span class="sc">|&gt;</span> <span class="fu">readLines</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,14 +583,163 @@ This slider was created with the following code:</p>
 [7] "Type: Shiny"                       </code></pre>
 </div>
 </div>
-<ol start="3" type="1">
-<li>The other mode is “normal”:</li>
+<ol type="1">
+<li>The other mode is <code>"normal"</code>:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(dir_app, <span class="at">display.mode =</span> <span class="st">"normal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol type="1">
+<li>In the last line of <code>app-faithful/app.R</code> you would insert the extra argument <code>options = list(display.mode = "showcase")</code>:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">display.mode =</span> <span class="st">"showcase"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>In the last line of <code>app-faithful/app.R</code> you would insert the extra argument <code>options = list(display.mode = "showcase")</code>:</li>
+</ol>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 416L168.6 180.7c15.3-34.4 40.3-63.5 72-83.7l146.9-94c3-1.9 6.5-2.9 10-2.9C407.7 0 416 8.3 416 18.6v1.6c0 2.6-.5 5.1-1.4 7.5L354.8 176.9c-1.9 4.7-2.8 9.7-2.8 14.7c0 5.5 1.2 11 3.4 16.1L448 416H240.9l11.8-35.4 40.4-13.5c6.5-2.2 10.9-8.3 10.9-15.2s-4.4-13-10.9-15.2l-40.4-13.5-13.5-40.4C237 276.4 230.9 272 224 272s-13 4.4-15.2 10.9l-13.5 40.4-40.4 13.5C148.4 339 144 345.1 144 352s4.4 13 10.9 15.2l40.4 13.5L207.1 416H64zM279.6 141.5c-1.1-3.3-4.1-5.5-7.6-5.5s-6.5 2.2-7.6 5.5l-6.7 20.2-20.2 6.7c-3.3 1.1-5.5 4.1-5.5 7.6s2.2 6.5 5.5 7.6l20.2 6.7 6.7 20.2c1.1 3.3 4.1 5.5 7.6 5.5s6.5-2.2 7.6-5.5l6.7-20.2 20.2-6.7c3.3-1.1 5.5-4.1 5.5-7.6s-2.2-6.5-5.5-7.6l-20.2-6.7-6.7-20.2zM32 448H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg> Exercise: add an input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check out the available input widgets in the <a href="https://shiny.posit.co/r/gallery/widgets/widget-gallery/">Shiny - Widget Gallery</a>.</p>
+<ol type="1">
+<li><p>Add any of the input widgets into the ui.R section of your <code>app-faithful/app.R</code>.</p>
+<p>Look at the help for the various <code>*Input()</code> functions and try out different argument values.</p>
+<p>The inputs do not have to be related at all to the <code>faithful</code> dataset. For choices, you can use a numeric vector like <code>1:10</code> or a character vector like <code>LETTERS[1:10]</code>.</p></li>
+<li><p>Display the value of the selection in the input widget with a <code>verbatimTextOutput()</code> added to the ui.R section and <code>renderPrint()</code> in the server.R section.</p></li>
+<li><p>Look at the app with the additional argument to <code>shinyApp()</code> of <code>options = list(display.mode = "showcase")</code> and see how the different server functions get highlighted as you interact with the different inputs.</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M234.7 42.7L197 56.8c-3 1.1-5 4-5 7.2s2 6.1 5 7.2l37.7 14.1L248.8 123c1.1 3 4 5 7.2 5s6.1-2 7.2-5l14.1-37.7L315 71.2c3-1.1 5-4 5-7.2s-2-6.1-5-7.2L277.3 42.7 263.2 5c-1.1-3-4-5-7.2-5s-6.1 2-7.2 5L234.7 42.7zM46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L529.9 116.5c18.7-18.7 18.7-49.1 0-67.9L495.3 14.1c-18.7-18.7-49.1-18.7-67.9 0L46.1 395.4zM484.6 82.6l-105 105-23.3-23.3 105-105 23.3 23.3zM7.5 117.2C3 118.9 0 123.2 0 128s3 9.1 7.5 10.8L64 160l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L128 160l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L128 96 106.8 39.5C105.1 35 100.8 32 96 32s-9.1 3-10.8 7.5L64 96 7.5 117.2zm352 256c-4.5 1.7-7.5 6-7.5 10.8s3 9.1 7.5 10.8L416 416l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L480 416l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L480 352l-21.2-56.5c-1.7-4.5-6-7.5-10.8-7.5s-9.1 3-10.8 7.5L416 352l-56.5 21.2z"></path></svg> Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here’s the full app using <code>selectInput()</code> to select a letter and display it in the main panel:</p>
+<div class="cell">
+<details>
+<summary>Show Code: <code>app.R</code></summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sliderInput</span>(</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bins"</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Number of bins:"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">50</span>, <span class="at">value =</span> <span class="dv">30</span>),</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add letter input</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">selectInput</span>(</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sel_lttr"</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Select letter:"</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">choices =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) ),</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>),</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add letter output</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">verbatimTextOutput</span>(<span class="st">"txt_lttr"</span>) ) )</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    x    <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>]</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>      x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>,</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">'Waiting time to next eruption (in mins)'</span>,</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">'Histogram of waiting times'</span>)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># render letter input to output</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>txt_lttr <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({ input<span class="sc">$</span>sel_lttr })</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="co"># run app in showcase mode</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">display.mode =</span> <span class="st">"showcase"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Let’s explicitly discuss each added bit of code:</p>
+<ol type="1">
+<li><p>First, add the <code>selectInput()</code> into the ui.R section:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add letter input</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">selectInput</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sel_lttr"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Select letter:"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">choices =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Be sure your parenthesis are all closed and you have a comma in between elements sharing a common parent (e.g., <code>,</code> in between <code>sliderInput()</code> and <code>selectInput()</code> sharing parent of <code>sidebarPanel()</code>).</p></li>
+<li><p>Second, add the <code>verbatimTextOutput()</code> into the ui.R section as a place to display the value of the new widget:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add letter output</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">verbatimTextOutput</span>(<span class="st">"txt_lttr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Last to show the value of the selected widget, add <code>renderPrint()</code> into the server.R section:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># render letter input to output</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>txt_lttr <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({ input<span class="sc">$</span>sel_lttr })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Finally, to show in showcase mode, add the extra argument to <code>shinyApp()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run app in showcase mode</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ui =</span> ui, <span class="at">server =</span> server, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">display.mode =</span> <span class="st">"showcase"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice how only the function that gets updated (<span style="background-color: #ffffb3;">highlighted</span>) is based on the changed `input$*`.<br>
+<a href="./figs/shiny/faithful_showcase-select.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="./figs/shiny/faithful_showcase-select.png" class="img-fluid"></a></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: enable Rainbow Parentheses in RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The more you develop Shiny apps, the more you’ll appreciate <a href="https://posit.co/blog/rstudio-1-4-preview-rainbow-parentheses/">Rainbow Parentheses in RStudio</a>. This feature is disabled by default. To enable: visit the menu Tools &gt; Global Options, select Code -&gt; Display, and check the box next to Rainbow Parentheses.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-1-4-preview-rainbow-parentheses/rainbowOptions.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-1-4-preview-rainbow-parentheses/rainbowOptions.png" class="img-fluid figure-img" width="200"></a></p>
+</figure>
+</div>
+<p>Then…</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-1-4-preview-rainbow-parentheses/colorfulCode.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-1-4-preview-rainbow-parentheses/colorfulCode.png" class="img-fluid figure-img" width="400"></a></p>
+</figure>
 </div>
 </div>
 </div>
@@ -594,7 +750,7 @@ This slider was created with the following code:</p>
 <p>In this next more complicated app we’ll create an interactive time series plot and map. Users can select a station from a drop-down menu and see the time series for any of the available indicators from another drop-down selection. The map will show the location of the selected station.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/shiny/app-wq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Complex app to create using water quality data from Tampa Bay, FL."><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
+<p><a href="figs/shiny/app-wq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Complex app to create using water quality data from Tampa Bay, FL."><img src="figs/shiny/app-wq.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">Complex app to create using water quality data from Tampa Bay, FL.</figcaption>
 </figure>
 </div>
@@ -602,117 +758,117 @@ This slider was created with the following code:</p>
 <div class="cell">
 <details>
 <summary>Show Code: <code>app.R</code></summary>
-<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Goal: Create an app to show a time series by station and indicator.</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Also show map of stations and selected station.</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tbeptools"</span>,</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">repos =</span> <span class="fu">c</span>(</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">tbeptech =</span> <span class="st">"https://tbep-tech.r-universe.dev"</span>,</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">CRAN     =</span> <span class="st">"https://cloud.r-project.org"</span>) )</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
-<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
-<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
-<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
-<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>   g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
-<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
-<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
-<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
-<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
-<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
-<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
-<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
-<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
-<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
-<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
-<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
-<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
-<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
-<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
-<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
-<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
-<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
-<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
-<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
-<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
-<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
-<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
-<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
-<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
-<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
-<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
-<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Goal: Create an app to show a time series by station and indicator.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Also show map of stations and selected station.</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tbeptools"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">repos =</span> <span class="fu">c</span>(</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">tbeptech =</span> <span class="st">"https://tbep-tech.r-universe.dev"</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">CRAN     =</span> <span class="st">"https://cloud.r-project.org"</span>) )</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>   g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>You might notice the extra four dashes at the end of some of the comments in the code. Adding comments like these allows you to easily navigate to that section of code from the lower-left of the Source pane in RStudio:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within."><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
+<p><a href="./figs/shiny/app-wq_headers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="When comments end with four or more dashes ---- in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in app.R that might otherwise be split into seperate files: global.R, ui.R and server.R. Then an asterisk prefix * is used to bullet key sections within."><img src="./figs/shiny/app-wq_headers.png" class="img-fluid figure-img" width="201"></a></p>
 <figcaption class="figure-caption">When comments end with four or more dashes <code>----</code> in the code, RStudio includes it as a menu item in the lower left of the Source pane to quickly jump to that section in the code. In this case menus are used to indicate content in <code>app.R</code> that might otherwise be split into seperate files: <code>global.R</code>, <code>ui.R</code> and <code>server.R</code>. Then an asterisk prefix <code>*</code> is used to bullet key sections within.</figcaption>
 </figure>
 </div>
@@ -721,15 +877,15 @@ This slider was created with the following code:</p>
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">3.3.1</span> Prepare data</h3>
 <p>First, let’s prepare the water quality data for our app from the Tampa Bay Estuary Program R package <a href="https://tbep-tech.github.io/tbeptools/index.html">tbeptools</a> that we’ll install if it’s not already installed on your computer.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tbeptools"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">repos =</span> <span class="fu">c</span>(</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">tbeptech =</span> <span class="st">"https://tbep-tech.r-universe.dev"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">CRAN     =</span> <span class="st">"https://cloud.r-project.org"</span>) )</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>epcdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tbeptools"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tbeptools"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">repos =</span> <span class="fu">c</span>(</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">tbeptech =</span> <span class="st">"https://tbep-tech.r-universe.dev"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">CRAN     =</span> <span class="st">"https://cloud.r-project.org"</span>) )</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>epcdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 27,601 × 26
    bay_segment epchc_station SampleTime             yr    mo Latitude Longitude
@@ -766,10 +922,10 @@ How should we tidy <code>epcdata</code>?
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>What are the 3 goals of <strong>tidy data</strong>, per <a href="https://tidyr.tidyverse.org">tidyr.tidyverse.org</a>?</p></li>
-<li><p>Let’s assume we want three indicators: Total Nitrogen (mg/L) (<code>tn</code>), Chlorophyll-a (ug/L) (<code>chla</code>), and Secchi depth (m) (<code>sd_m</code>). Based on tidy principles, we want each row to capture a unique “observation” and any co-varying “variables” (such as location and time). So, do we need to pivot <em><strong>longer</strong></em> (<code>?tidyr::pivot_longer</code>) or <em><strong>wider</strong></em> (<code>?tidyr::pivot_longer</code>) to get each row as its own observation?</p></li>
+<li><p>Let’s assume we want three indicators: Total Nitrogen (mg/L) (<code>tn</code>), Chlorophyll-a (ug/L) (<code>chla</code>), and Secchi depth (m) (<code>sd_m</code>). Based on tidy principles, we want each row to capture a unique “observation” and any co-varying “variables” (such as location and time). So, do we need to pivot <strong><em>longer</em></strong> (<code>?tidyr::pivot_longer</code>) or <strong><em>wider</em></strong> (<code>?tidyr::pivot_longer</code>) to get each row as its own observation?</p></li>
 </ol>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -778,16 +934,16 @@ Answers
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>The 3 goals of <strong>tidy data</strong> are:
 <ol type="1">
-<li>Every <em><strong>column</strong></em> is a variable.</li>
-<li>Every <em><strong>row</strong></em> is an observation.</li>
-<li>Every <em><strong>cell</strong></em> is a single value.</li>
+<li>Every <strong><em>column</em></strong> is a variable.</li>
+<li>Every <strong><em>row</em></strong> is an observation.</li>
+<li>Every <strong><em>cell</em></strong> is a single value.</li>
 </ol></li>
-<li>The <code>epcdata</code> is currently in <em><strong>wide</strong></em> format, with each variable as its own column. We want to pivot it <em><strong>longer</strong></em> so that each row is an observation of a single indicator.</li>
+<li>The <code>epcdata</code> is currently in <strong><em>wide</em></strong> format, with each variable as its own column. We want to pivot it <strong><em>longer</em></strong> so that each row is an observation of a single indicator.</li>
 </ol>
 </div>
 </div>
@@ -797,46 +953,46 @@ Answers
 <p>The <code>dplyr</code> package is the ‘swiss army knife’ (or ‘plyers’) for data wrangling, along with its close cousin <code>tidyr</code>. Let’s look at some basic operations: filtering, selecting, and pivoting.</p>
 <ol type="1">
 <li><p><strong>Filter</strong><br>
-Reduce <em><strong>rows</strong></em> based on condition(s) that evaluate logically (i.e.&nbsp;True or False)</p>
-<div class="sourceCode" id="cb17" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station <span class="sc">==</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+Reduce <strong><em>rows</em></strong> based on condition(s) that evaluate logically (i.e.&nbsp;True or False)</p>
+<div class="sourceCode" id="cb23" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station <span class="sc">==</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Select</strong><br>
-Reduce <em><strong>columns</strong></em> to only those specified</p>
-<div class="sourceCode" id="cb18" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">station =</span> epchc_station, </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon     =</span> Longitude,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat     =</span> Latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+Reduce <strong><em>columns</em></strong> to only those specified</p>
+<div class="sourceCode" id="cb24" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">station =</span> epchc_station, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon     =</span> Longitude,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat     =</span> Latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Pivot</strong><br>
 Transform the data from wide to long format, or vice versa</p>
-<div class="sourceCode" id="cb19" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"var"</span>, </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"val"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb25" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"var"</span>, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"val"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 <p>Applying the above concepts, we get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 82,803 × 6
    station SampleTime            lat   lon indicator               value
@@ -864,23 +1020,23 @@ List of unique indicators for selecting from a drop-down menu.</li>
 List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) to display on the map.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>stations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>stations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code> [1]  6  7  8  9 11 13 14 16 19 23 24 25 28 32 33 36 38 40 41 44 46 47 50 51 52
 [26] 55 60 63 64 65 66 67 68 70 71 73 80 81 82 84 90 91 92 93 95</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>indicators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>indicators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] "Total Nitrogen (mg/L)" "Chlorophyll-a (ug/L)"  "Secchi depth (m)"     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 45 × 3
    station   lon   lat
@@ -901,22 +1057,22 @@ List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) t
 </section>
 <section id="add-user-interface" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="add-user-interface"><span class="header-section-number">3.3.2</span> Add User Interface</h3>
-<p>Let’s add dropdown menus for station and indicator selection and placeholders for <code>plotly</code> and <code>leaflet</code> outputs. These outputs are <strong>htmlwidgets </strong> you learned about in the morning (see <a href="https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets">Quarto using htmlwidgets</a>), except we will be updating them <em>interactively</em> based on user input.</p>
-<div class="sourceCode" id="cb28" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * layout ----</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * input widgets ----</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * output htmlwidgets ----</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s add dropdown menus for station and indicator selection and placeholders for <code>plotly</code> and <code>leaflet</code> outputs. These outputs are <strong>htmlwidgets</strong> you learned about in the morning (see <a href="https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets">Quarto using htmlwidgets</a>), except we will be updating them <em>interactively</em> based on user input.</p>
+<div class="sourceCode" id="cb34" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * layout ----</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * input widgets ----</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * output htmlwidgets ----</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="layout" class="level4" data-number="3.3.2.1">
 <h4 data-number="3.3.2.1" class="anchored" data-anchor-id="layout"><span class="header-section-number">3.3.2.1</span> Layout</h4>
 <p>Notice that <code>shiny::fluidPage()</code> and <code>shiny::wellPanel()</code> are used to setup the layout of the app. For more details, check out <a href="https://shiny.posit.co/r/articles/build/layout-guide/">Shiny - Application layout guide</a>. And for even more advanced layout options, checkout <a href="https://rstudio.github.io/shinydashboard">shinydashboard</a> and <a href="https://rstudio.github.io/bslib/">bslib</a> R packages.</p>
@@ -966,7 +1122,7 @@ What other input widgets might you use?
 </section>
 <section id="htmlwidget-outputs" class="level4" data-number="3.3.2.3">
 <h4 data-number="3.3.2.3" class="anchored" data-anchor-id="htmlwidget-outputs"><span class="header-section-number">3.3.2.3</span> Htmlwidget outputs</h4>
-<p>Notice that <a href=""><code>plotly::plotlyOutput()</code></a> and <a href=""><code>leaflet::leafletOutput()</code></a> are used to layout the <strong>htmlwidgets </strong> you learned about in the morning (see <a href="https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets">Quarto using htmlwidgets</a>), except we will be updating them <em>interactively</em> based on user input with server-side functions.</p>
+<p>Notice that <a href=""><code>plotly::plotlyOutput()</code></a> and <a href=""><code>leaflet::leafletOutput()</code></a> are used to layout the <strong>htmlwidgets</strong> you learned about in the morning (see <a href="https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets">Quarto using htmlwidgets</a>), except we will be updating them <em>interactively</em> based on user input with server-side functions.</p>
 </section>
 </section>
 <section id="add-server-functions" class="level3" data-number="3.3.3">
@@ -981,60 +1137,60 @@ What other input widgets might you use?
 <h4 data-number="3.3.3.1" class="anchored" data-anchor-id="render-time-series-plot"><span class="header-section-number">3.3.3.1</span> Render time series plot</h4>
 <p>Let’s add a <code>renderPlotly()</code> function to update the time series plot based on user inputs. The <code>renderPlotly()</code> function takes a <a href="https://plotly.com/r/"><code>plotly</code></a> interactive plot object. We can use the <code>plotly::ggplotly()</code> function to take a static <code>ggplot2</code> plot object and make it an interactive plotly object. Using <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a> allows us to take advantage of the Grammar of Graphics principles to render plots using a layered approach (see <a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf">cheatsheet</a>, <a href="https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149">summary</a> or <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl">book</a>).</p>
 <p>The <code>get_data()</code> function allows us to generate a data frame reactive to user inputs and available for use across multiple server-side functions (although here we only use one). For more, see <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson6/">Shiny - Use reactive expressions</a>.</p>
-<div class="sourceCode" id="cb29" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="render-map" class="level4" data-number="3.3.3.2">
 <h4 data-number="3.3.3.2" class="anchored" data-anchor-id="render-map"><span class="header-section-number">3.3.3.2</span> Render map</h4>
 <p>Let’s add a <code>renderLeaflet()</code> function to update the map based on user inputs. The <code>renderLeaflet()</code> function takes a <a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a> interactive map object. We can use the <code>leaflet::addLabelOnlyMarkers</code> function to add station labels. And to highlight the selected station we can use <code>leaflet::addCircles()</code>.</p>
-<div class="sourceCode" id="cb30" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -1366,7 +1522,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 
