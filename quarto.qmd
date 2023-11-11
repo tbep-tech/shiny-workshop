@@ -17,11 +17,11 @@ library(fontawesome)
 
 ## Learning Objectives {.unnumbered .objectives}
 
-Use the Quarto document preparation system to create ***dynamic*** documents that combine text and code.  Learn how to share these documents with colleagues through GitHub.
+Use the Quarto document preparation system to create ***dynamic*** documents that combine text and code.  Learn how to share these documents with colleagues.
 
 ## Install `quarto`
 
-Ensure you have the `quarto` R package installed. Look in RStudio's Packages pane and Install if not found when searching for "quarto".
+Ensure you have the `quarto` R package installed. Look in RStudio's Packages pane and install if not found when searching for "quarto".
 
 Additionally, you can install the Quarto Command Line Interface (CLI).  This will allow you to run Quarto from the command line and includes additional features not included with the R package.  See the quarto [setup](setup.qmd#sec-instquarto) section for more info.
 
@@ -40,7 +40,7 @@ Advantages of creating analyses using Quarto include:
 
 This next section will run through the very basics of creating a Quarto document, some of the options for formatting, and how to generate shared content.  You'll follow along in this module. 
 
-(@) Create a new project in RStudio, first open RStudio and select "New project" from the File menu at the top.
+(@) ***Create a new project in RStudio, first open RStudio and select "New project" from the File menu at the top.***
 
     ![](figs/quarto/newproj.PNG)
 
@@ -48,7 +48,7 @@ This next section will run through the very basics of creating a Quarto document
     
     ![](figs/quarto/newdir.PNG)
 
-(@) Open a new Quarto file from the File menu under New file > Quarto Document.
+(@) ***Open a new Quarto file from the File menu under New file > Quarto Document.***
 
     ![](figs/quarto/newquarto.PNG)
     
@@ -58,7 +58,7 @@ This next section will run through the very basics of creating a Quarto document
     
     Save the file in the project root directory (give it any name you want).
 
-(@) Let's get familiar with the components of a Quarto document.
+(@) ***Let's get familiar with the components of a Quarto document.***
 
     ::: {.callout-tip}
     The three main components of a Quarto document are:
@@ -93,7 +93,7 @@ This next section will run through the very basics of creating a Quarto document
     print('Hello Quarto!')
     ```
     
-    When the file is rendered, the code is run and results displayed in the output.  There are many options to change how code chunks are executed, which we'll discuss [below](https://tbep-tech.github.io/flafs-os-workshop/impact.html#code-chunk-options). 
+    When the file is rendered, the code is run and results displayed in the output.  There are many options to change how code chunks are executed, which we'll discuss [below](https://tbep-tech.github.io/shiny-workshop/quarto.html#code-chunk-options). 
     
     ```{r}
     #| echo: true
@@ -134,7 +134,7 @@ This next section will run through the very basics of creating a Quarto document
     1. Item 2
     :::
 
-(@) Render the .qmd file to the output format. 
+(@) ***Render the .qmd file to the output format.***
 
     The source file is a .qmd document.  We need to render the document to create the output format - HTML (default), PDF, or Word.  The following happens when you hit the render button at the top.
 
@@ -194,7 +194,7 @@ print('Hello Quarto!')
 
 The behavior of the code chunks when the file is rendered can be changed using the [many options](https://quarto.org/docs/reference/cells/cells-knitr.html){target="_blank"} available in Quarto.  This can be useful for a few reasons. 
 
-1. Only displaying the output of a code chunk
+1. Only displaying the output of a code chunk (e.g., a plot)
 1. Only displaying the code and not running the chunk
 1. Running the code without displaying output for use in other parts of the document 
 1. Suppressing warnings and messages
@@ -245,7 +245,7 @@ Here's a short list of other useful execution options:
 | `message`   | Include messages in rendered output
 +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-R code can also be executed "inline" outside of code chunks.  This can be useful if you want to include statements that reference particular values or information that is linked directly to data.  Inline R code is entered using the ``r`` syntax. 
+R code can also be executed "inline" outside of code chunks.  This can be useful if you want to include statements that reference particular values or information that is linked directly to data.  Inline R code is entered using the ``r`` syntax followed by code. 
 
 ```{=html}
 <div class="sourceCode">
@@ -265,9 +265,9 @@ I can enter inline text like `r 1 + 1`.
 
 ## Figures and tables
 
-Figures and tables are easily added in Quarto, using either R code or importing from an external source. 
+Figures and tables are easily added in Quarto, created using R code or importing from an external source. 
 
-Any figures created in code chunks will be included in the rendered output. Relevant code chunk options for figures include `fig-height`, `fig-width`, `fig-cap`, `label` (for cross-referencing) and `fig-align`.
+Any figures created in code chunks will be included in the rendered output. Some relevant code chunk options for figures include `fig-height`, `fig-width`, `fig-cap`, `label` (for cross-referencing) and `fig-align`.
 
 ```{{r}}
 #| label: fig-myhist
@@ -331,10 +331,10 @@ Here's a cross-reference to @tbl-mytable.
 :::
 
 ::: {.callout-tip}
-Label tags for tables and figures should include the `tbl-` or `fig-` prefix for proper cross-referencing.
+Label tags for tables and figures must include the `tbl-` or `fig-` prefix for proper cross-referencing.
 :::
 
-Figures can also be imported from an external source (e.g., from your computer or the web) using the `![]()` notation, where the image is in the `img` folder in my working directory.  You can also simply add a figure from the file menu using the Visual editor.  
+Figures can also be imported from an external source (e.g., from your computer or the web) using the `![]()` notation.  You can also simply add a figure from the file menu using the Visual editor.  
 
 ```markdown
 ![](figs/quarto/oysters.jpg)
@@ -360,7 +360,7 @@ The cross-reference is done the same.
 Here's a cross-reference to @fig-oysters
 ```
 ::: border
-Here's a cross-reference to @fig-oysters.
+Here\'s a cross-reference to @fig-oysters.
 :::
 
 Likewise, tables can be imported from an external source (e.g., Excel). You'll want to do this in a code chunk and add the appropriate options (e.g., to cross-reference @tbl-habitats). 
@@ -440,17 +440,17 @@ knitr::kable(mtcars)
 
 ## Quarto using `htmlwidgets`
 
-The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank"} package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
+The [`htmlwidgets`](https://quarto.org/docs/interactive/widgets/htmlwidgets.html){target="_blank"} package allows you to embed dynamic components directly into a Quarto HTML page.  There are several packages that use `htmlwidgets` to automatically embed the required JavaScript visualization libraries.  This does not require any knowledge of JavaScript, nor use of a Shiny Server.
 
 ### `leaflet`
 
-The [`leaflet`](http://rstudio.github.io/leaflet/){target="_blank"} package can be used to create interactive maps (also see [`mapview`](https://r-spatial.github.io/mapview/){target="_blank"}) for an "out-of-the-box" option). Here's a quick map of where we are - click on the marker to view the popup.
+The [`leaflet`](http://rstudio.github.io/leaflet/){target="_blank"} package can be used to create interactive maps (also see [`mapview`](https://r-spatial.github.io/mapview/){target="_blank"} for an "out-of-the-box" option). Here's a quick map of where we are - click on the marker to view the popup.
 
 ```{r}
 library(leaflet)
 
 leaflet() %>%
-  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addTiles() %>%  # Add default basemap tiles
   addMarkers(lng = -122.663, lat = 45.529, popup = "CERF 2023 conference")
 ```
 
@@ -811,7 +811,7 @@ Plot.rectY(filtered,
 )
 ```
 
-Additional information on using Observable with Quarto is available [here](https://quarto.org/docs/computations/ojs.html){target="_blank"}
+Additional information on using Observable with Quarto is available [here](https://quarto.org/docs/computations/ojs.html){target="_blank"}.
 
 ## Sharing HTML files
 
