@@ -709,6 +709,97 @@ This slider was created with the following code:</p>
 <span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">display.mode =</span> <span class="st">"showcase"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>And here’s the live workshop updates to filter <code>faithful$waiting</code> with a <code>slideInput()</code> and change the color of the histogram with a <code>selectInput()</code>.</p>
+<div class="cell">
+<details>
+<summary>Show Code: <code>app.R</code></summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Application title</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">"bins"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Number of bins:"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">1</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">50</span>,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">30</span>),</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">dateRangeInput</span>(</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>              <span class="st">"dates"</span>, <span class="at">label =</span> <span class="fu">h3</span>(<span class="st">"Date range"</span>)),</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">selectInput</span>(</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">inputId =</span> <span class="st">"sel_color"</span>,</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">label   =</span> <span class="st">"Pick a color:"</span>,</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>)),</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>              <span class="st">"slide_waiting"</span>,</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Waiting time:"</span>,</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>              <span class="fu">min</span>(faithful<span class="sc">$</span>waiting),</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>              <span class="fu">max</span>(faithful<span class="sc">$</span>waiting),</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>              <span class="fu">c</span>(<span class="fu">min</span>(faithful<span class="sc">$</span>waiting),</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>                <span class="fu">max</span>(faithful<span class="sc">$</span>waiting)))</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>           <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>),</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>           <span class="co"># 3. display output in ui</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>           <span class="fu">verbatimTextOutput</span>(<span class="st">"value"</span>),</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>           <span class="fu">verbatimTextOutput</span>(<span class="st">"txt_color"</span>)</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Define server logic required to draw a histogram</span></span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># generate bins based on input$bins from ui.R</span></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>        <span class="co"># input = list(slide_waiting = c(40,50))</span></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>      <span class="co"># browser()</span></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>        x    <span class="ot">&lt;-</span> faithful <span class="sc">%&gt;%</span></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>          <span class="fu">select</span>(waiting) <span class="sc">%&gt;%</span></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(</span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>            waiting <span class="sc">&gt;=</span> <span class="fu">min</span>(input<span class="sc">$</span>slide_waiting),</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>            waiting <span class="sc">&lt;=</span> <span class="fu">max</span>(input<span class="sc">$</span>slide_waiting)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>          <span class="fu">pull</span>(waiting)</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>        bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"input$sel_color: "</span>, input<span class="sc">$</span>sel_color))</span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>        <span class="co"># draw the histogram with the specified number of bins</span></span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> input<span class="sc">$</span>sel_color, <span class="at">border =</span> <span class="st">'white'</span>,</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>             <span class="at">xlab =</span> <span class="st">'Waiting time to next eruption (in mins)'</span>,</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">'Histogram of waiting times'</span>)</span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. add output function capturing input to server</span></span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>      input<span class="sc">$</span>dates</span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. add output function capturing input to server</span></span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>txt_color <span class="ot">&lt;-</span> <span class="fu">renderPrint</span>({</span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>      input<span class="sc">$</span>sel_color</span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the application</span></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">display.mode =</span> <span class="st">"showcase"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 </div>
 </div>
@@ -765,105 +856,105 @@ This slider was created with the following code:</p>
 <div class="cell">
 <details>
 <summary>Show Code: <code>wq/app.R</code></summary>
-<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Goal: Create an app to show a time series by station and indicator.</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Also show map of stations and selected station.</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
-<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
-<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
-<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
-<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
-<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
-<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
-<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
-<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
-<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
-<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
-<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
-<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
-<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
-<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
-<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
-<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
-<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
-<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
-<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
-<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
-<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
-<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
-<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
-<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
-<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
-<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
-<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Goal: Create an app to show a time series by station and indicator.</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Also show map of stations and selected station.</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>You might notice the extra four dashes at the end of some of the comments in the code. Adding comments like these allows you to easily navigate to that section of code from the lower-left of the Source pane in RStudio:</p>
@@ -878,9 +969,9 @@ This slider was created with the following code:</p>
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">3.3.1</span> Prepare data</h3>
 <p>First, let’s prepare the water quality data for our app from the Tampa Bay Estuary Program R package <a href="https://tbep-tech.github.io/tbeptools/index.html">tbeptools</a> that we’ll install if it’s not already installed on your computer.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>epcdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>epcdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 27,601 × 26
    bay_segment epchc_station SampleTime             yr    mo Latitude Longitude
@@ -951,47 +1042,47 @@ This slider was created with the following code:</p>
 <li><p><strong>Filter</strong><br>
 <a href="./figs/shiny/dplyr_filter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="./figs/shiny/dplyr_filter.png" class="img-fluid" width="100"></a><br>
 Reduce <strong><em>rows</em></strong> based on condition(s) that evaluate logically (i.e.&nbsp;True or False)</p>
-<div class="sourceCode" id="cb23" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station <span class="sc">==</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb24" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station <span class="sc">==</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Select</strong><br>
 <a href="./figs/shiny/dplyr_select.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="./figs/shiny/dplyr_select.png" class="img-fluid" width="100"></a><br>
 Reduce <strong><em>columns</em></strong> to only those specified</p>
-<div class="sourceCode" id="cb24" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">station =</span> epchc_station, </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon     =</span> Longitude,</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat     =</span> Latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb25" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">station =</span> epchc_station, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon     =</span> Longitude,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat     =</span> Latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Pivot</strong><br>
 <a href="./figs/shiny/tidyr_pivot-longer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="./figs/shiny/tidyr_pivot-longer.png" class="img-fluid" width="150"></a><br>
 Transform the data from wide <strong><em>to long</em></strong> format, or vice versa</p>
-<div class="sourceCode" id="cb25" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"var"</span>, </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"val"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb26" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"var"</span>, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"val"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 <p>Applying the above concepts, create a new folder, like <code>wq</code> for water quality, and inside file <code>app.R</code> with the following contents:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 82,803 × 6
    station SampleTime            lat   lon indicator               value
@@ -1019,23 +1110,23 @@ List of unique indicators for selecting from a drop-down menu.</li>
 List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) to display on the map.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>stations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>stations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code> [1]  6  7  8  9 11 13 14 16 19 23 24 25 28 32 33 36 38 40 41 44 46 47 50 51 52
 [26] 55 60 63 64 65 66 67 68 70 71 73 80 81 82 84 90 91 92 93 95</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>indicators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>indicators</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] "Total Nitrogen (mg/L)" "Chlorophyll-a (ug/L)"  "Secchi depth (m)"     </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 45 × 3
    station   lon   lat
@@ -1057,21 +1148,21 @@ List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) t
 <section id="add-user-interface" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="add-user-interface"><span class="header-section-number">3.3.2</span> Add User Interface</h3>
 <p>Let’s add dropdown menus for station and indicator selection and placeholders for <code>plotly</code> and <code>leaflet</code> outputs. These outputs are <strong>htmlwidgets</strong> you learned about in the morning (see <a href="https://tbep-tech.github.io/shiny-workshop/quarto.html#quarto-using-htmlwidgets">Quarto using htmlwidgets</a>), except we will be updating them <em>interactively</em> based on user input.</p>
-<div class="sourceCode" id="cb34" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * layout ----</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * input widgets ----</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * output htmlwidgets ----</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * layout ----</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * input widgets ----</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># * output htmlwidgets ----</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="layout" class="level4" data-number="3.3.2.1">
 <h4 data-number="3.3.2.1" class="anchored" data-anchor-id="layout"><span class="header-section-number">3.3.2.1</span> Layout</h4>
 <p>Notice that <code>shiny::fluidPage()</code> and <code>shiny::wellPanel()</code> are used to setup the layout of the app. For more details, check out <a href="https://shiny.posit.co/r/articles/build/layout-guide/">Shiny - Application layout guide</a>. And for even more advanced layout options, checkout <a href="https://rstudio.github.io/shinydashboard">shinydashboard</a> and <a href="https://rstudio.github.io/bslib/">bslib</a> R packages.</p>
@@ -1099,20 +1190,20 @@ List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) t
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The first simple <code>faithful</code> app actually has a slightly more complex layout using <code>fluidPage()</code> with panels for the title, sidebar, and main content.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># ...</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>          <span class="co"># ...</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        ) ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The <code>wq</code> app also uses a <code>fluidPage()</code> with a single <code>wellPanel()</code>.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># ...</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>          <span class="co"># ...</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>        ) ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>wq</code> app also uses a <code>fluidPage()</code> with a single <code>wellPanel()</code>.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1136,60 +1227,60 @@ List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) t
 <h4 data-number="3.3.3.1" class="anchored" data-anchor-id="render-time-series-plot"><span class="header-section-number">3.3.3.1</span> Render time series plot</h4>
 <p>Let’s add a <code>renderPlotly()</code> function to update the time series plot based on user inputs. The <code>renderPlotly()</code> function takes a <a href="https://plotly.com/r/"><code>plotly</code></a> interactive plot object. We can use the <code>plotly::ggplotly()</code> function to take a static <code>ggplot2</code> plot object and make it an interactive plotly object. Using <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a> allows us to take advantage of the Grammar of Graphics principles to render plots using a layered approach (see <a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization.pdf">cheatsheet</a>, <a href="https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149">summary</a> or <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl">book</a>).</p>
 <p>The <code>get_data()</code> function allows us to generate a data frame reactive to user inputs and available for use across multiple server-side functions (although here we only use one). For more, see <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson6/">Shiny - Use reactive expressions</a>.</p>
-<div class="sourceCode" id="cb37" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="render-map" class="level4" data-number="3.3.3.2">
 <h4 data-number="3.3.3.2" class="anchored" data-anchor-id="render-map"><span class="header-section-number">3.3.3.2</span> Render map</h4>
 <p>Let’s add a <code>renderLeaflet()</code> function to update the map based on user inputs. The <code>renderLeaflet()</code> function takes a <a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a> interactive map object. We can use the <code>leaflet::addLabelOnlyMarkers</code> function to add station labels. And to highlight the selected station we can use <code>leaflet::addCircles()</code>.</p>
-<div class="sourceCode" id="cb38" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39" data-code-line-numbers=""><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1218,137 +1309,137 @@ List of unique station locations (i.e.&nbsp;stations with lat/lon coordinates) t
 <ol type="1">
 <li><p>Add the library <code>DT</code> to the <code>global.R</code> section for making the table rendering functions available:</p>
 <div class="cell" data-source-line-numbers="5">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># global.R ----</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a></span>
-<span id="cb39-3"><a href="#cb39-3"></a><span class="co"># * load libraries ----</span></span>
-<span id="cb39-4"><a href="#cb39-4"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb39-5"><a href="#cb39-5"></a><span class="fu">library</span>(DT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># global.R ----</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a></span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="fu">library</span>(DT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Add a <code>DT::dataTableOutput()</code> to the <code>ui.R</code> layout:</p>
 <div class="cell" data-source-line-numbers="6">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co">#  ui.R ----</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb40-4"><a href="#cb40-4"></a>    <span class="co"># ...</span></span>
-<span id="cb40-5"><a href="#cb40-5"></a>    <span class="fu">DTOutput</span>(<span class="st">'tbl'</span>) )</span>
-<span id="cb40-6"><a href="#cb40-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb41-4"><a href="#cb41-4"></a>    <span class="co"># ...</span></span>
+<span id="cb41-5"><a href="#cb41-5"></a>    <span class="fu">DTOutput</span>(<span class="st">'tbl'</span>) )</span>
+<span id="cb41-6"><a href="#cb41-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Add a <code>DT::renderDT()</code> to the <code>server.R</code> function defininig <code>output$tbl</code> :</p>
 <div class="cell" data-source-line-numbers="5-8">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co">#  server.R ----</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="co">#...</span></span>
-<span id="cb41-4"><a href="#cb41-4"></a></span>
-<span id="cb41-5"><a href="#cb41-5"></a>  output<span class="sc">$</span>tbl <span class="ot">=</span> <span class="fu">renderDT</span>({</span>
-<span id="cb41-6"><a href="#cb41-6"></a>    <span class="fu">get_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb41-7"><a href="#cb41-7"></a>      <span class="fu">datatable</span>()</span>
-<span id="cb41-8"><a href="#cb41-8"></a>  })</span>
-<span id="cb41-9"><a href="#cb41-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="co">#...</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a></span>
+<span id="cb42-5"><a href="#cb42-5"></a>  output<span class="sc">$</span>tbl <span class="ot">=</span> <span class="fu">renderDT</span>({</span>
+<span id="cb42-6"><a href="#cb42-6"></a>    <span class="fu">get_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb42-7"><a href="#cb42-7"></a>      <span class="fu">datatable</span>()</span>
+<span id="cb42-8"><a href="#cb42-8"></a>  })</span>
+<span id="cb42-9"><a href="#cb42-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ol>
 <p>Here’s the full code:</p>
 <div class="cell">
 <details>
 <summary>Show Code: <code>wq-table/app.R</code></summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Goal: Create an app to show a time series by station and indicator.</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Also show map of stations and selected station.</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
-<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
-<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
-<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
-<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
-<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
-<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
-<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
-<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
-<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
-<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
-<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
-<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
-<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
-<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
-<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
-<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
-<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
-<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
-<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
-<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
-<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
-<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
-<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb42-59"><a href="#cb42-59" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb42-60"><a href="#cb42-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
-<span id="cb42-61"><a href="#cb42-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
-<span id="cb42-62"><a href="#cb42-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
-<span id="cb42-63"><a href="#cb42-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
-<span id="cb42-64"><a href="#cb42-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb42-65"><a href="#cb42-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
-<span id="cb42-66"><a href="#cb42-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
-<span id="cb42-67"><a href="#cb42-67" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb42-68"><a href="#cb42-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-69"><a href="#cb42-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
-<span id="cb42-70"><a href="#cb42-70" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb42-71"><a href="#cb42-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-72"><a href="#cb42-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
-<span id="cb42-73"><a href="#cb42-73" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
-<span id="cb42-74"><a href="#cb42-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
-<span id="cb42-75"><a href="#cb42-75" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
-<span id="cb42-76"><a href="#cb42-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-77"><a href="#cb42-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
-<span id="cb42-78"><a href="#cb42-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
-<span id="cb42-79"><a href="#cb42-79" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb42-80"><a href="#cb42-80" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
-<span id="cb42-81"><a href="#cb42-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
-<span id="cb42-82"><a href="#cb42-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
-<span id="cb42-83"><a href="#cb42-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
-<span id="cb42-84"><a href="#cb42-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
-<span id="cb42-85"><a href="#cb42-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
-<span id="cb42-86"><a href="#cb42-86" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
-<span id="cb42-87"><a href="#cb42-87" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
-<span id="cb42-88"><a href="#cb42-88" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
-<span id="cb42-89"><a href="#cb42-89" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
-<span id="cb42-90"><a href="#cb42-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
-<span id="cb42-91"><a href="#cb42-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
-<span id="cb42-92"><a href="#cb42-92" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
-<span id="cb42-93"><a href="#cb42-93" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
-<span id="cb42-94"><a href="#cb42-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
-<span id="cb42-95"><a href="#cb42-95" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb42-96"><a href="#cb42-96" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb42-97"><a href="#cb42-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-98"><a href="#cb42-98" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
-<span id="cb42-99"><a href="#cb42-99" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Goal: Create an app to show a time series by station and indicator.</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  Also show map of stations and selected station.</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># global.R ----</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * load libraries ----</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tbeptools)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co"># * prep data ----</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> epcdata <span class="sc">|&gt;</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">station                 =</span> epchc_station,</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    SampleTime,</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat                     =</span> Latitude,</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lon                     =</span> Longitude,</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span> <span class="ot">=</span> tn,</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Chlorophyll-a (ug/L)</span><span class="st">`</span>  <span class="ot">=</span> chla,</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>      <span class="ot">=</span> sd_m) <span class="sc">|&gt;</span></span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"indicator"</span>,</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Total Nitrogen (mg/L)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Secchi depth (m)</span><span class="st">`</span>)</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a><span class="co"># * data for select ----</span></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>stations   <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>station)</span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>indicators <span class="ot">&lt;-</span> <span class="fu">unique</span>(d<span class="sc">$</span>indicator)</span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>locations  <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(station, lon, lat) <span class="sc">|&gt;</span></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="co">#  ui.R ----</span></span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wellPanel</span>(</span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h2</span>(<span class="st">"Water Quality"</span>),</span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_sta"</span>, <span class="st">"Station"</span>,   <span class="at">choices =</span> stations),</span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">"sel_ind"</span>, <span class="st">"Indicator"</span>, <span class="at">choices =</span> indicators),</span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotlyOutput</span>(<span class="st">"tsplot"</span>),</span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>) )</span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a><span class="co">#  server.R ----</span></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * get_data(): reactive to inputs ----</span></span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>  get_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>    d <span class="sc">|&gt;</span></span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>        station   <span class="sc">==</span> input<span class="sc">$</span>sel_sta,</span>
+<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a>        indicator <span class="sc">==</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * tsplot: time series plot ----</span></span>
+<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>tsplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">get_data</span>(),</span>
+<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb43-62"><a href="#cb43-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> SampleTime,</span>
+<span id="cb43-63"><a href="#cb43-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> value) ) <span class="sc">+</span></span>
+<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> input<span class="sc">$</span>sel_ind)</span>
+<span id="cb43-66"><a href="#cb43-66" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplotly</span>(g)</span>
+<span id="cb43-67"><a href="#cb43-67" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * map ----</span></span>
+<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filter locations by station</span></span>
+<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a>    locs_sta <span class="ot">&lt;-</span> locations <span class="sc">|&gt;</span></span>
+<span id="cb43-74"><a href="#cb43-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb43-75"><a href="#cb43-75" aria-hidden="true" tabindex="-1"></a>        station <span class="sc">==</span> input<span class="sc">$</span>sel_sta)</span>
+<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create map</span></span>
+<span id="cb43-78"><a href="#cb43-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">leaflet</span>(locations) <span class="sc">|&gt;</span></span>
+<span id="cb43-79"><a href="#cb43-79" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb43-80"><a href="#cb43-80" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add all stations</span></span>
+<span id="cb43-81"><a href="#cb43-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addLabelOnlyMarkers</span>(</span>
+<span id="cb43-82"><a href="#cb43-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat          =</span> <span class="sc">~</span>lat,</span>
+<span id="cb43-83"><a href="#cb43-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng          =</span> <span class="sc">~</span>lon,</span>
+<span id="cb43-84"><a href="#cb43-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">label        =</span> <span class="sc">~</span><span class="fu">as.character</span>(station),</span>
+<span id="cb43-85"><a href="#cb43-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">labelOptions =</span> <span class="fu">labelOptions</span>(</span>
+<span id="cb43-86"><a href="#cb43-86" aria-hidden="true" tabindex="-1"></a>          <span class="at">noHide   =</span> T,</span>
+<span id="cb43-87"><a href="#cb43-87" aria-hidden="true" tabindex="-1"></a>          <span class="at">textOnly =</span> T) ) <span class="sc">|&gt;</span></span>
+<span id="cb43-88"><a href="#cb43-88" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add selected station</span></span>
+<span id="cb43-89"><a href="#cb43-89" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircles</span>(</span>
+<span id="cb43-90"><a href="#cb43-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">data   =</span> locs_sta,</span>
+<span id="cb43-91"><a href="#cb43-91" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng    =</span> <span class="sc">~</span>lon,</span>
+<span id="cb43-92"><a href="#cb43-92" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat    =</span> <span class="sc">~</span>lat,</span>
+<span id="cb43-93"><a href="#cb43-93" aria-hidden="true" tabindex="-1"></a>        <span class="at">color  =</span> <span class="st">"red"</span>,</span>
+<span id="cb43-94"><a href="#cb43-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">weight =</span> <span class="dv">20</span>)</span>
+<span id="cb43-95"><a href="#cb43-95" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb43-96"><a href="#cb43-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-97"><a href="#cb43-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-98"><a href="#cb43-98" aria-hidden="true" tabindex="-1"></a><span class="co"># run ----</span></span>
+<span id="cb43-99"><a href="#cb43-99" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -1687,7 +1778,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":true,"closeEffect":"zoom","descPosition":"bottom"});</script>
 
 
 
