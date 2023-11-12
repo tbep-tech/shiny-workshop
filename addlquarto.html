@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -528,7 +547,7 @@ Tip
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Many non-native species in Florida have lower lethal temperatures <span class="co">[</span><span class="ot">@shafland1982</span><span class="co">]</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>When the Quarto file is rendered, the citation will be formatted and you’ll see it added to the references section at the end of the document.</p>
 <div class="border">
-<p>Many non-native species in Florida have lower lethal temperatures <span class="citation" data-cites="shafland1982">(<a href="references.html#ref-shafland1982" role="doc-biblioref"><strong>shafland1982?</strong></a>)</span>.</p>
+<p>Many non-native species in Florida have lower lethal temperatures <span class="citation" data-cites="shafland1982">(<a href="references.html#ref-shafland1982" role="doc-biblioref">Shafland and Pestrak 1982</a>)</span>.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -538,11 +557,16 @@ Tip
 <p>The <code>@</code> citation syntax also has different options for displaying the citation in the text (full explanation <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html" target="_blank">here</a>). For example, omitting the brackets does the following:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>@shafland1982 state that many non-native species in Florida have lower lethal temperatures.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="border">
-<p><span class="citation" data-cites="shafland1982">(<a href="references.html#ref-shafland1982" role="doc-biblioref"><strong>shafland1982?</strong></a>)</span> state that many non-native species in Florida have lower lethal temperatures.</p>
+<p><span class="citation" data-cites="shafland1982">Shafland and Pestrak (<a href="references.html#ref-shafland1982" role="doc-biblioref">1982</a>)</span> state that many non-native species in Florida have lower lethal temperatures.</p>
 </div>
 <p>Additional information about citations in Quarto can be found <a href="https://quarto.org/docs/get-started/authoring/rstudio.html#citations" target="_blank">here</a>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-shafland1982" class="csl-entry" role="listitem">
+Shafland, Paul L., and James M. Pestrak. 1982. <span>“Lower Lethal Temperatures for Fourteen Non-Native Fishes in Florida.”</span> <em>Environmental Biology of Fishes</em> 7 (2): 149–56. <a href="https://doi.org/10.1007/bf00001785">https://doi.org/10.1007/bf00001785</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -852,7 +876,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/" target="_blank">Quarto</a></div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom"});</script>
 
 
 
