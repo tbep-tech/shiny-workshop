@@ -26,6 +26,7 @@ A "user story" can be represented by a statement in the following form:
 Early in the development of project ideas, collecting use-cases in this form will help identify the outcomes that are most important for your userbase.
 
 
+
 ### select use case
 Developing a user story can be an important part of explicitly defining the needs and wants of your target users.
 Once a set of use cases have been collected, a user story can be created that will satisfy multiple use cases.
@@ -38,9 +39,10 @@ Examples:
 * "get an email alert when a major temperature anomaly is detected"
 * "see where the most biologically diverse areas are"
 
+User stories can be collected into a spreadsheet ([example](https://docs.google.com/spreadsheets/d/119-DdhlgoeL3_raTpP6kR5LQcsmb6vbrtVx6ZrTshAg/edit?usp=sharing)) to aid in the conversion of user stories into use-cases.
+
 ### iterative design
 The aim of an iterative design process is to involve users as the features of a product are built piece-by-piece.
-
 
 ### Think Aloud Protocol
 ["Think aloud protocol"](https://en.wikipedia.org/wiki/Think_aloud_protocol) is a way of collecting user feedback that encourages a user of the product to speak their thoughts aloud when using the product.

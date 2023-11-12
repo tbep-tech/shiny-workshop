@@ -295,7 +295,7 @@ Let's explicitly discuss each added bit of code:
     verbatimTextOutput("txt_lttr")
     ```
 
-3.  Last to show the value of the selected widget, add `renderPrint()` into the server.R section:
+3.  The last thing to do to show the value of the selected widget, add `renderPrint()` into the server.R section:
 
     ```{r}
     #| eval: false
@@ -469,8 +469,18 @@ shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
 :::
 :::
 
+### Debugging Shiny apps
+
+Since Shiny apps are interactive, debugging can be a bit tricky. Here are some tips:
+
+-  Use `browser()` to pause execution of the app and inspect the values of variables. You can use `browser()` in the server function or in any of the reactive functions. You can also use `browser()` in the ui function, but it will only pause execution when the app is first loaded.
+
+- Use `print()` to print out the values of variables. You can use `print()` in the server function or in any of the reactive functions. You can also use `print()` in the ui function, but it will only print out when the app is first loaded.
+
+For more information on debugging Shiny apps, see the article. [Debugging Shiny applications](https://shiny.posit.co/r/articles/improve/debugging/).
+
 ::: {.callout-caution icon="false" collapse="true"}
-### `r fa('lightbulb')` Tip: enable Rainbow Parentheses in RStudio
+### `r fa('lightbulb')` Tip: Enable Rainbow Parentheses in RStudio
 
 The more you develop Shiny apps, the more you'll appreciate [Rainbow Parentheses in RStudio](https://posit.co/blog/rstudio-1-4-preview-rainbow-parentheses/). This feature is disabled by default. To enable: visit the menu Tools \> Global Options, select Code \> Display, and check the box next to Rainbow Parentheses.
 
