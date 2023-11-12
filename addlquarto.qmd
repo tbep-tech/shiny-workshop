@@ -1,4 +1,5 @@
 ---
+bibliography: references.bib
 filters:
    - lightbox
 lightbox: auto
