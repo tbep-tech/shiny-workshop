@@ -10,8 +10,9 @@ agenda <- frame_matrix(
   '12:00', 'lunch',
   '12:30', '[Interactive: Shiny](shiny.qmd)',
   ' 3:00', 'break',
-   '3:15', '[Publish Shiny apps](shiny.qmd)',
-   '4:00', '[Co-designing](ui_design.qmd)',
+  ' 3:15', '[Example Complex Shiny App](https://tbep-tech.github.io/shiny-workshop/shiny.html#create-a-complex-shiny-app)',
+  ' 3:45', '[Publishing Shiny Apps](https://tbep-tech.github.io/shiny-workshop/shiny.html#publish-app)',
+   '4:00', '[Co-designing workflow](ui_design.qmd)',
    '5:00', 'adjourn'
 )
 
