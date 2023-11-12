@@ -372,6 +372,100 @@ shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
 ```
 
 
+And here's the live workshop updates to filter `faithful$waiting` with a `slideInput()` and change the color of the histogram with a `selectInput()`.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show Code: `app.R`"
+#| eval: false
+
+library(dplyr)
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+
+    # Application title
+    titlePanel("Old Faithful Geyser Data"),
+
+    # Sidebar with a slider input for number of bins
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput("bins",
+                        "Number of bins:",
+                        min = 1,
+                        max = 50,
+                        value = 30),
+
+            dateRangeInput(
+              "dates", label = h3("Date range")),
+
+            selectInput(
+              inputId = "sel_color",
+              label   = "Pick a color:",
+              choices = c("red", "green", "blue")),
+
+            sliderInput(
+              "slide_waiting",
+              "Waiting time:",
+              min(faithful$waiting),
+              max(faithful$waiting),
+              c(min(faithful$waiting),
+                max(faithful$waiting)))
+
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+           plotOutput("distPlot"),
+           # 3. display output in ui
+           verbatimTextOutput("value"),
+           verbatimTextOutput("txt_color")
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+
+    output$distPlot <- renderPlot({
+        # generate bins based on input$bins from ui.R
+
+        # input = list(slide_waiting = c(40,50))
+      # browser()
+        x    <- faithful %>%
+          select(waiting) %>%
+          filter(
+            waiting >= min(input$slide_waiting),
+            waiting <= max(input$slide_waiting)) %>%
+          pull(waiting)
+
+        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+        print(paste("input$sel_color: ", input$sel_color))
+
+        # draw the histogram with the specified number of bins
+        hist(x, breaks = bins, col = input$sel_color, border = 'white',
+             xlab = 'Waiting time to next eruption (in mins)',
+             main = 'Histogram of waiting times')
+    })
+
+    # 2. add output function capturing input to server
+    output$value <- renderPrint({
+      input$dates
+    })
+
+    # 2. add output function capturing input to server
+    output$txt_color <- renderPrint({
+      input$sel_color
+    })
+
+}
+
+# Run the application
+shinyApp(ui = ui, server = server, options = list(display.mode = "showcase"))
+```
+
 :::
 :::
 
