@@ -40,7 +40,7 @@ Advantages of creating analyses using Quarto include:
 
 This next section will run through the very basics of creating a Quarto document, some of the options for formatting, and how to generate shared content.  You'll follow along in this module. 
 
-(@) ***Create a new project in RStudio, first open RStudio and select "New project" from the File menu at the top.***
+(@) **Create a new project in RStudio, first open RStudio and select "New project" from the File menu at the top.**
 
     ![](figs/quarto/newproj.PNG)
 
@@ -48,7 +48,7 @@ This next section will run through the very basics of creating a Quarto document
     
     ![](figs/quarto/newdir.PNG)
 
-(@) ***Open a new Quarto file from the File menu under New file > Quarto Document.***
+(@) **Open a new Quarto file from the File menu under New file > Quarto Document.**
 
     ![](figs/quarto/newquarto.PNG)
     
@@ -58,7 +58,7 @@ This next section will run through the very basics of creating a Quarto document
     
     Save the file in the project root directory (give it any name you want).
 
-(@) ***Let's get familiar with the components of a Quarto document.***
+(@) **Let's get familiar with the components of a Quarto document.**
 
     ::: {.callout-tip}
     The three main components of a Quarto document are:
@@ -134,7 +134,7 @@ This next section will run through the very basics of creating a Quarto document
     1. Item 2
     :::
 
-(@) ***Render the .qmd file to the output format.***
+(@) **Render the .qmd file to the output format.**
 
     The source file is a .qmd document.  We need to render the document to create the output format - HTML (default), PDF, or Word.  The following happens when you hit the render button at the top.
 
