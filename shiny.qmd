@@ -841,6 +841,7 @@ Here's the full code:
 
 # * load libraries ----
 library(dplyr)
+library(DT)
 library(ggplot2)
 library(leaflet)
 library(plotly)
@@ -876,7 +877,8 @@ ui <- fluidPage(
     selectInput("sel_sta", "Station",   choices = stations),
     selectInput("sel_ind", "Indicator", choices = indicators),
     plotlyOutput("tsplot"),
-    leafletOutput("map") )
+    leafletOutput("map"),
+    DTOutput('tbl') )
 )
 
 #  server.R ----
@@ -892,7 +894,7 @@ server <- function(input, output, session) {
 
   # * tsplot: time series plot ----
   output$tsplot <- renderPlotly({
-    g <- ggplot(
+   g <- ggplot(
       get_data(),
       aes(
         x = SampleTime,
@@ -928,6 +930,12 @@ server <- function(input, output, session) {
         lat    = ~lat,
         color  = "red",
         weight = 20)
+  })
+
+  # * table ----
+  output$tbl = renderDT({
+    get_data() |>
+      datatable()
   })
 }
 
